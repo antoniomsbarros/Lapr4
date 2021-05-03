@@ -29,12 +29,19 @@ A interpretação feita deste requisito foi no sentido de criar um catálogo com
 
 # 2. Análise
 
-	* O catálogo é identificado por um Identificador, por um Ícone e por um Título que devem ser únicos.
+	A análise foi realizada tendo em conta as reuniões com o Cliente e as respostas dadas no Fórum para esclarecimento de dúvidas.
+
+	* O catálogo é identificado por um Identificador, por um Ícone e por um título que devem ser únicos.
+	* O título deve ter um máximo de 50 caracteres.
 	* O catálogo é caraterizado por uma descrição breve e por uma descrição completa.
+	* A descrição breve deve ter um máximo de 40 caracteres.
+	* A descrição completa deve ter um máximo de 100 caracteres.
 	* O catálogo tem associado um nível de criticidade.
 	* O catálogo tem um colaborador responsável.
 	* O catálogo só pode ser acedido por uma ou mais equipas.
 	* O catálogo é constituído por uma lista de serviços.
+	* O catálogo tem de ter, obrigatoriamente, todos os seus atributos completos para puder ser criado.
+
 
 # 3. Design
 
