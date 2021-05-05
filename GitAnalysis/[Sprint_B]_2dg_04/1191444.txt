@@ -1,0 +1,15 @@
+commit 5603e0de6e8e874f57d8dbaa9bd452125601522d
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Sun May 2 20:03:21 2021 +0100
+
+    L2S20-4 Design
+
+A	EspecificacaoColaborador/4_1_4_2051_EspecificarColaborador.svg
+
+commit ce2b327266cb0afda96b1e049780e276f4fb178b
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Sun May 2 19:58:11 2021 +0100
+
+    #L2S20-4
+
+A	EspecificacaoColaborador/4_1_4_2051_EspecificacaoColaborador.md
