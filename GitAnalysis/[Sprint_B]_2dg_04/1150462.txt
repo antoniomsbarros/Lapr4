@@ -1,0 +1,79 @@
+commit 1aa5f628e79bd5bbdc12dc297b696e1ae4aa712a
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Tue May 4 19:50:46 2021 +0100
+
+    US2012 Update some changes
+
+M	Documents/UC2012-Create _New_Team_Type/US2012- Requirements_Analysis/US2012_FunctionalEngineering.md
+
+commit 5f4b3c72e1441f70738afc4142fe9617765c62ba
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Tue May 4 19:28:44 2021 +0100
+
+    US2012-28 Design
+
+A	Documents/UC2012-Create _New_Team_Type/US2012- Design/LS20-12_SSD.png
+A	Documents/UC2012-Create _New_Team_Type/US2012- Design/LS20-12_SSD_RegistNewTeamType.vpp
+A	Documents/UC2012-Create _New_Team_Type/US2012- Design/LS20-12_SSD_RegistNewTeamType.vpp.bak_000f
+A	Documents/UC2012-Create _New_Team_Type/US2012- Design/LS20-12_SSD_RegistNewTeamType.vpp.bak_001d
+
+commit b683d84a2f29a7375fcdb6706eb0d4f1d3219c97
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Tue May 4 19:27:03 2021 +0100
+
+    remove TestTextFile
+
+D	Documents/UC2012-Create _New_Team_Type/US2012- Requirements_Analysis/TestTextFile.txt
+
+commit 7455ab2a16d492b6a9fb76542ec6ca89b8d89997
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Tue May 4 19:25:06 2021 +0100
+
+    US2012-27 Analysis
+
+M	Documents/UC2012-Create _New_Team_Type/US2012- Requirements_Analysis/US2012_FunctionalEngineering.md
+
+commit 9bfc4ffcc4709a4115f724c1e48e769de9f98607
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Tue May 4 18:58:03 2021 +0100
+
+    Teste ao commit por consola
+
+A	Documents/UC2012-Create _New_Team_Type/US2012- Requirements_Analysis/TestTextFile.txt
+
+commit 29c882183c9731198330a9cc68e6ca23ec3e9125
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Tue May 4 18:51:19 2021 +0100
+
+    US2012-Requirements
+
+A	Documents/UC2012-Create _New_Team_Type/US2012- Requirements_Analysis/US2012_FunctionalEngineering.md
+
+commit 1d0b059c63451c5c50164a0fbb8bc2fbe4f2781e
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Tue May 4 18:41:50 2021 +0100
+
+    Revert "reverse commit"
+    
+    This reverts commit 932ee043f94e4d526251c263bd06e930e64a2b33.
+
+R100	EspecificacaoColaborador/4_1_4_2051_EspecificacaoColaborador.md	Documents/UC2004 - EspecificacaoColaborador/4_1_4_2051_EspecificacaoColaborador.md
+R100	EspecificacaoColaborador/4_1_4_2051_EspecificarColaborador.svg	Documents/UC2004 - EspecificacaoColaborador/4_1_4_2051_EspecificarColaborador.svg
+
+commit 932ee043f94e4d526251c263bd06e930e64a2b33
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Tue May 4 18:03:54 2021 +0100
+
+    reverse commit
+
+R100	Documents/UC2004 - EspecificacaoColaborador/4_1_4_2051_EspecificacaoColaborador.md	EspecificacaoColaborador/4_1_4_2051_EspecificacaoColaborador.md
+R100	Documents/UC2004 - EspecificacaoColaborador/4_1_4_2051_EspecificarColaborador.svg	EspecificacaoColaborador/4_1_4_2051_EspecificarColaborador.svg
+
+commit a5ba0e43c87d252822c3b75fda2ef1840f60722d
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Tue May 4 17:58:20 2021 +0100
+
+    Refactoring an issue (directory replacement to the correct folder)
+
+R100	EspecificacaoColaborador/4_1_4_2051_EspecificacaoColaborador.md	Documents/UC2004 - EspecificacaoColaborador/4_1_4_2051_EspecificacaoColaborador.md
+R100	EspecificacaoColaborador/4_1_4_2051_EspecificarColaborador.svg	Documents/UC2004 - EspecificacaoColaborador/4_1_4_2051_EspecificarColaborador.svg
