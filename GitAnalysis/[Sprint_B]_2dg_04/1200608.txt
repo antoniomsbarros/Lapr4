@@ -1,3 +1,22 @@
+commit aa8fb337c320824d5676a261f9188edd738ac417
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Wed May 5 17:20:32 2021 +0100
+
+    UC2001 - Design
+
+A	.idea/.gitignore
+A	.idea/.name
+A	.idea/compiler.xml
+A	.idea/encodings.xml
+A	.idea/jarRepositories.xml
+A	.idea/misc.xml
+A	.idea/vcs.xml
+M	Documents/UC2001/ProcessoEngenhariaFuncionalidade.md
+A	Documents/UC2001/SD/SD-CriarCatalogo.vpp.bak_000f
+A	Documents/UC2001/SD/SD_CriarCatalogo.jpg
+A	Documents/UC2001/SD/SD_CriarCatalogo.svg
+A	Documents/UC2001/SD/SD_CriarCatalogo.vpp
+
 commit 266ebb0a4309dd3cace808bdb0aea462fff5acfd
 Author: Daniel Reis <1200608@isep.ipp.pt>
 Date:   Mon May 3 17:50:59 2021 +0100
