@@ -14,6 +14,7 @@
     <class>eapli.base.clientusermanagement.domain.SignupRequest</class>
     <class>eapli.base.teamManagement.domain.Team</class>
     <class>eapli.base.teamManagement.domain.TeamType</class>
+    <class>eapli.base.catalogmanagement.domain.Catalog</class>
 
     <properties>
       <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/base"/>-->
