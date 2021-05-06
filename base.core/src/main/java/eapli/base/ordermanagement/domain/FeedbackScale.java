@@ -2,10 +2,12 @@ package eapli.base.ordermanagement.domain;
 
 import eapli.framework.domain.model.ValueObject;
 import eapli.framework.validations.Preconditions;
+
+import javax.persistence.Embeddable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-
+@Embeddable
 public class FeedbackScale implements ValueObject {
     @Id
     @GeneratedValue

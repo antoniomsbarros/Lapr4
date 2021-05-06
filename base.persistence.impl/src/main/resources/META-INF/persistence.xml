@@ -17,7 +17,8 @@
     <class>eapli.base.catalogmanagement.domain.Catalog</class>
     <class>eapli.base.ordermanagement.domain.Draft</class>
     <class>eapli.base.ordermanagement.domain.Request</class>
-
+    <class>eapli.base.catalogmanagement.domain.Service</class>
+    <class>eapli.base.catalogmanagement.domain.Criticalitylevel</class>
     <properties>
       <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/base"/>-->
 
