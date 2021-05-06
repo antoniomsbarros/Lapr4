@@ -12,8 +12,10 @@ import javax.persistence.*;
 public class Function implements AggregateRoot<Long> {
 
     @Id
+    @GeneratedValue
     private Uniquecode functioncode;
-
+    @Version
+    private Long version;
     private Designation functionname;
 
     private Description  descriptionFunction;

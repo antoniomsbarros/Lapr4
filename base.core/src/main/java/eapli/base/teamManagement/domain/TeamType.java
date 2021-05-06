@@ -10,8 +10,10 @@ import javax.persistence.*;
 public class TeamType implements AggregateRoot<Long> {
 
     @Id
+    @GeneratedValue
     private Uniquecode singleInternalcode;
-
+    @Version
+    private Long version;
     @AttributeOverride(name = "value", column = @Column(name = "descriptionTypeTeam"))
     private Description descriptionTypeTeam;
 

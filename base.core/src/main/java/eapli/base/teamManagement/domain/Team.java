@@ -10,8 +10,10 @@ import javax.persistence.*;
 public class Team implements AggregateRoot<Long>{
 
     @Id
+    @GeneratedValue
     private Uniquecode uniquecode;
-
+    @Version
+    private Long version;
     private Designation designationTeam;
 
     private Acronym teamAcronym;
