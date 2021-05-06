@@ -23,14 +23,19 @@
  */
 package eapli.base.clientusermanagement.domain;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Version;
+import javax.persistence.*;
 
+import eapli.base.catalogmanagement.domain.Catalog;
+import eapli.base.catalogmanagement.domain.Service;
+import eapli.base.funcaomanagement.domain.Function;
+import eapli.base.teamManagement.domain.Team;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
+import eapli.framework.general.domain.model.Description;
+import eapli.framework.general.domain.model.Designation;
 import eapli.framework.infrastructure.authz.domain.model.SystemUser;
+
+import java.util.List;
 
 /**
  * A Client User.
@@ -55,11 +60,47 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     @EmbeddedId
     private MecanographicNumber mecanographicNumber;
 
+    @OneToOne(optional = false)
+    private Function function;
+    /*@OneToMany()
+    private List<Activity> serviceList;*/
+    @OneToMany()
+    private List<Catalog> listcatalog;
+    @OneToMany()
+    private List<Team> list;
+
+    private Description fullName;
+    private CollaboratorEmail collaboratorEmail;
+    private Dateofbirth dateofbirth;
+    private Long phoneNumber;
+    private Designation shortname;
+    private Placeofresidence placeofresidence;
+
     /**
      * cascade = CascadeType.NONE as the systemUser is part of another aggregate
      */
     @OneToOne()
     private SystemUser systemUser;
+
+    public ClientUser(MecanographicNumber mecanographicNumber, Function function, List<Catalog> listcatalog,
+                      List<Team> list, Description fullName, CollaboratorEmail collaboratorEmail,
+                      Dateofbirth dateofbirth, Long phoneNumber, Designation shortname,
+                      Placeofresidence placeofresidence, SystemUser systemUser) {
+        if (mecanographicNumber == null || systemUser == null) {
+            throw new IllegalArgumentException();
+        }
+        this.mecanographicNumber = mecanographicNumber;
+        this.function = function;
+        this.listcatalog = listcatalog;
+        this.list = list;
+        this.fullName = fullName;
+        this.collaboratorEmail = collaboratorEmail;
+        this.dateofbirth = dateofbirth;
+        this.phoneNumber = phoneNumber;
+        this.shortname = shortname;
+        this.placeofresidence = placeofresidence;
+        this.systemUser = systemUser;
+    }
 
     public ClientUser(final SystemUser user, final MecanographicNumber mecanographicNumber) {
         if (mecanographicNumber == null || user == null) {
@@ -99,5 +140,23 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     @Override
     public MecanographicNumber identity() {
         return this.mecanographicNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "ClientUser{" +
+                "version=" + version +
+                ", mecanographicNumber=" + mecanographicNumber +
+                ", function=" + function +
+                ", listcatalog=" + listcatalog +
+                ", list=" + list +
+                ", fullName=" + fullName +
+                ", collaboratorEmail=" + collaboratorEmail +
+                ", dateofbirth=" + dateofbirth +
+                ", phoneNumber=" + phoneNumber +
+                ", shortname=" + shortname +
+                ", placeofresidence=" + placeofresidence +
+                ", systemUser=" + systemUser +
+                '}';
     }
 }
