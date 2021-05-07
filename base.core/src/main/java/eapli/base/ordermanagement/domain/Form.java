@@ -35,7 +35,14 @@ public class Form implements AggregateRoot<Long> {
 
     @Override
     public boolean sameAs(Object other) {
-        return false;
+        if(!(other instanceof Form)){
+            return false;
+        }
+        Form form=(Form) other;
+        if (this==form){
+            return true;
+        }
+        return identity().equals(form.identity()) && name.equals(form.name) && attribute.equals(form.attribute);
     }
 
     @Override
