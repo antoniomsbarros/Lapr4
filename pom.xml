@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <eapli.framework.version>16.2.0</eapli.framework.version>
+        <eapli.framework.version>16.3.1</eapli.framework.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>11</maven.compiler.source>
@@ -76,8 +76,8 @@
 
     <repositories>
         <repository>
-            <id>bintray-pagsousa-eapli</id>
-            <url>http://dl.bintray.com/pagsousa/eapli</url>
+            <id>jfrog-pagsousa</id>
+            <url>https://pagsousa.jfrog.io/artifactory/default-maven-virtual</url>
         </repository>
     </repositories>
 </project>

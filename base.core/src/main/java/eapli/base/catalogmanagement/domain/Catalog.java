@@ -36,11 +36,6 @@ public class Catalog implements AggregateRoot<Long> {
     public Catalog(Description title, Description shortdescription, Description longdescription, ImageIcon icone,
                    List<Team> team) {
         Preconditions.noneNull(title,icone,shortdescription, longdescription,team);
-        if (team.isEmpty()){
-            throw new IllegalArgumentException(
-                    "the Catalog has to all the teams to the catalog"
-            );
-        }
         if (shortdescription.toString().length()>40){
             throw new IllegalArgumentException(
                     "the short description cant be more then 40 characters"

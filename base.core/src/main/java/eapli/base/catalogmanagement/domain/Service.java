@@ -17,16 +17,16 @@ public class Service implements AggregateRoot<Long> {
     @GeneratedValue
     private  Long uniquecode;
 
-    //@AttributeOverride(name = "value", column = @Column(name = "title"))
+    @AttributeOverride(name = "value", column = @Column(name = "title"))
     private Description title;
 
-    //@AttributeOverride(name = "value", column = @Column(name = "fulldescription"))
+    @AttributeOverride(name = "value", column = @Column(name = "fulldescription"))
     private Description fulldescription;
 
-    //@AttributeOverride(name = "value", column = @Column(name = "smalldescription"))
+    @AttributeOverride(name = "value", column = @Column(name = "smalldescription"))
     private  Description smalldescription;
 
-    //@AttributeOverride(name = "value", column = @Column(name = "keyword"))
+    @AttributeOverride(name = "value", column = @Column(name = "keyword"))
     private Description keyword;
 
     private Feedback feedback;

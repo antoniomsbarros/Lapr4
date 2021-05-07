@@ -7,6 +7,11 @@
       <option name="url" value="https://repo.maven.apache.org/maven2" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="jfrog-pagsousa" />
+      <option name="name" value="jfrog-pagsousa" />
+      <option name="url" value="https://pagsousa.jfrog.io/artifactory/default-maven-virtual" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="bintray-pagsousa-eapli" />
       <option name="name" value="bintray-pagsousa-eapli" />
       <option name="url" value="http://dl.bintray.com/pagsousa/eapli" />
