@@ -4,10 +4,8 @@ import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.validations.Preconditions;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Version;
+import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -19,12 +17,13 @@ public class Form implements AggregateRoot<Long> {
     @Version
     private Long version;
     private Description name;
-    private Attribute attribute;
+    @OneToMany()
+    private List<Attribute> attribute;
 
     public Form() {
     }
 
-    public Form(Description name, Attribute attribute) {
+    public Form(Description name, List<Attribute> attribute) {
         Preconditions.noneNull(name,attribute);
         if (name.length()<50){
             throw new IllegalArgumentException("the name of the form cant have more then 50 characters");

@@ -1,6 +1,7 @@
 package eapli.base.catalogmanagement.domain;
 
-import eapli.base.ordermanagement.domain.Feedback;
+
+import eapli.base.ordermanagement.domain.Form;
 import eapli.base.ordermanagement.domain.Ticket;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.general.domain.model.Description;
@@ -29,13 +30,9 @@ public class Service implements AggregateRoot<Long> {
     @AttributeOverride(name = "value", column = @Column(name = "keyword"))
     private Description keyword;
 
-    private Feedback feedback;
 
     private ImageIcon icon;
 
-
-    @OneToOne(optional = false)
-    private Ticket ticket;
 
     @OneToOne(optional = false)
     private Catalog catalog;
@@ -43,13 +40,17 @@ public class Service implements AggregateRoot<Long> {
     @OneToOne(optional = false)
     private Criticalitylevel criticalitylevel;
 
+    @OneToOne()
+    private Workflow workflow;
+    @OneToOne()
+    private Form form;
     public Service() {
     }
 
-    public Service(final Criticalitylevel criticalitylevel, final Description title,final Description fulldescription,
+    public Service(final Form form,final Criticalitylevel criticalitylevel, final Description title,final Description fulldescription,
                    final Description smalldescription,final Description keyword,
-                   final ImageIcon icon,final Ticket ticket,final Catalog catalog) {
-        Preconditions.noneNull(title,fulldescription, smalldescription, keyword, ticket,catalog, criticalitylevel);
+                   final ImageIcon icon,final Catalog catalog,Workflow workflow) {
+        Preconditions.noneNull(form,title,fulldescription, smalldescription, keyword,catalog, criticalitylevel);
         if (title.length()>50){
             throw new IllegalArgumentException("the title of the service is superior to 50 caracters");
         }
@@ -59,20 +60,17 @@ public class Service implements AggregateRoot<Long> {
         if (fulldescription.length()>100){
             throw new IllegalArgumentException("the full description of the service is superior to 100 caracters");
         }
+        this.form=form;
         this.title = title;
         this.fulldescription = fulldescription;
         this.smalldescription = smalldescription;
         this.keyword = keyword;
         this.icon = icon;
-        this.ticket = ticket;
         this.catalog = catalog;
         this.criticalitylevel=criticalitylevel;
+        this.workflow=workflow;
     }
 
-    public Service(Feedback feedback) {
-        Preconditions.noneNull(feedback);
-        this.feedback = feedback;
-    }
 
     @Override
     public boolean sameAs(Object other) {
@@ -85,7 +83,7 @@ public class Service implements AggregateRoot<Long> {
         }
         return identity().equals(service.identity()) && title.equals(service.title)
                 && fulldescription.equals(service.fulldescription) && smalldescription.equals(service.smalldescription)
-                && keyword.equals(service.keyword) && ticket.equals(service.ticket) && catalog.equals(service.catalog);
+                && keyword.equals(service.keyword)  && catalog.equals(service.catalog) && workflow.sameAs(service.workflow);
     }
 
     @Override
@@ -100,19 +98,19 @@ public class Service implements AggregateRoot<Long> {
         Service service = (Service) o;
         return uniquecode.equals(service.uniquecode) && title.equals(service.title)
                 && fulldescription.equals(service.fulldescription) && smalldescription.equals(service.smalldescription)
-                && keyword.equals(service.keyword) && Objects.equals(feedback, service.feedback) && icon.equals(service.icon)
-                && ticket.equals(service.ticket) && catalog.equals(service.catalog);
+                && keyword.equals(service.keyword)  && icon.equals(service.icon)
+                 && catalog.equals(service.catalog);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uniquecode, title, fulldescription, smalldescription, keyword, feedback, icon, ticket, catalog);
+        return Objects.hash(uniquecode, title, fulldescription, smalldescription, keyword, icon, catalog);
     }
 
     @Override
     public String toString() {
         return "uniquecode=" + uniquecode.toString() + ", title=" + title.toString() + ", fulldescription=" + fulldescription.toString() +
-                ", smalldescription=" + smalldescription.toString() + ", keyword=" + keyword.toString() + ", feedback=" + feedback.toString() +
-                ", icon=" + icon.toString() + ", ticket=" + ticket.toString() + ", catalog=" + catalog.toString();
+                ", smalldescription=" + smalldescription.toString() + ", keyword=" + keyword.toString() +
+                ", icon=" + icon.toString() + ", catalog=" + catalog.toString();
     }
 }

@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Embeddable
+
 public class Attribute{
     @Id
     @GeneratedValue

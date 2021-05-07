@@ -10,7 +10,6 @@ import java.sql.Time;
 import java.util.Objects;
 
 @Entity
-@Embeddable
 public class Objective  {
     @Id
     @GeneratedValue

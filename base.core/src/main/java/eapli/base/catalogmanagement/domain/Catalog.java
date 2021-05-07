@@ -1,10 +1,10 @@
 package eapli.base.catalogmanagement.domain;
 
+import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.teamManagement.domain.Team;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.validations.Preconditions;
-
 import javax.persistence.*;
 import javax.swing.*;
 import java.util.List;
@@ -25,17 +25,20 @@ public class Catalog implements AggregateRoot<Long> {
 
     private ImageIcon icone;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany()
     private List<Team> team;
-
+    @OneToOne()
+    private ClientUser responsiblecollaborator;
+    @OneToOne
+    private Criticalitylevel criticalitylevel;
 
     public Catalog() {
 
     }
 
-    public Catalog(Description title, Description shortdescription, Description longdescription, ImageIcon icone,
+    public Catalog(Criticalitylevel criticalitylevel,ClientUser responsiblecollaborator, Description title, Description shortdescription, Description longdescription, ImageIcon icone,
                    List<Team> team) {
-        Preconditions.noneNull(title,icone,shortdescription, longdescription,team);
+        Preconditions.noneNull(responsiblecollaborator,title,icone,shortdescription, longdescription,team,criticalitylevel);
         if (shortdescription.toString().length()>40){
             throw new IllegalArgumentException(
                     "the short description cant be more then 40 characters"
@@ -56,6 +59,8 @@ public class Catalog implements AggregateRoot<Long> {
         this.longdescription = longdescription;
         this.icone = icone;
         this.team=team;
+        this.responsiblecollaborator=responsiblecollaborator;
+        this.criticalitylevel=criticalitylevel;
     }
 
     @Override
@@ -72,17 +77,8 @@ public class Catalog implements AggregateRoot<Long> {
         return this.identifier;
     }
 
-    public String Title(){
-        return  this.title.toString();
-    }
     public List<Team> ListofTeams(){
         return team;
-    }
-    public  String shortdescription(){
-        return  shortdescription.toString();
-    }
-    public  String longdescription(){
-        return  longdescription.toString();
     }
     public  ImageIcon icon (){
         return  icone;

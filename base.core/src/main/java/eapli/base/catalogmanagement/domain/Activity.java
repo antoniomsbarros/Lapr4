@@ -1,5 +1,7 @@
 package eapli.base.catalogmanagement.domain;
 
+import eapli.base.clientusermanagement.domain.ClientUser;
+import eapli.base.ordermanagement.domain.Form;
 import eapli.base.ordermanagement.domain.State;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.general.domain.model.Description;
@@ -29,15 +31,23 @@ public class Activity implements AggregateRoot<Long> {
     @AttributeOverride(name = "value", column = @Column(name = "complementaryinformation"))
     private Description complementaryinformation;
 
-
-
+    @ManyToOne()
+    private ClientUser collaborator;
+    @OneToOne()
+    private Form form;
+    @OneToOne()
+    private Order order;
+    @OneToOne()
+    private Criticalitylevel criticalitylevel;
+    @OneToOne
+    private Responsable responsable;
     public Activity() {
     }
 
-    public Activity(Calendar dateconclusionL, TypeofActivitie typeofActivitie,
+    public Activity(Responsable responsable,Criticalitylevel criticalitylevel,Order order,Form form,ClientUser collaborator,Calendar dateconclusionL, TypeofActivitie typeofActivitie,
                     Description typeofexection, Long priority, State state, Description decision, Description coment,
                     Description complementaryinformation) {
-        Preconditions.noneNull(dateconclusionL,typeofActivitie,typeofexection,  priority, state);
+        Preconditions.noneNull(criticalitylevel,order,form,dateconclusionL,typeofActivitie,typeofexection,  priority, state,collaborator);
         this.dateconclusionL = dateconclusionL;
         this.typeofActivitie = typeofActivitie;
         this.typeofexection = typeofexection;
@@ -46,10 +56,22 @@ public class Activity implements AggregateRoot<Long> {
         this.decision = decision;
         this.coment = coment;
         this.complementaryinformation = complementaryinformation;
+        this.collaborator=collaborator;
+        this.form=form;
+        this.order=order;
+        this.criticalitylevel=criticalitylevel;
+        this.responsable=responsable;
     }
 
     @Override
     public boolean sameAs(Object other) {
+        if (!(other instanceof Activity)){
+            return false;
+        }
+        Activity activity=(Activity) other;
+        if (this==activity){
+            return true;
+        }
         return false;
     }
 
@@ -58,28 +80,38 @@ public class Activity implements AggregateRoot<Long> {
         return id;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Activity activity = (Activity) o;
-        return id.equals(activity.id) && version.equals(activity.version) && dateconclusionL.equals(activity.dateconclusionL) && typeofActivitie == activity.typeofActivitie && typeofexection.equals(activity.typeofexection) && priority.equals(activity.priority) && state == activity.state && decision.equals(activity.decision) && coment.equals(activity.coment) && complementaryinformation.equals(activity.complementaryinformation);
+        return id.equals(activity.id) && version.equals(activity.version) && dateconclusionL.equals(activity.dateconclusionL) && typeofActivitie == activity.typeofActivitie && typeofexection.equals(activity.typeofexection) && priority.equals(activity.priority) && state == activity.state && decision.equals(activity.decision) && coment.equals(activity.coment) && complementaryinformation.equals(activity.complementaryinformation) && collaborator.equals(activity.collaborator) && form.equals(activity.form) && order.equals(activity.order) && criticalitylevel.equals(activity.criticalitylevel) && responsable.equals(activity.responsable);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, version, dateconclusionL, typeofActivitie, typeofexection, priority, state, decision, coment, complementaryinformation);
+        return Objects.hash(id, version, dateconclusionL, typeofActivitie, typeofexection, priority, state, decision, coment, complementaryinformation, collaborator, form, order, criticalitylevel, responsable);
     }
 
     @Override
     public String toString() {
-        return ", dateconclusionL=" + dateconclusionL +
+        return "Activity{" +
+                "id=" + id +
+                ", version=" + version +
+                ", dateconclusionL=" + dateconclusionL +
                 ", typeofActivitie=" + typeofActivitie +
                 ", typeofexection=" + typeofexection +
                 ", priority=" + priority +
                 ", state=" + state +
                 ", decision=" + decision +
                 ", coment=" + coment +
-                ", complementaryinformation=" + complementaryinformation;
+                ", complementaryinformation=" + complementaryinformation +
+                ", collaborator=" + collaborator +
+                ", form=" + form +
+                ", order=" + order +
+                ", criticalitylevel=" + criticalitylevel +
+                ", responsable=" + responsable +
+                '}';
     }
 }

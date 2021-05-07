@@ -1,5 +1,6 @@
 package eapli.base.ordermanagement.domain;
 
+import eapli.base.catalogmanagement.domain.Service;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.validations.Preconditions;
 import javax.persistence.Entity;
@@ -18,15 +19,17 @@ public class Ticket implements AggregateRoot<Long> {
 
     @OneToOne(optional = false)
     private Request request;
-
+    @OneToOne(optional = false)
+    private Service service;
     public Ticket() {
     }
 
-    public Ticket(final Integer priorityTicket, Request request) {
-        Preconditions.noneNull(request, priorityTicket);
+    public Ticket(final Service service,final Integer priorityTicket,final Request request) {
+        Preconditions.noneNull(request, priorityTicket,service);
         if (priorityTicket<0){
             throw new IllegalArgumentException("the priority of the ticket cant be negative");
         }
+        this.service=service;
         this.priorityTicket = priorityTicket;
         this.request=request;
     }
@@ -41,7 +44,7 @@ public class Ticket implements AggregateRoot<Long> {
             return true;
         }
         return  identity().equals(ticket.identity()) && priorityTicket.equals(ticket.priorityTicket)
-                && request.equals(ticket.request);
+                && request.equals(ticket.request) && service.sameAs(ticket.service);
     }
 
     @Override
@@ -55,7 +58,7 @@ public class Ticket implements AggregateRoot<Long> {
         if (o == null || getClass() != o.getClass()) return false;
         Ticket ticket = (Ticket) o;
         return identifier.equals(ticket.identifier) && priorityTicket.equals(ticket.priorityTicket)
-                && request.equals(ticket.request);
+                && request.equals(ticket.request) && service.equals(ticket.service);
     }
 
     @Override

@@ -60,14 +60,17 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     @EmbeddedId
     private MecanographicNumber mecanographicNumber;
 
-    @OneToOne(optional = false)
+    @OneToOne()
     private Function function;
-    /*@OneToMany()
-    private List<Activity> serviceList;*/
+
     @OneToMany()
     private List<Catalog> listcatalog;
     @OneToMany()
     private List<Team> list;
+    @OneToOne
+    private ClientUser clientUser;
+
+
 
     private Description fullName;
     private CollaboratorEmail collaboratorEmail;

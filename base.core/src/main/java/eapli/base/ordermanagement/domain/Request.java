@@ -1,8 +1,8 @@
 package eapli.base.ordermanagement.domain;
 
+import eapli.base.catalogmanagement.domain.Workflow;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.validations.Preconditions;
-
 import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Objects;
@@ -18,20 +18,23 @@ public class Request implements AggregateRoot<Long> {
     @Temporal(TemporalType.DATE)
     private Calendar dateofRequest;
 
+    @OneToOne()
     private Feedback feedback;
-
+    @OneToOne()
+    private Workflow workflow;
     @OneToOne(optional = false)
     private Draft draft;
 
     public Request() {
     }
 
-    public Request(final State stateofResquest,final Calendar dateofRequest,final Feedback feedback,final Draft draft) {
-        Preconditions.noneNull(draft,dateofRequest,stateofResquest);
+    public Request(final Workflow workflow,final State stateofResquest,final Calendar dateofRequest,final Feedback feedback,final Draft draft) {
+        Preconditions.noneNull(draft,dateofRequest,stateofResquest,workflow);
         this.stateofResquest = stateofResquest;
         this.dateofRequest = dateofRequest;
         this.feedback = feedback;
         this.draft = draft;
+        this.workflow=workflow;
     }
 
     @Override
@@ -44,7 +47,7 @@ public class Request implements AggregateRoot<Long> {
             return true;
         }
         return  identity().equals(((Request) other).identity()) && stateofResquest.equals(((Request) other).stateofResquest)
-                && dateofRequest.equals(((Request) other).dateofRequest) && feedback.equals(request.feedback);
+                && dateofRequest.equals(((Request) other).dateofRequest) && feedback.equals(request.feedback) && workflow.equals(request.workflow);
     }
 
     @Override

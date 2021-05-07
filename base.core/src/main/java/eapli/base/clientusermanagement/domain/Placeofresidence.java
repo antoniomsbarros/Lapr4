@@ -11,8 +11,7 @@ import java.util.Objects;
 @Embeddable
 public class Placeofresidence implements ValueObject {
 
-    @Version
-    private Long version;
+
 
     private String country;
     private String county;
@@ -50,7 +49,7 @@ public class Placeofresidence implements ValueObject {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Placeofresidence that = (Placeofresidence) o;
-        return version.equals(that.version) && country.equals(that.country)
+        return   country.equals(that.country)
                 && county.equals(that.county) && District.equals(that.District)
                 && City.equals(that.City) && street.equals(that.street) && doorNumber.equals(that.doorNumber)
                 && floorNUmber.equals(that.floorNUmber) && PostalCode.equals(that.PostalCode);
@@ -58,7 +57,7 @@ public class Placeofresidence implements ValueObject {
 
     @Override
     public int hashCode() {
-        return Objects.hash(version, country, county, District, City, street, doorNumber, floorNUmber, PostalCode);
+        return Objects.hash( country, county, District, City, street, doorNumber, floorNUmber, PostalCode);
     }
 
     @Override

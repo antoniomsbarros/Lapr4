@@ -1,5 +1,6 @@
 package eapli.base.ordermanagement.domain;
 
+import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.time.util.Calendars;
 import eapli.framework.validations.Preconditions;
@@ -14,10 +15,13 @@ public class Draft implements AggregateRoot<Long> {
     private  Long id;
     @Version
     private Long version;
-    private File file;
+    private String file;
 
     @Temporal(TemporalType.DATE)
     private Calendar deadline;
+
+    @ManyToOne
+    private ClientUser collaborator;
 
     private Number urgency;
 
@@ -26,12 +30,13 @@ public class Draft implements AggregateRoot<Long> {
     public Draft() {
     }
 
-    public Draft(final String assigned, final File filepath,final Calendar deadline,final Number urgency)  {
-        Preconditions.noneNull(assigned,filepath,deadline, urgency);
+    public Draft(final ClientUser clientUser, final String assigned, final String filepath,final Calendar deadline,final Number urgency)  {
+        Preconditions.noneNull(assigned,filepath,deadline, urgency,clientUser);
         this.file = filepath;
         this.deadline = deadline;
         this.urgency = urgency;
         this.assigned=assigned;
+        this.collaborator=clientUser;
     }
 
     @Override
@@ -44,7 +49,7 @@ public class Draft implements AggregateRoot<Long> {
             return true;
         }
         return identity().equals(draft.identity()) && deadline.equals(draft.deadline) && file.equals(draft.file)
-                && assigned.equals(draft.assigned);
+                && assigned.equals(draft.assigned) && collaborator.sameAs(draft.collaborator);
     }
 
     @Override
@@ -57,7 +62,7 @@ public class Draft implements AggregateRoot<Long> {
     public Number urgency(){
         return  urgency;
     }
-    public  File filepath(){
+    public  String filepath(){
         return  file;
     }
     public  String assigned(){
