@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Version;
+import java.util.Objects;
 
 @Entity
 public class Form implements AggregateRoot<Long> {
@@ -40,5 +41,23 @@ public class Form implements AggregateRoot<Long> {
     @Override
     public Long identity() {
         return identifier;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Form form = (Form) o;
+        return identifier.equals(form.identifier) && version.equals(form.version) && name.equals(form.name) && attribute.equals(form.attribute);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(identifier, version, name, attribute);
+    }
+
+    @Override
+    public String toString() {
+        return "identifier=" + identifier + ", name=" + name + ", attribute=" + attribute.toString();
     }
 }
