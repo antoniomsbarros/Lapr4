@@ -13,6 +13,10 @@ Este caso de uso pretende permitir a especificação de um colaborador. Onde seu
 
 Funções já definidas
 
+## 2.2 Pós-requisito
+
+Colaborador Especificado
+
 # 3. Design
 
 O diagrama doptado foi o diagrama de sequência, a fim de descrever o fluxo de realização do caso de uso. Satisfazendo a funcionalidade desejada.

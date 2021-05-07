@@ -11,7 +11,12 @@ Este caso de uso pretende permitir associar/remover um colaborador a uma equipa.
 
 ## 2.1 Pré-requisito
 
-Colaborador e Equipa definidos
+*Colaborador e Equipa definidos
+*Equipa com colaborador associado
+
+## 2.2 Pós-requisito
+
+*Colaborador associado ou removido à Equipa
 
 # 3. Design
 
@@ -19,7 +24,14 @@ O diagrama doptado foi o diagrama de sequência, a fim de descrever o fluxo de r
 
 ## 3.1. Realização da Funcionalidade
 
-*Nesta secção deve apresentar e descrever o fluxo/sequência que permite realizar a funcionalidade.*
+Quando o ator inicia o caso de uso: o sistema solicita a escolha da opção (Associar ou Remover), caso o utilizador escolha a opção associar, é apresentado a lista dos colaboradores, o utilizador selecioana um e a seguir é apresentado a lista de equipas em que este colaborador não está associado, o utilizador seleciona a equipa a que pretende associar, é validado se o colaborador não pertence a outra equipa do mesmo tipo, e caso não, a informação é atualizada na base de dados. 
+
+Caso a opção seja Remover, o sistema questiona se será por colaborador ou por equipa, caso seja por colaborador, o sistema apresenta a lista dos colaboradores, o colaborador é seleciona e a seguir é apresentado a lista de equipas que este colaborador faz parte, a equipa desejada é selecionada e a informação da remoção é atualizada na base de dados. Caso seja escolhida a opção por equipa, o sistema apresenta a lista de equipas, a equipa é seleciona e a seguir é apresentado a lista de colaboradores da equipa, o colaborador desejado é selecionado e os dados da remoção são atualizados na base de dados.
+
+Fluxo Aternativo:
+ 
+ *Caso o utilizador já faça parte de uma equipa do mesmo tipo da selecionada (no caso da associação), é apresentado um aviso e a caso de uso termina.
+ *Caso o colaborador não esteja associado a nenhuma equipa (no caso da remoção), é apresentado um aviso e a caso de uso termina.
 
 SD:
 

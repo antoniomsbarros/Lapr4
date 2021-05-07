@@ -62,4 +62,5 @@ public interface AcceptRefuseSignupRequestController {
     SignupRequest refuseSignupRequest(SignupRequest theSignupRequest);
 
     Iterable<SignupRequest> listPendingSignupRequests();
+
 }

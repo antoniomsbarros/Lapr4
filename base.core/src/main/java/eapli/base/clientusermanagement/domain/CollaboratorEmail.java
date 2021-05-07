@@ -2,9 +2,9 @@ package eapli.base.clientusermanagement.domain;
 
 import eapli.framework.domain.model.ValueObject;
 import eapli.framework.validations.Preconditions;
-
+/*
 import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
+import javax.mail.internet.InternetAddress;*/
 import javax.persistence.Embeddable;
 import java.util.Objects;
 
@@ -27,12 +27,12 @@ public class CollaboratorEmail implements ValueObject {
 
     public static boolean isValidEmailAddress(String email) {
         boolean result = true;
-        try {
+        /*try {
             InternetAddress emailAddr = new InternetAddress(email);
             emailAddr.validate();
         } catch (AddressException ex) {
             result = false;
-        }
+        }*/
         return result;
     }
     public String email(){
