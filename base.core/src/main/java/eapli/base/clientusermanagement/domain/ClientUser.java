@@ -35,6 +35,7 @@ import eapli.framework.general.domain.model.Description;
 import eapli.framework.general.domain.model.Designation;
 import eapli.framework.infrastructure.authz.domain.model.SystemUser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -93,6 +94,25 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         this.function = function;
         this.listcatalog = listcatalog;
         this.list = list;
+        this.fullName = fullName;
+        this.collaboratorEmail = collaboratorEmail;
+        this.dateofbirth = dateofbirth;
+        this.phoneNumber = phoneNumber;
+        this.shortname = shortname;
+        this.placeofresidence = placeofresidence;
+        this.systemUser = systemUser;
+    }
+
+    public ClientUser(final MecanographicNumber mecanographicNumber, final Description fullName, final Function function,
+                      final CollaboratorEmail collaboratorEmail, final Dateofbirth dateofbirth, final Long phoneNumber, final Designation shortname,
+                      final Placeofresidence placeofresidence, final SystemUser systemUser) {
+        if (mecanographicNumber == null || systemUser == null) {
+            throw new IllegalArgumentException();
+        }
+        this.mecanographicNumber = mecanographicNumber;
+        this.function = function;
+        this.listcatalog = new ArrayList<Catalog>();
+        this.list = new ArrayList<Team>();
         this.fullName = fullName;
         this.collaboratorEmail = collaboratorEmail;
         this.dateofbirth = dateofbirth;
