@@ -57,8 +57,8 @@ public class Service implements AggregateRoot<Long> {
         if (smalldescription.length()>40){
             throw new IllegalArgumentException("the small description of the service is superior to 40 caracters");
         }
-        if (fulldescription.length()>100){
-            throw new IllegalArgumentException("the full description of the service is superior to 100 caracters");
+        if (fulldescription.length()>500){
+            throw new IllegalArgumentException("the full description of the service is superior to 500 caracters");
         }
         this.form=form;
         this.title = title;

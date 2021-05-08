@@ -92,6 +92,12 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         if (mecanographicNumber == null || systemUser == null) {
             throw new IllegalArgumentException();
         }
+        if (fullName.length()>80){
+            throw  new IllegalArgumentException("The full name has passed the limit of 80 caracteres");
+        }
+        if (shortname.length()>30){
+            throw new IllegalArgumentException("The short name Cant passed 30 caracteres");
+        }
         this.mecanographicNumber = mecanographicNumber;
         this.function = function;
         this.listcatalog = listcatalog;

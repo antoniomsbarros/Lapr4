@@ -15,10 +15,16 @@
 Esta interpretação deste requisito foi feita no sentido de criar uma equipa com todos os seus atributos necessarios para a sua criação.
 
 # 2. Análise
-
+    
+    A análise foi realizada tendo em conta as reuniões com o Cliente e com as respostas submetidas pelo Cliente no Fórum para esclarecimento de dúvidas
 	
-
-
+    * A Equipa é identificada por um código Único gerado automaticamente, um Acrónimo, uma Designação e um tipo de Equipa.
+    * O Acrónimo é caraterizado por ter menos de 10 caracteres que só pode ter Letras maiúsculas, minúsculas e números.
+    * A designação pode ter um número máximo de 50 caracteres.
+    * A Equipa é constituída por um Colaborador responsável.
+    * A Equipa é constituída por uma Lista de colaboradores que representa uma lista total de todos os colaboradores da equipa.
+    * A Equipa tem de ter, obrigatoriamente, o tipo de equipa, o acronimo, codigo Único, e a Designação especificados 
+        inicialmente, a lista de colaboradores pode ser adicionado depois  ou no inicio da criação da equipa.
 # 3. Design
 
 	

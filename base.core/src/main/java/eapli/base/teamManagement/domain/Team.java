@@ -31,6 +31,9 @@ public class Team implements AggregateRoot<Long>{
 
     public Team(final ClientUser responsable,final List<ClientUser> collaboratorList,final Uniquecode codigoUnico,final Designation designacaoEquipa,final Acronym acronimoEquipa,final TeamType teamType) {
         Preconditions.noneNull(designacaoEquipa,collaboratorList,teamType, responsable);
+        if (designationTeam.length()>50){
+            throw new IllegalArgumentException("The designaction of the team cant passed the size of 50 caracteres");
+        }
         this.uniquecode = codigoUnico;
         this.designationTeam = designacaoEquipa;
         this.teamAcronym = acronimoEquipa;
