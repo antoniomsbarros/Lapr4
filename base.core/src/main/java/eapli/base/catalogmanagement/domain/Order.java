@@ -31,7 +31,14 @@ public class Order implements AggregateRoot<Long> {
 
     @Override
     public boolean sameAs(Object other) {
-        return false;
+        if (!(other instanceof Order)){
+            return true;
+        }
+        Order order=(Order) other;
+        if (this== order){
+            return true;
+        }
+        return identity().equals(order.identity()) && position.equals(order.position);
     }
 
     @Override

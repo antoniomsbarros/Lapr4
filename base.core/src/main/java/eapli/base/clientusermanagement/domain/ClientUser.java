@@ -61,14 +61,17 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     @EmbeddedId
     private MecanographicNumber mecanographicNumber;
 
-    @OneToOne(optional = false)
+    @OneToOne()
     private Function function;
-    /*@OneToMany()
-    private List<Activity> serviceList;*/
+
     @OneToMany()
     private List<Catalog> listcatalog;
     @OneToMany()
     private List<Team> list;
+    @OneToOne
+    private ClientUser clientUser;
+
+
 
     private Description fullName;
     private CollaboratorEmail collaboratorEmail;
@@ -89,6 +92,12 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
                       Placeofresidence placeofresidence, SystemUser systemUser) {
         if (mecanographicNumber == null || systemUser == null) {
             throw new IllegalArgumentException();
+        }
+        if (fullName.length()>80){
+            throw  new IllegalArgumentException("The full name has passed the limit of 80 caracteres");
+        }
+        if (shortname.length()>30){
+            throw new IllegalArgumentException("The short name Cant passed 30 caracteres");
         }
         this.mecanographicNumber = mecanographicNumber;
         this.function = function;

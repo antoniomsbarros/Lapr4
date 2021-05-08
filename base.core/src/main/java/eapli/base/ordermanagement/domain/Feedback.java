@@ -5,13 +5,12 @@ import eapli.framework.validations.Preconditions;
 import javax.persistence.*;
 import java.util.Calendar;
 @Entity
-@Embeddable
 public class Feedback  {
     @Id
     @GeneratedValue
     private Long id;
 
-    private FeedbackScale feedbackScale;
+    private Long feedbackScale;
 
     @Temporal(TemporalType.DATE)
     private Calendar date;
@@ -19,16 +18,21 @@ public class Feedback  {
     public Feedback() {
     }
 
-    public Feedback( FeedbackScale feedbackScale, Calendar date) {
+    public Feedback(final Long feedbackScale,final Calendar date) {
         Preconditions.noneNull(feedbackScale,date);
-
+        if (feedbackScale<0){
+            throw new IllegalArgumentException("The Scale of the feedback cant be negative");
+        }
+        if (feedbackScale>5){
+            throw new IllegalArgumentException("The Scale of the feedback cant be superior to 5");
+        }
         this.feedbackScale = feedbackScale;
         this.date = date;
     }
     public Calendar date(){
         return date;
     }
-    public  FeedbackScale scale(){
+    public  Long scale(){
         return feedbackScale;
     }
 

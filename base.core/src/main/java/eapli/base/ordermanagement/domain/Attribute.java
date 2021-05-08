@@ -1,22 +1,73 @@
 package eapli.base.ordermanagement.domain;
 
 import eapli.framework.general.domain.model.Description;
+import eapli.framework.validations.Preconditions;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
-@Embeddable
-public class Attribute {
+
+public class Attribute{
     @Id
     @GeneratedValue
     private Long attributecode;
-
+    @Version
+    private Long version;
+    @AttributeOverride(name = "value", column = @Column(name = "description"))
     private Description description;
+    @AttributeOverride(name = "value", column = @Column(name = "name"))
     private Description name;
+    @AttributeOverride(name = "value", column = @Column(name = "label"))
     private Description label;
+    @AttributeOverride(name = "value", column = @Column(name = "Responce"))
     private Description Responce;
+    private  TypeofData typeofData;
 
+    public Attribute() {
+    }
+
+    public Attribute(Description description, Description name, Description label, Description responce, TypeofData typeofData) {
+        Preconditions.noneNull(description, name, label, responce, typeofData);
+        if (description.toString().length()>100){
+            throw new IllegalArgumentException(
+                    "the complete description cant be more then 100 characters"
+            );
+        }
+        if (name.toString().length()>50){
+            throw new IllegalArgumentException(
+                    "the complete description cant be more then 100 characters"
+            );
+        }
+        this.description = description;
+        this.name = name;
+        this.label = label;
+        Responce = responce;
+        this.typeofData = typeofData;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Attribute attribute = (Attribute) o;
+        return attributecode.equals(attribute.attributecode) &&
+                version.equals(attribute.version) && description.equals(attribute.description)
+                && name.equals(attribute.name) && label.equals(attribute.label) && Responce.equals(attribute.Responce)
+                && typeofData == attribute.typeofData;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(attributecode, version, description, name, label, Responce, typeofData);
+    }
+
+    @Override
+    public String toString() {
+        return ", description=" + description +
+                ", name=" + name +
+                ", label=" + label +
+                ", Responce=" + Responce +
+                ", typeofData=" + typeofData;
+    }
 }

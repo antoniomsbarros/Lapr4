@@ -3,10 +3,8 @@ package eapli.base.catalogmanagement.domain;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.validations.Preconditions;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Workflow implements AggregateRoot<Long> {
@@ -14,15 +12,15 @@ public class Workflow implements AggregateRoot<Long> {
     @GeneratedValue
     private Long id;
 
-    @OneToOne(optional = false)
-    private Service service;
+    @OneToMany
+    private List<Order> orders;
 
     public Workflow() {
     }
 
-    public Workflow(final Service service) {
-        Preconditions.noneNull(service);
-        this.service = service;
+    public Workflow( List<Order> orders) {
+        Preconditions.noneNull(orders);
+        this.orders = orders;
     }
 
     @Override

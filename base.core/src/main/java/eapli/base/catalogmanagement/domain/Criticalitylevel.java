@@ -7,6 +7,7 @@ import eapli.framework.validations.Preconditions;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.awt.*;
 import java.util.Objects;
 
@@ -20,7 +21,7 @@ public class Criticalitylevel implements AggregateRoot<Long> {
     private Description tag;
 
     private Color color;
-
+    @OneToOne()
     private Objective objective;
 
     public Criticalitylevel() {
