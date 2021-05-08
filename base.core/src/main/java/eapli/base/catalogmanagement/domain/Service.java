@@ -5,11 +5,14 @@ import eapli.base.ordermanagement.domain.Form;
 import eapli.base.ordermanagement.domain.Ticket;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.general.domain.model.Description;
+import eapli.framework.general.domain.model.Designation;
 import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
 import javax.swing.*;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Service implements AggregateRoot<Long> {
@@ -27,11 +30,11 @@ public class Service implements AggregateRoot<Long> {
     @AttributeOverride(name = "value", column = @Column(name = "smalldescription"))
     private  Description smalldescription;
 
-    @AttributeOverride(name = "value", column = @Column(name = "keyword"))
-    private Description keyword;
+    @ElementCollection
+    private Set<Keyword> keyword;
 
 
-    private ImageIcon icon;
+    private Description icon;
 
 
     @OneToOne(optional = false)
@@ -42,14 +45,14 @@ public class Service implements AggregateRoot<Long> {
 
     @OneToOne()
     private Workflow workflow;
-    @OneToOne()
-    private Form form;
+    @OneToMany()
+    private List<Form> form;
     public Service() {
     }
 
-    public Service(final Form form,final Criticalitylevel criticalitylevel, final Description title,final Description fulldescription,
-                   final Description smalldescription,final Description keyword,
-                   final ImageIcon icon,final Catalog catalog,Workflow workflow) {
+    public Service(final List<Form> form,final Criticalitylevel criticalitylevel, final Description title,final Description fulldescription,
+                   final Description smalldescription,final Set<Keyword> keyword,
+                   final Description icon,final Catalog catalog,Workflow workflow) {
         Preconditions.noneNull(form,title,fulldescription, smalldescription, keyword,catalog, criticalitylevel);
         if (title.length()>50){
             throw new IllegalArgumentException("the title of the service is superior to 50 caracters");
