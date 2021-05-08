@@ -49,7 +49,7 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 
 	@Override
 	public TeamRepository team() {
-		return null;
+		return new JpaTeamRepository();
 	}
 
 

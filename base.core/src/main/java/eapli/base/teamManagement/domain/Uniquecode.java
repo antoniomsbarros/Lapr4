@@ -6,7 +6,7 @@ import eapli.framework.validations.Preconditions;
 import javax.persistence.Embeddable;
 import java.util.Objects;
 @Embeddable
-public class Uniquecode implements ValueObject {
+public class Uniquecode implements ValueObject, Comparable<Uniquecode> {
         private String code;
 
     public Uniquecode() {
@@ -49,5 +49,10 @@ public class Uniquecode implements ValueObject {
     @Override
     public String toString() {
         return "uniqueCode='" + code+'\n';
+    }
+
+    @Override
+    public int compareTo(Uniquecode o) {
+        return Long.getLong(code).compareTo(Long.getLong(o.code));
     }
 }

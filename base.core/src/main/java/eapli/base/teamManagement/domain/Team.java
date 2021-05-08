@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Team implements AggregateRoot<Long>{
+public class Team implements AggregateRoot<Uniquecode>{
 
     @Id
     @EmbeddedId
@@ -57,8 +57,8 @@ public class Team implements AggregateRoot<Long>{
     }
 
     @Override
-    public Long identity() {
-        return Long.valueOf(uniquecode.toString());
+    public Uniquecode identity() {
+        return uniquecode;
     }
 
     @Override
