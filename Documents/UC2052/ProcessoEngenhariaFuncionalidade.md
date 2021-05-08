@@ -27,20 +27,34 @@ Esta interpretação deste requisito foi feita no sentido de criar uma equipa co
         inicialmente, a lista de colaboradores pode ser adicionado depois  ou no inicio da criação da equipa.
 # 3. Design
 
-	
+    Para a realizar esta UC foi usado um padrão Controller e Repository.
+    Foi criado o CreateTeamController que será responsável pela criação de uma nova equipa.
+    Dado que uma Equipa é composta por varios colaboradores e um tipo de Equipa são levantados para os que se melhor adequam aquela equipa.
+    Depois de serem escolhidos e serem introduzidas todas as informaçoes necessarias.
+    O Controller utiliza a classe Catalgo e ClientUser para poder instanciar uma equipa
+    O controller usa o TeamRepository para guardar os dados na base de dados.
 
 
 ## 3.1. Realização da Funcionalidade
 
-
+![sd Create team](sd Create team.png)
 
 ## 3.2. Diagrama de Classes
 
-
+Por indicação do professor, não é necessário elaborar o Diagrama de Classes.
 ## 3.3. Padrões Aplicados
+O padrão utilizado foi o padrão Controller e Repository.
 
 ## 3.4. Testes 
+Os testes aplicados a esta funcionilidade são:
 
+**Teste 1:** Testar se não é possivel mandar um acronimo com mais de 10 caracteres.
+
+**Teste 2:** Testar se não é possivel mandar um acronimo com um caracter que não seja numero ou letra
+
+**Teste 3:** Testar se não é possivel mandar um designação com mais de 50 caracteres.
+
+**Teste 4:** Testar se não é possivel mandar um valor NULL para um parametro;
 
 # 4. Implementação
 
