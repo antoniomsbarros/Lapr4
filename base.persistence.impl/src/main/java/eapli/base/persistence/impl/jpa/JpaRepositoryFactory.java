@@ -1,6 +1,7 @@
 package eapli.base.persistence.impl.jpa;
 
 import eapli.base.Application;
+import eapli.base.catalogmanagement.repository.CatalogRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.infrastructure.persistence.RepositoryFactory;
 import eapli.base.teamManagement.repositories.TeamRepository;
@@ -52,7 +53,10 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 		return new JpaTeamRepository();
 	}
 
-
+	@Override
+	public CatalogRepository catalogs() {
+		return null;
+	}
 
 
 	@Override

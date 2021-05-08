@@ -36,9 +36,20 @@ public class Catalog implements AggregateRoot<Long> {
 
     }
 
-    public Catalog(Criticalitylevel criticalitylevel,ClientUser responsiblecollaborator, Description title, Description shortdescription, Description longdescription, ImageIcon icone,
-                   List<Team> team) {
-        Preconditions.noneNull(responsiblecollaborator,title,icone,shortdescription, longdescription,team,criticalitylevel);
+    //TODO verificar icone
+    //temporario
+    public Catalog(Description shortdescription, Description longdescription, Description title, List<Team> team, ClientUser responsiblecollaborator, Criticalitylevel criticalitylevel) {
+        this.shortdescription = shortdescription;
+        this.longdescription = longdescription;
+        this.title = title;
+        this.team = team;
+        this.responsiblecollaborator = responsiblecollaborator;
+        this.criticalitylevel = criticalitylevel;
+    }
+
+    public Catalog(Description title, Description shortdescription, Description longdescription, ImageIcon icone,
+                   List<Team> team, ClientUser responsiblecollaborator , Criticalitylevel criticalitylevel) {
+        Preconditions.noneNull(responsiblecollaborator,title,icone,shortdescription, longdescription,team);
         if (shortdescription.toString().length()>40){
             throw new IllegalArgumentException(
                     "the short description cant be more then 40 characters"
@@ -72,15 +83,30 @@ public class Catalog implements AggregateRoot<Long> {
         return identity().equals(temp.identity()) && shortdescription.equals(temp.shortdescription)
                 && longdescription.equals(temp.longdescription) && icone.equals(temp.icone);
     }
+
     @Override
     public Long identity() {
         return this.identifier;
     }
-
+    public Description Title(){
+        return  this.title;
+    }
     public List<Team> ListofTeams(){
         return team;
     }
+    public  Description shortdescription(){
+        return  shortdescription;
+    }
+    public  Description longdescription(){
+        return  longdescription;
+    }
     public  ImageIcon icon (){
         return  icone;
+    }
+    public ClientUser responsiblecollaborator(){
+        return responsiblecollaborator;
+    }
+    public Criticalitylevel criticalitylevel(){
+        return criticalitylevel;
     }
 }
