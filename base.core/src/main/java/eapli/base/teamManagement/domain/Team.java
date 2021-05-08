@@ -12,7 +12,7 @@ import java.util.List;
 public class Team implements AggregateRoot<Long>{
 
     @Id
-    @GeneratedValue
+    @EmbeddedId
     private Uniquecode uniquecode;
     @Version
     private Long version;
@@ -29,8 +29,8 @@ public class Team implements AggregateRoot<Long>{
     public Team() {
     }
 
-    public Team(final ClientUser responsable,final List<ClientUser> collaboratorList,final Uniquecode codigoUnico,final Designation designacaoEquipa,final Acronym acronimoEquipa,final TeamType teamType) {
-        Preconditions.noneNull(designacaoEquipa,collaboratorList,teamType, responsable);
+    public Team(final Uniquecode uniquecode,final ClientUser responsable,final List<ClientUser> collaboratorList,final Uniquecode codigoUnico,final Designation designacaoEquipa,final Acronym acronimoEquipa,final TeamType teamType) {
+        Preconditions.noneNull(designacaoEquipa,collaboratorList,teamType, responsable,uniquecode);
         if (designationTeam.length()>50){
             throw new IllegalArgumentException("The designaction of the team cant passed the size of 50 caracteres");
         }
@@ -40,6 +40,7 @@ public class Team implements AggregateRoot<Long>{
         this.teamType=teamType;
         this.collaboratorList=collaboratorList;
         this.responsable=responsable;
+        this.uniquecode=uniquecode;
     }
 
     @Override

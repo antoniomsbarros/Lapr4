@@ -2,8 +2,10 @@ package eapli.base.teamManagement.domain;
 
 import eapli.framework.domain.model.ValueObject;
 import eapli.framework.validations.Preconditions;
-import java.util.Objects;
 
+import javax.persistence.Embeddable;
+import java.util.Objects;
+@Embeddable
 public class Uniquecode implements ValueObject {
         private String code;
 

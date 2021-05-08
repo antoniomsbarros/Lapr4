@@ -37,7 +37,7 @@ Esta interpretação deste requisito foi feita no sentido de criar uma equipa co
 
 ## 3.1. Realização da Funcionalidade
 
-![sd Create team](sd Create team.png)
+![sdCreateTeam](sdCreateTeam.png)
 
 ## 3.2. Diagrama de Classes
 
