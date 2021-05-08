@@ -20,9 +20,9 @@ public class Attribute{
     private Description name;
     @AttributeOverride(name = "value", column = @Column(name = "label"))
     private Description label;
-    @AttributeOverride(name = "value", column = @Column(name = "Responce"))
-    private Description Responce;
-    private  TypeofData typeofData;
+    @AttributeOverride(name = "value", column = @Column(name = "responce"))
+    private Description responce;
+    private TypeofData typeofData;
 
     public Attribute() {
     }
@@ -42,7 +42,7 @@ public class Attribute{
         this.description = description;
         this.name = name;
         this.label = label;
-        Responce = responce;
+        this.responce = responce;
         this.typeofData = typeofData;
     }
 
@@ -53,13 +53,13 @@ public class Attribute{
         Attribute attribute = (Attribute) o;
         return attributecode.equals(attribute.attributecode) &&
                 version.equals(attribute.version) && description.equals(attribute.description)
-                && name.equals(attribute.name) && label.equals(attribute.label) && Responce.equals(attribute.Responce)
+                && name.equals(attribute.name) && label.equals(attribute.label) && responce.equals(attribute.responce)
                 && typeofData == attribute.typeofData;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(attributecode, version, description, name, label, Responce, typeofData);
+        return Objects.hash(attributecode, version, description, name, label, responce, typeofData);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class Attribute{
         return ", description=" + description +
                 ", name=" + name +
                 ", label=" + label +
-                ", Responce=" + Responce +
+                ", Responce=" + responce +
                 ", typeofData=" + typeofData;
     }
 }
