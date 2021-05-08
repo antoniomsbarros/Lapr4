@@ -56,12 +56,12 @@
 			resort           : true,       // default setting to trigger a resort after an 'update', 'addRows', 'updateCell', etc has completed
 
 			// *** sort options
-			headers          : {},         // set sorter, string, empty, locked order, sortInitialOrder, filter, etc.
+			headers          : {},         // set sorter, string, empty, locked sequence, sortInitialOrder, filter, etc.
 			ignoreCase       : true,       // ignore case while sorting
 			sortForce        : null,       // column(s) first sorted; always applied
-			sortList         : [],         // Initial sort order; applied initially; updated when manually sorted
+			sortList         : [],         // Initial sort sequence; applied initially; updated when manually sorted
 			sortAppend       : null,       // column(s) sorted last; always applied
-			sortStable       : false,      // when sorting two rows with exactly the same content, the original sort order is maintained
+			sortStable       : false,      // when sorting two rows with exactly the same content, the original sort sequence is maintained
 
 			sortInitialOrder : 'asc',      // sort direction on first click
 			sortLocaleCompare: false,      // replace equivalent character (accented characters)
@@ -602,7 +602,7 @@
 				// this may get updated numerous times if there are multiple rows
 				c.sortVars[ column ] = {
 					count : -1, // set to -1 because clicking on the header automatically adds one
-					order : tmp ?
+					sequence : tmp ?
 						( c.sortReset ? [ 1, 0, 2 ] : [ 1, 0 ] ) : // desc, asc, unsorted
 						( c.sortReset ? [ 0, 1, 2 ] : [ 0, 1 ] ),  // asc, desc, unsorted
 					lockedOrder : false,
@@ -611,7 +611,7 @@
 				tmp = ts.getData( $elem, configHeaders, 'lockedOrder' ) || false;
 				if ( typeof tmp !== 'undefined' && tmp !== false ) {
 					c.sortVars[ column ].lockedOrder = true;
-					c.sortVars[ column ].order = ts.getOrder( tmp ) ? [ 1, 1 ] : [ 0, 0 ];
+					c.sortVars[ column ].sequence = ts.getOrder( tmp ) ? [ 1, 1 ] : [ 0, 0 ];
 				}
 				// add cell to headerList
 				c.headerList[ index ] = elem;
@@ -915,7 +915,7 @@
 				totalRows = ( $tbody[ tbodyIndex ] && $tbody[ tbodyIndex ].rows.length ) || 0;
 				for ( rowIndex = 0; rowIndex < totalRows; ++rowIndex ) {
 					rowData = {
-						// order: original row order #
+						// sequence: original row sequence #
 						// $row : jQuery Object[]
 						child: [], // child row text (filter widget)
 						raw: []    // original row text
@@ -960,7 +960,7 @@
 						continue;
 					}
 					rowData.$row = $row;
-					rowData.order = rowIndex; // add original row position to rowCache
+					rowData.sequence = rowIndex; // add original row position to rowCache
 					cacheIndex = 0;
 					max = c.columns;
 					for ( colIndex = 0; colIndex < max; ++colIndex ) {
@@ -1200,8 +1200,8 @@
 				if ( $header.hasClass( 'sorter-false' ) || nextSort === false ) {
 					txt += ts.language.sortDisabled;
 				} else {
-					tmp = ( vars.count + 1 ) % vars.order.length;
-					nextSort = vars.order[ tmp ];
+					tmp = ( vars.count + 1 ) % vars.sequence.length;
+					nextSort = vars.sequence[ tmp ];
 					// if nextSort
 					txt += ts.language[ nextSort === 0 ? 'nextAsc' : nextSort === 1 ? 'nextDesc' : 'nextNone' ];
 				}
@@ -1251,7 +1251,7 @@
 		},
 
 		updateHeaderSortCount : function( c, list ) {
-			var col, dir, group, indx, primary, temp, val, order,
+			var col, dir, group, indx, primary, temp, val, sequence,
 				sortList = list || c.sortList,
 				len = sortList.length;
 			c.sortList = [];
@@ -1262,19 +1262,19 @@
 				// prevents error if sorton array is wrong
 				if ( col < c.columns ) {
 
-					// set order if not already defined - due to colspan header without associated header cell
+					// set sequence if not already defined - due to colspan header without associated header cell
 					// adding this check prevents a javascript error
-					if ( !c.sortVars[ col ].order ) {
+					if ( !c.sortVars[ col ].sequence ) {
 						if ( ts.getOrder( c.sortInitialOrder ) ) {
-							order = c.sortReset ? [ 1, 0, 2 ] : [ 1, 0 ];
+							sequence = c.sortReset ? [ 1, 0, 2 ] : [ 1, 0 ];
 						} else {
-							order = c.sortReset ? [ 0, 1, 2 ] : [ 0, 1 ];
+							sequence = c.sortReset ? [ 0, 1, 2 ] : [ 0, 1 ];
 						}
-						c.sortVars[ col ].order = order;
+						c.sortVars[ col ].sequence = sequence;
 						c.sortVars[ col ].count = 0;
 					}
 
-					order = c.sortVars[ col ].order;
+					sequence = c.sortVars[ col ].sequence;
 					dir = ( '' + val[ 1 ] ).match( /^(1|d|s|o|n)/ );
 					dir = dir ? dir[ 0 ] : '';
 					// 0/(a)sc (default), 1/(d)esc, (s)ame, (o)pposite, (n)ext
@@ -1287,12 +1287,12 @@
 							dir = primary || 0;
 							break;
 						case 'o' :
-							temp = order[ ( primary || 0 ) % order.length ];
+							temp = sequence[ ( primary || 0 ) % sequence.length ];
 							// opposite of primary column; but resets if primary resets
 							dir = temp === 0 ? 1 : temp === 1 ? 0 : 2;
 							break;
 						case 'n' :
-							dir = order[ ( ++c.sortVars[ col ].count ) % order.length ];
+							dir = sequence[ ( ++c.sortVars[ col ].count ) % sequence.length ];
 							break;
 						default : // ascending
 							dir = 0;
@@ -1301,8 +1301,8 @@
 					primary = indx === 0 ? dir : primary;
 					group = [ col, parseInt( dir, 10 ) || 0 ];
 					c.sortList[ c.sortList.length ] = group;
-					dir = $.inArray( group[ 1 ], order ); // fixes issue #167
-					c.sortVars[ col ].count = dir >= 0 ? dir : group[ 1 ] % order.length;
+					dir = $.inArray( group[ 1 ], sequence ); // fixes issue #167
+					c.sortVars[ col ].count = dir >= 0 ? dir : group[ 1 ] % sequence.length;
 				}
 			}
 		},
@@ -1403,7 +1403,7 @@
 		},
 
 		addRows : function( c, $row, resort, callback ) {
-			var txt, val, tbodyIndex, rowIndex, rows, cellIndex, len, order,
+			var txt, val, tbodyIndex, rowIndex, rows, cellIndex, len, sequence,
 				cacheIndex, rowData, cells, cell, span,
 				// allow passing a row string if only one non-info tbody exists in the table
 				valid = typeof $row === 'string' && c.$tbodies.length === 1 && /<tr/.test( $row || '' ),
@@ -1440,13 +1440,13 @@
 				for ( rowIndex = 0; rowIndex < rows; rowIndex++ ) {
 					cacheIndex = 0;
 					len = $row[ rowIndex ].cells.length;
-					order = c.cache[ tbodyIndex ].normalized.length;
+					sequence = c.cache[ tbodyIndex ].normalized.length;
 					cells = [];
 					rowData = {
 						child : [],
 						raw : [],
 						$row : $row.eq( rowIndex ),
-						order : order
+						sequence : sequence
 					};
 					// add each cell
 					for ( cellIndex = 0; cellIndex < len; cellIndex++ ) {
@@ -1469,7 +1469,7 @@
 					// add the row data to the end
 					cells[ c.columns ] = rowData;
 					// update cache
-					c.cache[ tbodyIndex ].normalized[ order ] = cells;
+					c.cache[ tbodyIndex ].normalized[ sequence ] = cells;
 				}
 				// resort using current settings
 				ts.checkResort( c, resort, callback );
@@ -1566,12 +1566,12 @@
 				th = ts.getClosest( $( cell ), 'th, td' ),
 				col = parseInt( th.attr( 'data-column' ), 10 ),
 				sortedBy = event.type === 'mouseup' ? 'user' : event.type,
-				order = c.sortVars[ col ].order;
+				sequence = c.sortVars[ col ].sequence;
 			th = th[0];
 			// Only call sortStart if sorting is enabled
 			c.$table.triggerHandler( 'sortStart', table );
-			// get current column sort order
-			tmp = ( c.sortVars[ col ].count + 1 ) % order.length;
+			// get current column sort sequence
+			tmp = ( c.sortVars[ col ].count + 1 ) % sequence.length;
 			c.sortVars[ col ].count = event[ c.sortResetKey ] ? 2 : tmp;
 			// reset all sorts on non-current column - issue #30
 			if ( c.sortRestart ) {
@@ -1602,7 +1602,7 @@
 					}
 				}
 				// add column to sort list
-				dir = order[ c.sortVars[ col ].count ];
+				dir = sequence[ c.sortVars[ col ].count ];
 				if ( dir < 2 ) {
 					c.sortList[ c.sortList.length ] = [ col, dir ];
 					c.sortVars[ col ].sortedBy = sortedBy;
@@ -1611,7 +1611,7 @@
 						for ( indx = 1; indx < th.colSpan; indx++ ) {
 							c.sortList[ c.sortList.length ] = [ col + indx, dir ];
 							// update count on columns in colSpan
-							c.sortVars[ col + indx ].count = $.inArray( dir, order );
+							c.sortVars[ col + indx ].count = $.inArray( dir, sequence );
 							c.sortVars[ col + indx ].sortedBy = sortedBy;
 						}
 					}
@@ -1628,8 +1628,8 @@
 					for ( indx = 0; indx < c.sortList.length; indx++ ) {
 						tmp = c.sortList[ indx ];
 						if ( tmp[ 0 ] === col ) {
-							// order.count seems to be incorrect when compared to cell.count
-							tmp[ 1 ] = order[ c.sortVars[ col ].count ];
+							// sequence.count seems to be incorrect when compared to cell.count
+							tmp[ 1 ] = sequence[ c.sortVars[ col ].count ];
 							if ( tmp[1] === 2 ) {
 								c.sortList.splice( indx, 1 );
 								c.sortVars[ col ].count = -1;
@@ -1638,7 +1638,7 @@
 					}
 				} else {
 					// add column to sort list array
-					dir = order[ c.sortVars[ col ].count ];
+					dir = sequence[ c.sortVars[ col ].count ];
 					c.sortVars[ col ].sortedBy = sortedBy;
 					if ( dir < 2 ) {
 						c.sortList[ c.sortList.length ] = [ col, dir ];
@@ -1647,7 +1647,7 @@
 							for ( indx = 1; indx < th.colSpan; indx++ ) {
 								c.sortList[ c.sortList.length ] = [ col + indx, dir ];
 								// update count on columns in colSpan
-								c.sortVars[ col + indx ].count = $.inArray( dir, order );
+								c.sortVars[ col + indx ].count = $.inArray( dir, sequence );
 								c.sortVars[ col + indx ].sortedBy = sortedBy;
 							}
 						}
@@ -1676,7 +1676,7 @@
 										dir = tmp === 0 ? 1 : 0;
 										break;
 									case 'n' :
-										dir = ( tmp + 1 ) % order.length;
+										dir = ( tmp + 1 ) % sequence.length;
 										break;
 									default:
 										dir = 0;
@@ -1732,16 +1732,16 @@
 				rows = c.cache[ tbodyIndex ].normalized;
 
 				rows.sort( function( a, b ) {
-					var sortIndex, num, col, order, sort, x, y;
+					var sortIndex, num, col, sequence, sort, x, y;
 					// rows is undefined here in IE, so don't use it!
 					for ( sortIndex = 0; sortIndex < sortLen; sortIndex++ ) {
 						col = sortList[ sortIndex ][ 0 ];
-						order = sortList[ sortIndex ][ 1 ];
+						sequence = sortList[ sortIndex ][ 1 ];
 						// sort direction, true = asc, false = desc
-						dir = order === 0;
+						dir = sequence === 0;
 
 						if ( c.sortStable && a[ col ] === b[ col ] && sortLen === 1 ) {
-							return a[ c.columns ].order - b[ c.columns ].order;
+							return a[ c.columns ].sequence - b[ c.columns ].sequence;
 						}
 
 						// fallback to natural sort since it is more robust
@@ -1775,7 +1775,7 @@
 						}
 						if ( sort ) { return sort; }
 					}
-					return a[ c.columns ].order - b[ c.columns ].order;
+					return a[ c.columns ].sequence - b[ c.columns ].sequence;
 				});
 			}
 			if ( ts.debug(c, 'core') ) {
@@ -1862,7 +1862,7 @@
 		},
 
 		getOrder : function( val ) {
-			// look for 'd' in 'desc' order; return true
+			// look for 'd' in 'desc' sequence; return true
 			return ( /^d/i.test( val ) || val === 1 );
 		},
 
@@ -2404,8 +2404,8 @@
 			cl4ss = ' ' + ( $header.attr( 'class' ) || '' );
 			if ( typeof $header.data( key ) !== 'undefined' ||
 				typeof $header.data( key.toLowerCase() ) !== 'undefined' ) {
-				// 'data-lockedOrder' is assigned to 'lockedorder'; but 'data-locked-order' is assigned to 'lockedOrder'
-				// 'data-sort-initial-order' is assigned to 'sortInitialOrder'
+				// 'data-lockedOrder' is assigned to 'lockedorder'; but 'data-locked-sequence' is assigned to 'lockedOrder'
+				// 'data-sort-initial-sequence' is assigned to 'sortInitialOrder'
 				val += $header.data( key ) || $header.data( key.toLowerCase() );
 			} else if ( meta && typeof meta[ key ] !== 'undefined' ) {
 				val += meta[ key ];
@@ -2853,7 +2853,7 @@
 				date = time ? new Date( '2000/01/01 ' + time.replace( ts.regex.dateReplace, '$1 $2' ) ) : time;
 			if ( date instanceof Date && isFinite( date ) ) {
 				temp = orig instanceof Date && isFinite( orig ) ? orig.getTime() : 0;
-				// if original string was a valid date, add it to the decimal so the column sorts in some kind of order
+				// if original string was a valid date, add it to the decimal so the column sorts in some kind of sequence
 				// luckily new Date() ignores the decimals
 				return temp ? parseFloat( date.getTime() + '.' + orig.getTime() ) : date.getTime();
 			}
@@ -4690,7 +4690,7 @@ Licensed under the MIT license.
 
                 // with all dimensions calculated, we can compute the
                 // axis bounding boxes, start from the outside
-                // (reverse order)
+                // (reverse sequence)
                 for (i = allocatedAxes.length - 1; i >= 0; --i)
                     allocateAxisBoxFirstPhase(allocatedAxes[i]);
 
@@ -5833,7 +5833,7 @@ Licensed under the MIT license.
                 }
             }
 
-            // Generate markup for the list of entries, in their final order
+            // Generate markup for the list of entries, in their final sequence
 
             for (var i = 0; i < entries.length; ++i) {
 

@@ -54,6 +54,9 @@ public class Acronym implements ValueObject,Comparable<Acronym>  {
         return Objects.hash(acronymName);
     }
 
+    public static Acronym valueOf(String str){
+        return new Acronym(str);
+    }
     @Override
     public String toString() {
         return "acronym='" + acronymName;

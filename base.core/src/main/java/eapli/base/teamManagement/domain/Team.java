@@ -7,6 +7,7 @@ import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Team implements AggregateRoot<Uniquecode>{
@@ -23,18 +24,17 @@ public class Team implements AggregateRoot<Uniquecode>{
     @OneToOne(optional = false)
     private  TeamType teamType;
     @OneToMany()
-    private List<ClientUser> collaboratorList;
+    private Set<ClientUser> collaboratorList;
     @OneToOne()
     private ClientUser responsable;
     public Team() {
     }
 
-    public Team(final Uniquecode uniquecode,final ClientUser responsable,final List<ClientUser> collaboratorList,final Uniquecode codigoUnico,final Designation designacaoEquipa,final Acronym acronimoEquipa,final TeamType teamType) {
+    public Team(final Uniquecode uniquecode,final ClientUser responsable,final Set<ClientUser> collaboratorList,final Designation designacaoEquipa,final Acronym acronimoEquipa,final TeamType teamType) {
         Preconditions.noneNull(designacaoEquipa,collaboratorList,teamType, responsable,uniquecode);
         if (designationTeam.length()>50){
             throw new IllegalArgumentException("The designaction of the team cant passed the size of 50 caracteres");
         }
-        this.uniquecode = codigoUnico;
         this.designationTeam = designacaoEquipa;
         this.teamAcronym = acronimoEquipa;
         this.teamType=teamType;

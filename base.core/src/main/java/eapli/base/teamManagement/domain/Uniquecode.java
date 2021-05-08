@@ -12,7 +12,7 @@ public class Uniquecode implements ValueObject, Comparable<Uniquecode> {
     public Uniquecode() {
     }
 
-    public Uniquecode(final Long uniqueCode) {
+    public Uniquecode(final String uniqueCode) {
         Preconditions.noneNull(uniqueCode);
         String temp=uniqueCode.toString();
         if (temp.length()>=15){
@@ -51,6 +51,9 @@ public class Uniquecode implements ValueObject, Comparable<Uniquecode> {
         return "uniqueCode='" + code+'\n';
     }
 
+    public static Uniquecode valueOf(String uniquecode){
+            return new Uniquecode(uniquecode);
+    }
     @Override
     public int compareTo(Uniquecode o) {
         return Long.getLong(code).compareTo(Long.getLong(o.code));

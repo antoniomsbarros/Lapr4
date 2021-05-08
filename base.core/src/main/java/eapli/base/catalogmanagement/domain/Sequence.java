@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 
 @Entity
-public class Order implements AggregateRoot<Long> {
+public class Sequence implements AggregateRoot<Long> {
 
     @Id
     @GeneratedValue
@@ -17,10 +17,10 @@ public class Order implements AggregateRoot<Long> {
 
     private Long position;
 
-    public Order() {
+    public Sequence() {
     }
 
-    public Order(final Long posicao) {
+    public Sequence(final Long posicao) {
         Preconditions.noneNull(posicao);
         if (posicao<0){
             throw new IllegalArgumentException("The position cant be negative");
@@ -31,14 +31,14 @@ public class Order implements AggregateRoot<Long> {
 
     @Override
     public boolean sameAs(Object other) {
-        if (!(other instanceof Order)){
+        if (!(other instanceof Sequence)){
             return true;
         }
-        Order order=(Order) other;
-        if (this== order){
+        Sequence sequence =(Sequence) other;
+        if (this== sequence){
             return true;
         }
-        return identity().equals(order.identity()) && position.equals(order.position);
+        return identity().equals(sequence.identity()) && position.equals(sequence.position);
     }
 
     @Override

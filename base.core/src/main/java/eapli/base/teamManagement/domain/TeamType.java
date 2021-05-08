@@ -7,7 +7,7 @@ import eapli.framework.validations.Preconditions;
 import javax.persistence.*;
 
 @Entity
-public class TeamType implements AggregateRoot<Long> {
+public class TeamType implements AggregateRoot<Uniquecode> {
 
     @Id
     @GeneratedValue
@@ -44,8 +44,8 @@ public class TeamType implements AggregateRoot<Long> {
     }
 
     @Override
-    public Long identity() {
-        return Long.getLong(singleInternalcode.toString());
+    public Uniquecode identity() {
+        return singleInternalcode;
     }
     public  Description cor(){
         return  color;

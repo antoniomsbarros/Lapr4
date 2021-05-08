@@ -53,6 +53,8 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 	}
 
 
+
+
 	@Override
 	public TransactionalContext newTransactionalContext() {
 		return JpaAutoTxRepository.buildTransactionalContext(Application.settings().getPersistenceUnitName(),
