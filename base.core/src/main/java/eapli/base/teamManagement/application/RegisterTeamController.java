@@ -27,8 +27,7 @@ private ClientUserRepository collobaroters =PersistenceContext.repositories().cl
 public Team registerTeam(final String uniquecode, final Description responsable,
                          final Description collaboratorList, final String designacaoEquipa,
                          final String acronimoEquipa, final Description teamType) {
-
-    authorizationService.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER);
+    authorizationService.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.ADMIN);
     final TeamBuilder teamBuilder=new TeamBuilder();
     teamBuilder.withDesignationTeam(designacaoEquipa).withteamAcronym(acronimoEquipa).withUniqueCode(uniquecode)
             .withTeamType(teamType).withResponsable(responsable).withCollaboratorList(collaboratorList);

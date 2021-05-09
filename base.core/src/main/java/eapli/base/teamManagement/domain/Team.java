@@ -19,6 +19,7 @@ public class Team implements AggregateRoot<Uniquecode>{
     private Uniquecode uniquecode;
     @Version
     private Long version;
+
     private Designation designationTeam;
 
     private Acronym teamAcronym;
@@ -38,9 +39,11 @@ public class Team implements AggregateRoot<Uniquecode>{
     public Team() {
     }
 
-    public Team(final Uniquecode uniquecode,final Description responsable,final Description collaboratorList,final Designation designacaoEquipa,final Acronym acronimoEquipa,final Description teamType) {
-        Preconditions.noneNull(designacaoEquipa,collaboratorList,teamType, responsable,uniquecode);
-        if (designationTeam.length()>50){
+    public Team(final Uniquecode uniquecode,final Description responsable,final Description collaboratorList,
+                final Designation designacaoEquipa,final Acronym acronimoEquipa,final Description teamType) {
+
+        //Preconditions.noneNull(designacaoEquipa,collaboratorList,teamType, responsable,uniquecode.Code());
+        if (designacaoEquipa.length()>50){
             throw new IllegalArgumentException("The designaction of the team cant passed the size of 50 caracteres");
         }
         this.designationTeam = designacaoEquipa;

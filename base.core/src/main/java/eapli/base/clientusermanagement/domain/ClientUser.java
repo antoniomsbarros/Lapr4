@@ -74,7 +74,6 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     private ClientUser clientUser;
 
 
-
     private Description fullName;
     private CollaboratorEmail collaboratorEmail;
     private Dateofbirth dateofbirth;
@@ -95,10 +94,10 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         if (mecanographicNumber == null || systemUser == null) {
             throw new IllegalArgumentException();
         }
-        if (fullName.length()>80){
-            throw  new IllegalArgumentException("The full name has passed the limit of 80 caracteres");
+        if (fullName.length() > 80) {
+            throw new IllegalArgumentException("The full name has passed the limit of 80 caracteres");
         }
-        if (shortname.length()>30){
+        if (shortname.length() > 30) {
             throw new IllegalArgumentException("The short name Cant passed 30 caracteres");
         }
         this.mecanographicNumber = mecanographicNumber;
@@ -176,6 +175,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     public List<Team> teamList() {
         return list;
     }
+
     @Override
     public String toString() {
         return "ClientUser{" +
@@ -194,20 +194,22 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
                 '}';
     }
 
-    public ClientUserDTO toDTO(){
+    public ClientUserDTO toDTO() {
         return new ClientUserDTO(mecanographicNumber.toString(), fullName.toString(), function.Code(), function.Name(),
                 function.Description(), collaboratorEmail.email(), dateofbirth.Date(), phoneNumber, shortname.toString(),
                 placeofresidence.country(), placeofresidence.county(), placeofresidence.district(), placeofresidence.city(),
                 placeofresidence.street(), placeofresidence.doorNumber(), placeofresidence.floorNUmber(), placeofresidence.postalCode());
     }
 
-    public boolean belongToThisTeamType(Team team) {
 
+
+    public boolean belongToThisTeamType(Team team) {
+/*
         for (Team t:list){
             if (t.teamType().sameAs(team.teamType())){
                 return true;
             }
-        }
+        }*/
         return false;
     }
 
