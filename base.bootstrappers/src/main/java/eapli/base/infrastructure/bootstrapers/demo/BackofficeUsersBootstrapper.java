@@ -23,33 +23,28 @@ public class BackofficeUsersBootstrapper extends UsersBootstrapperBase implement
 
     @Override
     public boolean execute() {
-       // registerCashier("cashier", PASSWORD1, "Johny", "Cash", "johny.doe@emai.l.com");
-        //registerKitchenManager("kitchen", PASSWORD1, "Oven", "Stove", "Oven.and.stove@emai.l.com");
-        //registerMenuManager("chef", PASSWORD1, "Master", "Chef", "master.chef@emai.l.com");
+        registerRRH("RRH", PASSWORD1, "João", "Ribeiro", "joaoribeiro@gmail.com");
+        registerCOLLABORATOR("COLLABORATOR",PASSWORD1, "joao", "ribeiro", "ribeirojoao@gmail.com");
+        registerGSH_MANAGER("GSH", PASSWORD1, "sofia", "barros", "sofiabarros@gmail.com");
         return true;
     }
 
-    /*private void registerCashier(final String username, final String password,
-            final String firstName, final String lastName, final String email) {
-        final Set<Role> roles = new HashSet<>();
-        roles.add(BaseRoles.CASHIER);
-
-        registerUser(username, password, firstName, lastName, email, roles);
-    }*/
-
-    /*private void registerKitchenManager(final String username, final String password,
-            final String firstName, final String lastName, final String email) {
-        final Set<Role> roles = new HashSet<>();
-        roles.add(BaseRoles.KITCHEN_MANAGER);
-
+    private void registerRRH(final String username, final String password,
+                             final String firstName, final String lastName, final String email){
+        final  Set<Role> roles=new HashSet<>();
+        roles.add(BaseRoles.RRH_MANAGER);
         registerUser(username, password, firstName, lastName, email, roles);
     }
-*/
-    /*private void registerMenuManager(final String username, final String password,
-            final String firstName, final String lastName, final String email) {
-        final Set<Role> roles = new HashSet<>();
-        roles.add(BaseRoles.MENU_MANAGER);
-
+    private void registerCOLLABORATOR(final String username, final String password,
+                             final String firstName, final String lastName, final String email){
+        final  Set<Role> roles=new HashSet<>();
+        roles.add(BaseRoles.COLLABORATOR);
         registerUser(username, password, firstName, lastName, email, roles);
-    }*/
+    }
+    private void registerGSH_MANAGER(final String username, final String password,
+                                      final String firstName, final String lastName, final String email){
+        final  Set<Role> roles=new HashSet<>();
+        roles.add(BaseRoles.GSH_MANAGER);
+        registerUser(username, password, firstName, lastName, email, roles);
+    }
 }

@@ -19,7 +19,7 @@ public class AssociateRemoveCollaboratorTeamUI extends AbstractUI {
     private boolean opValidaRemove = false;
     @Override
     protected boolean doShow() {
-
+ /*
         do {
             System.out.println("Choose the option:");
             System.out.println("1.Associate");
@@ -27,7 +27,7 @@ public class AssociateRemoveCollaboratorTeamUI extends AbstractUI {
             System.out.println("0. Exit");
 
             final int op = Console.readInteger("Option= ");
-            switch (op){
+           switch (op){
                 case 0: return false;
                 case 1:
 
@@ -103,7 +103,7 @@ public class AssociateRemoveCollaboratorTeamUI extends AbstractUI {
                 default: opValida = false;
             }
         }while (!opValida);
-
+*/
         return false;
     }
 

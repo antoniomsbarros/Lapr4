@@ -104,12 +104,16 @@ public class MainMenu extends AbstractUI {
     private static final int SETTINGS_OPTION = 3;
     private static final int COLLABORATOR_OPTION = 4;
     private static final int CATALOG_OPTION = 5;
+<<<<<<< HEAD
     private static final int SERVICE_OPTION = 6;
     private static final int CRITICALITYLEVEL_OPTION = 7;
 
+=======
+    private static final int TEAM_OPTION=6;
+>>>>>>> 1a78a58423034f9471a7e4843b6006ee1026d27e
     //CATALOG
     private static final int CREATE_CATALOG_OPTIOM = 1;
-
+    private static final  int CREATE_TEAM_OPTIOM=1;
     private static final String SEPARATOR_LABEL = "--------------";
 
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
@@ -161,10 +165,15 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(COLLABORATOR_OPTION, collaboratorMenu);
             final Menu catalogMenu = builderCatalogMenu();
             mainMenu.addSubMenu(CATALOG_OPTION, catalogMenu);
+<<<<<<< HEAD
             final Menu serviceMenu = builderServiceMenu();
             mainMenu.addSubMenu(SERVICE_OPTION, serviceMenu);
             final Menu criticalityMenu = builderCriticalitylevelMenu();
             mainMenu.addSubMenu(CRITICALITYLEVEL_OPTION, criticalityMenu);
+=======
+            final Menu teamMenu=builderTeamMenu();
+            mainMenu.addSubMenu(TEAM_OPTION, teamMenu);
+>>>>>>> 1a78a58423034f9471a7e4843b6006ee1026d27e
         }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
@@ -206,7 +215,10 @@ public class MainMenu extends AbstractUI {
 
         return menu;
     }
+    private Menu builderTeamMenu(){
+        final Menu menu = new Menu("Team >");
 
+<<<<<<< HEAD
     private Menu builderServiceMenu(){
         final Menu menu = new Menu("Service >");
 
@@ -219,10 +231,12 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("Criticality Level >");
 
         menu.addItem(CREATE_CATALOG_OPTIOM, "Create Criticality Level", new CreateCriticalityLevelUI()::show);
+=======
+        menu.addItem(CREATE_TEAM_OPTIOM, "Create Team", new RegisterTeamUI()::show);
+>>>>>>> 1a78a58423034f9471a7e4843b6006ee1026d27e
 
         return menu;
     }
-
     private Menu builderCollaboratorMenu(){
         final Menu menu = new Menu("Collaborator >");
 
