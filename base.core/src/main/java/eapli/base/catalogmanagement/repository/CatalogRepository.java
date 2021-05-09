@@ -9,5 +9,7 @@ import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 
 public interface CatalogRepository extends DomainRepository<Long, Catalog> {
 
+    Iterable<Catalog> getAllCatalogs();
+
 
 }
