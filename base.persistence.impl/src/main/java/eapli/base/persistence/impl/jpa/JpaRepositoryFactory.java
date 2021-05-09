@@ -58,17 +58,17 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 
 	@Override
 	public CatalogRepository catalogs() {
-		return null;
+		return new JpaCatalogRepository();
 	}
 
 	@Override
 	public FormRepository forms() {
-		return null;
+		return new JpaFormRepository();
 	}
 
 	@Override
 	public ServiceRepository services() {
-		return null;
+		return new JpaServiceRepository();
 	}
 
 	public TeamTypeRepository teamTypes(TransactionalContext autoTx) {
