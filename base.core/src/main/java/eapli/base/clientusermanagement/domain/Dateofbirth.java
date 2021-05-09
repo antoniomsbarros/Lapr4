@@ -52,4 +52,9 @@ public class Dateofbirth implements ValueObject {
     public String toString() {
         return "calendars=" + Calendars.format(calendars);
     }
+
+    public Calendar Date() {
+        return calendars;
+    }
+
 }

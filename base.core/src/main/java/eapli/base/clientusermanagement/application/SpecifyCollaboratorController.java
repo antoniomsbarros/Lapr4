@@ -34,7 +34,6 @@ public class SpecifyCollaboratorController {
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final ClientUserRepository collaboratorRepository = PersistenceContext.repositories().clientUsers();
     private final AddUserController addUserController = new AddUserController();
-    private BaseRoles baseRoles;
 
     public void specifyCollaborator(final String mecanographicNumber, final String fullName, final Function function,
                                      final String email, final Calendar birth, final Long phoneNumber,
@@ -46,7 +45,6 @@ public class SpecifyCollaboratorController {
         RandomRawPassword randomRawPassword = new RandomRawPassword();
 
         final Set<Role> roleTypes = new HashSet<>();
-        roleTypes.add(baseRoles.CLIENT_USER);
         boolean show;
         do {
             show = showRoles(roleTypes);

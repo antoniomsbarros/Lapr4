@@ -58,4 +58,9 @@ public class Uniquecode implements ValueObject, Comparable<Uniquecode> {
     public int compareTo(Uniquecode o) {
         return Long.getLong(code).compareTo(Long.getLong(o.code));
     }
+
+    public String Code() {
+        return code;
+    }
+
 }

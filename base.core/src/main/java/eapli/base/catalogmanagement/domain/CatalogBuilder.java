@@ -4,6 +4,7 @@ import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.teamManagement.domain.Team;
 import eapli.framework.domain.model.DomainFactory;
 import eapli.framework.general.domain.model.Description;
+import sun.security.krb5.internal.crypto.Des;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -14,13 +15,13 @@ public class CatalogBuilder implements DomainFactory<Catalog> {
     private Description title;
     private Description shortdescription;
     private Description longdescription;
-    private ImageIcon icone;
+    private Description icone;
     private List<Team> team;
     private ClientUser responsibleCollaborator;
 
 
     public CatalogBuilder (final Description title, final Description shortdescription,
-                           final Description longdescription, final ImageIcon icone, final List<Team> team,
+                           final Description longdescription, final Description icone, final List<Team> team,
                            final ClientUser responsibleCollaborator){
 
         this.title = title;
@@ -46,7 +47,7 @@ public class CatalogBuilder implements DomainFactory<Catalog> {
         return this;
     }
 
-    public CatalogBuilder withIcone(ImageIcon icone){
+    public CatalogBuilder withIcone(Description icone){
         this.icone = icone;
         return this;
     }

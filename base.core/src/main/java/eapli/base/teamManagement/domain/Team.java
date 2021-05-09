@@ -1,6 +1,7 @@
 package eapli.base.teamManagement.domain;
 
 import eapli.base.clientusermanagement.domain.ClientUser;
+import eapli.base.teamManagement.dto.TeamDTO;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.general.domain.model.Designation;
 import eapli.framework.validations.Preconditions;
@@ -82,5 +83,9 @@ public class Team implements AggregateRoot<Uniquecode>{
     }
     public  TeamType teamType(){
         return  teamType;
+    }
+
+    public TeamDTO toDTO(){
+        return new TeamDTO(uniquecode.Code(), designationTeam.toString(), teamAcronym.AcronymName());
     }
 }

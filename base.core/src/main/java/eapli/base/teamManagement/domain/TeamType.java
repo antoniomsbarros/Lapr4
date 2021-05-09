@@ -53,6 +53,7 @@ public class TeamType implements AggregateRoot<Uniquecode> {
     public  Description descricaoTipoEquipa(){
         return  descriptionTypeTeam;
     }
+    public TeamType teamtype () {return this;}
 
     @Override
     public String toString() {

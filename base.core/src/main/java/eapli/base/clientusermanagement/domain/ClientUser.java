@@ -27,8 +27,10 @@ import javax.persistence.*;
 
 import eapli.base.catalogmanagement.domain.Catalog;
 import eapli.base.catalogmanagement.domain.Service;
+import eapli.base.clientusermanagement.dto.ClientUserDTO;
 import eapli.base.funcaomanagement.domain.Function;
 import eapli.base.teamManagement.domain.Team;
+import eapli.base.teamManagement.dto.TeamDTO;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.domain.model.DomainEntities;
 import eapli.framework.general.domain.model.Description;
@@ -187,5 +189,12 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
                 ", placeofresidence=" + placeofresidence +
                 ", systemUser=" + systemUser +
                 '}';
+    }
+
+    public ClientUserDTO toDTO(){
+        return new ClientUserDTO(mecanographicNumber.toString(), fullName.toString(), function.Code(), function.Name(),
+                function.Description(), collaboratorEmail.email(), dateofbirth.Date(), phoneNumber, shortname.toString(),
+                placeofresidence.country(), placeofresidence.county(), placeofresidence.district(), placeofresidence.city(),
+                placeofresidence.street(), placeofresidence.doorNumber(), placeofresidence.floorNUmber(), placeofresidence.postalCode());
     }
 }

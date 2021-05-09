@@ -23,6 +23,7 @@
  */
 package eapli.base.app.backoffice.console.presentation;
 
+import eapli.base.app.backoffice.console.presentation.clientuser.CreateCatalogUI;
 import eapli.base.app.backoffice.console.presentation.clientuser.SpecifyCollaboratorAction;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
 import eapli.base.Application;
@@ -100,10 +101,10 @@ public class MainMenu extends AbstractUI {
     private static final int MY_USER_OPTION = 1;
     private static final int USERS_OPTION = 2;
     private static final int SETTINGS_OPTION = 4;
-    private static final int DISH_OPTION = 5;
-    private static final int TRACEABILITY_OPTION = 6;
-    private static final int MEALS_OPTION = 7;
-    private static final int REPORTING_DISHES_OPTION = 8;
+    private static final int CATALOG_OPTION = 5;
+
+    //CATALOG
+    private static final int CREATE_CATALOG_OPTIOM = 1;
 
     private static final String SEPARATOR_LABEL = "--------------";
 
@@ -152,6 +153,8 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(USERS_OPTION, usersMenu);
             final Menu settingsMenu = buildAdminSettingsMenu();
             mainMenu.addSubMenu(SETTINGS_OPTION, settingsMenu);
+            final Menu catalogMenu = builderCatalogMenu();
+            mainMenu.addSubMenu(CATALOG_OPTION, catalogMenu);
         }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
@@ -184,6 +187,14 @@ public class MainMenu extends AbstractUI {
         menu.addItem(SPECIFY_COLLABORATOR_OPTION, "Specify Collaborator",
                 new SpecifyCollaboratorAction());
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
+    private Menu builderCatalogMenu(){
+        final Menu menu = new Menu("Catalog >");
+
+        menu.addItem(CREATE_CATALOG_OPTIOM, "Create Catalog", new CreateCatalogUI()::show);
 
         return menu;
     }
