@@ -55,7 +55,12 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
 
 	@Override
 	public CatalogRepository catalogs() {
-		return null;
+		return catalogs(null);
+	}
+
+
+	public CatalogRepository catalogs(final TransactionalContext tx){
+		return new InMemoryCatalogRepository();
 	}
 
 	@Override

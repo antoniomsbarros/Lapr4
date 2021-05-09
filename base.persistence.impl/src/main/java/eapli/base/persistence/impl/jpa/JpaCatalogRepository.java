@@ -1,57 +1,25 @@
 package eapli.base.persistence.impl.jpa;
 
+import eapli.base.Application;
 import eapli.base.catalogmanagement.domain.Catalog;
 import eapli.base.catalogmanagement.repository.CatalogRepository;
+import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.general.domain.model.Designation;
+import eapli.framework.infrastructure.repositories.impl.jpa.JpaAutoTxRepository;
 
+import java.util.Map;
 import java.util.Optional;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 
-class JpaCatalogRepository extends BasepaRepositoryBase<Catalog,Long,Designation> implements CatalogRepository {
+class JpaCatalogRepository extends JpaAutoTxRepository<Catalog,Long,Long> implements CatalogRepository {
 
 
-    JpaCatalogRepository(){
-        super("name");
+    public JpaCatalogRepository(final TransactionalContext autoTx){
+        super(autoTx,"identifier");
     }
 
-    @Override
-    public Optional<Catalog> ofIdentity(Long id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean containsOfIdentity(Long id) {
-        return false;
-    }
-
-    @Override
-    public boolean contains(Catalog entity) {
-        return false;
-    }
-
-    @Override
-    public void deleteOfIdentity(Long entityId) {
-
-    }
-
-    @Override
-    public void remove(Catalog entity) {
-
-    }
-
-    @Override
-    public void removeOfIdentity(Long entityId) {
-
-    }
-
-    @Override
-    public void forEach(Consumer<? super Catalog> action) {
-
-    }
-
-    @Override
-    public Spliterator<Catalog> spliterator() {
-        return null;
+    public JpaCatalogRepository(String name){
+        super(name, Application.settings().getExtendedPersistenceProperties(),"identifier");
     }
 }
