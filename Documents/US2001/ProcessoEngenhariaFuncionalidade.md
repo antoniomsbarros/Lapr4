@@ -45,7 +45,7 @@ A interpretação feita deste requisito foi no sentido de criar um catálogo com
 
 # 3. Design
 
-	Para realizar esta funcionalidade a equipa usou o padrão Controller e Repository.
+	Para realizar esta funcionalidade a equipa usou o padrão Controller e Repository e Builder.
 	Foi criado o CriarCatalogoController que será responsável pela criação de um novo catálogo de serviços no sistema.
 	Para persistir a informação no sistema usou-se o padrão Repository.
 	Dado que um catálogo possui um ou mais calaboradores responsáveis, umas ou mais equipas que têm acesso, e um ou mais serviços, este irá buscar os colaboradores, equipas e serviços disponíveis para serem selecionados.
@@ -66,7 +66,7 @@ Por indicação do professor, não é necessário elaborar o Diagrama de Classes
 
 ## 3.3. Padrões Aplicados
 
-O padrão aplicado foi o padrão Controller e Repository.
+O padrão aplicado foi o padrão Controller e Repository e Builder.
 
 ## 3.4. Testes 
 
@@ -160,11 +160,11 @@ Os testes aplicados a esta funcionalidade são os seguinstes:
 
 # 5. Integração/Demonstração
 
-*Nesta secção a equipa deve descrever os esforços realizados no sentido de integrar a funcionalidade desenvolvida com as restantes funcionalidades do sistema.*
+Devido a não estarem todas as US's completas a tempo não foi possível haver a interligação com outras funcionalidades.
 
 # 6. Observações
 
-*Nesta secção sugere-se que a equipa apresente uma perspetiva critica sobre o trabalho desenvolvido apontando, por exemplo, outras alternativas e ou trabalhos futuros relacionados.*
+Após US's em falta estarem concluídas é preciso modificar a seleção do colaborador e das equipas.
 
 
 

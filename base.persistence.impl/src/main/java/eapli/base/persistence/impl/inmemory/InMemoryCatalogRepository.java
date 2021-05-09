@@ -26,4 +26,14 @@ public class InMemoryCatalogRepository extends InMemoryDomainRepository<Catalog,
     public Optional<Catalog> getCatalogByTitle(Description title) {
         return matchOne(e -> e.Title().equals(title));
     }
+
+    @Override
+    public Optional<Catalog> getCatalogByShortDescription(Description shortdescription){
+        return matchOne(e -> e.shortdescription().equals(shortdescription));
+    }
+
+    @Override
+    public Optional<Catalog> getCatalogByLongDescription(Description longdescription){
+        return matchOne(e -> e.longdescription().equals(longdescription));
+    }
 }

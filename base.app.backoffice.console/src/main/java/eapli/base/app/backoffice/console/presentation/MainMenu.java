@@ -104,11 +104,18 @@ public class MainMenu extends AbstractUI {
     private static final int SETTINGS_OPTION = 3;
     private static final int COLLABORATOR_OPTION = 4;
     private static final int CATALOG_OPTION = 5;
-    private static final int CRITICALITYLEVEL_OPTION = 6;
+    private static final int TEAM_OPTION=6;
 
     //CATALOG
+
     private static final int CREATE_CATALOG_OPTION = 1;
-    private static final int SEARCH_CATALOG_OPTION =3;
+    private static final int SEARCH_CATALOGBYTITLE_OPTION = 2;
+    private static final int SEARCH_CATALOGBYSHORT_OPTION = 3;
+    private static final int SEARCH_CATALOGBYLONG_OPTION = 4;
+
+
+    private static final int CREATE_CRITICALITYLEVEL_OPTION = 7;
+    private static final  int CREATE_TEAM_OPTIOM= 1;
 
     private static final String SEPARATOR_LABEL = "--------------";
 
@@ -161,8 +168,10 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(COLLABORATOR_OPTION, collaboratorMenu);
             final Menu catalogMenu = builderCatalogMenu();
             mainMenu.addSubMenu(CATALOG_OPTION, catalogMenu);
-            final Menu criticalityMenu = builderCriticalitylevelMenu();
-            mainMenu.addSubMenu(CRITICALITYLEVEL_OPTION, criticalityMenu);
+            final Menu teamMenu=builderTeamMenu();
+            mainMenu.addSubMenu(TEAM_OPTION, teamMenu);
+            final Menu criticalitylevelMenu = builderCriticalitylevelMenu();
+            mainMenu.addSubMenu(CREATE_CRITICALITYLEVEL_OPTION,criticalitylevelMenu);
         }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
@@ -201,16 +210,23 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("Catalog >");
 
         menu.addItem(CREATE_CATALOG_OPTION, "Create Catalog", new CreateCatalogUI()::show);
-        menu.addItem(SEARCH_CATALOG_OPTION, "Search Catalog", new SearchByTitleUI()::show);
+        menu.addItem(SEARCH_CATALOGBYTITLE_OPTION, "Search Catalog by Title", new SearchByTitleUI()::show);
+        menu.addItem(SEARCH_CATALOGBYSHORT_OPTION,"Search Catalog By Short Description", new SearchByShortDescriptionUI()::show);
+        menu.addItem(SEARCH_CATALOGBYLONG_OPTION,"Search Catalog By Long Description", new SearchByLongDescriptionUI()::show);
 
         return menu;
     }
 
+    private Menu builderTeamMenu() {
+        final Menu menu = new Menu("Team >");
+        menu.addItem(CREATE_TEAM_OPTIOM, "Create Team", new RegisterTeamUI()::show);
+
+        return menu;
+    }
 
     private Menu builderCriticalitylevelMenu(){
         final Menu menu = new Menu("Criticality Level >");
-
-        menu.addItem(CREATE_CATALOG_OPTION, "Create Criticality Level", new CreateCriticalityLevelUI()::show);
+        menu.addItem(CREATE_CRITICALITYLEVEL_OPTION, "Create Criticality Level", new CreateCriticalityLevelUI()::show);
 
         return menu;
     }

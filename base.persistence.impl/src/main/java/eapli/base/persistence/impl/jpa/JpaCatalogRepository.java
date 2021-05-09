@@ -44,5 +44,18 @@ class JpaCatalogRepository extends JpaAutoTxRepository<Catalog,Long,Long> implem
         return matchOne("e.title=:title", params);
     }
 
+    @Override
+    public Optional<Catalog> getCatalogByShortDescription(Description shortdescription){
+        final Map<String, Object> params = new HashMap<>();
+        params.put("shortdescription", shortdescription);
+        return matchOne("e.shortdescription=:shortdescription", params);
+    }
+
+    @Override
+    public Optional<Catalog> getCatalogByLongDescription(Description longdescription){
+        final Map<String, Object> params = new HashMap<>();
+        params.put("longdescription", longdescription);
+        return matchOne("e.longdescription=:longdescription", params);
+    }
 
 }

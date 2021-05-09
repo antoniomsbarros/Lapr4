@@ -17,5 +17,9 @@ public interface CatalogRepository extends DomainRepository<Long, Catalog> {
     @Query(value = "SELECT title FROM Catalog WHERE title = :title",nativeQuery = true)
     Optional<Catalog> getCatalogByTitle(Description title);
 
+    @Query(value = "SELECT shortdescription FROM Catalog WHERE shortdescription = :shortdescription",nativeQuery = true)
+    Optional<Catalog> getCatalogByShortDescription(Description shortdescription);
 
+    @Query(value = "SELECT longdescription FROM Catalog WHERE longdescription = :longdescription",nativeQuery = true)
+    Optional<Catalog> getCatalogByLongDescription(Description longdescription);
 }

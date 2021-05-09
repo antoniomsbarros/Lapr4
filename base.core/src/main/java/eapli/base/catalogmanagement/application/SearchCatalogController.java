@@ -24,4 +24,12 @@ public class SearchCatalogController {
         return catalogRepository.getCatalogByTitle(title).get();
     }
 
+    public Catalog searchCatalogByShortDescription(Description shortdescription){
+        return catalogRepository.getCatalogByShortDescription(shortdescription).get();
+    }
+
+    public Catalog searchCatalogByLongDescription(Description longdescription){
+        return catalogRepository.getCatalogByLongDescription(longdescription).get();
+    }
+
 }
