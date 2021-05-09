@@ -18,6 +18,8 @@ public class Criticalitylevel implements AggregateRoot<Long> {
     @GeneratedValue
     private Long id;
 
+    private Description value;
+
     private Description tag;
 
     private Color color;
@@ -27,8 +29,9 @@ public class Criticalitylevel implements AggregateRoot<Long> {
     public Criticalitylevel() {
     }
 
-    public Criticalitylevel(final Description tag,final Color color,final Objective objective) {
-        Preconditions.noneNull(tag,color,objective);
+    public Criticalitylevel(final Description value, final Description tag,final Color color,final Objective objective) {
+        Preconditions.noneNull(value,tag,color,objective);
+        this.value = value;
         this.tag = tag;
         this.color = color;
         this.objective = objective;
@@ -43,7 +46,8 @@ public class Criticalitylevel implements AggregateRoot<Long> {
         if (this==criticalitylevel){
             return true;
         }
-        return identity().equals(criticalitylevel.identity()) && tag.equals(((Criticalitylevel) other).tag)
+        return identity().equals(criticalitylevel.identity()) && value.equals(((Criticalitylevel) other).value) &&
+                tag.equals(((Criticalitylevel) other).tag)
                 && objective.equals(criticalitylevel.objective);
 
     }
@@ -58,17 +62,16 @@ public class Criticalitylevel implements AggregateRoot<Long> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Criticalitylevel that = (Criticalitylevel) o;
-        return id.equals(that.id) && tag.equals(that.tag) && color.equals(that.color) && objective.equals(that.objective);
+        return id.equals(that.id) && value.equals(that.value) && tag.equals(that.tag) && color.equals(that.color) && objective.equals(that.objective);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, tag, color, objective);
+        return Objects.hash(value, id, tag, color, objective);
     }
 
     @Override
     public String toString() {
-        return "id=" + id.toString() + ", tag=" + tag.toString() + ", color=" + color.toString() + ", objective=" + objective.toString() +
-                '}';
+        return "id=" + id.toString() + ", value=" + value.toString() + ", tag=" + tag.toString() + ", color=" + color.toString() + ", objective=" + objective.toString() ;
     }
 }
