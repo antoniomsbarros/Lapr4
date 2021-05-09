@@ -45,15 +45,15 @@ public final class BaseRoles {
     /**
      *
      */
-    public static final Role KITCHEN_MANAGER = Role.valueOf("KITCHEN_MANAGER");
+    public static final Role RRH_MANAGER = Role.valueOf("RRH_MANAGER");
     /**
      *
      */
-    public static final Role MENU_MANAGER = Role.valueOf("MENU_MANAGER");
+    public static final Role COLLABORATOR = Role.valueOf("COLLABORATOR");
     /**
      *
      */
-    public static final Role CASHIER = Role.valueOf("CASHIER");
+    public static final Role GSH_MANAGER = Role.valueOf("GSH_MANAGER");
 
     /**
      * get available role types for adding new users
@@ -61,7 +61,7 @@ public final class BaseRoles {
      * @return
      */
     public static Role[] nonUserValues() {
-        return new Role[] { ADMIN, KITCHEN_MANAGER, MENU_MANAGER, CASHIER };
+        return new Role[] { ADMIN, RRH_MANAGER, COLLABORATOR, GSH_MANAGER };
     }
 
     public boolean isCollaborator(final Role role) {
