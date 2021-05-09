@@ -2,8 +2,10 @@ package eapli.base.persistence.impl.jpa;
 
 import eapli.base.Application;
 import eapli.base.catalogmanagement.repository.CatalogRepository;
+import eapli.base.catalogmanagement.repository.ServiceRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.infrastructure.persistence.RepositoryFactory;
+import eapli.base.ordermanagement.domain.repository.FormRepository;
 import eapli.base.teamManagement.repositories.TeamRepository;
 import eapli.base.teamManagement.repositories.TeamTypeRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
@@ -56,10 +58,19 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 
 	@Override
 	public CatalogRepository catalogs() {
-		return null;
+		return new JpaCatalogRepository();
 	}
 
 	@Override
+	public FormRepository forms() {
+		return new JpaFormRepository();
+	}
+
+	@Override
+	public ServiceRepository services() {
+		return new JpaServiceRepository();
+	}
+
 	public TeamTypeRepository teamTypes(TransactionalContext autoTx) {
 		return new JpaTeamTypesRepository(autoTx);
 	}
@@ -72,9 +83,6 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 
 	@Override
 	public TransactionalContext newTransactionalContext() {
-		return JpaAutoTxRepository.buildTransactionalContext(Application.settings().getPersistenceUnitName(),
-				Application.settings().getExtendedPersistenceProperties());
+		return JpaAutoTxRepository.buildTransactionalContext(Application.settings().getPersistenceUnitName(), Application.settings().getExtendedPersistenceProperties());
 	}
-
-
 }

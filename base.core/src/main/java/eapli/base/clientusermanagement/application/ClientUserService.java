@@ -48,13 +48,13 @@ public class ClientUserService {
     private final ClientUserRepository repo =
             PersistenceContext.repositories().clientUsers();
 
-    public Optional<ClientUser> findClientUserByMecNumber(
+   /* public Optional<ClientUser> findClientUserByMecNumber(
             final String mecNumber) {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER,
                 BaseRoles.ADMIN,
                 BaseRoles.CASHIER);
         return repo.ofIdentity(MecanographicNumber.valueOf(mecNumber));
-    }
+    }*/
 
     public Optional<ClientUser> findClientUserByUsername(
             final Username user) {

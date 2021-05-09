@@ -36,10 +36,10 @@ public final class OtherApp {
                 new BasePasswordPolicy(), new PlainTextEncoder());
 
         // login and go to main menu
-        if (new LoginAction(BaseRoles.CASHIER).execute()) {
+        /*if (new LoginAction(BaseRoles.CASHIER).execute()) {
             final MainMenu menu = new MainMenu();
             menu.mainLoop();
-        }
+        }*/
 
         // exiting the application, closing all threads
         System.exit(0);

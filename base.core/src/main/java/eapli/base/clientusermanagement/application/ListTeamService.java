@@ -25,7 +25,7 @@ public class ListTeamService {
     private final ClientUserRepository clientUserRepository = PersistenceContext.repositories().clientUsers();
 
     public Iterable<TeamDTO> teams(){
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.MENU_MANAGER);
+      //  authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.MENU_MANAGER);
 
         Iterable<Team> teams = teamRepository.findAll();
         List<TeamDTO> teamsDTO = new ArrayList<>();
