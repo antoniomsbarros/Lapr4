@@ -4,10 +4,7 @@ import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.validations.Preconditions;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.awt.*;
 import java.util.Objects;
 
@@ -18,8 +15,9 @@ public class Criticalitylevel implements AggregateRoot<Long> {
     @GeneratedValue
     private Long id;
 
+    @AttributeOverride(name = "value", column = @Column(name = "value"))
     private Description value;
-
+    @AttributeOverride(name = "value", column = @Column(name = "tag"))
     private Description tag;
 
     private Color color;

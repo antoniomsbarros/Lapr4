@@ -1,6 +1,7 @@
 package eapli.base.persistence.impl.inmemory;
 
 import eapli.base.catalogmanagement.repository.CatalogRepository;
+import eapli.base.catalogmanagement.repository.CriticalityLevelRepository;
 import eapli.base.catalogmanagement.repository.ServiceRepository;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
@@ -68,12 +69,17 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
 
 	@Override
 	public FormRepository forms() {
-		return null;
+		return new InMemoryFormRepository();
 	}
 
 	@Override
 	public ServiceRepository services() {
-		return null;
+		return new InMemoryServiceRepository();
+	}
+
+	@Override
+	public CriticalityLevelRepository criticalityLevels() {
+		return new InMemoryCriticalitylevelRepository();
 	}
 
 	@Override

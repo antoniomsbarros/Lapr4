@@ -32,4 +32,6 @@ class JpaCatalogRepository extends JpaAutoTxRepository<Catalog,Long,Long> implem
     public Iterable<Catalog> getAllCatalogs() {
         return match("e.systemUser.active=true");
     }
+
+
 }
