@@ -102,6 +102,18 @@ public class Catalog implements AggregateRoot<Long> {
     /*public Criticalitylevel criticalitylevel(){
         return criticalitylevel;
     }
-
      */
+
+    @Override
+    public String toString() {
+        return "Catalog{" +
+                "identifier=" + identifier +
+                ", shortdescription=" + shortdescription +
+                ", longdescription=" + longdescription +
+                ", title=" + title +
+                ", icone=" + icone +
+                ", team=" + team +
+                ", responsiblecollaborator=" + responsiblecollaborator +
+                '}';
+    }
 }

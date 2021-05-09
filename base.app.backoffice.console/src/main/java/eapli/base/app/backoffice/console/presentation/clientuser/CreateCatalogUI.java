@@ -25,7 +25,8 @@ public class CreateCatalogUI extends AbstractUI {
         final Description longdescription = Description.valueOf( Console.readLine("Long Description: "));
         final Description icon = Description.valueOf( Console.readLine("Icone: "));
         final Description listTeams = Description.valueOf( Console.readLine("team: "));
-        final Description clientUser = Description.valueOf( Console.readLine("cliente: "));
+        final Description clientUser = Description.valueOf( Console.readLine("client: "));
+
 
         /*
         ClientUser clientUser=null;
@@ -64,7 +65,6 @@ public class CreateCatalogUI extends AbstractUI {
         }
 
         coontroller.addCatalog(title, shortdescription, longdescription, icon, listTeams, clientUser);
-
 
         return true;
     }

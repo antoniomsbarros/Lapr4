@@ -4,11 +4,15 @@ import eapli.base.Application;
 import eapli.base.catalogmanagement.domain.Catalog;
 import eapli.base.catalogmanagement.repository.CatalogRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
+import eapli.framework.general.domain.model.Description;
 import eapli.framework.general.domain.model.Designation;
 import eapli.framework.infrastructure.repositories.impl.jpa.JpaAutoTxRepository;
+import eapli.framework.infrastructure.repositories.impl.jpa.JpaTransactionalRepository;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Spliterator;
@@ -31,6 +35,13 @@ class JpaCatalogRepository extends JpaAutoTxRepository<Catalog,Long,Long> implem
     @Override
     public Iterable<Catalog> getAllCatalogs() {
         return match("e.systemUser.active=true");
+    }
+
+    @Override
+    public Optional<Catalog> getCatalogByTitle(Description title) {
+        final Map<String, Object> params = new HashMap<>();
+        params.put("title", title);
+        return matchOne("e.title=:title", params);
     }
 
 

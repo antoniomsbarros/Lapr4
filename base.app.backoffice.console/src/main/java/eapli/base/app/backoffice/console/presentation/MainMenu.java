@@ -107,7 +107,8 @@ public class MainMenu extends AbstractUI {
     private static final int CRITICALITYLEVEL_OPTION = 6;
 
     //CATALOG
-    private static final int CREATE_CATALOG_OPTIOM = 1;
+    private static final int CREATE_CATALOG_OPTION = 1;
+    private static final int SEARCH_CATALOG_OPTION =3;
 
     private static final String SEPARATOR_LABEL = "--------------";
 
@@ -199,15 +200,17 @@ public class MainMenu extends AbstractUI {
     private Menu builderCatalogMenu(){
         final Menu menu = new Menu("Catalog >");
 
-        menu.addItem(CREATE_CATALOG_OPTIOM, "Create Catalog", new CreateCatalogUI()::show);
+        menu.addItem(CREATE_CATALOG_OPTION, "Create Catalog", new CreateCatalogUI()::show);
+        menu.addItem(SEARCH_CATALOG_OPTION, "Search Catalog", new SearchByTitleUI()::show);
 
         return menu;
     }
 
+
     private Menu builderCriticalitylevelMenu(){
         final Menu menu = new Menu("Criticality Level >");
 
-        menu.addItem(CREATE_CATALOG_OPTIOM, "Create Criticality Level", new CreateCriticalityLevelUI()::show);
+        menu.addItem(CREATE_CATALOG_OPTION, "Create Criticality Level", new CreateCriticalityLevelUI()::show);
 
         return menu;
     }
