@@ -6,6 +6,7 @@ import eapli.base.clientusermanagement.domain.events.NewUserRegisteredFromSignup
 import eapli.base.clientusermanagement.domain.events.SignupAcceptedEvent;
 import eapli.base.infrastructure.bootstrapers.BaseBootstrapper;
 import eapli.base.infrastructure.bootstrapers.demo.BaseDemoBootstrapper;
+import eapli.base.infrastructure.bootstrapers.demo.OrganicStructureDemoBootstrapper;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.infrastructure.smoketests.BaseDemoSmokeTester;
 import eapli.base.usermanagement.application.eventhandlers.SignupAcceptedWatchDog;
@@ -29,6 +30,7 @@ public final class BaseBootstrap extends BaseApplication {
 
     private boolean isToBootstrapDemoData;
     private boolean isToRunSampleE2E;
+    private boolean isToRunOrganicStructureDemoData;
 
     public static void main(final String[] args) {
 
@@ -53,14 +55,18 @@ public final class BaseBootstrap extends BaseApplication {
             System.out.println("\n\n------- BASIC SCENARIO -------");
             new BaseDemoSmokeTester().execute();
         }
+        new OrganicStructureDemoBootstrapper().execute();
+
     }
 
     private void handleArgs(final String[] args) {
         isToRunSampleE2E = ArrayPredicates.contains(args, "-smoke:basic");
         if (isToRunSampleE2E) {
             isToBootstrapDemoData = true;
+            isToRunOrganicStructureDemoData = true;
         } else {
             isToBootstrapDemoData = ArrayPredicates.contains(args, "-bootstrap:demo");
+            isToRunOrganicStructureDemoData = true;
         }
     }
 

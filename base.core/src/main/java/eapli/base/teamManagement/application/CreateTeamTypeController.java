@@ -19,12 +19,12 @@ public class CreateTeamTypeController {
     private final TeamTypeRepository teamTypeRepository = PersistenceContext
             .repositories().teamTypes();
 
-    public TeamType registerTeamType(String singleInternCode, Description color, Description description) {
+    public TeamType registerTeamType(Uniquecode singleInternCode, Description color, Description description) {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER);
 
         final TeamTypeBuilder teamTypeBuilder = new TeamTypeBuilder();
 
-        teamTypeBuilder.withUniqueCode(singleInternCode).withDescription(color).withColor(description);
+        teamTypeBuilder.withUniqueCode(singleInternCode.Code()).withDescription(color).withColor(description);
 
 
         return teamTypeRepository.save(teamTypeBuilder.build());
