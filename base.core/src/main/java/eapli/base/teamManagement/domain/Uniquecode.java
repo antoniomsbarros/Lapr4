@@ -50,4 +50,9 @@ public class Uniquecode implements ValueObject {
     public String toString() {
         return "uniqueCode='" + code+'\n';
     }
+
+    public String Code() {
+        return code;
+    }
+
 }

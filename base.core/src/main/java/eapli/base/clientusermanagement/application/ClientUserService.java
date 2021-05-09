@@ -25,13 +25,17 @@ package eapli.base.clientusermanagement.application;
 
 import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.clientusermanagement.domain.MecanographicNumber;
+import eapli.base.clientusermanagement.dto.ClientUserDTO;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
+import eapli.base.teamManagement.domain.Team;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 import eapli.framework.infrastructure.authz.domain.model.Username;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -57,5 +61,19 @@ public class ClientUserService {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER,
                 BaseRoles.ADMIN);
         return repo.findByUsername(user);
+    }
+
+    public Iterable<ClientUserDTO> findAllClientUser() {
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER,
+                BaseRoles.ADMIN);
+
+        Iterable<ClientUser> collaborators = repo.findAllActive();
+        List<ClientUserDTO> collaboratorsDTO = new ArrayList<>();
+
+        for (ClientUser c: collaborators) {
+            collaboratorsDTO.add(c.toDTO());
+        }
+
+        return collaboratorsDTO;
     }
 }

@@ -26,6 +26,7 @@
       <module name="base.bootstrappers" target="1.8" />
       <module name="base.core" target="1.8" />
       <module name="base.persistence.impl" target="1.8" />
+      <module name="lei20_21_s4_2dg_04" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

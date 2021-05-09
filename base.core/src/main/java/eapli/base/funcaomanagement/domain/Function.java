@@ -50,4 +50,16 @@ public class Function implements AggregateRoot<Long> {
     public String toString() {
         return "codigoFuncao=" + functioncode.toString() + ", nomeFuncao='" + functionname.toString() + ", descricaoFuncao='" + descriptionFunction.toString()+'\n';
     }
+
+    public String Code() {
+        return functioncode.Code();
+    }
+
+    public String Name() {
+        return functionname.toString();
+    }
+
+    public String Description() {
+        return descriptionFunction.toString();
+    }
 }

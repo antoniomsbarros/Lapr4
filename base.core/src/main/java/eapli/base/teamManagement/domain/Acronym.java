@@ -58,4 +58,8 @@ public class Acronym implements ValueObject,Comparable<Acronym>  {
     public String toString() {
         return "acronym='" + acronymName;
     }
+
+    public String AcronymName() {
+        return acronymName;
+    }
 }

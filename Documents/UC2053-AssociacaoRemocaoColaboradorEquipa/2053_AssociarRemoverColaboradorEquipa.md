@@ -11,12 +11,13 @@ Este caso de uso pretende permitir associar/remover um colaborador a uma equipa.
 
 ## 2.1 Pré-requisito
 
-*Colaborador e Equipa definidos
-*Equipa com colaborador associado
+* Colaborador e Equipa definidos
+  
+* Equipa com colaborador associado
 
 ## 2.2 Pós-requisito
 
-*Colaborador associado ou removido à Equipa
+* Colaborador associado ou removido à Equipa
 
 # 3. Design
 
@@ -28,14 +29,14 @@ Quando o ator inicia o caso de uso: o sistema solicita a escolha da opção (Ass
 
 Caso a opção seja Remover, o sistema questiona se será por colaborador ou por equipa, caso seja por colaborador, o sistema apresenta a lista dos colaboradores, o colaborador é seleciona e a seguir é apresentado a lista de equipas que este colaborador faz parte, a equipa desejada é selecionada e a informação da remoção é atualizada na base de dados. Caso seja escolhida a opção por equipa, o sistema apresenta a lista de equipas, a equipa é seleciona e a seguir é apresentado a lista de colaboradores da equipa, o colaborador desejado é selecionado e os dados da remoção são atualizados na base de dados.
 
-Fluxo Aternativo:
+**Fluxo Aternativo:**
  
- *Caso o utilizador já faça parte de uma equipa do mesmo tipo da selecionada (no caso da associação), é apresentado um aviso e a caso de uso termina.
- *Caso o colaborador não esteja associado a nenhuma equipa (no caso da remoção), é apresentado um aviso e a caso de uso termina.
+ * Caso o utilizador já faça parte de uma equipa do mesmo tipo da selecionada (no caso da associação), é apresentado um aviso e a caso de uso termina.
+ * Caso o colaborador não esteja associado a nenhuma equipa (no caso da remoção), é apresentado um aviso e a caso de uso termina.
 
-SD:
+**SD:**
 
-![2053_AssociarRemoverColaboradorEquipa.svg](2053_AssociarRemoverColaboradorEquipa.svg)
+![2053_AssociacaoRemocaoColaboradorEquipa.svg](2053_AssociacaoRemocaoColaboradorEquipa.svg)
 
 ## 3.2. Padrões Aplicados
 

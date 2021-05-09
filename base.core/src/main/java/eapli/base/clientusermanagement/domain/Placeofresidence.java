@@ -71,4 +71,29 @@ public class Placeofresidence implements ValueObject {
                 ", floorNUmber=" + floorNUmber +
                 ", PostalCode='" + PostalCode;
     }
+
+    public String country() {
+        return country;
+    }
+    public String county() {
+        return county;
+    }
+    public String district() {
+        return District;
+    }
+    public String city() {
+        return City;
+    }
+    public String street() {
+        return street;
+    }
+    public String postalCode() {
+        return PostalCode;
+    }
+    public Long doorNumber() {
+        return doorNumber;
+    }
+    public Long floorNUmber() {
+        return floorNUmber;
+    }
 }

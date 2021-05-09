@@ -11,11 +11,11 @@ Este caso de uso pretende permitir a especificação de um colaborador. Onde seu
 
 ## 2.1 Pré-requisito
 
-Funções já definidas
+* Funções já definidas
 
 ## 2.2 Pós-requisito
 
-Colaborador Especificado
+* Colaborador Especificado
 
 # 3. Design
 
@@ -25,7 +25,7 @@ O diagrama doptado foi o diagrama de sequência, a fim de descrever o fluxo de r
 
 Quando o ator inicia o caso de uso: o sistema solicita os dados pessoais do colaborador, os dados são validados. É apresentada a lista de funções para a indicação da mesma. E pode indicar o responsável hierárquico, se for o caso. Tendo concluído todas estas etapas corretamente, o colaborador é especificado com sucesso.
 
-SD:
+**SD:**
 
 ![2051_EspecificarColaborador.svg](2051_EspecificarColaborador.svg)
 
