@@ -1,11 +1,9 @@
 package eapli.base.catalogmanagement.domain;
 
+import eapli.framework.general.domain.model.Description;
 import eapli.framework.validations.Preconditions;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Time;
 import java.util.Objects;
 
@@ -14,15 +12,17 @@ public class Objective  {
     @Id
     @GeneratedValue
     private Long id;
-    private Time maxTime;
-    private Time averageTime;
+    @AttributeOverride(name = "value", column = @Column(name = "maxTime"))
+    private Description maxTime;
+    @AttributeOverride(name = "value", column = @Column(name = "averageTime"))
+    private Description averageTime;
     private Step step;
 
 
     public Objective() {
     }
 
-    public Objective(final Time maxTime,final Time averageTime,final Step step) {
+    public Objective(final Description maxTime,final Description averageTime,final Step step) {
         Preconditions.noneNull(maxTime, averageTime, step);
         this.maxTime = maxTime;
         this.averageTime = averageTime;
@@ -34,12 +34,12 @@ public class Objective  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Objective objective = (Objective) o;
-        return id.equals(objective.id) && maxTime.equals(objective.maxTime) && averageTime.equals(objective.averageTime) && step == objective.step;
+        return maxTime.equals(objective.maxTime) && averageTime.equals(objective.averageTime) && step == objective.step;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, maxTime, averageTime, step);
+        return Objects.hash( maxTime, averageTime, step);
     }
 
     @Override

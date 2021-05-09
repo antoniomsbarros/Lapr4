@@ -41,7 +41,9 @@ public class CreateCatalogController {
             catalogBuilder.withTittle(title).withShortDescription(shortdescription)
                     .withLongDescription(longdescription).withIcone(icone).withTeam(team)
                     .withResponsibleCollaborator(responsiblecollaborator);
-            return catalogRepository.save(catalogBuilder.build());
+            Catalog c = catalogBuilder.build();
+            System.out.println(c);
+            return catalogRepository.save(c);
     }
 
     public Iterable<ClientUser> allColaborators(){
