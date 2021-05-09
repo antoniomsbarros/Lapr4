@@ -4,7 +4,6 @@ import eapli.framework.general.domain.model.Description;
 import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
-import java.sql.Time;
 import java.util.Objects;
 
 @Entity

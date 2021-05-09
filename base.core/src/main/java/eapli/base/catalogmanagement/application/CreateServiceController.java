@@ -14,22 +14,24 @@ import eapli.base.ordermanagement.domain.TypeofData;
 import eapli.base.ordermanagement.domain.repository.FormRepository;
 import eapli.framework.general.domain.model.Description;
 import eapli.base.ordermanagement.domain.FormBuilder;
+import eapli.framework.infrastructure.authz.application.AuthorizationService;
+import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class CreateServiceController {
 
+    private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final CatalogRepository catalogRepository = PersistenceContext.repositories().catalogs();
     private final FormRepository formRepository = PersistenceContext.repositories().forms();
     private final ServiceRepository serviceRepository = PersistenceContext.repositories().services();
     private ServiceBuilder serviceBuilder;
     private FormBuilder formBuilder;
     private AttributeBuilder attributeBuilder;
-    private Set<Keyword> lstKeywords;
+    private Set<Keyword> lstKeywords = new HashSet<>();
     private Description feedback;
-    private List<Attribute> lstAttribute;
-    private List<Form> lstForm;
+    private List<Attribute> lstAttribute = new ArrayList<>();
+    private List<Form> lstForm = new ArrayList<>();
 
     public void createService(Description title,Description smalldescription, Description fulldescription, Description icon){
         serviceBuilder.withTitle(title);
@@ -58,8 +60,13 @@ public class CreateServiceController {
         return catalogRepository.getAllCatalogs();
     }
 
+    public Optional<Catalog> getCatalogByIdentifier(Long id) {
+        return catalogRepository.findByIdentifier(id);
+    }
+
     public void addForm(Description name) {
         formBuilder.withName(name);
+        this.lstAttribute = new ArrayList<>();
     }
 
     public void addAttribute(Description description, Description name, Description label, Description regularexpression, Description script) {
@@ -82,8 +89,9 @@ public class CreateServiceController {
         return formRepository.save(f);
     }
 
-    public Service saveService() {
+    public Service saveService(Optional<Catalog> choosenCatalog ) {
         serviceBuilder.withForm(lstForm);
+        serviceBuilder.withCatalog(choosenCatalog.get());
         return serviceRepository.save(serviceBuilder.build());
     }
 

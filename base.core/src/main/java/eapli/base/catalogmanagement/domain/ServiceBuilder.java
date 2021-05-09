@@ -64,15 +64,15 @@ public class ServiceBuilder implements DomainFactory<Service> {
         return this;
     }
 
-    public ServiceBuilder withCriticalityLevel(Criticalitylevel c) {
+    /*public ServiceBuilder withCriticalityLevel(Criticalitylevel c) {
         this.criticalitylevel = c;
         return this;
-    }
-
+    }*/
+    /*
     public ServiceBuilder withWorkflow(Workflow w) {
         this.workflow = w;
         return this;
-    }
+    }*/
 
     public ServiceBuilder withForm(List<Form> f) {
         this.form = f;
@@ -81,8 +81,8 @@ public class ServiceBuilder implements DomainFactory<Service> {
 
     @Override
     public Service build() {
-        return new Service(this.form,this.criticalitylevel,this.title,this.fulldescription,this.smalldescription, this.requirefeedback,
-                            this.keyword, this.icon, this.catalog, this.workflow);
+        return new Service(this.form,/*this.criticalitylevel,*/this.title,this.fulldescription,this.smalldescription, this.requirefeedback,
+                            this.keyword, this.icon, this.catalog/*, this.workflow*/);
     }
 
 }

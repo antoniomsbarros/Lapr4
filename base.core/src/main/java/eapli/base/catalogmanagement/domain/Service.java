@@ -30,31 +30,32 @@ public class Service implements AggregateRoot<Long> {
 
     @AttributeOverride(name = "value", column = @Column(name = "requirefeedback"))
     private String requirefeedback;
+    @AttributeOverride(name = "value", column = @Column(name = "icon"))
+    private Description icon;
 
     @ElementCollection
     private Set<Keyword> keyword;
 
 
-    private Description icon;
 
 
     @OneToOne(optional = false)
     private Catalog catalog;
-
+/*
     @OneToOne(optional = false)
     private Criticalitylevel criticalitylevel;
 
     @OneToOne()
-    private Workflow workflow;
+    private Workflow workflow;*/
     @OneToMany()
     private List<Form> form;
     public Service() {
     }
 
-    public Service(final List<Form> form,final Criticalitylevel criticalitylevel, final Description title,final Description fulldescription,
+    public Service(final List<Form> form,/*final Criticalitylevel criticalitylevel,*/ final Description title,final Description fulldescription,
                    final Description smalldescription,final String requirefeedback, final Set<Keyword> keyword,
-                   final Description icon,final Catalog catalog,Workflow workflow) {
-        Preconditions.noneNull(form,title,fulldescription, smalldescription, keyword,catalog, criticalitylevel);
+                   final Description icon,final Catalog catalog/*,Workflow workflow*/) {
+        Preconditions.noneNull(form,title,fulldescription, smalldescription, keyword,catalog/*, criticalitylevel*/);
         if (title.length()>50){
             throw new IllegalArgumentException("the title of the service is superior to 50 caracters");
         }
@@ -72,8 +73,8 @@ public class Service implements AggregateRoot<Long> {
         this.keyword = keyword;
         this.icon = icon;
         this.catalog = catalog;
-        this.criticalitylevel=criticalitylevel;
-        this.workflow=workflow;
+        //this.criticalitylevel=criticalitylevel;
+        //this.workflow=workflow;
     }
 
 
@@ -89,7 +90,7 @@ public class Service implements AggregateRoot<Long> {
         return identity().equals(service.identity()) && title.equals(service.title)
                 && fulldescription.equals(service.fulldescription) && smalldescription.equals(service.smalldescription)
                 && requirefeedback.equals(service.requirefeedback) && keyword.equals(service.keyword)
-                && catalog.equals(service.catalog) && workflow.sameAs(service.workflow);
+                && catalog.equals(service.catalog);
     }
 
     @Override

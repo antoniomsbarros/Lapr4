@@ -104,6 +104,11 @@ public class MainMenu extends AbstractUI {
     private static final int SETTINGS_OPTION = 3;
     private static final int COLLABORATOR_OPTION = 4;
     private static final int CATALOG_OPTION = 5;
+    // HEAD
+    private static final int SERVICE_OPTION = 6;
+    private static final int CRITICALITYLEVEL_OPTION = 7;
+
+
     private static final int TEAM_OPTION=6;
     //CATALOG
     private static final int CREATE_CATALOG_OPTIOM = 1;
@@ -159,6 +164,12 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(COLLABORATOR_OPTION, collaboratorMenu);
             final Menu catalogMenu = builderCatalogMenu();
             mainMenu.addSubMenu(CATALOG_OPTION, catalogMenu);
+
+            final Menu serviceMenu = builderServiceMenu();
+            mainMenu.addSubMenu(SERVICE_OPTION, serviceMenu);
+            final Menu criticalityMenu = builderCriticalitylevelMenu();
+            mainMenu.addSubMenu(CRITICALITYLEVEL_OPTION, criticalityMenu);
+
             final Menu teamMenu=builderTeamMenu();
             mainMenu.addSubMenu(TEAM_OPTION, teamMenu);
         }
@@ -202,10 +213,25 @@ public class MainMenu extends AbstractUI {
 
         return menu;
     }
-    private Menu builderTeamMenu(){
+    private Menu builderTeamMenu() {
         final Menu menu = new Menu("Team >");
 
         menu.addItem(CREATE_TEAM_OPTIOM, "Create Team", new RegisterTeamUI()::show);
+        return menu;
+    }
+
+    private Menu builderServiceMenu(){
+        final Menu menu = new Menu("Service >");
+
+        menu.addItem(CREATE_CATALOG_OPTIOM, "Create Service ", new CreateServiceUI()::show);
+
+        return menu;
+    }
+
+    private Menu builderCriticalitylevelMenu(){
+        final Menu menu = new Menu("Criticality Level >");
+
+        menu.addItem(CREATE_CATALOG_OPTIOM, "Create Criticality Level", new CreateCriticalityLevelUI()::show);
 
         return menu;
     }
