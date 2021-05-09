@@ -19,15 +19,15 @@ public class Criticalitylevel implements AggregateRoot<Long> {
     private Description value;
     @AttributeOverride(name = "value", column = @Column(name = "tag"))
     private Description tag;
-
-    private Color color;
+    @AttributeOverride(name = "value", column = @Column(name = "color"))
+    private Description color;
     @OneToOne()
     private Objective objective;
 
     public Criticalitylevel() {
     }
 
-    public Criticalitylevel(final Description value, final Description tag,final Color color,final Objective objective) {
+    public Criticalitylevel(final Description value, final Description tag,final Description color,final Objective objective) {
         Preconditions.noneNull(value,tag,color,objective);
         this.value = value;
         this.tag = tag;

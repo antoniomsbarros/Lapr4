@@ -11,7 +11,7 @@ public class CriticalitylevelBuilder implements DomainFactory<Criticalitylevel> 
 
     private Description tag;
 
-    private Color color;
+    private Description color;
 
     private Objective objective;
 
@@ -25,7 +25,7 @@ public class CriticalitylevelBuilder implements DomainFactory<Criticalitylevel> 
         return this;
     }
 
-    public CriticalitylevelBuilder withColor(Color color) {
+    public CriticalitylevelBuilder withColor(Description color) {
         this.color = color;
         return this;
     }

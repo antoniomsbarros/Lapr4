@@ -23,15 +23,12 @@
  */
 package eapli.base.app.backoffice.console.presentation;
 
-import eapli.base.app.backoffice.console.presentation.clientuser.AssociateRemoveCollaboratorTeamAction;
-import eapli.base.app.backoffice.console.presentation.clientuser.CreateCatalogUI;
-import eapli.base.app.backoffice.console.presentation.clientuser.SpecifyCollaboratorAction;
+import eapli.base.app.backoffice.console.presentation.clientuser.*;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
 import eapli.base.Application;
 import eapli.base.app.backoffice.console.presentation.authz.AddUserUI;
 import eapli.base.app.backoffice.console.presentation.authz.DeactivateUserAction;
 import eapli.base.app.backoffice.console.presentation.authz.ListUsersAction;
-import eapli.base.app.backoffice.console.presentation.clientuser.AcceptRefuseSignupRequestAction;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.actions.Actions;
 import eapli.framework.actions.menu.Menu;
@@ -107,6 +104,7 @@ public class MainMenu extends AbstractUI {
     private static final int SETTINGS_OPTION = 3;
     private static final int COLLABORATOR_OPTION = 4;
     private static final int CATALOG_OPTION = 5;
+    private static final int CRITICALITYLEVEL_OPTION = 6;
 
     //CATALOG
     private static final int CREATE_CATALOG_OPTIOM = 1;
@@ -162,6 +160,8 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(COLLABORATOR_OPTION, collaboratorMenu);
             final Menu catalogMenu = builderCatalogMenu();
             mainMenu.addSubMenu(CATALOG_OPTION, catalogMenu);
+            final Menu criticalityMenu = builderCriticalitylevelMenu();
+            mainMenu.addSubMenu(CRITICALITYLEVEL_OPTION, criticalityMenu);
         }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
@@ -200,6 +200,14 @@ public class MainMenu extends AbstractUI {
         final Menu menu = new Menu("Catalog >");
 
         menu.addItem(CREATE_CATALOG_OPTIOM, "Create Catalog", new CreateCatalogUI()::show);
+
+        return menu;
+    }
+
+    private Menu builderCriticalitylevelMenu(){
+        final Menu menu = new Menu("Criticality Level >");
+
+        menu.addItem(CREATE_CATALOG_OPTIOM, "Create Criticality Level", new CreateCriticalityLevelUI()::show);
 
         return menu;
     }

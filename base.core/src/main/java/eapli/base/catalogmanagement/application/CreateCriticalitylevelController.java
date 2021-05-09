@@ -15,8 +15,9 @@ public class CreateCriticalitylevelController {
     private CriticalitylevelBuilder criticalityBuilder;
     private final CriticalityLevelRepository criticalityRepository = PersistenceContext.repositories().criticalityLevels();
 
-    public Criticalitylevel createCriticalityLevel(Description value, Description tag, Color color, Time maxTime, Time averageTime, Step step) {
+    public Criticalitylevel createCriticalityLevel(Description value, Description tag, Description color, Description maxTime, Description averageTime, Step step) {
         Objective objective = new Objective(maxTime, averageTime, step);
+        System.out.println(objective);
         criticalityBuilder.withValue(value);
         criticalityBuilder.withTag(tag);
         criticalityBuilder.withColor(color);
