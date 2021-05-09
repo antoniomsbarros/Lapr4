@@ -2,10 +2,8 @@ package eapli.base.catalogmanagement.domain;
 
 
 import eapli.base.ordermanagement.domain.Form;
-import eapli.base.ordermanagement.domain.Ticket;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.general.domain.model.Description;
-import eapli.framework.general.domain.model.Designation;
 import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
@@ -30,6 +28,9 @@ public class Service implements AggregateRoot<Long> {
     @AttributeOverride(name = "value", column = @Column(name = "smalldescription"))
     private  Description smalldescription;
 
+    @AttributeOverride(name = "value", column = @Column(name = "requirefeedback"))
+    private String requirefeedback;
+
     @ElementCollection
     private Set<Keyword> keyword;
 
@@ -51,7 +52,7 @@ public class Service implements AggregateRoot<Long> {
     }
 
     public Service(final List<Form> form,final Criticalitylevel criticalitylevel, final Description title,final Description fulldescription,
-                   final Description smalldescription,final Set<Keyword> keyword,
+                   final Description smalldescription,final String requirefeedback, final Set<Keyword> keyword,
                    final Description icon,final Catalog catalog,Workflow workflow) {
         Preconditions.noneNull(form,title,fulldescription, smalldescription, keyword,catalog, criticalitylevel);
         if (title.length()>50){
@@ -67,6 +68,7 @@ public class Service implements AggregateRoot<Long> {
         this.title = title;
         this.fulldescription = fulldescription;
         this.smalldescription = smalldescription;
+        this.requirefeedback = requirefeedback;
         this.keyword = keyword;
         this.icon = icon;
         this.catalog = catalog;
@@ -86,7 +88,8 @@ public class Service implements AggregateRoot<Long> {
         }
         return identity().equals(service.identity()) && title.equals(service.title)
                 && fulldescription.equals(service.fulldescription) && smalldescription.equals(service.smalldescription)
-                && keyword.equals(service.keyword)  && catalog.equals(service.catalog) && workflow.sameAs(service.workflow);
+                && requirefeedback.equals(service.requirefeedback) && keyword.equals(service.keyword)
+                && catalog.equals(service.catalog) && workflow.sameAs(service.workflow);
     }
 
     @Override
@@ -101,19 +104,20 @@ public class Service implements AggregateRoot<Long> {
         Service service = (Service) o;
         return uniquecode.equals(service.uniquecode) && title.equals(service.title)
                 && fulldescription.equals(service.fulldescription) && smalldescription.equals(service.smalldescription)
-                && keyword.equals(service.keyword)  && icon.equals(service.icon)
-                 && catalog.equals(service.catalog);
+                && requirefeedback.equals(service.requirefeedback) && keyword.equals(service.keyword)
+                && icon.equals(service.icon) && catalog.equals(service.catalog);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uniquecode, title, fulldescription, smalldescription, keyword, icon, catalog);
+        return Objects.hash(uniquecode, title, fulldescription, smalldescription, requirefeedback, keyword, icon, catalog);
     }
 
     @Override
     public String toString() {
         return "uniquecode=" + uniquecode.toString() + ", title=" + title.toString() + ", fulldescription=" + fulldescription.toString() +
-                ", smalldescription=" + smalldescription.toString() + ", keyword=" + keyword.toString() +
+                ", smalldescription=" + smalldescription.toString() + ", requireFeedback=" + requirefeedback.toString() +
+                ", keyword=" + keyword.toString() +
                 ", icon=" + icon.toString() + ", catalog=" + catalog.toString();
     }
 }

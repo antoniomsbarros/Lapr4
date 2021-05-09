@@ -1,6 +1,5 @@
 package eapli.base.ordermanagement.domain;
 
-import eapli.framework.domain.model.DomainFactory;
 import eapli.framework.general.domain.model.Description;
 
 public class AttributeBuilder{
@@ -11,7 +10,9 @@ public class AttributeBuilder{
 
     private Description label;
 
-    private Description responce;
+    private Description regularexpression;
+
+    private Description script;
 
     private TypeofData typeofData;
 
@@ -30,8 +31,13 @@ public class AttributeBuilder{
         return this;
     }
 
-    public AttributeBuilder withResponce(Description responce) {
-        this.responce = responce;
+    public AttributeBuilder withRegularExpression(Description regularexpression) {
+        this.regularexpression = regularexpression;
+        return this;
+    }
+
+    public AttributeBuilder withScript(Description script) {
+        this.script = script;
         return this;
     }
 
@@ -41,6 +47,6 @@ public class AttributeBuilder{
     }
 
     public Attribute build() {
-        return new Attribute(this.description, this.name, this.label, this.responce, this.typeofData);
+        return new Attribute(this.description, this.name, this.label, this.regularexpression, this.script, this.typeofData);
     }
 }

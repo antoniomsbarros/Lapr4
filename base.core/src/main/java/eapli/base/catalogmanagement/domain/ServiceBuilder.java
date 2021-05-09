@@ -13,7 +13,9 @@ public class ServiceBuilder implements DomainFactory<Service> {
 
     private Description fulldescription;
 
-    private  Description smalldescription;
+    private Description smalldescription;
+
+    private String requirefeedback;
 
     private Set<Keyword> keyword;
 
@@ -39,6 +41,11 @@ public class ServiceBuilder implements DomainFactory<Service> {
 
     public ServiceBuilder withSmallDescription(Description d) {
         this.smalldescription = d;
+        return this;
+    }
+
+    public ServiceBuilder withRequireFeedback(String f) {
+        this.requirefeedback = f;
         return this;
     }
 
@@ -74,7 +81,7 @@ public class ServiceBuilder implements DomainFactory<Service> {
 
     @Override
     public Service build() {
-        return new Service(this.form,this.criticalitylevel,this.title,this.fulldescription,this.smalldescription,
+        return new Service(this.form,this.criticalitylevel,this.title,this.fulldescription,this.smalldescription, this.requirefeedback,
                             this.keyword, this.icon, this.catalog, this.workflow);
     }
 
