@@ -15,7 +15,8 @@ import eapli.framework.presentation.console.SelectWidget;
 public class AssociateRemoveCollaboratorTeamUI extends AbstractUI {
 
     private final AssociateRemoveCollaboratorTeamController associateRemoveCollaboratorTeamController = new AssociateRemoveCollaboratorTeamController();
-    private boolean valida = false;
+    private boolean opValida = false;
+    private boolean opValidaRemove = false;
     @Override
     protected boolean doShow() {
 
@@ -46,15 +47,35 @@ public class AssociateRemoveCollaboratorTeamUI extends AbstractUI {
                     } catch (IllegalArgumentException|IllegalAccessException e){
                         System.out.println(e);
                     }
-                    valida = true;
+                    opValida = true;
                     break;
                 case 2:
-                    System.out.println("Without link yet");
-                    valida = true;
+                    do {
+                        System.out.println("Search by:");
+                        System.out.println("1.Collaborator");
+                        System.out.println("2.Team");
+                        System.out.println("0. Exit");
+
+                        final int opRemove = Console.readInteger("Search Option= ");
+                        switch (opRemove){
+                            case 0: return false;
+                            case 1:
+
+                                opValidaRemove = true;
+                                break;
+                            case 2:
+
+                                //opValidaRemove = true;
+                                break;
+                            default: opValidaRemove = false;
+                        }
+                    }while (!opValidaRemove);
+
+                    opValida = true;
                     break;
-                default: valida = false;
+                default: opValida = false;
             }
-        }while (!valida);
+        }while (!opValida);
 
         return false;
     }

@@ -62,8 +62,10 @@ public class MainMenu extends AbstractUI {
     private static final int LIST_USERS_OPTION = 2;
     private static final int DEACTIVATE_USER_OPTION = 3;
     private static final int ACCEPT_REFUSE_SIGNUP_REQUEST_OPTION = 4;
-    private static final int SPECIFY_COLLABORATOR_OPTION = 5;
-    private static final int ASSOCIATE_REMOVE_COLLABORATOR_TEAM_OPTION = 6;
+
+    // COLLABORATORS
+    private static final int SPECIFY_COLLABORATOR_OPTION = 1;
+    private static final int ASSOCIATE_REMOVE_COLLABORATOR_TEAM_OPTION = 2;
 
     // SETTINGS
     private static final int SET_KITCHEN_ALERT_LIMIT_OPTION = 1;
@@ -102,7 +104,8 @@ public class MainMenu extends AbstractUI {
     // MAIN MENU
     private static final int MY_USER_OPTION = 1;
     private static final int USERS_OPTION = 2;
-    private static final int SETTINGS_OPTION = 4;
+    private static final int SETTINGS_OPTION = 3;
+    private static final int COLLABORATOR_OPTION = 4;
     private static final int CATALOG_OPTION = 5;
 
     //CATALOG
@@ -155,6 +158,8 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(USERS_OPTION, usersMenu);
             final Menu settingsMenu = buildAdminSettingsMenu();
             mainMenu.addSubMenu(SETTINGS_OPTION, settingsMenu);
+            final Menu collaboratorMenu = builderCollaboratorMenu();
+            mainMenu.addSubMenu(COLLABORATOR_OPTION, collaboratorMenu);
             final Menu catalogMenu = builderCatalogMenu();
             mainMenu.addSubMenu(CATALOG_OPTION, catalogMenu);
         }
@@ -186,10 +191,6 @@ public class MainMenu extends AbstractUI {
         menu.addItem(DEACTIVATE_USER_OPTION, "Deactivate User", new DeactivateUserAction());
         menu.addItem(ACCEPT_REFUSE_SIGNUP_REQUEST_OPTION, "Accept/Refuse Signup Request",
                 new AcceptRefuseSignupRequestAction());
-        menu.addItem(SPECIFY_COLLABORATOR_OPTION, "Specify Collaborator",
-                new SpecifyCollaboratorAction());
-        menu.addItem(ASSOCIATE_REMOVE_COLLABORATOR_TEAM_OPTION, "Associate/Remove Collaborator-Team",
-                new AssociateRemoveCollaboratorTeamAction());
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
@@ -203,6 +204,17 @@ public class MainMenu extends AbstractUI {
         return menu;
     }
 
+    private Menu builderCollaboratorMenu(){
+        final Menu menu = new Menu("Collaborator >");
+
+        menu.addItem(SPECIFY_COLLABORATOR_OPTION, "Specify Collaborator",
+                new SpecifyCollaboratorAction());
+        menu.addItem(ASSOCIATE_REMOVE_COLLABORATOR_TEAM_OPTION, "Associate/Remove Collaborator-Team",
+                new AssociateRemoveCollaboratorTeamAction());
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
 
 
 

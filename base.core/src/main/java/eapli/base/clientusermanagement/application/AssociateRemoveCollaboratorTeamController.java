@@ -5,6 +5,7 @@ import eapli.base.clientusermanagement.domain.MecanographicNumber;
 import eapli.base.clientusermanagement.dto.ClientUserDTO;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
+import eapli.base.teamManagement.application.ListTeamService;
 import eapli.base.teamManagement.domain.Team;
 import eapli.base.teamManagement.domain.Uniquecode;
 import eapli.base.teamManagement.dto.TeamDTO;
@@ -23,12 +24,12 @@ public class AssociateRemoveCollaboratorTeamController {
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final ClientUserRepository collaboratorRepository = PersistenceContext.repositories().clientUsers();
     private final TeamRepository teamRepository = PersistenceContext.repositories().team();
-    private ClientUserService collaborators =  new ClientUserService();
-    private ListTeamService teams = new ListTeamService();
+    private final ClientUserService collaborators =  new ClientUserService();
+    private final ListTeamService teams = new ListTeamService();
 
     public void associateCollaboratorTeamController(String collaboratorID, String teamID) throws IllegalAccessException {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER,
-                BaseRoles.MENU_MANAGER);
+                BaseRoles.RRH_MANAGER);
 
         Optional<ClientUser> collaborator = collaboratorRepository.findByMecanographicNumber(new MecanographicNumber(collaboratorID));
         Optional<Team> team = teamRepository.ofIdentity(new Uniquecode(teamID));
@@ -52,7 +53,6 @@ public class AssociateRemoveCollaboratorTeamController {
             throw new IllegalAccessException("Collaborator or Team does not exist!");
         }
 
-
     }
 
     public Iterable<ClientUserDTO> collaboratorList(){
@@ -63,13 +63,40 @@ public class AssociateRemoveCollaboratorTeamController {
         return teams.teamListWithoutThisCollaborrator(new MecanographicNumber(collaboratorID));
     }
 
-    public void removeCollaboratorTeamController(){
+    public void removeCollaboratorTeamController(String collaboratorID, String teamID){
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER,
-                BaseRoles.MENU_MANAGER);
+                BaseRoles.RRH_MANAGER);
+
+        Optional<ClientUser> collaborator = collaboratorRepository.findByMecanographicNumber(new MecanographicNumber(collaboratorID));
+        Optional<Team> team = teamRepository.ofIdentity(new Uniquecode(teamID));
+/*
+        if (collaborator.isPresent() && team.isPresent()){
+            if (collaborator.get().belongToThisTeamType(team.get())){
+                throw new IllegalArgumentException("Collaborator already belongs to this team type");
+            }
+            else {
+                collaborator.get().addTeam(team.get());
+                team.get().addCollaborator(collaborator.get());
+
+                collaboratorRepository.delete(collaborator.get());
+                collaboratorRepository.save(collaborator.get());
+
+                teamRepository.delete(team.get());
+                teamRepository.save(team.get());
+            }
+        }*/
     }
 
     public Iterable<TeamDTO> teamList(){
         return teams.teams();
+    }
+
+    public Iterable<TeamDTO> collaboratorTeams(String collaboratorID){
+        return collaborators.collaboratorTeams(new MecanographicNumber(collaboratorID));
+    }
+
+    public Iterable<ClientUserDTO> teamCollaborators(String teamid){
+        return teams.teamCollaborators(new Uniquecode(teamid));
     }
 }
 

@@ -95,4 +95,8 @@ public class Team implements AggregateRoot<Uniquecode>{
         collaboratorList.add(clientUser);
     }
 
+    public Set<ClientUser> collaboratorList() {
+        return collaboratorList;
+    }
+
 }

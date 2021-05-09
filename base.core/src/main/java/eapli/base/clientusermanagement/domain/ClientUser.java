@@ -173,6 +173,9 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         return this.mecanographicNumber;
     }
 
+    public List<Team> teamList() {
+        return list;
+    }
     @Override
     public String toString() {
         return "ClientUser{" +

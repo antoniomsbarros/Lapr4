@@ -83,16 +83,6 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
 
 	@Override
 	public TeamTypeRepository teamTypes() {
-		return null;
-	}
-
-	@Override
-	public TeamTypeRepository teamTypes(TransactionalContext autoTx) {
-		return null;
-	}
-
-	@Override
-	public TeamTypeRepository teamTypes() {
 		return new InMemoryTeamTypeRepository();
 	}
 
