@@ -4,7 +4,7 @@ import eapli.base.catalogmanagement.application.CreateCatalogController;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
-import sun.security.krb5.internal.crypto.Des;
+//import sun.security.krb5.internal.crypto.Des;
 
 public class CreateCatalogUI extends AbstractUI {
     CreateCatalogController coontroller;

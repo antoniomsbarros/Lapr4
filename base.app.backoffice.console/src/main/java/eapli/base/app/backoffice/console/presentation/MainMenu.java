@@ -23,6 +23,7 @@
  */
 package eapli.base.app.backoffice.console.presentation;
 
+import eapli.base.app.backoffice.console.presentation.clientuser.AssociateRemoveCollaboratorTeamAction;
 import eapli.base.app.backoffice.console.presentation.clientuser.SpecifyCollaboratorAction;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
 import eapli.base.Application;
@@ -61,6 +62,7 @@ public class MainMenu extends AbstractUI {
     private static final int DEACTIVATE_USER_OPTION = 3;
     private static final int ACCEPT_REFUSE_SIGNUP_REQUEST_OPTION = 4;
     private static final int SPECIFY_COLLABORATOR_OPTION = 5;
+    private static final int ASSOCIATE_REMOVE_COLLABORATOR_TEAM_OPTION = 6;
 
     // SETTINGS
     private static final int SET_KITCHEN_ALERT_LIMIT_OPTION = 1;
@@ -183,6 +185,8 @@ public class MainMenu extends AbstractUI {
                 new AcceptRefuseSignupRequestAction());
         menu.addItem(SPECIFY_COLLABORATOR_OPTION, "Specify Collaborator",
                 new SpecifyCollaboratorAction());
+        menu.addItem(ASSOCIATE_REMOVE_COLLABORATOR_TEAM_OPTION, "Associate/Remove Collaborator-Team",
+                new AssociateRemoveCollaboratorTeamAction());
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;
