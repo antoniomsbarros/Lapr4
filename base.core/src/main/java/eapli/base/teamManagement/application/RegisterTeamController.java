@@ -3,10 +3,7 @@ package eapli.base.teamManagement.application;
 import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
-import eapli.base.teamManagement.domain.Acronym;
-import eapli.base.teamManagement.domain.Team;
-import eapli.base.teamManagement.domain.TeamType;
-import eapli.base.teamManagement.domain.Uniquecode;
+import eapli.base.teamManagement.domain.*;
 import eapli.base.teamManagement.repositories.TeamRepository;
 import eapli.base.teamManagement.repositories.TeamTypeRepository;
 import eapli.base.usermanagement.domain.BaseRoles;
@@ -19,20 +16,35 @@ import eapli.framework.validations.Preconditions;
 import java.util.Set;
 
 @UseCaseController
-public class TeamController {
+public class RegisterTeamController {
 
 private TeamRepository teamRepository= PersistenceContext.repositories().team();
 private final AuthorizationService authorizationService = AuthzRegistry.authorizationService();
 private final TeamTypeRepository teamTypeRepository=PersistenceContext.repositories().teamTypes();
 private ClientUserRepository collobaroters =PersistenceContext.repositories().clientUsers();
 
-public Team registerTeam(final Uniquecode uniquecode, final ClientUser responsable,
-                         final Set<ClientUser> collaboratorList, final Designation designacaoEquipa,
-                         final Acronym acronimoEquipa, final TeamType teamType) {
+public Team registerTeam(final String uniquecode, final ClientUser responsable,
+                         final Set<ClientUser> collaboratorList, final String designacaoEquipa,
+                         final String acronimoEquipa, final TeamType teamType) {
 
     authorizationService.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER);
-    final Team newTeam=new Team(uniquecode, responsable,collaboratorList, designacaoEquipa, acronimoEquipa, teamType);
-    return teamRepository.save(newTeam);
+    final TeamBuilder teamBuilder=new TeamBuilder();
+    teamBuilder.withDesignationTeam(designacaoEquipa).withteamAcronym(acronimoEquipa).withUniqueCode(uniquecode)
+            .withTeamType(teamType).withResponsable(responsable).withCollaboratorList(collaboratorList);
+
+    return teamRepository.save(teamBuilder.build());
 
     }
+    public Iterable<ClientUser> allColaborators(){
+        return collobaroters.findAll();
+    }
+    public Iterable<Team> allTeams(){
+        return teamRepository.findAll();
+    }
+    public Iterable<TeamType> allteamTypes(){
+    return teamTypeRepository.findAll();
+    }
+
+
+
 }
