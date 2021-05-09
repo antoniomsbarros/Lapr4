@@ -197,4 +197,18 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
                 placeofresidence.country(), placeofresidence.county(), placeofresidence.district(), placeofresidence.city(),
                 placeofresidence.street(), placeofresidence.doorNumber(), placeofresidence.floorNUmber(), placeofresidence.postalCode());
     }
+
+    public boolean belongToThisTeamType(Team team) {
+
+        for (Team t:list){
+            if (t.teamType().sameAs(team.teamType())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addTeam(Team team) {
+        list.add(team);
+    }
 }

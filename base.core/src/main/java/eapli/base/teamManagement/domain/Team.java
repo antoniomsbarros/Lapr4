@@ -88,4 +88,11 @@ public class Team implements AggregateRoot<Uniquecode>{
     public TeamDTO toDTO(){
         return new TeamDTO(uniquecode.Code(), designationTeam.toString(), teamAcronym.AcronymName());
     }
+
+    public boolean exist (ClientUser clientUser){ return collaboratorList.contains(clientUser); }
+
+    public void addCollaborator(ClientUser clientUser) {
+        collaboratorList.add(clientUser);
+    }
+
 }
