@@ -1,10 +1,12 @@
 package eapli.base.persistence.impl.inmemory;
 
 import eapli.base.catalogmanagement.repository.CatalogRepository;
+import eapli.base.catalogmanagement.repository.ServiceRepository;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.infrastructure.bootstrapers.BaseBootstrapper;
 import eapli.base.infrastructure.persistence.RepositoryFactory;
+import eapli.base.ordermanagement.domain.repository.FormRepository;
 import eapli.base.teamManagement.repositories.TeamRepository;
 import eapli.base.teamManagement.repositories.TeamTypeRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
@@ -56,6 +58,21 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
 
 	@Override
 	public CatalogRepository catalogs() {
+		return catalogs(null);
+	}
+
+
+	public CatalogRepository catalogs(final TransactionalContext tx){
+		return new InMemoryCatalogRepository();
+	}
+
+	@Override
+	public FormRepository forms() {
+		return null;
+	}
+
+	@Override
+	public ServiceRepository services() {
 		return null;
 	}
 

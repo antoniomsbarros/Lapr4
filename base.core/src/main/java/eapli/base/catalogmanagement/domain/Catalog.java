@@ -22,8 +22,8 @@ public class Catalog implements AggregateRoot<Long> {
     private Description longdescription;
     @AttributeOverride(name = "value", column = @Column(name = "title"))
     private Description title;
-
-    private ImageIcon icone;
+    @AttributeOverride(name = "value", column = @Column(name = "icone"))
+    private Description icone;
 
     @OneToMany()
     private List<Team> team;
@@ -36,18 +36,8 @@ public class Catalog implements AggregateRoot<Long> {
 
     }
 
-    //TODO verificar icone
-    //temporario
-    public Catalog(Description shortdescription, Description longdescription, Description title, List<Team> team, ClientUser responsiblecollaborator, Criticalitylevel criticalitylevel) {
-        this.shortdescription = shortdescription;
-        this.longdescription = longdescription;
-        this.title = title;
-        this.team = team;
-        this.responsiblecollaborator = responsiblecollaborator;
-        this.criticalitylevel = criticalitylevel;
-    }
 
-    public Catalog(Description title, Description shortdescription, Description longdescription, ImageIcon icone,
+    public Catalog(Description title, Description shortdescription, Description longdescription, Description icone,
                    List<Team> team, ClientUser responsiblecollaborator , Criticalitylevel criticalitylevel) {
         Preconditions.noneNull(responsiblecollaborator,title,icone,shortdescription, longdescription,team);
         if (shortdescription.toString().length()>40){
@@ -100,7 +90,7 @@ public class Catalog implements AggregateRoot<Long> {
     public  Description longdescription(){
         return  longdescription;
     }
-    public  ImageIcon icon (){
+    public  Description icon (){
         return  icone;
     }
     public ClientUser responsiblecollaborator(){

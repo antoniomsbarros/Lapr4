@@ -5,6 +5,7 @@ import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 
@@ -20,15 +21,18 @@ public class Attribute{
     private Description name;
     @AttributeOverride(name = "value", column = @Column(name = "label"))
     private Description label;
-    @AttributeOverride(name = "value", column = @Column(name = "responce"))
-    private Description responce;
+    @AttributeOverride(name = "value", column = @Column(name = "regularexpression"))
+    private Description regularexpression;
+    @AttributeOverride(name = "value", column = @Column(name = "script"))
+    private Description script;
+
     private TypeofData typeofData;
 
     public Attribute() {
     }
 
-    public Attribute(Description description, Description name, Description label, Description responce, TypeofData typeofData) {
-        Preconditions.noneNull(description, name, label, responce, typeofData);
+    public Attribute(Description description, Description name, Description label, Description regularexpression, Description script, TypeofData typeofData) {
+        Preconditions.noneNull(description, name, label, typeofData);
         if (description.toString().length()>100){
             throw new IllegalArgumentException(
                     "the complete description cant be more then 100 characters"
@@ -42,7 +46,8 @@ public class Attribute{
         this.description = description;
         this.name = name;
         this.label = label;
-        this.responce = responce;
+        this.regularexpression = regularexpression;
+        this.script = script;
         this.typeofData = typeofData;
     }
 
@@ -53,13 +58,14 @@ public class Attribute{
         Attribute attribute = (Attribute) o;
         return attributecode.equals(attribute.attributecode) &&
                 version.equals(attribute.version) && description.equals(attribute.description)
-                && name.equals(attribute.name) && label.equals(attribute.label) && responce.equals(attribute.responce)
+                && name.equals(attribute.name) && label.equals(attribute.label)
+                && regularexpression.equals(attribute.regularexpression) && script.equals(attribute.script)
                 && typeofData == attribute.typeofData;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(attributecode, version, description, name, label, responce, typeofData);
+        return Objects.hash(attributecode, version, description, name, label, regularexpression, script, typeofData);
     }
 
     @Override
@@ -67,7 +73,8 @@ public class Attribute{
         return ", description=" + description +
                 ", name=" + name +
                 ", label=" + label +
-                ", Responce=" + responce +
+                ", regularexpression=" + regularexpression +
+                ", script=" + script +
                 ", typeofData=" + typeofData;
     }
 }

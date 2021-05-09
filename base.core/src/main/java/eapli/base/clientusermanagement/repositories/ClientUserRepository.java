@@ -34,4 +34,6 @@ public interface ClientUserRepository
     }
 
     public Iterable<ClientUser> findAllActive();
+
+
 }
