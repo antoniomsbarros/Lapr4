@@ -69,6 +69,7 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 	@Override
 	public ServiceRepository services() {
 		return null;
+	}
 
 	public TeamTypeRepository teamTypes(TransactionalContext autoTx) {
 		return new JpaTeamTypesRepository(autoTx);
@@ -84,6 +85,4 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 	public TransactionalContext newTransactionalContext() {
 		return JpaAutoTxRepository.buildTransactionalContext(Application.settings().getPersistenceUnitName(), Application.settings().getExtendedPersistenceProperties());
 	}
-
-
 }
