@@ -80,7 +80,6 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 		return new JpaTeamTypesRepository(Application.settings().getPersistenceUnitName());
 	}
 
-
 	@Override
 	public TransactionalContext newTransactionalContext() {
 		return JpaAutoTxRepository.buildTransactionalContext(Application.settings().getPersistenceUnitName(), Application.settings().getExtendedPersistenceProperties());

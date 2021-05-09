@@ -211,7 +211,4 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         return false;
     }
 
-    public void addTeam(Team team) {
-        list.add(team);
-    }
 }
