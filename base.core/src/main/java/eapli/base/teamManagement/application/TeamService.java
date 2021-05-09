@@ -21,7 +21,7 @@ import java.util.Optional;
  *
  * @author marly
  */
-public class ListTeamService {
+public class TeamService {
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final TeamRepository teamRepository = PersistenceContext.repositories().team();
     private final ClientUserRepository clientUserRepository = PersistenceContext.repositories().clientUsers();

@@ -37,7 +37,7 @@ public class AssociateRemoveCollaboratorTeamUI extends AbstractUI {
                     final ClientUserDTO collaboratorDTO = collaboratorDTOSelectWidget.selectedElement();
 
                     final SelectWidget<TeamDTO> teamDTOSelectWidgets = new SelectWidget<>("Teams:",
-                            associateRemoveCollaboratorTeamController.teamList(), new teamDTOListWithoutThisCollaboratorPrinter());
+                            associateRemoveCollaboratorTeamController.teamList(), new teamDTOListPrinter());
                     teamDTOSelectWidgets.show();
                     final TeamDTO teamDTO = teamDTOSelectWidgets.selectedElement();
 
@@ -60,12 +60,39 @@ public class AssociateRemoveCollaboratorTeamUI extends AbstractUI {
                         switch (opRemove){
                             case 0: return false;
                             case 1:
+                                final SelectWidget<ClientUserDTO> collaboratorDTORemoveSelectWidgets = new SelectWidget<>("Collaborators:",
+                                        associateRemoveCollaboratorTeamController.collaboratorList(), new collaboratorDTOListPrinter());
+                                collaboratorDTORemoveSelectWidgets.show();
+                                final ClientUserDTO collaboratorDTORemove = collaboratorDTORemoveSelectWidgets.selectedElement();
+
+                                final SelectWidget<TeamDTO> teamDTORemoveSelectWidgets = new SelectWidget<>("Teams:",
+                                        associateRemoveCollaboratorTeamController.collaboratorTeams(collaboratorDTORemove.mecanographicNumber),
+                                        new teamDTOListPrinter());
+                                teamDTORemoveSelectWidgets.show();
+                                final TeamDTO teamDTORemove = teamDTORemoveSelectWidgets.selectedElement();
+
+                                    associateRemoveCollaboratorTeamController.removeCollaboratorTeamController(collaboratorDTORemove.mecanographicNumber,
+                                            teamDTORemove.uniquecode);
 
                                 opValidaRemove = true;
                                 break;
                             case 2:
+                                final SelectWidget<TeamDTO> teamDTORemoveSelectWidgets2 = new SelectWidget<>("Teams:",
+                                        associateRemoveCollaboratorTeamController.teamList(), new teamDTOListPrinter());
+                                teamDTORemoveSelectWidgets2.show();
+                                final TeamDTO teamDTORemove2 = teamDTORemoveSelectWidgets2.selectedElement();
 
-                                //opValidaRemove = true;
+                                final SelectWidget<ClientUserDTO> collaboratorDTORemoveSelectWidgets2 = new SelectWidget<>("Collaborators:",
+                                        associateRemoveCollaboratorTeamController.teamCollaborators(teamDTORemove2.uniquecode),
+                                        new collaboratorDTOListPrinter());
+                                collaboratorDTORemoveSelectWidgets2.show();
+                                final ClientUserDTO collaboratorDTORemove2 = collaboratorDTORemoveSelectWidgets2.selectedElement();
+
+
+                                associateRemoveCollaboratorTeamController.removeCollaboratorTeamController(collaboratorDTORemove2.mecanographicNumber,
+                                        teamDTORemove2.uniquecode);
+
+                                opValidaRemove = true;
                                 break;
                             default: opValidaRemove = false;
                         }

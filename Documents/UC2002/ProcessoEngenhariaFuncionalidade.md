@@ -2,7 +2,6 @@
 
 # 1. Requisitos
 **2002** Como Gestor de Serviços de Help desk (GSH) pretendo proceder à especificação de um novo serviço e permitir que a mesma fique incompleta.
- - Demo2002.1 criar um novo serviço atribuindo-lhe um nível de criticidade.
  - Demo2002.2 criar um novo serviço atribuindo-lhe um catálogo.
  - Demo2002.3 criar um novo serviço e os seus respetivo/os formulário/os.
 A interpretação feita deste requisito foi no sentido de criar um serviço com todos os atributos necessários para a sua criação.
@@ -20,10 +19,11 @@ A análise foi realizada tendo em conta as reuniões com o Cliente e as resposta
 
 # 3. Design  
 Para realizar esta funcionalidade a equipa usou o padrão Controller e Repository.
-Foi criado o CreateServiceController que será responsável pela criação de um novo catálogo de serviços no sistema.
+Foi criado o CreateServiceController que será responsável pela criação de serviços no sistema.
 Para persistir a informação no sistema usou-se o padrão Repository.
 Dado que um serviço possui um catálogo este irá buscar os catálogos disponiveis para posteriormente ser selecionada o que melhor se adequa.
 Dado que o serviço é caracterizado por um ou mais formulários este terá que ser criado.
+Dado que um formulário é caracterizado por um ou mais atributos, estes terão que ser criados.
 Após serem selecionadas e introduzidas (todas as/parte das) informações é criado um serviço.
 O Controller assim utilizada a Classe Service para puder crar uma instância de um serviço.
 O Controller usa o ServiceRepository para guardar a informação sobre esse novo serviço criado na base de dados.

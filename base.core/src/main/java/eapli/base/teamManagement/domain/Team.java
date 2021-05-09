@@ -98,10 +98,6 @@ public class Team implements AggregateRoot<Uniquecode>{
 /*
     public boolean exist (ClientUser clientUser){ return collaboratorList.contains(clientUser); }
 
-    public void addCollaborator(ClientUser clientUser) {
-        collaboratorList.add(clientUser);
-    }
-
     public Set<ClientUser> collaboratorList() {
         return collaboratorList;
     }
