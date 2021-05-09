@@ -34,7 +34,7 @@ public class CreateCatalogController {
 
     public Catalog addCatalog(final Description title, final Description shortdescription,
                               final Description longdescription, final Description icone,
-                              final List<Team> team, final ClientUser responsiblecollaborator){
+                              final Description team, final Description responsiblecollaborator){
 
 
         final CatalogBuilder catalogBuilder = new CatalogBuilder(title,shortdescription,longdescription,icone,team,responsiblecollaborator);

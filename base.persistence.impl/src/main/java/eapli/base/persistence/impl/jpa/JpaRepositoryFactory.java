@@ -30,7 +30,6 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 				Application.settings().getExtendedPersistenceProperties());
 	}
 
-
 	@Override
 	public JpaClientUserRepository clientUsers(final TransactionalContext autoTx) {
 		return new JpaClientUserRepository(autoTx);
@@ -58,7 +57,11 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 
 	@Override
 	public CatalogRepository catalogs() {
-		return null;
+		return new JpaCatalogRepository(Application.settings().getPersistenceUnitName());
+	}
+
+	public CatalogRepository catalogs(final TransactionalContext autoTx) {
+		return new JpaCatalogRepository(autoTx);
 	}
 
 	@Override
@@ -79,7 +82,6 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 	public TeamTypeRepository teamTypes() {
 		return new JpaTeamTypesRepository(Application.settings().getPersistenceUnitName());
 	}
-
 
 	@Override
 	public TransactionalContext newTransactionalContext() {
