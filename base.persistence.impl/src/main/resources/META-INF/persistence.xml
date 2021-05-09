@@ -26,7 +26,7 @@
     <class>eapli.base.catalogmanagement.domain.Workflow</class>
     <class>eapli.base.ordermanagement.domain.Form</class>
     <class>eapli.base.ordermanagement.domain.Attribute</class>
-    <class>eapli.base.catalogmanagement.domain.Order</class>
+    <class>eapli.base.catalogmanagement.domain.Sequence</class>
     <properties>
       <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/base"/>-->
 

@@ -36,7 +36,7 @@ public class Activity implements AggregateRoot<Long> {
     @OneToOne()
     private Form form;
     @OneToOne()
-    private Order order;
+    private Sequence sequence;
     @OneToOne()
     private Criticalitylevel criticalitylevel;
     @OneToOne
@@ -44,10 +44,10 @@ public class Activity implements AggregateRoot<Long> {
     public Activity() {
     }
 
-    public Activity(Responsable responsable,Criticalitylevel criticalitylevel,Order order,Form form,ClientUser collaborator,Calendar dateconclusionL, TypeofActivitie typeofActivitie,
+    public Activity(Responsable responsable, Criticalitylevel criticalitylevel, Sequence sequence, Form form, ClientUser collaborator, Calendar dateconclusionL, TypeofActivitie typeofActivitie,
                     Description typeofexection, Long priority, State state, Description decision, Description coment,
                     Description complementaryinformation) {
-        Preconditions.noneNull(criticalitylevel,order,form,dateconclusionL,typeofActivitie,typeofexection,  priority, state,collaborator);
+        Preconditions.noneNull(criticalitylevel, sequence,form,dateconclusionL,typeofActivitie,typeofexection,  priority, state,collaborator);
         this.dateconclusionL = dateconclusionL;
         this.typeofActivitie = typeofActivitie;
         this.typeofexection = typeofexection;
@@ -58,7 +58,7 @@ public class Activity implements AggregateRoot<Long> {
         this.complementaryinformation = complementaryinformation;
         this.collaborator=collaborator;
         this.form=form;
-        this.order=order;
+        this.sequence = sequence;
         this.criticalitylevel=criticalitylevel;
         this.responsable=responsable;
     }
@@ -86,12 +86,12 @@ public class Activity implements AggregateRoot<Long> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Activity activity = (Activity) o;
-        return id.equals(activity.id) && version.equals(activity.version) && dateconclusionL.equals(activity.dateconclusionL) && typeofActivitie == activity.typeofActivitie && typeofexection.equals(activity.typeofexection) && priority.equals(activity.priority) && state == activity.state && decision.equals(activity.decision) && coment.equals(activity.coment) && complementaryinformation.equals(activity.complementaryinformation) && collaborator.equals(activity.collaborator) && form.equals(activity.form) && order.equals(activity.order) && criticalitylevel.equals(activity.criticalitylevel) && responsable.equals(activity.responsable);
+        return id.equals(activity.id) && version.equals(activity.version) && dateconclusionL.equals(activity.dateconclusionL) && typeofActivitie == activity.typeofActivitie && typeofexection.equals(activity.typeofexection) && priority.equals(activity.priority) && state == activity.state && decision.equals(activity.decision) && coment.equals(activity.coment) && complementaryinformation.equals(activity.complementaryinformation) && collaborator.equals(activity.collaborator) && form.equals(activity.form) && sequence.equals(activity.sequence) && criticalitylevel.equals(activity.criticalitylevel) && responsable.equals(activity.responsable);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, version, dateconclusionL, typeofActivitie, typeofexection, priority, state, decision, coment, complementaryinformation, collaborator, form, order, criticalitylevel, responsable);
+        return Objects.hash(id, version, dateconclusionL, typeofActivitie, typeofexection, priority, state, decision, coment, complementaryinformation, collaborator, form, sequence, criticalitylevel, responsable);
     }
 
     @Override
@@ -109,7 +109,7 @@ public class Activity implements AggregateRoot<Long> {
                 ", complementaryinformation=" + complementaryinformation +
                 ", collaborator=" + collaborator +
                 ", form=" + form +
-                ", order=" + order +
+                ", order=" + sequence +
                 ", criticalitylevel=" + criticalitylevel +
                 ", responsable=" + responsable +
                 '}';

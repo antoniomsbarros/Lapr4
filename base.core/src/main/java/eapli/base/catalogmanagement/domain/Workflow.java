@@ -13,14 +13,14 @@ public class Workflow implements AggregateRoot<Long> {
     private Long id;
 
     @OneToMany
-    private List<Order> orders;
+    private List<Sequence> sequences;
 
     public Workflow() {
     }
 
-    public Workflow( List<Order> orders) {
-        Preconditions.noneNull(orders);
-        this.orders = orders;
+    public Workflow( List<Sequence> sequences) {
+        Preconditions.noneNull(sequences);
+        this.sequences = sequences;
     }
 
     @Override
