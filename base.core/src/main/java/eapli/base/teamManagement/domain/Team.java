@@ -3,6 +3,7 @@ package eapli.base.teamManagement.domain;
 import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.teamManagement.dto.TeamDTO;
 import eapli.framework.domain.model.AggregateRoot;
+import eapli.framework.general.domain.model.Description;
 import eapli.framework.general.domain.model.Designation;
 import eapli.framework.validations.Preconditions;
 
@@ -22,16 +23,22 @@ public class Team implements AggregateRoot<Uniquecode>{
 
     private Acronym teamAcronym;
 
-    @OneToOne(optional = false)
+    /*@OneToOne(optional = false)
     private  TeamType teamType;
     @OneToMany()
     private Set<ClientUser> collaboratorList;
-    @OneToOne()
-    private ClientUser responsable;
+    //@OneToOne()
+    private ClientUser responsable;*/
+    @AttributeOverride(name = "value", column = @Column(name = "teamType"))
+    private Description teamType;
+    @AttributeOverride(name = "value", column = @Column(name = "collaboratorList"))
+    private Description collaboratorList;
+    @AttributeOverride(name = "value", column = @Column(name = "responsable"))
+    private Description responsable;
     public Team() {
     }
 
-    public Team(final Uniquecode uniquecode,final ClientUser responsable,final Set<ClientUser> collaboratorList,final Designation designacaoEquipa,final Acronym acronimoEquipa,final TeamType teamType) {
+    public Team(final Uniquecode uniquecode,final Description responsable,final Description collaboratorList,final Designation designacaoEquipa,final Acronym acronimoEquipa,final Description teamType) {
         Preconditions.noneNull(designacaoEquipa,collaboratorList,teamType, responsable,uniquecode);
         if (designationTeam.length()>50){
             throw new IllegalArgumentException("The designaction of the team cant passed the size of 50 caracteres");
@@ -81,14 +88,14 @@ public class Team implements AggregateRoot<Uniquecode>{
     public  String designationTeam(){
         return designationTeam.toString();
     }
-    public  TeamType teamType(){
+    public  Description teamType(){
         return  teamType;
     }
 
     public TeamDTO toDTO(){
         return new TeamDTO(uniquecode.Code(), designationTeam.toString(), teamAcronym.AcronymName());
     }
-
+/*
     public boolean exist (ClientUser clientUser){ return collaboratorList.contains(clientUser); }
 
     public void addCollaborator(ClientUser clientUser) {
@@ -98,5 +105,5 @@ public class Team implements AggregateRoot<Uniquecode>{
     public Set<ClientUser> collaboratorList() {
         return collaboratorList;
     }
-
+**/
 }

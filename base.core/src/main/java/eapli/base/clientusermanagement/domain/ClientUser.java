@@ -200,7 +200,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
                 placeofresidence.country(), placeofresidence.county(), placeofresidence.district(), placeofresidence.city(),
                 placeofresidence.street(), placeofresidence.doorNumber(), placeofresidence.floorNUmber(), placeofresidence.postalCode());
     }
-
+/*
     public boolean belongToThisTeamType(Team team) {
 
         for (Team t:list){
@@ -214,4 +214,6 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     public void addTeam(Team team) {
         list.add(team);
     }
+    */
+
 }

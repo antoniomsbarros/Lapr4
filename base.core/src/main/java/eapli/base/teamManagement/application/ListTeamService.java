@@ -38,7 +38,7 @@ public class ListTeamService {
 
         return teamsDTO;
     }
-
+/*
     public Iterable<TeamDTO> teamListWithoutThisCollaborrator(MecanographicNumber collaboratorId){
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER);
 
@@ -73,5 +73,5 @@ public class ListTeamService {
         }
         return clientUserDTO;
     }
-
+*/
 }

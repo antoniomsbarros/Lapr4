@@ -5,6 +5,7 @@ import eapli.base.teamManagement.application.RegisterTeamController;
 import eapli.base.teamManagement.domain.Acronym;
 import eapli.base.teamManagement.domain.Team;
 import eapli.base.teamManagement.domain.TeamType;
+import eapli.framework.general.domain.model.Description;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
 
@@ -24,11 +25,16 @@ public class RegisterTeamUI extends AbstractUI {
     protected boolean doShow() {
         //final Acronym acronym=
 
-        ClientUser responsable = null;
-        Set<ClientUser> clientUserSet = new HashSet<>();
+
+
         String acronmy = Console.readLine("Create one acronym for the team: ");
         String designcao = Console.readLine("Please create Designaction for the Team: ");
-
+        Description responsable= Description.valueOf(Console.readLine("Insert the name Responsave: "));
+        Description teamType= Description.valueOf(Console.readLine("Insert the team Descriction"));
+        Description clientUserSet=Description.valueOf(Console.readLine("Insert the Collaborators: "));
+       /*
+               Set<ClientUser> clientUserSet = new HashSet<>();
+       ClientUser responsable = null;
         TeamType teamType=null;
         boolean aux = false;
         while (registerTeamController.allteamTypes().iterator().hasNext()) {
@@ -70,7 +76,7 @@ public class RegisterTeamUI extends AbstractUI {
                 if (answer2.equals("y")) {
                     clientUserSet.add(temp1);
                 }
-            }
+            }*/
             String uniquecode=null;
             List<String> codesused=new ArrayList<>();
 

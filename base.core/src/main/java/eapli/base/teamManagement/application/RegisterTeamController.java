@@ -8,6 +8,7 @@ import eapli.base.teamManagement.repositories.TeamRepository;
 import eapli.base.teamManagement.repositories.TeamTypeRepository;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.application.UseCaseController;
+import eapli.framework.general.domain.model.Description;
 import eapli.framework.general.domain.model.Designation;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
@@ -23,9 +24,9 @@ private final AuthorizationService authorizationService = AuthzRegistry.authoriz
 private final TeamTypeRepository teamTypeRepository=PersistenceContext.repositories().teamTypes();
 private ClientUserRepository collobaroters =PersistenceContext.repositories().clientUsers();
 
-public Team registerTeam(final String uniquecode, final ClientUser responsable,
-                         final Set<ClientUser> collaboratorList, final String designacaoEquipa,
-                         final String acronimoEquipa, final TeamType teamType) {
+public Team registerTeam(final String uniquecode, final Description responsable,
+                         final Description collaboratorList, final String designacaoEquipa,
+                         final String acronimoEquipa, final Description teamType) {
 
     authorizationService.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER);
     final TeamBuilder teamBuilder=new TeamBuilder();

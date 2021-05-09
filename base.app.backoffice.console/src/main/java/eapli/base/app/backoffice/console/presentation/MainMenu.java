@@ -23,15 +23,12 @@
  */
 package eapli.base.app.backoffice.console.presentation;
 
-import eapli.base.app.backoffice.console.presentation.clientuser.AssociateRemoveCollaboratorTeamAction;
-import eapli.base.app.backoffice.console.presentation.clientuser.CreateCatalogUI;
-import eapli.base.app.backoffice.console.presentation.clientuser.SpecifyCollaboratorAction;
+import eapli.base.app.backoffice.console.presentation.clientuser.*;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
 import eapli.base.Application;
 import eapli.base.app.backoffice.console.presentation.authz.AddUserUI;
 import eapli.base.app.backoffice.console.presentation.authz.DeactivateUserAction;
 import eapli.base.app.backoffice.console.presentation.authz.ListUsersAction;
-import eapli.base.app.backoffice.console.presentation.clientuser.AcceptRefuseSignupRequestAction;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.actions.Actions;
 import eapli.framework.actions.menu.Menu;
@@ -107,10 +104,10 @@ public class MainMenu extends AbstractUI {
     private static final int SETTINGS_OPTION = 3;
     private static final int COLLABORATOR_OPTION = 4;
     private static final int CATALOG_OPTION = 5;
-
+    private static final int TEAM_OPTION=6;
     //CATALOG
     private static final int CREATE_CATALOG_OPTIOM = 1;
-
+    private static final  int CREATE_TEAM_OPTIOM=1;
     private static final String SEPARATOR_LABEL = "--------------";
 
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
@@ -162,6 +159,8 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(COLLABORATOR_OPTION, collaboratorMenu);
             final Menu catalogMenu = builderCatalogMenu();
             mainMenu.addSubMenu(CATALOG_OPTION, catalogMenu);
+            final Menu teamMenu=builderTeamMenu();
+            mainMenu.addSubMenu(TEAM_OPTION, teamMenu);
         }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
@@ -203,7 +202,13 @@ public class MainMenu extends AbstractUI {
 
         return menu;
     }
+    private Menu builderTeamMenu(){
+        final Menu menu = new Menu("Team >");
 
+        menu.addItem(CREATE_TEAM_OPTIOM, "Create Team", new RegisterTeamUI()::show);
+
+        return menu;
+    }
     private Menu builderCollaboratorMenu(){
         final Menu menu = new Menu("Collaborator >");
 

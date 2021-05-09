@@ -26,7 +26,7 @@ public class AssociateRemoveCollaboratorTeamController {
     private final TeamRepository teamRepository = PersistenceContext.repositories().team();
     private final ClientUserService collaborators =  new ClientUserService();
     private final ListTeamService teams = new ListTeamService();
-
+/*
     public void associateCollaboratorTeamController(String collaboratorID, String teamID) throws IllegalAccessException {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER,
                 BaseRoles.RRH_MANAGER);
@@ -84,7 +84,7 @@ public class AssociateRemoveCollaboratorTeamController {
                 teamRepository.delete(team.get());
                 teamRepository.save(team.get());
             }
-        }*/
+        }
     }
 
     public Iterable<TeamDTO> teamList(){
@@ -98,5 +98,6 @@ public class AssociateRemoveCollaboratorTeamController {
     public Iterable<ClientUserDTO> teamCollaborators(String teamid){
         return teams.teamCollaborators(new Uniquecode(teamid));
     }
+    */
 }
 
