@@ -4,6 +4,7 @@
 package eapli.base.infrastructure.persistence;
 
 import eapli.base.catalogmanagement.repository.CatalogRepository;
+import eapli.base.catalogmanagement.repository.CriticalityLevelRepository;
 import eapli.base.catalogmanagement.repository.ServiceRepository;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 
@@ -76,6 +77,8 @@ public interface RepositoryFactory {
 	FormRepository forms();
 
 	ServiceRepository services();
+
+	CriticalityLevelRepository criticalityLevels();
 
 	/**
 	 *

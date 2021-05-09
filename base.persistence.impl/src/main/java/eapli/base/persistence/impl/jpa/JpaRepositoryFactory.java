@@ -2,6 +2,7 @@ package eapli.base.persistence.impl.jpa;
 
 import eapli.base.Application;
 import eapli.base.catalogmanagement.repository.CatalogRepository;
+import eapli.base.catalogmanagement.repository.CriticalityLevelRepository;
 import eapli.base.catalogmanagement.repository.ServiceRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.infrastructure.persistence.RepositoryFactory;
@@ -60,18 +61,24 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 		return new JpaCatalogRepository(Application.settings().getPersistenceUnitName());
 	}
 
+
 	public CatalogRepository catalogs(final TransactionalContext autoTx) {
 		return new JpaCatalogRepository(autoTx);
 	}
 
 	@Override
 	public FormRepository forms() {
-		return null;
+		return new JpaFormRepository();
 	}
 
 	@Override
 	public ServiceRepository services() {
-		return null;
+		return new JpaServiceRepository();
+	}
+
+	@Override
+	public CriticalityLevelRepository criticalityLevels() {
+		return new JpaCriticalitylevelRepository();
 	}
 
 	public TeamTypeRepository teamTypes(TransactionalContext autoTx) {

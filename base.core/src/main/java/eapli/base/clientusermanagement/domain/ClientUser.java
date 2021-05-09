@@ -173,6 +173,9 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         return this.mecanographicNumber;
     }
 
+    public List<Team> teamList() {
+        return list;
+    }
     @Override
     public String toString() {
         return "ClientUser{" +
@@ -196,5 +199,19 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
                 function.Description(), collaboratorEmail.email(), dateofbirth.Date(), phoneNumber, shortname.toString(),
                 placeofresidence.country(), placeofresidence.county(), placeofresidence.district(), placeofresidence.city(),
                 placeofresidence.street(), placeofresidence.doorNumber(), placeofresidence.floorNUmber(), placeofresidence.postalCode());
+    }
+
+    public boolean belongToThisTeamType(Team team) {
+
+        for (Team t:list){
+            if (t.teamType().sameAs(team.teamType())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addTeam(Team team) {
+        list.add(team);
     }
 }
