@@ -6,7 +6,7 @@ import eapli.base.teamManagement.domain.Team;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
-import sun.security.krb5.internal.crypto.Des;
+//import sun.security.krb5.internal.crypto.Des;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -24,11 +24,14 @@ public class CreateCatalogUI extends AbstractUI {
         final Description shortdescription = Description.valueOf( Console.readLine("Short Description: "));
         final Description longdescription = Description.valueOf( Console.readLine("Long Description: "));
         final Description icon = Description.valueOf( Console.readLine("Icone: "));
+        final Description listTeams = Description.valueOf( Console.readLine("team: "));
+        final Description clientUser = Description.valueOf( Console.readLine("cliente: "));
 
+        /*
         ClientUser clientUser=null;
         ArrayList<Team> listTeams = new ArrayList<>();
 
-
+/*
         System.out.println("Select a collaborator");
         boolean aux = false;
         while(coontroller.allColaborators().iterator().hasNext() && !aux){
@@ -54,7 +57,7 @@ public class CreateCatalogUI extends AbstractUI {
                 listTeams.add(temp);
             }
         }
-
+*/
         String temp = Console.readLine("Do yoou confirm the data (y/n)");
         if(temp.equals("n")){
             return false;

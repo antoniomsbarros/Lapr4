@@ -12,7 +12,7 @@ import eapli.framework.application.UseCaseController;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
-import sun.security.krb5.internal.crypto.Des;
+//import sun.security.krb5.internal.crypto.Des;
 
 import javax.swing.*;
 import java.util.List;
@@ -34,7 +34,7 @@ public class CreateCatalogController {
 
     public Catalog addCatalog(final Description title, final Description shortdescription,
                               final Description longdescription, final Description icone,
-                              final List<Team> team, final ClientUser responsiblecollaborator){
+                              final Description team, final Description responsiblecollaborator){
 
 
         final CatalogBuilder catalogBuilder = new CatalogBuilder(title,shortdescription,longdescription,icone,team,responsiblecollaborator);

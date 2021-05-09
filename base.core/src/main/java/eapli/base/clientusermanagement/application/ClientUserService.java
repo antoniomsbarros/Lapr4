@@ -29,6 +29,7 @@ import eapli.base.clientusermanagement.dto.ClientUserDTO;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.teamManagement.domain.Team;
+import eapli.base.teamManagement.dto.TeamDTO;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
@@ -65,7 +66,7 @@ public class ClientUserService {
 
     public Iterable<ClientUserDTO> findAllClientUser() {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER,
-                BaseRoles.ADMIN);
+                BaseRoles.RRH_MANAGER);
 
         Iterable<ClientUser> collaborators = repo.findAllActive();
         List<ClientUserDTO> collaboratorsDTO = new ArrayList<>();
@@ -75,5 +76,20 @@ public class ClientUserService {
         }
 
         return collaboratorsDTO;
+    }
+
+    public Iterable<TeamDTO> collaboratorTeams(MecanographicNumber mecanographicNumber) {
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER,
+                BaseRoles.RRH_MANAGER);
+
+        Optional<ClientUser> collaborator = repo.findByMecanographicNumber(mecanographicNumber);
+        List<TeamDTO> teamDTO = new ArrayList<>();
+
+        if (collaborator.isPresent()) {
+            for (Team team : collaborator.get().teamList()) {
+                teamDTO.add(team.toDTO());
+            }
+        }
+        return teamDTO;
     }
 }

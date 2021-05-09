@@ -3,5 +3,4 @@ import eapli.base.ordermanagement.domain.Form;
 import eapli.framework.domain.repositories.DomainRepository;
 
 public interface FormRepository extends DomainRepository<Long, Form> {
-    Form save(Form form);
 }

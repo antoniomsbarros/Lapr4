@@ -25,20 +25,23 @@ public class Catalog implements AggregateRoot<Long> {
     @AttributeOverride(name = "value", column = @Column(name = "icone"))
     private Description icone;
 
-    @OneToMany()
-    private List<Team> team;
-    @OneToOne()
-    private ClientUser responsiblecollaborator;
+    //@OneToMany()
+    @AttributeOverride(name = "value", column = @Column(name = "team"))
+    private Description team;
+    //@OneToOne()
+    @AttributeOverride(name = "value", column = @Column(name = "collaborator"))
+    private Description responsiblecollaborator;
+    /*
     @OneToOne
     private Criticalitylevel criticalitylevel;
-
+    */
     public Catalog() {
 
     }
 
 
     public Catalog(Description title, Description shortdescription, Description longdescription, Description icone,
-                   List<Team> team, ClientUser responsiblecollaborator , Criticalitylevel criticalitylevel) {
+                   Description team, Description responsiblecollaborator) {
         Preconditions.noneNull(responsiblecollaborator,title,icone,shortdescription, longdescription,team);
         if (shortdescription.toString().length()>40){
             throw new IllegalArgumentException(
@@ -61,7 +64,7 @@ public class Catalog implements AggregateRoot<Long> {
         this.icone = icone;
         this.team=team;
         this.responsiblecollaborator=responsiblecollaborator;
-        this.criticalitylevel=criticalitylevel;
+        //this.criticalitylevel=criticalitylevel;
     }
 
     @Override
@@ -81,7 +84,7 @@ public class Catalog implements AggregateRoot<Long> {
     public Description Title(){
         return  this.title;
     }
-    public List<Team> ListofTeams(){
+    public Description ListofTeams(){
         return team;
     }
     public  Description shortdescription(){
@@ -93,10 +96,12 @@ public class Catalog implements AggregateRoot<Long> {
     public  Description icon (){
         return  icone;
     }
-    public ClientUser responsiblecollaborator(){
+    public Description responsiblecollaborator(){
         return responsiblecollaborator;
     }
-    public Criticalitylevel criticalitylevel(){
+    /*public Criticalitylevel criticalitylevel(){
         return criticalitylevel;
     }
+
+     */
 }
