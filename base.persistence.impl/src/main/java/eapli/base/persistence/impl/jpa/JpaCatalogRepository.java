@@ -54,4 +54,9 @@ class JpaCatalogRepository extends BasepaRepositoryBase<Catalog,Long,Designation
     public Spliterator<Catalog> spliterator() {
         return null;
     }
+
+    @Override
+    public Iterable<Catalog> getAllCatalogs() {
+        return null;
+    }
 }

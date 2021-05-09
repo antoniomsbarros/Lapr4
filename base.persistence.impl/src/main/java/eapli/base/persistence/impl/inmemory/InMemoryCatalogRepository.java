@@ -9,4 +9,9 @@ public class InMemoryCatalogRepository extends InMemoryDomainRepository<Catalog,
     static {
         InMemoryInitializer.init();
     }
+
+    @Override
+    public Iterable<Catalog> getAllCatalogs() {
+        return null;
+    }
 }

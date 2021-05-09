@@ -2,8 +2,10 @@ package eapli.base.persistence.impl.jpa;
 
 import eapli.base.Application;
 import eapli.base.catalogmanagement.repository.CatalogRepository;
+import eapli.base.catalogmanagement.repository.ServiceRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.infrastructure.persistence.RepositoryFactory;
+import eapli.base.ordermanagement.domain.repository.FormRepository;
 import eapli.base.teamManagement.repositories.TeamRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
@@ -55,6 +57,16 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 
 	@Override
 	public CatalogRepository catalogs() {
+		return null;
+	}
+
+	@Override
+	public FormRepository forms() {
+		return null;
+	}
+
+	@Override
+	public ServiceRepository services() {
 		return null;
 	}
 
