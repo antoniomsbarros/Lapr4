@@ -56,12 +56,12 @@
 			resort           : true,       // default setting to trigger a resort after an 'update', 'addRows', 'updateCell', etc has completed
 
 			// *** sort options
-			headers          : {},         // set sorter, string, empty, locked sequence, sortInitialOrder, filter, etc.
+			headers          : {},         // set sorter, string, empty, locked order, sortInitialOrder, filter, etc.
 			ignoreCase       : true,       // ignore case while sorting
 			sortForce        : null,       // column(s) first sorted; always applied
-			sortList         : [],         // Initial sort sequence; applied initially; updated when manually sorted
+			sortList         : [],         // Initial sort order; applied initially; updated when manually sorted
 			sortAppend       : null,       // column(s) sorted last; always applied
-			sortStable       : false,      // when sorting two rows with exactly the same content, the original sort sequence is maintained
+			sortStable       : false,      // when sorting two rows with exactly the same content, the original sort order is maintained
 
 			sortInitialOrder : 'asc',      // sort direction on first click
 			sortLocaleCompare: false,      // replace equivalent character (accented characters)
@@ -602,7 +602,7 @@
 				// this may get updated numerous times if there are multiple rows
 				c.sortVars[ column ] = {
 					count : -1, // set to -1 because clicking on the header automatically adds one
-					sequence : tmp ?
+					order : tmp ?
 						( c.sortReset ? [ 1, 0, 2 ] : [ 1, 0 ] ) : // desc, asc, unsorted
 						( c.sortReset ? [ 0, 1, 2 ] : [ 0, 1 ] ),  // asc, desc, unsorted
 					lockedOrder : false,
@@ -611,7 +611,7 @@
 				tmp = ts.getData( $elem, configHeaders, 'lockedOrder' ) || false;
 				if ( typeof tmp !== 'undefined' && tmp !== false ) {
 					c.sortVars[ column ].lockedOrder = true;
-					c.sortVars[ column ].sequence = ts.getOrder( tmp ) ? [ 1, 1 ] : [ 0, 0 ];
+					c.sortVars[ column ].order = ts.getOrder( tmp ) ? [ 1, 1 ] : [ 0, 0 ];
 				}
 				// add cell to headerList
 				c.headerList[ index ] = elem;
@@ -915,7 +915,7 @@
 				totalRows = ( $tbody[ tbodyIndex ] && $tbody[ tbodyIndex ].rows.length ) || 0;
 				for ( rowIndex = 0; rowIndex < totalRows; ++rowIndex ) {
 					rowData = {
-						// sequence: original row sequence #
+						// order: original row order #
 						// $row : jQuery Object[]
 						child: [], // child row text (filter widget)
 						raw: []    // original row text
@@ -960,7 +960,7 @@
 						continue;
 					}
 					rowData.$row = $row;
-					rowData.sequence = rowIndex; // add original row position to rowCache
+					rowData.order = rowIndex; // add original row position to rowCache
 					cacheIndex = 0;
 					max = c.columns;
 					for ( colIndex = 0; colIndex < max; ++colIndex ) {
@@ -1200,8 +1200,8 @@
 				if ( $header.hasClass( 'sorter-false' ) || nextSort === false ) {
 					txt += ts.language.sortDisabled;
 				} else {
-					tmp = ( vars.count + 1 ) % vars.sequence.length;
-					nextSort = vars.sequence[ tmp ];
+					tmp = ( vars.count + 1 ) % vars.order.length;
+					nextSort = vars.order[ tmp ];
 					// if nextSort
 					txt += ts.language[ nextSort === 0 ? 'nextAsc' : nextSort === 1 ? 'nextDesc' : 'nextNone' ];
 				}
@@ -1251,7 +1251,7 @@
 		},
 
 		updateHeaderSortCount : function( c, list ) {
-			var col, dir, group, indx, primary, temp, val, sequence,
+			var col, dir, group, indx, primary, temp, val, order,
 				sortList = list || c.sortList,
 				len = sortList.length;
 			c.sortList = [];
@@ -1262,19 +1262,19 @@
 				// prevents error if sorton array is wrong
 				if ( col < c.columns ) {
 
-					// set sequence if not already defined - due to colspan header without associated header cell
+					// set order if not already defined - due to colspan header without associated header cell
 					// adding this check prevents a javascript error
-					if ( !c.sortVars[ col ].sequence ) {
+					if ( !c.sortVars[ col ].order ) {
 						if ( ts.getOrder( c.sortInitialOrder ) ) {
-							sequence = c.sortReset ? [ 1, 0, 2 ] : [ 1, 0 ];
+							order = c.sortReset ? [ 1, 0, 2 ] : [ 1, 0 ];
 						} else {
-							sequence = c.sortReset ? [ 0, 1, 2 ] : [ 0, 1 ];
+							order = c.sortReset ? [ 0, 1, 2 ] : [ 0, 1 ];
 						}
-						c.sortVars[ col ].sequence = sequence;
+						c.sortVars[ col ].order = order;
 						c.sortVars[ col ].count = 0;
 					}
 
-					sequence = c.sortVars[ col ].sequence;
+					order = c.sortVars[ col ].order;
 					dir = ( '' + val[ 1 ] ).match( /^(1|d|s|o|n)/ );
 					dir = dir ? dir[ 0 ] : '';
 					// 0/(a)sc (default), 1/(d)esc, (s)ame, (o)pposite, (n)ext
@@ -1287,12 +1287,12 @@
 							dir = primary || 0;
 							break;
 						case 'o' :
-							temp = sequence[ ( primary || 0 ) % sequence.length ];
+							temp = order[ ( primary || 0 ) % order.length ];
 							// opposite of primary column; but resets if primary resets
 							dir = temp === 0 ? 1 : temp === 1 ? 0 : 2;
 							break;
 						case 'n' :
-							dir = sequence[ ( ++c.sortVars[ col ].count ) % sequence.length ];
+							dir = order[ ( ++c.sortVars[ col ].count ) % order.length ];
 							break;
 						default : // ascending
 							dir = 0;
@@ -1301,8 +1301,8 @@
 					primary = indx === 0 ? dir : primary;
 					group = [ col, parseInt( dir, 10 ) || 0 ];
 					c.sortList[ c.sortList.length ] = group;
-					dir = $.inArray( group[ 1 ], sequence ); // fixes issue #167
-					c.sortVars[ col ].count = dir >= 0 ? dir : group[ 1 ] % sequence.length;
+					dir = $.inArray( group[ 1 ], order ); // fixes issue #167
+					c.sortVars[ col ].count = dir >= 0 ? dir : group[ 1 ] % order.length;
 				}
 			}
 		},
@@ -1403,7 +1403,7 @@
 		},
 
 		addRows : function( c, $row, resort, callback ) {
-			var txt, val, tbodyIndex, rowIndex, rows, cellIndex, len, sequence,
+			var txt, val, tbodyIndex, rowIndex, rows, cellIndex, len, order,
 				cacheIndex, rowData, cells, cell, span,
 				// allow passing a row string if only one non-info tbody exists in the table
 				valid = typeof $row === 'string' && c.$tbodies.length === 1 && /<tr/.test( $row || '' ),
@@ -1440,13 +1440,13 @@
 				for ( rowIndex = 0; rowIndex < rows; rowIndex++ ) {
 					cacheIndex = 0;
 					len = $row[ rowIndex ].cells.length;
-					sequence = c.cache[ tbodyIndex ].normalized.length;
+					order = c.cache[ tbodyIndex ].normalized.length;
 					cells = [];
 					rowData = {
 						child : [],
 						raw : [],
 						$row : $row.eq( rowIndex ),
-						sequence : sequence
+						order : order
 					};
 					// add each cell
 					for ( cellIndex = 0; cellIndex < len; cellIndex++ ) {
@@ -1469,7 +1469,7 @@
 					// add the row data to the end
 					cells[ c.columns ] = rowData;
 					// update cache
-					c.cache[ tbodyIndex ].normalized[ sequence ] = cells;
+					c.cache[ tbodyIndex ].normalized[ order ] = cells;
 				}
 				// resort using current settings
 				ts.checkResort( c, resort, callback );
@@ -1566,12 +1566,12 @@
 				th = ts.getClosest( $( cell ), 'th, td' ),
 				col = parseInt( th.attr( 'data-column' ), 10 ),
 				sortedBy = event.type === 'mouseup' ? 'user' : event.type,
-				sequence = c.sortVars[ col ].sequence;
+				order = c.sortVars[ col ].order;
 			th = th[0];
 			// Only call sortStart if sorting is enabled
 			c.$table.triggerHandler( 'sortStart', table );
-			// get current column sort sequence
-			tmp = ( c.sortVars[ col ].count + 1 ) % sequence.length;
+			// get current column sort order
+			tmp = ( c.sortVars[ col ].count + 1 ) % order.length;
 			c.sortVars[ col ].count = event[ c.sortResetKey ] ? 2 : tmp;
 			// reset all sorts on non-current column - issue #30
 			if ( c.sortRestart ) {
@@ -1602,7 +1602,7 @@
 					}
 				}
 				// add column to sort list
-				dir = sequence[ c.sortVars[ col ].count ];
+				dir = order[ c.sortVars[ col ].count ];
 				if ( dir < 2 ) {
 					c.sortList[ c.sortList.length ] = [ col, dir ];
 					c.sortVars[ col ].sortedBy = sortedBy;
@@ -1611,7 +1611,7 @@
 						for ( indx = 1; indx < th.colSpan; indx++ ) {
 							c.sortList[ c.sortList.length ] = [ col + indx, dir ];
 							// update count on columns in colSpan
-							c.sortVars[ col + indx ].count = $.inArray( dir, sequence );
+							c.sortVars[ col + indx ].count = $.inArray( dir, order );
 							c.sortVars[ col + indx ].sortedBy = sortedBy;
 						}
 					}
@@ -1628,8 +1628,8 @@
 					for ( indx = 0; indx < c.sortList.length; indx++ ) {
 						tmp = c.sortList[ indx ];
 						if ( tmp[ 0 ] === col ) {
-							// sequence.count seems to be incorrect when compared to cell.count
-							tmp[ 1 ] = sequence[ c.sortVars[ col ].count ];
+							// order.count seems to be incorrect when compared to cell.count
+							tmp[ 1 ] = order[ c.sortVars[ col ].count ];
 							if ( tmp[1] === 2 ) {
 								c.sortList.splice( indx, 1 );
 								c.sortVars[ col ].count = -1;
@@ -1638,7 +1638,7 @@
 					}
 				} else {
 					// add column to sort list array
-					dir = sequence[ c.sortVars[ col ].count ];
+					dir = order[ c.sortVars[ col ].count ];
 					c.sortVars[ col ].sortedBy = sortedBy;
 					if ( dir < 2 ) {
 						c.sortList[ c.sortList.length ] = [ col, dir ];
@@ -1647,7 +1647,7 @@
 							for ( indx = 1; indx < th.colSpan; indx++ ) {
 								c.sortList[ c.sortList.length ] = [ col + indx, dir ];
 								// update count on columns in colSpan
-								c.sortVars[ col + indx ].count = $.inArray( dir, sequence );
+								c.sortVars[ col + indx ].count = $.inArray( dir, order );
 								c.sortVars[ col + indx ].sortedBy = sortedBy;
 							}
 						}
@@ -1676,7 +1676,7 @@
 										dir = tmp === 0 ? 1 : 0;
 										break;
 									case 'n' :
-										dir = ( tmp + 1 ) % sequence.length;
+										dir = ( tmp + 1 ) % order.length;
 										break;
 									default:
 										dir = 0;
@@ -1732,16 +1732,16 @@
 				rows = c.cache[ tbodyIndex ].normalized;
 
 				rows.sort( function( a, b ) {
-					var sortIndex, num, col, sequence, sort, x, y;
+					var sortIndex, num, col, order, sort, x, y;
 					// rows is undefined here in IE, so don't use it!
 					for ( sortIndex = 0; sortIndex < sortLen; sortIndex++ ) {
 						col = sortList[ sortIndex ][ 0 ];
-						sequence = sortList[ sortIndex ][ 1 ];
+						order = sortList[ sortIndex ][ 1 ];
 						// sort direction, true = asc, false = desc
-						dir = sequence === 0;
+						dir = order === 0;
 
 						if ( c.sortStable && a[ col ] === b[ col ] && sortLen === 1 ) {
-							return a[ c.columns ].sequence - b[ c.columns ].sequence;
+							return a[ c.columns ].order - b[ c.columns ].order;
 						}
 
 						// fallback to natural sort since it is more robust
@@ -1775,7 +1775,7 @@
 						}
 						if ( sort ) { return sort; }
 					}
-					return a[ c.columns ].sequence - b[ c.columns ].sequence;
+					return a[ c.columns ].order - b[ c.columns ].order;
 				});
 			}
 			if ( ts.debug(c, 'core') ) {
@@ -1862,7 +1862,7 @@
 		},
 
 		getOrder : function( val ) {
-			// look for 'd' in 'desc' sequence; return true
+			// look for 'd' in 'desc' order; return true
 			return ( /^d/i.test( val ) || val === 1 );
 		},
 
@@ -2404,8 +2404,8 @@
 			cl4ss = ' ' + ( $header.attr( 'class' ) || '' );
 			if ( typeof $header.data( key ) !== 'undefined' ||
 				typeof $header.data( key.toLowerCase() ) !== 'undefined' ) {
-				// 'data-lockedOrder' is assigned to 'lockedorder'; but 'data-locked-sequence' is assigned to 'lockedOrder'
-				// 'data-sort-initial-sequence' is assigned to 'sortInitialOrder'
+				// 'data-lockedOrder' is assigned to 'lockedorder'; but 'data-locked-order' is assigned to 'lockedOrder'
+				// 'data-sort-initial-order' is assigned to 'sortInitialOrder'
 				val += $header.data( key ) || $header.data( key.toLowerCase() );
 			} else if ( meta && typeof meta[ key ] !== 'undefined' ) {
 				val += meta[ key ];
@@ -2853,7 +2853,7 @@
 				date = time ? new Date( '2000/01/01 ' + time.replace( ts.regex.dateReplace, '$1 $2' ) ) : time;
 			if ( date instanceof Date && isFinite( date ) ) {
 				temp = orig instanceof Date && isFinite( orig ) ? orig.getTime() : 0;
-				// if original string was a valid date, add it to the decimal so the column sorts in some kind of sequence
+				// if original string was a valid date, add it to the decimal so the column sorts in some kind of order
 				// luckily new Date() ignores the decimals
 				return temp ? parseFloat( date.getTime() + '.' + orig.getTime() ) : date.getTime();
 			}
@@ -4690,7 +4690,7 @@ Licensed under the MIT license.
 
                 // with all dimensions calculated, we can compute the
                 // axis bounding boxes, start from the outside
-                // (reverse sequence)
+                // (reverse order)
                 for (i = allocatedAxes.length - 1; i >= 0; --i)
                     allocateAxisBoxFirstPhase(allocatedAxes[i]);
 
@@ -5833,7 +5833,7 @@ Licensed under the MIT license.
                 }
             }
 
-            // Generate markup for the list of entries, in their final sequence
+            // Generate markup for the list of entries, in their final order
 
             for (var i = 0; i < entries.length; ++i) {
 
@@ -7468,17 +7468,17 @@ can just fix the size of their placeholders.
 	<body>
 		<div><div class="box logo">
 			<img src="data:image/png;base64,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" />
-			<p>Statistical information for the repository 'lei20_21_s4_2dg_04' was gathered on 2021/05/05.<br>The output has been generated by <a href="https://github.com/ejwa/gitinspector">gitinspector</a> 0.4.4. The statistical analysis tool for git repositories.</p>
+			<p>Statistical information for the repository 'lei20_21_s4_2dg_04' was gathered on 2021/05/10.<br>The output has been generated by <a href="https://github.com/ejwa/gitinspector">gitinspector</a> 0.4.4. The statistical analysis tool for git repositories.</p>
 		</div></div>
 
-<div><div class="box"><p>The following historical commit information, by author, was found in the repository.</p><div><table id="changes" class="git"><thead><tr> <th>Author</th> <th>Commits</th> <th>Insertions</th> <th>Deletions</th> <th>% of changes</th></tr></thead><tbody><tr ><td><img src="https://www.gravatar.com/avatar/f38ab45685a9d352711e239e7dbc8a41?default=identicon&size=20"/>Daniel Reis</td><td>3</td><td>180</td><td>10</td><td>2.41</td></tr><tr class="odd"><td><img src="https://www.gravatar.com/avatar/a5a223183cc14f6e521f1c9db3cfca50?default=identicon&size=20"/>Jose Teixeira</td><td>5</td><td>33</td><td>2</td><td>0.44</td></tr><tr ><td><img src="https://www.gravatar.com/avatar/a17dc467b424bd38adca0c6113da639c?default=identicon&size=20"/>Marly Pimpita</td><td>1</td><td>54</td><td>0</td><td>0.69</td></tr><tr class="odd"><td><img src="https://www.gravatar.com/avatar/203c618598edeccb53fe0416657b9f8b?default=identicon&size=20"/>Paulo Proença</td><td>2</td><td>7595</td><td>2</td><td>96.46</td></tr><tfoot><tr> <td colspan="5">&nbsp;</td> </tr></tfoot></tbody></table><div class="chart" id="changes_chart"></div></div><script type="text/javascript">    changes_plot = $.plot($("#changes_chart"), [{label: "Daniel Reis", data: 2.41}, {label: "Jose Teixeira", data: 0.44}, {label: "Marly Pimpita", data: 0.69}, {label: "Paulo Proen\u00e7a", data: 96.46}], {        series: {            pie: {                innerRadius: 0.4,                show: true,                combine: {                    threshold: 0.01,                    label: "Minor Authors"                }            }        }, grid: {            hoverable: true        }    });</script></div></div>
-<div><div class="box"><p>Below are the number of rows from each author that have survived and are still intact in the current revision.</p><div><table id="blame" class="git"><thead><tr> <th>Author</th> <th>Rows</th> <th>Stability</th> <th>Age</th> <th>% in comments</th> </tr></thead><tbody><tr ><td><img src="https://www.gravatar.com/avatar/f38ab45685a9d352711e239e7dbc8a41?default=identicon&size=20"/>Daniel Reis</td><td>146</td><td>81.1</td><td>0.1</td><td>0.00</td><td style="display: none">1.86</td></tr><tr class="odd"><td><img src="https://www.gravatar.com/avatar/a5a223183cc14f6e521f1c9db3cfca50?default=identicon&size=20"/>Jose Teixeira</td><td>31</td><td>93.9</td><td>0.1</td><td>0.00</td><td style="display: none">0.40</td></tr><tr ><td><img src="https://www.gravatar.com/avatar/a17dc467b424bd38adca0c6113da639c?default=identicon&size=20"/>Marly Pimpita</td><td>78</td><td>144.4</td><td>0.4</td><td>0.00</td><td style="display: none">0.99</td></tr><tr class="odd"><td><img src="https://www.gravatar.com/avatar/203c618598edeccb53fe0416657b9f8b?default=identicon&size=20"/>Paulo Proença</td><td>7593</td><td>100.0</td><td>0.0</td><td>0.00</td><td style="display: none">96.75</td></tr><tfoot><tr> <td colspan="5">&nbsp;</td> </tr></tfoot></tbody></table><div class="chart" id="blame_chart"></div></div><script type="text/javascript">    blame_plot = $.plot($("#blame_chart"), [{label: "Daniel Reis", data: 1.86}, {label: "Jose Teixeira", data: 0.40}, {label: "Marly Pimpita", data: 0.99}, {label: "Paulo Proen\u00e7a", data: 96.75}], {        series: {            pie: {                innerRadius: 0.4,                show: true,                combine: {                    threshold: 0.01,                    label: "Minor Authors"                }            }        }, grid: {            hoverable: true        }    });</script></div></div>
+<div><div class="box"><p>The following historical commit information, by author, was found in the repository.</p><div><table id="changes" class="git"><thead><tr> <th>Author</th> <th>Commits</th> <th>Insertions</th> <th>Deletions</th> <th>% of changes</th></tr></thead><tbody><tr ><td><img src="https://www.gravatar.com/avatar/9909177a5a1cfce9f9c1692eb25060ff?default=identicon&size=20"/>Antonio Barros</td><td>5</td><td>126</td><td>52</td><td>2.17</td></tr><tr class="odd"><td><img src="https://www.gravatar.com/avatar/f38ab45685a9d352711e239e7dbc8a41?default=identicon&size=20"/>Daniel Reis</td><td>3</td><td>180</td><td>10</td><td>2.32</td></tr><tr ><td><img src="https://www.gravatar.com/avatar/1214372ae511fffcb78eb3f8f761c806?default=identicon&size=20"/>Joao Freitas</td><td>2</td><td>21</td><td>0</td><td>0.26</td></tr><tr class="odd"><td><img src="https://www.gravatar.com/avatar/a5a223183cc14f6e521f1c9db3cfca50?default=identicon&size=20"/>Jose Teixeira</td><td>5</td><td>33</td><td>2</td><td>0.43</td></tr><tr ><td><img src="https://www.gravatar.com/avatar/a17dc467b424bd38adca0c6113da639c?default=identicon&size=20"/>Marly Pimpita</td><td>4</td><td>137</td><td>17</td><td>1.88</td></tr><tr class="odd"><td><img src="https://www.gravatar.com/avatar/203c618598edeccb53fe0416657b9f8b?default=identicon&size=20"/>Paulo Proença</td><td>3</td><td>7619</td><td>7</td><td>92.95</td></tr><tfoot><tr> <td colspan="5">&nbsp;</td> </tr></tfoot></tbody></table><div class="chart" id="changes_chart"></div></div><script type="text/javascript">    changes_plot = $.plot($("#changes_chart"), [{label: "Antonio Barros", data: 2.17}, {label: "Daniel Reis", data: 2.32}, {label: "Joao Freitas", data: 0.26}, {label: "Jose Teixeira", data: 0.43}, {label: "Marly Pimpita", data: 1.88}, {label: "Paulo Proen\u00e7a", data: 92.95}], {        series: {            pie: {                innerRadius: 0.4,                show: true,                combine: {                    threshold: 0.01,                    label: "Minor Authors"                }            }        }, grid: {            hoverable: true        }    });</script></div></div>
+<div><div class="box"><p>Below are the number of rows from each author that have survived and are still intact in the current revision.</p><div><table id="blame" class="git"><thead><tr> <th>Author</th> <th>Rows</th> <th>Stability</th> <th>Age</th> <th>% in comments</th> </tr></thead><tbody><tr ><td><img src="https://www.gravatar.com/avatar/9909177a5a1cfce9f9c1692eb25060ff?default=identicon&size=20"/>Antonio Barros</td><td>57</td><td>45.2</td><td>0.1</td><td>0.00</td><td style="display: none">0.71</td></tr><tr class="odd"><td><img src="https://www.gravatar.com/avatar/f38ab45685a9d352711e239e7dbc8a41?default=identicon&size=20"/>Daniel Reis</td><td>153</td><td>85.0</td><td>0.7</td><td>0.00</td><td style="display: none">1.91</td></tr><tr ><td><img src="https://www.gravatar.com/avatar/1214372ae511fffcb78eb3f8f761c806?default=identicon&size=20"/>Joao Freitas</td><td>21</td><td>100.0</td><td>0.4</td><td>0.00</td><td style="display: none">0.26</td></tr><tr class="odd"><td><img src="https://www.gravatar.com/avatar/a17dc467b424bd38adca0c6113da639c?default=identicon&size=20"/>Marly Pimpita</td><td>154</td><td>112.4</td><td>0.7</td><td>0.00</td><td style="display: none">1.92</td></tr><tr ><td><img src="https://www.gravatar.com/avatar/203c618598edeccb53fe0416657b9f8b?default=identicon&size=20"/>Paulo Proença</td><td>7612</td><td>99.9</td><td>0.0</td><td>0.00</td><td style="display: none">94.82</td></tr><tr class="odd"><td><img src="https://www.gravatar.com/avatar/a5a223183cc14f6e521f1c9db3cfca50?default=identicon&size=20"/>joseteixeira1150462</td><td>31</td><td>100.0</td><td>0.7</td><td>0.00</td><td style="display: none">0.39</td></tr><tfoot><tr> <td colspan="5">&nbsp;</td> </tr></tfoot></tbody></table><div class="chart" id="blame_chart"></div></div><script type="text/javascript">    blame_plot = $.plot($("#blame_chart"), [{label: "Antonio Barros", data: 0.71}, {label: "Daniel Reis", data: 1.91}, {label: "Joao Freitas", data: 0.26}, {label: "Marly Pimpita", data: 1.92}, {label: "Paulo Proen\u00e7a", data: 94.82}, {label: "joseteixeira1150462", data: 0.39}], {        series: {            pie: {                innerRadius: 0.4,                show: true,                combine: {                    threshold: 0.01,                    label: "Minor Authors"                }            }        }, grid: {            hoverable: true        }    });</script></div></div>
 <div><div id="timeline" class="box"><p>The following history timeline has been gathered from the repository.</p>
-<table class="git full"><thead><tr><th>Author</th><th>2021W17</th><th>2021W18</th></tr></thead><tbody><tr><td><img src="https://www.gravatar.com/avatar/f38ab45685a9d352711e239e7dbc8a41?default=identicon&size=20"/>Daniel Reis</td><td></td><td><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div></td></tr><tr class="odd"><td><img src="https://www.gravatar.com/avatar/a5a223183cc14f6e521f1c9db3cfca50?default=identicon&size=20"/>Jose Teixeira</td><td></td><td><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div></td></tr><tr><td><img src="https://www.gravatar.com/avatar/a17dc467b424bd38adca0c6113da639c?default=identicon&size=20"/>Marly Pimpita</td><td>.</td><td></td></tr><tr class="odd"><td><img src="https://www.gravatar.com/avatar/203c618598edeccb53fe0416657b9f8b?default=identicon&size=20"/>Paulo Proença</td><td><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div></td><td><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div></td></tr><tfoot><tr><td><strong>Modified Rows:</strong></td><td>7531</td><td>345</td></tr></tfoot></tbody></table>
+<table class="git full"><thead><tr><th>Author</th><th>2021W17</th><th>2021W18</th></tr></thead><tbody><tr><td><img src="https://www.gravatar.com/avatar/9909177a5a1cfce9f9c1692eb25060ff?default=identicon&size=20"/>Antonio Barros</td><td></td><td><div class="remove">&nbsp;</div><div class="remove">&nbsp;</div><div class="remove">&nbsp;</div><div class="remove">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div></td></tr><tr class="odd"><td><img src="https://www.gravatar.com/avatar/f38ab45685a9d352711e239e7dbc8a41?default=identicon&size=20"/>Daniel Reis</td><td></td><td><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div></td></tr><tr><td><img src="https://www.gravatar.com/avatar/1214372ae511fffcb78eb3f8f761c806?default=identicon&size=20"/>Joao Freitas</td><td></td><td><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div></td></tr><tr class="odd"><td><img src="https://www.gravatar.com/avatar/a5a223183cc14f6e521f1c9db3cfca50?default=identicon&size=20"/>Jose Teixeira</td><td></td><td><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div></td></tr><tr><td><img src="https://www.gravatar.com/avatar/a17dc467b424bd38adca0c6113da639c?default=identicon&size=20"/>Marly Pimpita</td><td>.</td><td><div class="remove">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div></td></tr><tr class="odd"><td><img src="https://www.gravatar.com/avatar/203c618598edeccb53fe0416657b9f8b?default=identicon&size=20"/>Paulo Proença</td><td><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div></td><td><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div><div class="insert">&nbsp;</div></td></tr><tfoot><tr><td><strong>Modified Rows:</strong></td><td>7531</td><td>673</td></tr></tfoot></tbody></table>
 </div></div>
 <div><div class="box" id="metrics"><p>No metrics violations were found in the repository.</p></div></div>
-<div><div class="box" id="responsibilities"><p>The following responsibilities, by author, were found in the current revision of the repository (comments are excluded from the line count, if possible).</p><div><h3><img src="https://www.gravatar.com/avatar/f38ab45685a9d352711e239e7dbc8a41?default=identicon&size=32"/>Daniel Reis is mostly responsible for</h3><div>Documents/UC2001/ProcessoEngenhariaFuncionalidade.md (146 eloc)</div></div><div><h3><img src="https://www.gravatar.com/avatar/a5a223183cc14f6e521f1c9db3cfca50?default=identicon&size=32"/>Jose Teixeira is mostly responsible for</h3><div>Documents/UC2012-Create _New_Team_Type/US2012- Requirements_Analysis/US2012_FunctionalEngineering.md (31 eloc)</div></div><div><h3><img src="https://www.gravatar.com/avatar/a17dc467b424bd38adca0c6113da639c?default=identicon&size=32"/>Marly Pimpita is mostly responsible for</h3><div>Documents/UC2004 - EspecificacaoColaborador/4_1_4_2051_EspecificacaoColaborador.md (54 eloc)</div><div class="odd">Documents/UC2001/ProcessoEngenhariaFuncionalidade.md (24 eloc)</div></div><div><h3><img src="https://www.gravatar.com/avatar/203c618598edeccb53fe0416657b9f8b?default=identicon&size=32"/>Paulo Proença is mostly responsible for</h3><div>GitAnalysis/[Sprint_B]_2dg_04/report[Sprint_B]_2dg_04.html (7484 eloc)</div><div class="odd">GitAnalysis/[Sprint_B]_2dg_04/1150462.txt (79 eloc)</div><div>GitAnalysis/[Sprint_B]_2dg_04/1200608.txt (15 eloc)</div><div class="odd">GitAnalysis/[Sprint_B]_2dg_04/1191444.txt (15 eloc)</div></div></div></div>
-<div><div class="box"><p>The extensions below were found in the repository history (extensions used during statistical analysis are marked).</p><p>* csv <strong>html</strong> <strong>md</strong> svg <strong>txt</strong> xml </p></div></div>
+<div><div class="box" id="responsibilities"><p>The following responsibilities, by author, were found in the current revision of the repository (comments are excluded from the line count, if possible).</p><div><h3><img src="https://www.gravatar.com/avatar/9909177a5a1cfce9f9c1692eb25060ff?default=identicon&size=32"/>Antonio Barros is mostly responsible for</h3><div>Documents/UC2052/ProcessoEngenhariaFuncionalidade.md (57 eloc)</div></div><div><h3><img src="https://www.gravatar.com/avatar/f38ab45685a9d352711e239e7dbc8a41?default=identicon&size=32"/>Daniel Reis is mostly responsible for</h3><div>Documents/UC2001/ProcessoEngenhariaFuncionalidade.md (146 eloc)</div><div class="odd">Documents/UC2052/ProcessoEngenhariaFuncionalidade.md (7 eloc)</div></div><div><h3><img src="https://www.gravatar.com/avatar/1214372ae511fffcb78eb3f8f761c806?default=identicon&size=32"/>Joao Freitas is mostly responsible for</h3><div>Documents/UC2002/ProcessoEngenhariaFuncionalidade.md (21 eloc)</div></div><div><h3><img src="https://www.gravatar.com/avatar/a17dc467b424bd38adca0c6113da639c?default=identicon&size=32"/>Marly Pimpita is mostly responsible for</h3><div>Documents/UC2053-AssociacaoRemocaoColaboradorEquipa/2053_AssociarRemoverColaboradorEquipa.md (64 eloc)</div><div class="odd">Documents/UC2051 - EspecificacaoColaborador/2051_EspecificacaoColaborador.md (56 eloc)</div><div>Documents/UC2001/ProcessoEngenhariaFuncionalidade.md (24 eloc)</div><div class="odd">Documents/UC2052/ProcessoEngenhariaFuncionalidade.md (10 eloc)</div></div><div><h3><img src="https://www.gravatar.com/avatar/203c618598edeccb53fe0416657b9f8b?default=identicon&size=32"/>Paulo Proença is mostly responsible for</h3><div>GitAnalysis/[Sprint_B]_2dg_04/report[Sprint_B]_2dg_04.html (7484 eloc)</div><div class="odd">GitAnalysis/[Sprint_B]_2dg_04/1150462.txt (79 eloc)</div><div>GitAnalysis/[Sprint_B]_2dg_04/1200608.txt (34 eloc)</div><div class="odd">GitAnalysis/[Sprint_B]_2dg_04/1191444.txt (15 eloc)</div></div><div><h3><img src="https://www.gravatar.com/avatar/a5a223183cc14f6e521f1c9db3cfca50?default=identicon&size=32"/>joseteixeira1150462 is mostly responsible for</h3><div>Documents/UC2012-Create _New_Team_Type/US2012- Requirements_Analysis/US2012_FunctionalEngineering.md (31 eloc)</div></div></div></div>
+<div><div class="box"><p>The extensions below were found in the repository history (extensions used during statistical analysis are marked).</p><p>* JAVA csv <strong>html</strong> java <strong>md</strong> svg <strong>txt</strong> xml </p></div></div>
 	</body>
 </html>
 

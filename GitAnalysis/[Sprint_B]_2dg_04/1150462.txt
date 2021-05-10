@@ -1,3 +1,16 @@
+commit 6e8f2aff31aa37bff0788f342a7477fa6a66c01f
+Author: joseteixeira1150462 <1150462@isep.ipp.pt>
+Date:   Sun May 9 01:18:22 2021 +0100
+
+    #US20-29 Implementation (Repository,Factory, IM,JPA,) add and updates
+
+M	base.core/src/main/java/eapli/base/infrastructure/persistence/RepositoryFactory.java
+M	base.core/src/main/java/eapli/base/teamManagement/domain/TeamType.java
+A	base.core/src/main/java/eapli/base/teamManagement/repositories/TeamTypeRepository.java
+A	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryTeamTypeRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaRepositoryFactory.java
+A	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaTeamTypesRepository.java
+
 commit 1aa5f628e79bd5bbdc12dc297b696e1ae4aa712a
 Author: Jose Teixeira <1150462@isep.ipp.pt>
 Date:   Tue May 4 19:50:46 2021 +0100

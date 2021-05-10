@@ -1,0 +1,243 @@
+commit c543beced4364f17b3fc280c6056523cbdbdc27a
+Author: Antonio Barros <1200606@isep.ipp.pt>
+Date:   Sun May 9 02:19:01 2021 +0100
+
+    L2S20-39 coment fix bug
+
+M	base.app.other.console/src/main/java/eapli/base/app/other/console/OtherApp.java
+M	base.app.other.console/src/main/java/eapli/base/app/other/console/presentation/MainMenu.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/BackofficeUsersBootstrapper.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/application/ClientUserService.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/application/ListTeamService.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/application/SpecifyCollaboratorController.java
+M	base.core/src/main/java/eapli/base/teamManagement/application/TeamController.java
+M	base.core/src/main/java/eapli/base/usermanagement/domain/BaseRoles.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryRepositoryFactory.java
+
+commit 0e6225509330a359e2e075acc36cdc8d7568c350
+Author: Antonio Barros <1200606@isep.ipp.pt>
+Date:   Sat May 8 22:46:47 2021 +0100
+
+    L2S20-38 # Fix bugs
+
+M	Documents/UC2052/L2S20-5.vpp
+M	Documents/UC2052/ProcessoEngenhariaFuncionalidade.md
+M	Documents/UC2052/sd Create team.png
+M	GitAnalysis/[Sprint_B]_2dg_04/report[Sprint_B]_2dg_04.html
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Activity.java
+R069	base.core/src/main/java/eapli/base/catalogmanagement/domain/Order.java	base.core/src/main/java/eapli/base/catalogmanagement/domain/Sequence.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Workflow.java
+M	base.core/src/main/java/eapli/base/infrastructure/persistence/RepositoryFactory.java
+M	base.core/src/main/java/eapli/base/teamManagement/application/TeamController.java
+M	base.core/src/main/java/eapli/base/teamManagement/domain/Acronym.java
+M	base.core/src/main/java/eapli/base/teamManagement/domain/Team.java
+A	base.core/src/main/java/eapli/base/teamManagement/domain/TeamBuilder.java
+M	base.core/src/main/java/eapli/base/teamManagement/domain/TeamType.java
+M	base.core/src/main/java/eapli/base/teamManagement/domain/Uniquecode.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaRepositoryFactory.java
+M	base.persistence.impl/src/main/resources/META-INF/persistence.xml
+
+commit d41dd26552baa0b19803638f32f04ab22c2210bb
+Author: Antonio Barros <1200606@isep.ipp.pt>
+Date:   Sat May 8 21:13:47 2021 +0100
+
+    L2S20-39 #coment start of the implementacao
+
+D	Documents/UC2052/.L2S20-5.vpp.lck
+M	Documents/UC2052/L2S20-5.vpp
+M	base.core/src/main/java/eapli/base/teamManagement/domain/Team.java
+M	base.core/src/main/java/eapli/base/teamManagement/domain/Uniquecode.java
+M	base.core/src/main/java/eapli/base/teamManagement/repositories/TeamRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryRepositoryFactory.java
+A	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryTeamRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaRepositoryFactory.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaTeamRepository.java
+
+commit bc418f3dc01c731910a6c18119da48fced40a252
+Author: Antonio Barros <1200606@isep.ipp.pt>
+Date:   Sat May 8 14:39:06 2021 +0100
+
+    L2S20-38 # Design fix
+
+M	Documents/UC2052/L2S20-5.vpp
+M	Documents/UC2052/ProcessoEngenhariaFuncionalidade.md
+M	base.core/src/main/java/eapli/base/infrastructure/persistence/RepositoryFactory.java
+A	base.core/src/main/java/eapli/base/teamManagement/application/TeamController.java
+M	base.core/src/main/java/eapli/base/teamManagement/domain/Team.java
+M	base.core/src/main/java/eapli/base/teamManagement/domain/Uniquecode.java
+A	base.core/src/main/java/eapli/base/teamManagement/repositories/TeamRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryRepositoryFactory.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaRepositoryFactory.java
+A	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaTeamRepository.java
+
+commit 341c7cb86610a1b7faa363f805d4b98a4c4b0043
+Author: Antonio Barros <1200606@isep.ipp.pt>
+Date:   Sat May 8 04:22:46 2021 +0100
+
+    L2S20-38 # Design done
+
+A	Documents/UC2052/.L2S20-5.vpp.lck
+A	Documents/UC2052/L2S20-5.vpp
+A	Documents/UC2052/L2S20-5.vpp.bak_000f
+M	Documents/UC2052/ProcessoEngenhariaFuncionalidade.md
+A	Documents/UC2052/sd Create team.png
+
+commit 00460f4d7253d8de7770cb6849e7a8af36727396
+Author: Antonio Barros <1200606@isep.ipp.pt>
+Date:   Sat May 8 02:51:48 2021 +0100
+
+    L2S20-37 # Requirements done
+
+M	Documents/UC2052/ProcessoEngenhariaFuncionalidade.md
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Service.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/domain/ClientUser.java
+M	base.core/src/main/java/eapli/base/teamManagement/domain/Team.java
+
+commit 767affe09084ea4d2e800faca314f4e2ccdb3d15
+Author: Antonio Barros <1200606@isep.ipp.pt>
+Date:   Sat May 8 01:27:07 2021 +0100
+
+    L2S20-36 # Analyse done
+
+A	.idea/dataSources.xml
+A	Documents/UC2052/ProcessoEngenhariaFuncionalidade.md
+
+commit 73a1ebcfcd81748c7d5ab0631190793f9f3b7cd6
+Author: Antonio Barros <1200606@isep.ipp.pt>
+Date:   Sat May 8 00:32:14 2021 +0100
+
+    L2S20-1 #all domain fix
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Activity.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Catalog.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Criticalitylevel.java
+A	base.core/src/main/java/eapli/base/catalogmanagement/domain/Delegaction.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Objective.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Order.java
+A	base.core/src/main/java/eapli/base/catalogmanagement/domain/Responsable.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Service.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Workflow.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/domain/ClientUser.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/domain/Placeofresidence.java
+M	base.core/src/main/java/eapli/base/funcaomanagement/domain/Function.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Attribute.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Draft.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Feedback.java
+D	base.core/src/main/java/eapli/base/ordermanagement/domain/FeedbackScale.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Form.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Request.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Ticket.java
+M	base.core/src/main/java/eapli/base/teamManagement/domain/Team.java
+M	base.persistence.impl/src/main/resources/META-INF/persistence.xml
+
+commit df9742e780bcde0e7cf741104232c261e6840f68
+Author: Antonio Barros <1200606@isep.ipp.pt>
+Date:   Fri May 7 22:03:47 2021 +0100
+
+    L2S20-1 #domain Activity
+
+A	base.core/src/main/java/eapli/base/catalogmanagement/domain/Activity.java
+A	base.core/src/main/java/eapli/base/catalogmanagement/domain/TypeofActivitie.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Form.java
+
+commit 60067d8b0f3aa065767a3fe5b97166ada4486b75
+Author: Antonio Barros <1200606@isep.ipp.pt>
+Date:   Fri May 7 17:32:23 2021 +0100
+
+    L2S20-1 #domain Form
+
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Attribute.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Form.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/TypeofData.java
+
+commit 47a083c3da765cc0f9be548dd12a468459cfa618
+Author: Antonio Barros <1200606@isep.ipp.pt>
+Date:   Fri May 7 17:21:46 2021 +0100
+
+    update framework
+
+M	.idea/jarRepositories.xml
+M	base.app.common.console/pom.xml
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Catalog.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Service.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Form.java
+R100	base.core/src/main/java/eapli/base/teamManagement/domain/Acronym.JAVA	base.core/src/main/java/eapli/base/teamManagement/domain/Acronym.java
+M	pom.xml
+
+commit a9013b15cc684f48644bd98db6aebce84321945c
+Author: Antonio Barros <1200606@isep.ipp.pt>
+Date:   Fri May 7 00:31:00 2021 +0100
+
+    L2S20-1 #comment domian Colaborador
+
+M	base.core/src/main/java/eapli/base/clientusermanagement/domain/ClientUser.java
+A	base.core/src/main/java/eapli/base/clientusermanagement/domain/CollaboratorEmail.java
+A	base.core/src/main/java/eapli/base/clientusermanagement/domain/Dateofbirth.java
+A	base.core/src/main/java/eapli/base/clientusermanagement/domain/Placeofresidence.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/Attribute.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/Form.java
+M	base.persistence.impl/src/main/resources/META-INF/persistence.xml
+
+commit bb8d76b8ceba7018829c2efdb27b081069c92678
+Author: Antonio Barros <1200606@isep.ipp.pt>
+Date:   Thu May 6 11:08:04 2021 +0100
+
+    L2S20-1 #comment domian service Order
+
+A	base.core/src/main/java/eapli/base/catalogmanagement/domain/Criticalitylevel.java
+A	base.core/src/main/java/eapli/base/catalogmanagement/domain/Objective.java
+A	base.core/src/main/java/eapli/base/catalogmanagement/domain/Order.java
+A	base.core/src/main/java/eapli/base/catalogmanagement/domain/Service.java
+A	base.core/src/main/java/eapli/base/catalogmanagement/domain/Step.java
+A	base.core/src/main/java/eapli/base/catalogmanagement/domain/Workflow.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/FeedbackScale.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/Ticket.java
+M	base.persistence.impl/src/main/resources/META-INF/persistence.xml
+
+commit 9e966fb35ed7716dc2ebc82b518cb31ddcf35cb2
+Author: Antonio Barros <1200606@isep.ipp.pt>
+Date:   Thu May 6 01:36:13 2021 +0100
+
+    L2S20-1 #comment domian draft Request
+
+M	base.core/src/main/java/eapli/base/funcaomanagement/domain/Function.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/Draft.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/Feedback.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/FeedbackScale.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/Request.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/State.java
+M	base.core/src/main/java/eapli/base/teamManagement/domain/Team.java
+M	base.core/src/main/java/eapli/base/teamManagement/domain/TeamType.java
+M	base.persistence.impl/src/main/resources/META-INF/persistence.xml
+
+commit 91d522c46e2a46cca6d1d7b1e4bfd4615e74d3ea
+Author: Antonio Barros <1200606@isep.ipp.pt>
+Date:   Wed May 5 23:42:01 2021 +0100
+
+    L2S20-1 #comment domian catalog
+
+A	base.core/src/main/java/eapli/base/catalogmanagement/domain/Catalog.java
+M	base.persistence.impl/src/main/resources/META-INF/persistence.xml
+
+commit ced482c4600714a5edf4e25e2ba2abe6c4f1be29
+Author: Antonio Barros <1200606@isep.ipp.pt>
+Date:   Wed May 5 22:48:41 2021 +0100
+
+    L2S20-1 #domian team teamType
+
+M	.gitignore
+A	.idea/intellij-javadocs-4.0.1.xml
+
+commit d919399cadcbff7928a844d760a3329538752178
+Author: Antonio Barros <1200606@isep.ipp.pt>
+Date:   Wed May 5 22:40:50 2021 +0100
+
+    L2S20-1 #comment domian team teamType
+
+A	base.core/src/main/java/eapli/base/funcaomanagement/domain/Function.java
+A	base.core/src/main/java/eapli/base/teamManagement/domain/Acronym.JAVA
+A	base.core/src/main/java/eapli/base/teamManagement/domain/Team.java
+A	base.core/src/main/java/eapli/base/teamManagement/domain/TeamType.java
+A	base.core/src/main/java/eapli/base/teamManagement/domain/Uniquecode.java
+A	base.core/src/main/java/eapli/base/teamManagement/dto/TeamDTO.java
+M	base.persistence.impl/src/main/resources/META-INF/persistence.xml
