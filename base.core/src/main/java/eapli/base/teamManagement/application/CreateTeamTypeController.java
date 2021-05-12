@@ -19,7 +19,7 @@ public class CreateTeamTypeController {
             .repositories().teamTypes();
 
     public TeamType registerTeamType(Uniquecode singleInternCode, Description color, Description description) {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER,BaseRoles.ADMIN);
 
         final TeamTypeBuilder teamTypeBuilder = new TeamTypeBuilder();
 
