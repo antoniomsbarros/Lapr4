@@ -1,7 +1,6 @@
 package eapli.base.teamManagement.application;
 
 import eapli.base.infrastructure.persistence.PersistenceContext;
-import eapli.base.teamManagement.domain.Team;
 import eapli.base.teamManagement.domain.TeamType;
 import eapli.base.teamManagement.domain.TeamTypeBuilder;
 import eapli.base.teamManagement.domain.Uniquecode;

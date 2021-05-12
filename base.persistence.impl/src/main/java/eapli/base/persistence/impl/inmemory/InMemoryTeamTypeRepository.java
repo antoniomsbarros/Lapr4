@@ -23,8 +23,4 @@ public class InMemoryTeamTypeRepository extends InMemoryDomainRepository<TeamTyp
     }
 
 
-    @Override
-    public Iterable<TeamType> findAll() {
-       return findAll();
-    }
 }
