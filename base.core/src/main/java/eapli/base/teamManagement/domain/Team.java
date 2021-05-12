@@ -14,7 +14,7 @@ import java.util.Set;
 @Entity
 public class Team implements AggregateRoot<Uniquecode>{
 
-    @Id
+
     @EmbeddedId
     private Uniquecode uniquecode;
     @Version
@@ -24,25 +24,19 @@ public class Team implements AggregateRoot<Uniquecode>{
 
     private Acronym teamAcronym;
 
-    /*@OneToOne(optional = false)
+    @OneToOne(optional = false)
     private  TeamType teamType;
     @OneToMany()
     private Set<ClientUser> collaboratorList;
-    //@OneToOne()
-    private ClientUser responsable;*/
-    @AttributeOverride(name = "value", column = @Column(name = "teamType"))
-    private Description teamType;
-    @AttributeOverride(name = "value", column = @Column(name = "collaboratorList"))
-    private Description collaboratorList;
-    @AttributeOverride(name = "value", column = @Column(name = "responsable"))
-    private Description responsable;
+    @OneToOne()
+    private ClientUser responsable;
     public Team() {
     }
 
-    public Team(final Uniquecode uniquecode,final Description responsable,final Description collaboratorList,
-                final Designation designacaoEquipa,final Acronym acronimoEquipa,final Description teamType) {
+    public Team(final Uniquecode uniquecode,final ClientUser responsable,final Set<ClientUser> collaboratorList,
+                final Designation designacaoEquipa,final Acronym acronimoEquipa,final TeamType teamType) {
 
-        //Preconditions.noneNull(designacaoEquipa,collaboratorList,teamType, responsable,uniquecode.Code());
+        Preconditions.noneNull(designacaoEquipa,collaboratorList,teamType, responsable,uniquecode.Code());
         if (designacaoEquipa.length()>50){
             throw new IllegalArgumentException("The designaction of the team cant passed the size of 50 caracteres");
         }
@@ -91,18 +85,17 @@ public class Team implements AggregateRoot<Uniquecode>{
     public  String designationTeam(){
         return designationTeam.toString();
     }
-    public  Description teamType(){
+    public  TeamType teamType(){
         return  teamType;
     }
 
     public TeamDTO toDTO(){
         return new TeamDTO(uniquecode.Code(), designationTeam.toString(), teamAcronym.AcronymName());
     }
-/*
+
     public boolean exist (ClientUser clientUser){ return collaboratorList.contains(clientUser); }
 
     public Set<ClientUser> collaboratorList() {
         return collaboratorList;
     }
-**/
 }

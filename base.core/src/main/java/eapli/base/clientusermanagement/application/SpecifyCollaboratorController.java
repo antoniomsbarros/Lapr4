@@ -40,7 +40,7 @@ public class SpecifyCollaboratorController {
                                      final String shortname, final Placeofresidence placeofresidence) {
 
        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER,
-                BaseRoles.RRH_MANAGER);
+                BaseRoles.ADMIN, BaseRoles.RRH_MANAGER);
 
         RandomRawPassword randomRawPassword = new RandomRawPassword();
 

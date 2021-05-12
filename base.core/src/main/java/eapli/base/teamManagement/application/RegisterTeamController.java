@@ -24,9 +24,9 @@ private final AuthorizationService authorizationService = AuthzRegistry.authoriz
 private final TeamTypeRepository teamTypeRepository=PersistenceContext.repositories().teamTypes();
 private ClientUserRepository collobaroters =PersistenceContext.repositories().clientUsers();
 
-public Team registerTeam(final String uniquecode, final Description responsable,
-                         final Description collaboratorList, final String designacaoEquipa,
-                         final String acronimoEquipa, final Description teamType) {
+public Team registerTeam(final String uniquecode, final ClientUser responsable,
+                         final Set<ClientUser> collaboratorList, final String designacaoEquipa,
+                         final String acronimoEquipa, final TeamType teamType) {
     authorizationService.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.ADMIN);
     final TeamBuilder teamBuilder=new TeamBuilder();
     teamBuilder.withDesignationTeam(designacaoEquipa).withteamAcronym(acronimoEquipa).withUniqueCode(uniquecode)
