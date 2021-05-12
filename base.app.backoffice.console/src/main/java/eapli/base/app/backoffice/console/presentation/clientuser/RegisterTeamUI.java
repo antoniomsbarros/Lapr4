@@ -29,10 +29,8 @@ public class RegisterTeamUI extends AbstractUI {
 
         String acronmy = Console.readLine("Create one acronym for the team: ");
         String designcao = Console.readLine("Please create Designaction for the Team: ");
-        Description responsable= Description.valueOf(Console.readLine("Insert the name Responsave: "));
-        Description teamType= Description.valueOf(Console.readLine("Insert the team Descriction"));
-        Description clientUserSet=Description.valueOf(Console.readLine("Insert the Collaborators: "));
-       /*
+
+
                Set<ClientUser> clientUserSet = new HashSet<>();
        ClientUser responsable = null;
         TeamType teamType=null;
@@ -76,9 +74,9 @@ public class RegisterTeamUI extends AbstractUI {
                 if (answer2.equals("y")) {
                     clientUserSet.add(temp1);
                 }
-            }*/
+            }
             String uniquecode=Console.readLine("Insert a Unique Code for the Team: ");
-            /*List<String> codesused=new ArrayList<>();
+            List<String> codesused=new ArrayList<>();
 
             registerTeamController.allTeams().forEach( team->{
                 codesused.add(team.identity().Code());
@@ -98,7 +96,7 @@ public class RegisterTeamUI extends AbstractUI {
             if (uniquecode.isEmpty()){
                 System.out.println("You didint created a Unique Code");
                 return false;
-            }*/
+            }
 
             registerTeamController.registerTeam(uniquecode, responsable, clientUserSet, designcao, acronmy, teamType);
             return true;

@@ -64,6 +64,9 @@ public class MainMenu extends AbstractUI {
     private static final int SPECIFY_COLLABORATOR_OPTION = 1;
     private static final int ASSOCIATE_REMOVE_COLLABORATOR_TEAM_OPTION = 2;
 
+    //TEAM TYPE
+    private static final int CREATE_TEAM_TYPE_OPTION = 1;
+
     // SETTINGS
     private static final int SET_KITCHEN_ALERT_LIMIT_OPTION = 1;
 
@@ -110,6 +113,7 @@ public class MainMenu extends AbstractUI {
 
 
     private static final int TEAM_OPTION=8;
+    private static final int TEAM_TYPE_OPTION = 9;
 
     //CATALOG
     private static final int CREATE_CATALOG_OPTION = 1;
@@ -181,6 +185,8 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(TEAM_OPTION, teamMenu);
             final Menu criticalitylevelMenu = builderCriticalitylevelMenu();
             mainMenu.addSubMenu(CREATE_CRITICALITYLEVEL_OPTION,criticalitylevelMenu);
+            final Menu teamTypeMenu = builderTeamTypeMenu();
+            mainMenu.addSubMenu(TEAM_TYPE_OPTION,teamTypeMenu);
         }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
@@ -256,6 +262,14 @@ public class MainMenu extends AbstractUI {
         menu.addItem(ASSOCIATE_REMOVE_COLLABORATOR_TEAM_OPTION, "Associate/Remove Collaborator-Team",
                 new AssociateRemoveCollaboratorTeamAction());
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
+    private Menu builderTeamTypeMenu(){
+        final Menu menu = new Menu("Team Type >");
+
+        menu.addItem(CREATE_TEAM_TYPE_OPTION, "New Team Type",new CreateTeamTypeAction()::show);
 
         return menu;
     }
