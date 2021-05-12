@@ -29,4 +29,17 @@ public class CreateTeamTypeController {
 
         return teamTypeRepository.save(teamTypeBuilder.build());
     }
+
+    public Iterable<TeamType> getAllTeamTypes(){
+        return teamTypeRepository.findAll();
+    }
+
+    public boolean singleInternCodeAndColorAlreadyExists(String code, String cor){
+        for (TeamType teamType: getAllTeamTypes()) {
+            if (teamType.identity().equals(code) && teamType.cor().equals(cor)){
+                return true;
+            }
+        }
+       return false;
+    }
 }
