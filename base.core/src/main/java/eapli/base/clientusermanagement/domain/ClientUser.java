@@ -63,8 +63,8 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     @EmbeddedId
     private MecanographicNumber mecanographicNumber;
 
-    @OneToOne()
-    private Function function;
+    //@ManyToOne(optional = true)
+    //private Function function;
 
     @OneToMany()
     private List<Catalog> listcatalog;
@@ -80,6 +80,8 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     private Long phoneNumber;
     private Designation shortname;
     private Placeofresidence placeofresidence;
+
+    //private boolean active;
 
     /**
      * cascade = CascadeType.NONE as the systemUser is part of another aggregate
@@ -101,7 +103,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
             throw new IllegalArgumentException("The short name Cant passed 30 caracteres");
         }
         this.mecanographicNumber = mecanographicNumber;
-        this.function = function;
+        //this.function = function;
         this.listcatalog = listcatalog;
         this.list = list;
         this.fullName = fullName;
@@ -119,10 +121,16 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         if (mecanographicNumber == null || systemUser == null) {
             throw new IllegalArgumentException();
         }
+        if (fullName.length() > 80) {
+            throw new IllegalArgumentException("The full name has passed the limit of 80 caracteres");
+        }
+        if (shortname.length() > 30) {
+            throw new IllegalArgumentException("The short name Cant passed 30 caracteres");
+        }
         this.mecanographicNumber = mecanographicNumber;
-        this.function = function;
-        this.listcatalog = new ArrayList<Catalog>();
-        this.list = new ArrayList<Team>();
+        //this.function = function;
+        this.listcatalog = new ArrayList<>();
+        this.list = new ArrayList<>();
         this.fullName = fullName;
         this.collaboratorEmail = collaboratorEmail;
         this.dateofbirth = dateofbirth;
@@ -130,6 +138,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         this.shortname = shortname;
         this.placeofresidence = placeofresidence;
         this.systemUser = systemUser;
+        //active = true;
     }
 
     public ClientUser(final SystemUser user, final MecanographicNumber mecanographicNumber) {
@@ -143,6 +152,9 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     protected ClientUser() {
         // for ORM only
     }
+
+
+    //public boolean isActive() {       return active;    }
 
     public SystemUser user() {
         return this.systemUser;
@@ -181,7 +193,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         return "ClientUser{" +
                 "version=" + version +
                 ", mecanographicNumber=" + mecanographicNumber +
-                ", function=" + function +
+              //  ", function=" + function +
                 ", listcatalog=" + listcatalog +
                 ", list=" + list +
                 ", fullName=" + fullName +
@@ -195,6 +207,13 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     }
 
     public ClientUserDTO toDTO() {
+        return new ClientUserDTO(mecanographicNumber.toString(), fullName.toString(), collaboratorEmail.email(), dateofbirth.Date(), phoneNumber, shortname.toString(),
+                placeofresidence.country(), placeofresidence.county(), placeofresidence.district(), placeofresidence.city(),
+                placeofresidence.street(), placeofresidence.doorNumber(), placeofresidence.floorNUmber(), placeofresidence.postalCode());
+    }
+
+/*
+    public ClientUserDTO toDTO() {
         return new ClientUserDTO(mecanographicNumber.toString(), fullName.toString(), function.Code(), function.Name(),
                 function.Description(), collaboratorEmail.email(), dateofbirth.Date(), phoneNumber, shortname.toString(),
                 placeofresidence.country(), placeofresidence.county(), placeofresidence.district(), placeofresidence.city(),
@@ -202,7 +221,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     }
 
 
-
+*/
     public boolean belongToThisTeamType(Team team) {
 /*
         for (Team t:list){

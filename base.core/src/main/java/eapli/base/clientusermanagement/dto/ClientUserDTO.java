@@ -38,6 +38,7 @@ public class ClientUserDTO {
 
         this.mecanographicNumber = mecanographicNumber;
         this.fullName = fullName;
+        this.functioncode = functioncode;
         this.functionName = functionName;
         this.functionDescription = functionDescription;
         this.email = email;
@@ -55,6 +56,28 @@ public class ClientUserDTO {
         this.postalCode = postalCode;
 
     }
+    public ClientUserDTO(String mecanographicNumber, String fullName, String email, Calendar birth, Long phoneNumber,
+                         String shortname, String country, String county, String district, String city, String street,
+                         Long doorNumber, Long floorNUmber, String postalCode){
+
+        this.mecanographicNumber = mecanographicNumber;
+        this.fullName = fullName;
+        this.email = email;
+        this.birth = birth;
+        this.phoneNumber = phoneNumber;
+        this.shortname = shortname;
+
+        this.country = country;
+        this.county = county;
+        this.district = district;
+        this.city = city;
+        this.street =  street;
+        this.doorNumber = doorNumber;
+        this.floorNUmber = floorNUmber;
+        this.postalCode = postalCode;
+
+    }
+
 
 
 }

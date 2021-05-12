@@ -9,6 +9,7 @@ import eapli.base.catalogmanagement.repository.ServiceRepository;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
+import eapli.base.funcaomanagement.repositories.FunctionRepository;
 import eapli.base.ordermanagement.domain.repository.FormRepository;
 import eapli.base.teamManagement.repositories.TeamRepository;
 import eapli.base.teamManagement.repositories.TeamTypeRepository;
@@ -20,6 +21,10 @@ import eapli.framework.infrastructure.authz.domain.repositories.UserRepository;
  *
  */
 public interface RepositoryFactory {
+
+    FunctionRepository functions(TransactionalContext tx);
+
+	FunctionRepository functions();
 
 	/**
 	 * factory method to create a transactional context to use in the repositories

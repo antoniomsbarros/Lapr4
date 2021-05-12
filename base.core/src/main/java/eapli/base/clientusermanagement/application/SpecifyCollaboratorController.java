@@ -43,14 +43,16 @@ public class SpecifyCollaboratorController {
                 BaseRoles.RRH_MANAGER);
 
         RandomRawPassword randomRawPassword = new RandomRawPassword();
-
+        System.out.println("PALAVRA-PASSE: " + randomRawPassword.toString());
         final Set<Role> roleTypes = new HashSet<>();
         boolean show;
         do {
             show = showRoles(roleTypes);
         } while (!show);
 
-        SystemUser systemUser = this.addUserController.addUser(email, randomRawPassword.toString(), shortname, shortname, email, roleTypes);
+        final String[] name = shortname.split(" ", 2);
+        System.out.println("Nome1: " + name[0] + "Nome2: " + name[1]);
+        SystemUser systemUser = this.addUserController.addUser(email, randomRawPassword.toString(), name[0], name[1], email, roleTypes);
 
 
         final ClientUser colaborador = new ClientUser(new MecanographicNumber(mecanographicNumber), Description.valueOf(fullName),

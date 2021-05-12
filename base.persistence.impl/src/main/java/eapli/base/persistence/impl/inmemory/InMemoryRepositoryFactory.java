@@ -5,6 +5,7 @@ import eapli.base.catalogmanagement.repository.CriticalityLevelRepository;
 import eapli.base.catalogmanagement.repository.ServiceRepository;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
+import eapli.base.funcaomanagement.repositories.FunctionRepository;
 import eapli.base.infrastructure.bootstrapers.BaseBootstrapper;
 import eapli.base.infrastructure.persistence.RepositoryFactory;
 import eapli.base.ordermanagement.domain.repository.FormRepository;
@@ -97,11 +98,23 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
 		return new InMemorySignupRequestRepository();
 	}
 
+	@Override
+	public FunctionRepository functions(final TransactionalContext tx) {
+
+		return new InMemoryFunctionRepository();
+	}
+
+	@Override
+	public FunctionRepository functions() {
+		return functions(null);
+	}
+
 
 	@Override
 	public TransactionalContext newTransactionalContext() {
 		// in memory does not support transactions...
 		return null;
 	}
+
 
 }

@@ -9,7 +9,7 @@ import eapli.framework.validations.Preconditions;
 import javax.persistence.*;
 
 @Entity
-public class Function implements AggregateRoot<Long> {
+public class Function implements AggregateRoot<Uniquecode> {
 
     @Id
     @GeneratedValue
@@ -21,6 +21,7 @@ public class Function implements AggregateRoot<Long> {
 
     private Description  descriptionFunction;
 
+    private boolean active;
 
     public Function() {
     }
@@ -29,6 +30,7 @@ public class Function implements AggregateRoot<Long> {
         Preconditions.noneNull(nomeFuncao, descricaoFuncao);
         this.functionname = nomeFuncao;
         this.descriptionFunction=descricaoFuncao;
+        active = true;
     }
 
 
@@ -40,10 +42,16 @@ public class Function implements AggregateRoot<Long> {
         Long tempother= (Long) other;
         return identity().equals(tempother);
     }
-
+/*
     @Override
     public Long identity() {
         return Long.valueOf(functioncode.toString());
+    }
+*/
+
+    @Override
+    public Uniquecode identity() {
+        return functioncode;
     }
 
     @Override
@@ -61,5 +69,9 @@ public class Function implements AggregateRoot<Long> {
 
     public String Description() {
         return descriptionFunction.toString();
+    }
+
+    public boolean isActive() {
+        return active;
     }
 }

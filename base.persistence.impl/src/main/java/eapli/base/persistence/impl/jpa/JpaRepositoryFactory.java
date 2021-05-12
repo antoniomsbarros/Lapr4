@@ -91,6 +91,16 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 	}
 
 	@Override
+	public JpaFunctionRepository functions(final TransactionalContext autoTx) {
+		return new JpaFunctionRepository(autoTx);
+	}
+
+	@Override
+	public JpaFunctionRepository functions() {
+		return new JpaFunctionRepository(Application.settings().getPersistenceUnitName());
+	}
+
+	@Override
 	public TransactionalContext newTransactionalContext() {
 		return JpaAutoTxRepository.buildTransactionalContext(Application.settings().getPersistenceUnitName(), Application.settings().getExtendedPersistenceProperties());
 	}
