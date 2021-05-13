@@ -30,6 +30,10 @@ public class Team implements AggregateRoot<Uniquecode>{
     private Set<ClientUser> collaboratorList;
     @OneToOne()
     private ClientUser responsable;
+
+    @Column(nullable = false)
+    private boolean active;
+
     public Team() {
     }
 
@@ -46,6 +50,7 @@ public class Team implements AggregateRoot<Uniquecode>{
         this.collaboratorList=collaboratorList;
         this.responsable=responsable;
         this.uniquecode=uniquecode;
+        active = true;
     }
 
     @Override
@@ -93,9 +98,12 @@ public class Team implements AggregateRoot<Uniquecode>{
         return new TeamDTO(uniquecode.Code(), designationTeam.toString(), teamAcronym.AcronymName());
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
     public boolean exist (ClientUser clientUser){ return collaboratorList.contains(clientUser); }
 
-    public Set<ClientUser> collaboratorList() {
-        return collaboratorList;
-    }
+
+    public Set<ClientUser> collaboratorList() { return collaboratorList;    }
 }

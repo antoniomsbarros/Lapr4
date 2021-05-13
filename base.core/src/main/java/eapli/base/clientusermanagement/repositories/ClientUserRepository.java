@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.clientusermanagement.domain.MecanographicNumber;
+import eapli.base.teamManagement.domain.Uniquecode;
 import eapli.framework.domain.repositories.DomainRepository;
 import eapli.framework.infrastructure.authz.domain.model.Username;
 
@@ -34,6 +35,5 @@ public interface ClientUserRepository
     }
 
     public Iterable<ClientUser> findAllActive();
-
 
 }

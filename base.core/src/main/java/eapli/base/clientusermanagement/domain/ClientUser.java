@@ -68,8 +68,8 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
 
     @OneToMany()
     private List<Catalog> listcatalog;
-    @OneToMany()
-    private List<Team> list;
+    //@OneToMany()
+    //private List<Team> list;
     @OneToOne
     private ClientUser clientUser;
 
@@ -105,7 +105,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         this.mecanographicNumber = mecanographicNumber;
         //this.function = function;
         this.listcatalog = listcatalog;
-        this.list = list;
+        //this.list = list;
         this.fullName = fullName;
         this.collaboratorEmail = collaboratorEmail;
         this.dateofbirth = dateofbirth;
@@ -130,7 +130,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         this.mecanographicNumber = mecanographicNumber;
         //this.function = function;
         this.listcatalog = new ArrayList<>();
-        this.list = new ArrayList<>();
+        //this.list = new ArrayList<>();
         this.fullName = fullName;
         this.collaboratorEmail = collaboratorEmail;
         this.dateofbirth = dateofbirth;
@@ -184,9 +184,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         return this.mecanographicNumber;
     }
 
-    public List<Team> teamList() {
-        return list;
-    }
+   // public List<Team> teamList() {      return list;    }
 
     @Override
     public String toString() {
@@ -195,7 +193,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
                 ", mecanographicNumber=" + mecanographicNumber +
               //  ", function=" + function +
                 ", listcatalog=" + listcatalog +
-                ", list=" + list +
+                //", list=" + list +
                 ", fullName=" + fullName +
                 ", collaboratorEmail=" + collaboratorEmail +
                 ", dateofbirth=" + dateofbirth +
@@ -221,18 +219,16 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     }
 
 
-*/
+*//*
     public boolean belongToThisTeamType(Team team) {
-/*
+
         for (Team t:list){
             if (t.teamType().sameAs(team.teamType())){
                 return true;
             }
-        }*/
+        }
         return false;
-    }
+    }*/
 
-    public void addTeam(Team team) {
-        list.add(team);
-    }
+  //  public void addTeam(Team team) {        list.add(team);    }
 }

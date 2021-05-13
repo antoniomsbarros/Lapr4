@@ -20,7 +20,7 @@ public class Function implements AggregateRoot<Uniquecode> {
     private Designation functionname;
 
     private Description  descriptionFunction;
-
+    @Column(nullable = false)
     private boolean active;
 
     public Function() {
