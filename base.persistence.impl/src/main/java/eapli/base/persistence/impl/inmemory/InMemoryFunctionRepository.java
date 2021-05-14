@@ -13,7 +13,7 @@ import java.util.Optional;
  *
  * @author marly
  */
-public class InMemoryFunctionRepository extends InMemoryDomainRepository<Function, Uniquecode>
+public class InMemoryFunctionRepository extends InMemoryDomainRepository<Function, Long>
         implements FunctionRepository {
 
     static {
@@ -21,7 +21,7 @@ public class InMemoryFunctionRepository extends InMemoryDomainRepository<Functio
     }
 
     @Override
-    public Optional<Function> findFunctionbyID(Uniquecode uniquecode) {
+    public Optional<Function> findFunctionbyID(Long uniquecode) {
         return Optional.of(data().get(uniquecode));
     }
 

@@ -16,9 +16,8 @@ import java.util.Optional;
  *
  * @author marly
  */
-public class JpaFunctionRepository extends JpaAutoTxRepository<Function, Uniquecode, Designation>
+public class JpaFunctionRepository extends JpaAutoTxRepository<Function, Long, Long>
         implements FunctionRepository {
-
 
     public JpaFunctionRepository(final TransactionalContext autoTx) {
         super(autoTx, "functioncode");
@@ -29,31 +28,17 @@ public class JpaFunctionRepository extends JpaAutoTxRepository<Function, Uniquec
     }
 
     @Override
-    public Optional<Function> findFunctionbyID(Uniquecode uniquecode) {
+    public Optional<Function> findFunctionbyID(Long uniquecode) {
         final Map<String, Object> params = new HashMap<>();
-        params.put("uniquecode", uniquecode);
-        return matchOne("e.functioncode=:uniquecode", params);
+        params.put("code", uniquecode);
+        return matchOne("e.code=:uniquecode", params);
     }
 
-    @Override
-    public Optional<Function> ofIdentity(Uniquecode id) {
-        final Map<String, Object> params = new HashMap<>();
-        params.put("id", id);
-        return matchOne("e.functioncode=:id", params);
-    }
 
-    @Override
-    public void deleteOfIdentity(Uniquecode entityId) {
-
-    }
 
     @Override
     public Iterable<Function> activeFunctions() {
         return match("e.active=true");
     }
 
-    @Override
-    public Optional<Function> lockOfIdentity(Uniquecode id) {
-        return Optional.empty();
-    }
 }

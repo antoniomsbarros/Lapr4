@@ -19,16 +19,16 @@ public class TeamTypeBootstrapper implements Action {
 
     private final CreateTeamTypeController createTeamTypeController = new CreateTeamTypeController();
 
-    /**
-     * TODO: juntar ao bootstrapper a equipa,colaboradores e relação entre colaborador-equipa
-     */
-    // private final SpecifyCollaboratorController specifyCollaboratorController = new SpecifyCollaboratorController();
-    // private final AssociateRemoveCollaboratorTeamController associateRemoveCollaboratorTeamController = new AssociateRemoveCollaboratorTeamController();
-    // private final RegisterTeamController registerTeamController = new RegisterTeamController();
+
 
     @Override
     public boolean execute() {
         registerTeamType(Uniquecode.valueOf("1"),Description.valueOf("Red"), Description.valueOf("TeamType1"));
+        registerTeamType(Uniquecode.valueOf("2"),Description.valueOf("Blue"), Description.valueOf("TeamType2"));
+        registerTeamType(Uniquecode.valueOf("3"),Description.valueOf("Purple"), Description.valueOf("TeamType3"));
+        registerTeamType(Uniquecode.valueOf("4"),Description.valueOf("Green"), Description.valueOf("TeamType4"));
+        registerTeamType(Uniquecode.valueOf("5"),Description.valueOf("Yellow"), Description.valueOf("TeamType5"));
+
         return true;
     }
 

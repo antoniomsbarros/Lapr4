@@ -18,7 +18,14 @@ public class OrganicStructureDemoBootstrapper implements Action {
 
     @Override
     public boolean execute() {
-        final Action[] actions = { new TeamTypeBootstrapper() };
+        final Action[] actions = { new TeamTypeBootstrapper(),
+                                    new SpecifyCollaboratorBootstrapper(),
+                                    new CreateTeamBootstrapper(),
+
+
+               // new AddFunctionBootstrapper()
+
+        };
 
         authenticateForBootstrapping();
 
