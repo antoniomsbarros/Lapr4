@@ -36,6 +36,7 @@ public class SpecifyCollaboratorUI extends AbstractUI {
         final String fullName = Console.readLine("Nome completo: ");
         final String email = Console.readLine("Email: ");
         final Calendar birth = Console.readCalendar("Data de Nascimento: ");
+        System.out.println("Calendar: " + birth);
         final Long phoneNumber = Console.readLong("Número de telefone: ");
         final String shortname = Console.readLine("Nome curto: ");
         final Function function = new Function();

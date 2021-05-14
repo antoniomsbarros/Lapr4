@@ -46,7 +46,7 @@ public class AssociateRemoveCollaboratorTeamUI extends AbstractUI {
                         associateRemoveCollaboratorTeamController.associateCollaboratorTeamController(collaboratorDTO.mecanographicNumber,
                                 teamDTO.uniquecode);
                     } catch (NullPointerException|IllegalArgumentException|IllegalAccessException e){
-                        System.out.println("Dado Inválido: " + e);
+                        System.out.println("Invalid Data: " + e);
                     }
                     opValida = true;
                     break;
@@ -74,7 +74,7 @@ public class AssociateRemoveCollaboratorTeamUI extends AbstractUI {
                                     associateRemoveCollaboratorTeamController.removeCollaboratorTeamController(collaboratorDTORemove.mecanographicNumber,
                                             teamDTORemove.uniquecode);
                                 } catch (NullPointerException | IllegalAccessException e){
-                                    System.out.println("Acesso Inválido: " + e);
+                                    System.out.println("Invalid Access: " + e);
                                 }
 
                                 opValidaRemove = true;
@@ -95,7 +95,7 @@ public class AssociateRemoveCollaboratorTeamUI extends AbstractUI {
                                     associateRemoveCollaboratorTeamController.removeCollaboratorTeamController(collaboratorDTORemove2.mecanographicNumber,
                                             teamDTORemove2.uniquecode);
                                 } catch (NullPointerException | IllegalAccessException e) {
-                                    System.out.println("Acesso Inválido: " + e);
+                                    System.out.println("Invalid Access: " + e);
                                 }
 
                                 opValidaRemove = true;

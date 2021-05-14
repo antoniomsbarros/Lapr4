@@ -36,6 +36,7 @@ import eapli.framework.domain.model.DomainEntities;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.general.domain.model.Designation;
 import eapli.framework.infrastructure.authz.domain.model.SystemUser;
+import eapli.framework.time.util.Calendars;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,7 +82,6 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     private Designation shortname;
     private Placeofresidence placeofresidence;
 
-    //private boolean active;
 
     /**
      * cascade = CascadeType.NONE as the systemUser is part of another aggregate
@@ -119,7 +119,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
                       final CollaboratorEmail collaboratorEmail, final Dateofbirth dateofbirth, final Long phoneNumber, final Designation shortname,
                       final Placeofresidence placeofresidence, final SystemUser systemUser) {
         if (mecanographicNumber == null || systemUser == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("mecanographicNumber or systemUser null");
         }
         if (fullName.length() > 80) {
             throw new IllegalArgumentException("The full name has passed the limit of 80 caracteres");
@@ -127,6 +127,15 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         if (shortname.length() > 30) {
             throw new IllegalArgumentException("The short name Cant passed 30 caracteres");
         }
+
+        try {
+            if (!(Calendars.now().compareTo(dateofbirth.Date())==1)) {
+                throw new IllegalArgumentException("Invalid Date!");
+            }
+        }catch (NullPointerException | IllegalArgumentException e){
+            System.out.println("Invalid Date: " + e);
+        }
+
         this.mecanographicNumber = mecanographicNumber;
         //this.function = function;
         this.listcatalog = new ArrayList<>();
@@ -138,7 +147,6 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         this.shortname = shortname;
         this.placeofresidence = placeofresidence;
         this.systemUser = systemUser;
-        //active = true;
     }
 
     public ClientUser(final SystemUser user, final MecanographicNumber mecanographicNumber) {
@@ -152,9 +160,6 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     protected ClientUser() {
         // for ORM only
     }
-
-
-    //public boolean isActive() {       return active;    }
 
     public SystemUser user() {
         return this.systemUser;

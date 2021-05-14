@@ -43,7 +43,6 @@ public class AssociateRemoveCollaboratorTeamController {
             }
             else {
                 team.get().collaboratorList().add(collaborator.get());
-                teamRepository.delete(team.get());
                 teamRepository.save(team.get());
             }
         }
@@ -63,8 +62,10 @@ public class AssociateRemoveCollaboratorTeamController {
         if (collaborator.isPresent() && team.isPresent()){
 
             team.get().collaboratorList().remove(collaborator.get());
+            if (team.get().collaboratorList().size()==0){
+                System.out.println("You removed the last collaborator from the team");
+            }
 
-            teamRepository.delete(team.get());
             teamRepository.save(team.get());
 
         }
@@ -88,6 +89,8 @@ public class AssociateRemoveCollaboratorTeamController {
     public Iterable<TeamDTO> collaboratorTeams(String collaboratorID){
         return teams.collaboratorTeams(new MecanographicNumber(collaboratorID));
     }
+
+
 
     public Iterable<ClientUserDTO> collaboratorsOfTeam(String teamID) {
         Iterable<ClientUserDTO> c = null;
