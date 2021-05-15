@@ -1,7 +1,6 @@
 package eapli.base.teamManagement.application;
 
 import eapli.base.infrastructure.persistence.PersistenceContext;
-import eapli.base.teamManagement.domain.Team;
 import eapli.base.teamManagement.domain.TeamType;
 import eapli.base.teamManagement.domain.TeamTypeBuilder;
 import eapli.base.teamManagement.domain.Uniquecode;
@@ -20,7 +19,7 @@ public class CreateTeamTypeController {
             .repositories().teamTypes();
 
     public TeamType registerTeamType(Uniquecode singleInternCode, Description color, Description description) {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER,BaseRoles.ADMIN);
 
         final TeamTypeBuilder teamTypeBuilder = new TeamTypeBuilder();
 

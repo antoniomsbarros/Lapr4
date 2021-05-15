@@ -8,9 +8,13 @@ import eapli.base.Application;
 import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.clientusermanagement.domain.MecanographicNumber;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
+import eapli.base.teamManagement.domain.Team;
+import eapli.base.teamManagement.domain.Uniquecode;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.authz.domain.model.Username;
 import eapli.framework.infrastructure.repositories.impl.jpa.JpaAutoTxRepository;
+
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -47,4 +51,5 @@ class JpaClientUserRepository
     public Iterable<ClientUser> findAllActive() {
         return match("e.systemUser.active = true");
     }
+
 }

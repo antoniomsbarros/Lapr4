@@ -9,8 +9,7 @@ import javax.persistence.*;
 @Entity
 public class TeamType implements AggregateRoot<Uniquecode> {
 
-    @Id
-    @GeneratedValue
+    @EmbeddedId
     private Uniquecode singleInternalcode;
     @Version
     private Long version;
@@ -20,11 +19,15 @@ public class TeamType implements AggregateRoot<Uniquecode> {
     @AttributeOverride(name = "value", column = @Column(name = "color"))
     private Description color;
 
+
     public TeamType() {
     }
 
     public TeamType(final Uniquecode codigoUnicoInterno, final Description descricaoTipoEquipa,final Description cor) {
         Preconditions.noneNull(codigoUnicoInterno, descricaoTipoEquipa, cor);
+        if (descricaoTipoEquipa.length()>50){
+            throw new IllegalArgumentException("The description of the team can't over size 50 characters");
+        }
         this.singleInternalcode = codigoUnicoInterno;
         this.descriptionTypeTeam = descricaoTipoEquipa;
         this.color=cor;
@@ -53,7 +56,8 @@ public class TeamType implements AggregateRoot<Uniquecode> {
     public  Description descricaoTipoEquipa(){
         return  descriptionTypeTeam;
     }
-    public TeamType teamtype () {return this;}
+
+    public TeamType teamtype () { return this;}
 
     @Override
     public String toString() {

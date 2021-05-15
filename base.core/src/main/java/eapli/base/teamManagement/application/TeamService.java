@@ -24,20 +24,76 @@ import java.util.Optional;
 public class TeamService {
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final TeamRepository teamRepository = PersistenceContext.repositories().team();
-    private final ClientUserRepository clientUserRepository = PersistenceContext.repositories().clientUsers();
+    private List<TeamDTO> teamsDTO;
+    private List<ClientUserDTO> clientUsersDTO;
 
     public Iterable<TeamDTO> teams(){
-      //  authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.MENU_MANAGER);
 
-        Iterable<Team> teams = teamRepository.findAll();
-        List<TeamDTO> teamsDTO = new ArrayList<>();
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER);
 
-        for (Team t: teams) {
-                teamsDTO.add(t.toDTO());
-            }
+        return toTeamsDTO(teamRepository.activeTeams());
+    }
+
+    public Iterable<TeamDTO> collaboratorTeams(MecanographicNumber collaboratorID){
+
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER);
+
+        return toTeamsDTO(teamRepository.collaboratorTeams(collaboratorID));
+    }
+
+    public Iterable<ClientUserDTO> collaboratorList(Uniquecode teamID){
+
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER);
+
+        return toClientUsersDTO(teamRepository.collaboratorList(teamID));
+    }
+
+    public Iterable<ClientUserDTO> collaboratorsOfTeam(Uniquecode teamID) throws IllegalAccessException {
+        Optional<Team> teamOptional = teamRepository.findByUniquecode(teamID);
+        if (teamOptional.isPresent()){
+            return toClientUsersDTO(teamOptional.get().collaboratorList());
+        }
+        else{
+            throw new IllegalAccessException("Team does not exist!");
+        }
+    }
+
+    public Iterable<TeamDTO> teamsWithOutThisCollaborator(MecanographicNumber collaboratorID){
+
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER);
+
+        return toTeamsDTO(teamRepository.teamsWithOutThisCollaborator(collaboratorID));
+    }
+
+    public Iterable<TeamDTO> toTeamsDTO(Iterable<Team> teams){
+        teamsDTO = new ArrayList<>();
+        for (Team t : teams) {
+            teamsDTO.add(t.toDTO());
+        }
 
         return teamsDTO;
     }
+
+    public Iterable<ClientUserDTO> toClientUsersDTO(Iterable<ClientUser> clientUsers){
+        clientUsersDTO = new ArrayList<>();
+        for (ClientUser c : clientUsers) {
+            clientUsersDTO.add(c.toDTO());
+        }
+        return clientUsersDTO;
+    }
+
+    public boolean belongToThisTeamType(Team team, MecanographicNumber collaboratorID) {
+
+        Iterable<Team> teams = teamRepository.collaboratorTeams(collaboratorID);
+        for (Team t : teams){
+            if (t.teamType().sameAs(team.teamType())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 /*
     public Iterable<TeamDTO> teamListWithoutThisCollaborrator(MecanographicNumber collaboratorId){
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER);

@@ -15,6 +15,8 @@ import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -34,72 +36,71 @@ public class AssociateRemoveCollaboratorTeamController {
 
         Optional<ClientUser> collaborator = collaboratorRepository.findByMecanographicNumber(new MecanographicNumber(collaboratorID));
         Optional<Team> team = teamRepository.ofIdentity(new Uniquecode(teamID));
-/*
+
         if (collaborator.isPresent() && team.isPresent()){
-            if (collaborator.get().belongToThisTeamType(team.get())){
+            if ((teams.belongToThisTeamType(team.get(), collaborator.get().mecanographicNumber()))){
                 throw new IllegalArgumentException("Collaborator already belongs to this team type");
             }
             else {
-                collaborator.get().addTeam(team.get());
-                team.get().addCollaborator(collaborator.get());
-
-                collaboratorRepository.delete(collaborator.get());
-                collaboratorRepository.save(collaborator.get());
-
-                teamRepository.delete(team.get());
+                team.get().collaboratorList().add(collaborator.get());
                 teamRepository.save(team.get());
             }
         }
         else {
             throw new IllegalAccessException("Collaborator or Team does not exist!");
         }
-*/
+
+    }
+
+    public void removeCollaboratorTeamController(String collaboratorID, String teamID) throws IllegalAccessException {
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER,
+                BaseRoles.RRH_MANAGER);
+
+        Optional<ClientUser> collaborator = collaboratorRepository.findByMecanographicNumber(new MecanographicNumber(collaboratorID));
+        Optional<Team> team = teamRepository.ofIdentity(new Uniquecode(teamID));
+
+        if (collaborator.isPresent() && team.isPresent()){
+
+            team.get().collaboratorList().remove(collaborator.get());
+            if (team.get().collaboratorList().size()==0){
+                System.out.println("You removed the last collaborator from the team");
+            }
+
+            teamRepository.save(team.get());
+
+        }
+        else {
+            throw new IllegalAccessException("Collaborator or Team does not exist!");
+        }
     }
 
     public Iterable<ClientUserDTO> collaboratorList(){
         return collaborators.findAllClientUser();
     }
 
-   /* public Iterable<TeamDTO> teamListWithoutThisCollaborator(String collaboratorID){
-        return teams.teamListWithoutThisCollaborrator(new MecanographicNumber(collaboratorID));
-    }*/
-
-    public void removeCollaboratorTeamController(String collaboratorID, String teamID){
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER,
-                BaseRoles.RRH_MANAGER);
-
-        Optional<ClientUser> collaborator = collaboratorRepository.findByMecanographicNumber(new MecanographicNumber(collaboratorID));
-        Optional<Team> team = teamRepository.ofIdentity(new Uniquecode(teamID));
-/*
-        if (collaborator.isPresent() && team.isPresent()){
-            if (collaborator.get().belongToThisTeamType(team.get())){
-                throw new IllegalArgumentException("Collaborator already belongs to this team type");
-            }
-            else {
-                collaborator.get().addTeam(team.get());
-                team.get().addCollaborator(collaborator.get());
-
-                collaboratorRepository.delete(collaborator.get());
-                collaboratorRepository.save(collaborator.get());
-
-                teamRepository.delete(team.get());
-                teamRepository.save(team.get());
-            }
-        }*/
+   public Iterable<TeamDTO> teamListWithoutThisCollaborator(String collaboratorID){
+        return teams.teamsWithOutThisCollaborator(new MecanographicNumber(collaboratorID));
     }
-/*
+
     public Iterable<TeamDTO> teamList(){
         return teams.teams();
     }
 
     public Iterable<TeamDTO> collaboratorTeams(String collaboratorID){
-        return collaborators.collaboratorTeams(new MecanographicNumber(collaboratorID));
+        return teams.collaboratorTeams(new MecanographicNumber(collaboratorID));
     }
 
-    public Iterable<ClientUserDTO> teamCollaborators(String teamid){
-        return teams.teamCollaborators(new Uniquecode(teamid));
-    }
 
- */
+
+    public Iterable<ClientUserDTO> collaboratorsOfTeam(String teamID) {
+        Iterable<ClientUserDTO> c = null;
+        try {
+            c = teams.collaboratorsOfTeam(Uniquecode.valueOf(teamID));
+        } catch (IllegalAccessException e) {
+            System.out.println(e);
+        }
+
+        return c;
+    }
 }
 

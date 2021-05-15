@@ -37,46 +37,26 @@ public class SpecifyCollaboratorController {
 
     public void specifyCollaborator(final String mecanographicNumber, final String fullName, final Function function,
                                      final String email, final Calendar birth, final Long phoneNumber,
-                                     final String shortname, final Placeofresidence placeofresidence) {
+                                     final String shortname, final Placeofresidence placeofresidence, Set<Role> roleTypes) {
 
        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER,
                 BaseRoles.ADMIN, BaseRoles.RRH_MANAGER);
 
-        RandomRawPassword randomRawPassword = new RandomRawPassword();
-        System.out.println("PALAVRA-PASSE: " + randomRawPassword.toString());
-        final Set<Role> roleTypes = new HashSet<>();
-        boolean show;
-        do {
-            show = showRoles(roleTypes);
-        } while (!show);
+        RandomPassword randomPassword = new RandomPassword();
+        System.out.println("PALAVRA-PASSE: " + randomPassword.toString());
 
-        final String[] name = shortname.split(" ", 2);
-        System.out.println("Nome1: " + name[0] + "Nome2: " + name[1]);
-        SystemUser systemUser = this.addUserController.addUser(email, randomRawPassword.toString(), name[0], name[1], email, roleTypes);
-
-
-        final ClientUser colaborador = new ClientUser(new MecanographicNumber(mecanographicNumber), Description.valueOf(fullName),
-                function, new CollaboratorEmail(email), new Dateofbirth(birth), phoneNumber, Designation.valueOf(shortname),
-                placeofresidence, systemUser);
-
-        collaboratorRepository.save(colaborador);
-
-    }
-
-    private boolean showRoles(final Set<Role> roleTypes) {
-        // TODO we could also use the "widget" classes from the framework...
-        final Menu rolesMenu = buildRolesMenu(roleTypes);
-        final MenuRenderer renderer = new VerticalMenuRenderer(rolesMenu, MenuItemRenderer.DEFAULT);
-        return renderer.render();
-    }
-
-    private Menu buildRolesMenu(final Set<Role> roleTypes) {
-        final Menu rolesMenu = new Menu();
-        int counter = 0;
-        rolesMenu.addItem(MenuItem.of(counter++, "No Role", Actions.SUCCESS));
-        for (final Role roleType : addUserController.getRoleTypes()) {
-            rolesMenu.addItem(MenuItem.of(counter++, roleType.toString(), () -> roleTypes.add(roleType)));
+        String[] name = shortname.split(" ", 2);
+        try{
+            SystemUser systemUser = this.addUserController.addUser(email, randomPassword.toString(), name[0], name[1], email, roleTypes);
+            final ClientUser colaborador = new ClientUser(new MecanographicNumber(mecanographicNumber), Description.valueOf(fullName),
+                    function, new CollaboratorEmail(email), new Dateofbirth(birth), phoneNumber, Designation.valueOf(shortname),
+                    placeofresidence, systemUser);
+            collaboratorRepository.save(colaborador);
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("\nERROR: Collaborator shortname too short!");
+        }catch (IllegalArgumentException e){
+            System.out.println(e);
         }
-        return rolesMenu;
     }
+
 }

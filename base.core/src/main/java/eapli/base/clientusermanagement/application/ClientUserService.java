@@ -77,7 +77,7 @@ public class ClientUserService {
 
         return collaboratorsDTO;
     }
-
+/*
     public Iterable<TeamDTO> collaboratorTeams(MecanographicNumber mecanographicNumber) {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER,
                 BaseRoles.RRH_MANAGER);
@@ -91,5 +91,5 @@ public class ClientUserService {
             }
         }
         return teamDTO;
-    }
+    }*/
 }

@@ -9,18 +9,22 @@ import eapli.framework.validations.Preconditions;
 import javax.persistence.*;
 
 @Entity
-public class Function implements AggregateRoot<Uniquecode> {
+public class Function implements AggregateRoot<Long> {
 
     @Id
     @GeneratedValue
-    private Uniquecode functioncode;
+    private Long functioncode;
 
     @Version
     private Long version;
+
+    @AttributeOverride(name = "value", column = @Column(name = "name"))
     private Designation functionname;
 
+    @AttributeOverride(name = "value", column = @Column(name = "description"))
     private Description  descriptionFunction;
 
+    @Column(nullable = false)
     private boolean active;
 
     public Function() {
@@ -29,6 +33,9 @@ public class Function implements AggregateRoot<Uniquecode> {
     public Function(final Designation nomeFuncao,final Description descricaoFuncao) {
         Preconditions.noneNull(nomeFuncao, descricaoFuncao);
         this.functionname = nomeFuncao;
+        if (descricaoFuncao.length()> 50){
+        throw new IllegalArgumentException("Function description's can't over size 50 characters");
+        }
         this.descriptionFunction=descricaoFuncao;
         active = true;
     }
@@ -42,15 +49,9 @@ public class Function implements AggregateRoot<Uniquecode> {
         Long tempother= (Long) other;
         return identity().equals(tempother);
     }
-/*
-    @Override
-    public Long identity() {
-        return Long.valueOf(functioncode.toString());
-    }
-*/
 
     @Override
-    public Uniquecode identity() {
+    public Long identity() {
         return functioncode;
     }
 
@@ -59,16 +60,12 @@ public class Function implements AggregateRoot<Uniquecode> {
         return "codigoFuncao=" + functioncode.toString() + ", nomeFuncao='" + functionname.toString() + ", descricaoFuncao='" + descriptionFunction.toString()+'\n';
     }
 
-    public String Code() {
-        return functioncode.Code();
+    public Designation Name() {
+        return functionname;
     }
 
-    public String Name() {
-        return functionname.toString();
-    }
-
-    public String Description() {
-        return descriptionFunction.toString();
+    public Description Description() {
+        return descriptionFunction;
     }
 
     public boolean isActive() {

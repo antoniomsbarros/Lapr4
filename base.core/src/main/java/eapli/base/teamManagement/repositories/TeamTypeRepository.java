@@ -22,21 +22,14 @@ public interface TeamTypeRepository extends DomainRepository<Uniquecode, TeamTyp
      *            the color to search for
      * @return
      */
-    Optional<TeamType> findByColor(Description color);
+
     @Query(value = "SELECT color FROM TeamType WHERE color = :color",nativeQuery = true)
+    Optional<TeamType> findByColor(Description color);
 
 
 
 
 
-    /**
-     * returns the all the teamtypes that exists.
-     *
-     *
-     * @return
-     */
-
-    public Iterable<TeamType> findAll();
 
 
 }

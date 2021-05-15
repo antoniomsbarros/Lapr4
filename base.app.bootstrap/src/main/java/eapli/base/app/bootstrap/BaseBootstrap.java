@@ -55,7 +55,11 @@ public final class BaseBootstrap extends BaseApplication {
             System.out.println("\n\n------- BASIC SCENARIO -------");
             new BaseDemoSmokeTester().execute();
         }
-        new OrganicStructureDemoBootstrapper().execute();
+        if(isToRunOrganicStructureDemoData){
+            System.out.println("\n\n------- ORGANIC STRUCTURE SCENARIO -------");
+            new OrganicStructureDemoBootstrapper().execute();
+
+        }
 
     }
 
@@ -63,7 +67,6 @@ public final class BaseBootstrap extends BaseApplication {
         isToRunSampleE2E = ArrayPredicates.contains(args, "-smoke:basic");
         if (isToRunSampleE2E) {
             isToBootstrapDemoData = true;
-            isToRunOrganicStructureDemoData = true;
         } else {
             isToBootstrapDemoData = ArrayPredicates.contains(args, "-bootstrap:demo");
             isToRunOrganicStructureDemoData = true;

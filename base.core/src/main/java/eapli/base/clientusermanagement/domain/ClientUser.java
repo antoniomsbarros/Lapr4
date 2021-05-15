@@ -36,6 +36,7 @@ import eapli.framework.domain.model.DomainEntities;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.general.domain.model.Designation;
 import eapli.framework.infrastructure.authz.domain.model.SystemUser;
+import eapli.framework.time.util.Calendars;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,8 +69,8 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
 
     @OneToMany()
     private List<Catalog> listcatalog;
-    @OneToMany()
-    private List<Team> list;
+    //@OneToMany()
+    //private List<Team> list;
     @OneToOne
     private ClientUser clientUser;
 
@@ -81,7 +82,6 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     private Designation shortname;
     private Placeofresidence placeofresidence;
 
-    //private boolean active;
 
     /**
      * cascade = CascadeType.NONE as the systemUser is part of another aggregate
@@ -105,7 +105,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         this.mecanographicNumber = mecanographicNumber;
         //this.function = function;
         this.listcatalog = listcatalog;
-        this.list = list;
+        //this.list = list;
         this.fullName = fullName;
         this.collaboratorEmail = collaboratorEmail;
         this.dateofbirth = dateofbirth;
@@ -119,7 +119,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
                       final CollaboratorEmail collaboratorEmail, final Dateofbirth dateofbirth, final Long phoneNumber, final Designation shortname,
                       final Placeofresidence placeofresidence, final SystemUser systemUser) {
         if (mecanographicNumber == null || systemUser == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("mecanographicNumber or systemUser null");
         }
         if (fullName.length() > 80) {
             throw new IllegalArgumentException("The full name has passed the limit of 80 caracteres");
@@ -127,10 +127,19 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         if (shortname.length() > 30) {
             throw new IllegalArgumentException("The short name Cant passed 30 caracteres");
         }
+
+        try {
+            if (!(Calendars.now().compareTo(dateofbirth.Date())==1)) {
+                throw new IllegalArgumentException("Invalid Date!");
+            }
+        }catch (NullPointerException | IllegalArgumentException e){
+            System.out.println("Invalid Date: " + e);
+        }
+
         this.mecanographicNumber = mecanographicNumber;
         //this.function = function;
         this.listcatalog = new ArrayList<>();
-        this.list = new ArrayList<>();
+        //this.list = new ArrayList<>();
         this.fullName = fullName;
         this.collaboratorEmail = collaboratorEmail;
         this.dateofbirth = dateofbirth;
@@ -138,7 +147,6 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         this.shortname = shortname;
         this.placeofresidence = placeofresidence;
         this.systemUser = systemUser;
-        //active = true;
     }
 
     public ClientUser(final SystemUser user, final MecanographicNumber mecanographicNumber) {
@@ -152,9 +160,6 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     protected ClientUser() {
         // for ORM only
     }
-
-
-    //public boolean isActive() {       return active;    }
 
     public SystemUser user() {
         return this.systemUser;
@@ -184,9 +189,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         return this.mecanographicNumber;
     }
 
-    public List<Team> teamList() {
-        return list;
-    }
+   // public List<Team> teamList() {      return list;    }
 
     @Override
     public String toString() {
@@ -195,7 +198,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
                 ", mecanographicNumber=" + mecanographicNumber +
               //  ", function=" + function +
                 ", listcatalog=" + listcatalog +
-                ", list=" + list +
+                //", list=" + list +
                 ", fullName=" + fullName +
                 ", collaboratorEmail=" + collaboratorEmail +
                 ", dateofbirth=" + dateofbirth +
@@ -221,18 +224,16 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     }
 
 
-*/
+*//*
     public boolean belongToThisTeamType(Team team) {
-/*
+
         for (Team t:list){
             if (t.teamType().sameAs(team.teamType())){
                 return true;
             }
-        }*/
+        }
         return false;
-    }
+    }*/
 
-    public void addTeam(Team team) {
-        list.add(team);
-    }
+  //  public void addTeam(Team team) {        list.add(team);    }
 }
