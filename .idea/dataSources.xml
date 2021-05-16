@@ -8,7 +8,7 @@
       <jdbc-url>jdbc:sqlite:C:\Lapr4_2dG4\Documents\UC2001\SD\SD-CriarCatalogo.vpp.bak_000f</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="jdbc:h2:..\db\base;MV_STORE=FALSE;AUTO_SERVER=true;" uuid="999d4e82-3bc0-43d2-bb4c-3210e48cc4c1">
+    <data-source source="LOCAL" name="H2" uuid="d2ddd5a9-5858-4aa8-bcf5-b43e1f2e4357">
       <driver-ref>h2.unified</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.h2.Driver</jdbc-driver>

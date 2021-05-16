@@ -193,20 +193,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
 
     @Override
     public String toString() {
-        return "ClientUser{" +
-                "version=" + version +
-                ", mecanographicNumber=" + mecanographicNumber +
-              //  ", function=" + function +
-                ", listcatalog=" + listcatalog +
-                //", list=" + list +
-                ", fullName=" + fullName +
-                ", collaboratorEmail=" + collaboratorEmail +
-                ", dateofbirth=" + dateofbirth +
-                ", phoneNumber=" + phoneNumber +
-                ", shortname=" + shortname +
-                ", placeofresidence=" + placeofresidence +
-                ", systemUser=" + systemUser +
-                '}';
+        return "ClientUser: " + " mecanographicNumber=" + mecanographicNumber + ", listcatalog=" + listcatalog + ", fullName=" + fullName + ", collaboratorEmail=" + collaboratorEmail + ", dateofbirth=" + dateofbirth + ", phoneNumber=" + phoneNumber + ", shortname=" + shortname + ", placeofresidence=" + placeofresidence + ", systemUser=" + systemUser + '\n';
     }
 
     public ClientUserDTO toDTO() {

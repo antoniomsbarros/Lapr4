@@ -61,8 +61,6 @@ public class TeamType implements AggregateRoot<Uniquecode> {
 
     @Override
     public String toString() {
-        return "codigoUnicoInterno=" + singleInternalcode.toString() +
-                ", descricaoTipoEquipa=" + descriptionTypeTeam.toString() +
-                ", cor=" + color.toString();
+        return "codigoUnicoInterno=" + singleInternalcode.toString() + ", descricaoTipoEquipa=" + descriptionTypeTeam.toString() + ", cor=" + color.toString()+"\n";
     }
 }
