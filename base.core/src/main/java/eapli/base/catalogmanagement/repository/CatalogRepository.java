@@ -14,8 +14,8 @@ import java.util.Optional;
 
 public interface CatalogRepository extends DomainRepository<Long, Catalog> {
 
-    Iterable<Catalog> getAllCatalogs();
-
+    @Query(value = "SELECT * FROM Catalog ",nativeQuery = true)
+    Iterable<Catalog> findAll();
 
     @Query(value = "SELECT title FROM Catalog WHERE title = :title",nativeQuery = true)
     Optional<Catalog> getCatalogByTitle(Description title);

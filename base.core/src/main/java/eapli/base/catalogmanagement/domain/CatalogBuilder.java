@@ -16,13 +16,13 @@ public class CatalogBuilder implements DomainFactory<Catalog> {
     private Description shortdescription;
     private Description longdescription;
     private Description icone;
-    private Description team;
-    private Description responsibleCollaborator;
+    private List<Team> team;
+    private ClientUser responsibleCollaborator;
 
 
     public CatalogBuilder (final Description title, final Description shortdescription,
-                           final Description longdescription, final Description icone, final Description team,
-                           final Description responsibleCollaborator){
+                           final Description longdescription, final Description icone, final List<Team> team,
+                           final ClientUser responsibleCollaborator){
 
         this.title = title;
         this.shortdescription = shortdescription;
@@ -52,12 +52,12 @@ public class CatalogBuilder implements DomainFactory<Catalog> {
         return this;
     }
 
-    public CatalogBuilder withTeam(Description team){
+    public CatalogBuilder withTeam(List<Team> team){
         this.team = team;
         return this;
     }
 
-    public CatalogBuilder withResponsibleCollaborator(Description responsibleCollaborator){
+    public CatalogBuilder withResponsibleCollaborator(ClientUser responsibleCollaborator){
         this.responsibleCollaborator = responsibleCollaborator;
         return this;
     }

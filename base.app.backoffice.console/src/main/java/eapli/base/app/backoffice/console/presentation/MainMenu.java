@@ -120,6 +120,7 @@ public class MainMenu extends AbstractUI {
     private static final int SEARCH_CATALOGBYTITLE_OPTION = 2;
     private static final int SEARCH_CATALOGBYSHORT_OPTION = 3;
     private static final int SEARCH_CATALOGBYLONG_OPTION = 4;
+    private static final int LIST_CATALOG_OPTION = 5;
 
 
     private static final int CREATE_CRITICALITYLEVEL_OPTION = 14;
@@ -228,6 +229,7 @@ public class MainMenu extends AbstractUI {
         menu.addItem(SEARCH_CATALOGBYTITLE_OPTION, "Search Catalog by Title", new SearchByTitleUI()::show);
         menu.addItem(SEARCH_CATALOGBYSHORT_OPTION,"Search Catalog By Short Description", new SearchByShortDescriptionUI()::show);
         menu.addItem(SEARCH_CATALOGBYLONG_OPTION,"Search Catalog By Long Description", new SearchByLongDescriptionUI()::show);
+        menu.addItem(LIST_CATALOG_OPTION,"List all Catalogs",new ListAllCatalogsUI()::show);
 
         return menu;
     }

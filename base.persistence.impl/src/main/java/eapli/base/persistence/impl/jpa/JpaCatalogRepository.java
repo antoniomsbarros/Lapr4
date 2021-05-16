@@ -32,10 +32,6 @@ class JpaCatalogRepository extends JpaAutoTxRepository<Catalog,Long,Long> implem
         super("identifier", Application.settings().getExtendedPersistenceProperties(),"identifier");
     }
 
-    @Override
-    public Iterable<Catalog> getAllCatalogs() {
-        return match("e.systemUser.active=true");
-    }
 
     @Override
     public Optional<Catalog> getCatalogByTitle(Description title) {

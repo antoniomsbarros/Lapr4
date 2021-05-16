@@ -10,6 +10,7 @@ import eapli.framework.presentation.console.AbstractUI;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class CreateCatalogUI extends AbstractUI {
     CreateCatalogController coontroller;
@@ -20,23 +21,21 @@ public class CreateCatalogUI extends AbstractUI {
 
     @Override
     protected boolean doShow() {
+
         final Description title = Description.valueOf( Console.readLine("Title: "));
         final Description shortdescription = Description.valueOf( Console.readLine("Short Description: "));
         final Description longdescription = Description.valueOf( Console.readLine("Long Description: "));
         final Description icon = Description.valueOf( Console.readLine("Icone: "));
-        final Description listTeams = Description.valueOf( Console.readLine("team: "));
-        final Description clientUser = Description.valueOf( Console.readLine("client: "));
 
-
-        /*
-        ClientUser clientUser=null;
+        ClientUser clientUser = null;
         ArrayList<Team> listTeams = new ArrayList<>();
 
-/*
+
         System.out.println("Select a collaborator");
         boolean aux = false;
-        while(coontroller.allColaborators().iterator().hasNext() && !aux){
-            ClientUser temp = coontroller.allColaborators().iterator().next();
+        Iterator<ClientUser> iterator1 = coontroller.allColaborators().iterator();
+        while(iterator1.hasNext() && !aux){
+            ClientUser temp = iterator1.next();
             System.out.println(temp);
             String answer = Console.readLine("This Collaborator (y/n)");
             if(answer.equals("y")){
@@ -50,16 +49,21 @@ public class CreateCatalogUI extends AbstractUI {
         }
 
         System.out.println("Select the teams");
-        while(coontroller.allTeams().iterator().hasNext()){
-            Team temp = coontroller.allTeams().iterator().next();
+        Iterator<Team> iterator2 = coontroller.allTeams().iterator();
+        while(iterator2.hasNext()){
+            Team temp = iterator2.next();
             System.out.println(temp);
-            String answer = Console.readLine("This Collaborator (y/n)");
+            String answer = Console.readLine("This Team (y/n)");
             if (answer.equals("y")){
                 listTeams.add(temp);
             }
         }
-*/
-        String temp = Console.readLine("Do yoou confirm the data (y/n)");
+        if (listTeams.isEmpty()){
+            System.out.println("Didn´t select any collaborator");
+            return false;
+        }
+
+        String temp = Console.readLine("Do you confirm the data (y/n)");
         if(temp.equals("n")){
             return false;
         }

@@ -25,24 +25,25 @@ public class Catalog implements AggregateRoot<Long> {
     @AttributeOverride(name = "value", column = @Column(name = "icone"))
     private Description icone;
 
-    //@OneToMany()
-    @AttributeOverride(name = "value", column = @Column(name = "team"))
-    private Description team;
-    //@OneToOne()
-    @AttributeOverride(name = "value", column = @Column(name = "collaborator"))
-    private Description responsiblecollaborator;
+    @OneToMany()
+    private List<Team> team;
+
+    @OneToOne()
+    private ClientUser responsiblecollaborator;
+
     /*
     @OneToOne
     private Criticalitylevel criticalitylevel;
     */
+
     public Catalog() {
 
     }
 
 
     public Catalog(Description title, Description shortdescription, Description longdescription, Description icone,
-                   Description team, Description responsiblecollaborator) {
-        Preconditions.noneNull(responsiblecollaborator,title,icone,shortdescription, longdescription,team);
+                   List<Team> team, ClientUser responsiblecollaborator) {
+        Preconditions.noneNull(responsiblecollaborator,title,icone,shortdescription, longdescription,team,responsiblecollaborator);
         if (shortdescription.toString().length()>40){
             throw new IllegalArgumentException(
                     "the short description cant be more then 40 characters"
@@ -84,7 +85,7 @@ public class Catalog implements AggregateRoot<Long> {
     public Description Title(){
         return  this.title;
     }
-    public Description ListofTeams(){
+    public List<Team> ListofTeams(){
         return team;
     }
     public  Description shortdescription(){
@@ -96,7 +97,7 @@ public class Catalog implements AggregateRoot<Long> {
     public  Description icon (){
         return  icone;
     }
-    public Description responsiblecollaborator(){
+    public ClientUser responsiblecollaborator(){
         return responsiblecollaborator;
     }
     /*public Criticalitylevel criticalitylevel(){
