@@ -1,0 +1,19 @@
+commit 6d1ff4cef957be2d74600a047af44a0051505ed8
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Sun May 16 22:29:14 2021 +0100
+
+    L2S20-47  L2S20-52 Implementation Correction Done
+
+M	.idea/dataSources.xml
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateCatalogUI.java
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/ListAllCatalogsAction.java
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/ListAllCatalogsUI.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/CreateCatalogController.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/CreateServiceController.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchCatalogController.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Catalog.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/CatalogBuilder.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/repository/CatalogRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryCatalogRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaCatalogRepository.java
