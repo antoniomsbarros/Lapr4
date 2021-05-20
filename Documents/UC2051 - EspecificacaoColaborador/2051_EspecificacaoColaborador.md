@@ -23,20 +23,26 @@ O diagrama doptado foi o diagrama de sequência, a fim de descrever o fluxo de r
 
 ## 3.1. Realização da Funcionalidade
 
-Quando o ator inicia o caso de uso: o sistema solicita os dados pessoais do colaborador, os dados são validados. É apresentada a lista de funções para a indicação da mesma. E pode indicar o responsável hierárquico, se for o caso. Tendo concluído todas estas etapas corretamente, o colaborador é especificado com sucesso.
+Quando o ator inicia o caso de uso: o sistema solicita os dados pessoais do colaborador. É apresentada a 
+lista de funções para a indicação da mesma. E pode indicar o responsável hierárquico, se for o caso. Os dados são validados. Tendo concluído estas 
+etapas corretamente, o colaborador é especificado com sucesso.
 
 **SD:**
 
-![2051_EspecificarColaborador.svg](2051_EspecificarColaborador.svg)
+![2051_EspecificacaoColaborador.svg](2051_EspecificacaoColaborador.svg)
 
 ## 3.2. Padrões Aplicados
 
-*Nesta secção deve apresentar e explicar quais e como foram os padrões de design aplicados e as melhores práticas.*
+Foram aplicados os padrões:
+* **Repository:** Para comunicar com a base de dados, ter acesso aos dados
+                    por meio das queries feitas.
+* **Use-Case Controller:** Para gerir o fluxo de execução do caso de uso. 
+* **Visitor:** Para navegar sobre os objetos Function e Collaborator e permitir 
+                    mostrá-los ao utilizador.
 
 ## 3.3. Testes 
 
-Foram realizados testes para garantir a integridade dos requisitos
-*Nesta secção deve sistematizar como os testes foram concebidos para permitir uma correta aferição da satisfação dos requisitos.*
+Foram realizados testes para garantir a integridade dos requisitos.
 
 **Teste 1:** Verificar que não é possível criar uma instância da classe Exemplo com valores nulos.
 
@@ -47,10 +53,9 @@ Foram realizados testes para garantir a integridade dos requisitos
 
 # 4. Implementação
 
-*Nesta secção a equipa deve providenciar, se necessário, algumas evidências de que a implementação está em conformidade com o design efetuado. Para além disso, deve mencionar/descrever a existência de outros ficheiros (e.g. de configuração) relevantes e destacar commits relevantes;*
-
-*Recomenda-se que organize este conteúdo por subsecções.*
 
 # 5. Integração/Demonstração
 
-*Nesta secção a equipa deve descrever os esforços realizados no sentido de integrar a funcionalidade desenvolvida com as restantes funcionalidades do sistema.*
+Este caso de uso é dependente da função, portanto para o seu completo funcionamento é 
+necessário que esta esteja definida. E para efeitos de demonstração, encontra-se 
+adicionado nas opções de menu da aplicação.
