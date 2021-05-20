@@ -57,7 +57,7 @@ public class CreateServiceController {
     }
 
     public Iterable<Catalog> getCatalogs(){
-        return catalogRepository.getAllCatalogs();
+        return catalogRepository.findAll();
     }
 
     public Optional<Catalog> getCatalogByIdentifier(Long id) {

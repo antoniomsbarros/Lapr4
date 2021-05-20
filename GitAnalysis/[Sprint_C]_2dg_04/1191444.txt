@@ -1,0 +1,58 @@
+commit 7ce9a84aef1e59db6a6eeed7112a4a6cc29da23b
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Fri May 14 17:28:14 2021 +0100
+
+    L2S20-4 Implementation throws fixed
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/AssociateRemoveCollaboratorTeamUI.java
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/SpecifyCollaboratorUI.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/application/AssociateRemoveCollaboratorTeamController.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/application/SpecifyCollaboratorController.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/domain/ClientUser.java
+A	base.core/src/main/java/eapli/base/clientusermanagement/domain/RandomPassword.java
+
+commit 3b069c83279310814174348e3108983a3c724932
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Thu May 13 23:23:03 2021 +0100
+
+    L2S20-6 Implementation changed
+
+M	.idea/dataSources.xml
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/AssociateRemoveCollaboratorTeamUI.java
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/SpecifyCollaboratorUI.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/application/AssociateRemoveCollaboratorTeamController.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/application/ClientUserService.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/application/SpecifyCollaboratorController.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/domain/ClientUser.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/repositories/ClientUserRepository.java
+M	base.core/src/main/java/eapli/base/funcaomanagement/domain/Function.java
+M	base.core/src/main/java/eapli/base/teamManagement/application/TeamService.java
+M	base.core/src/main/java/eapli/base/teamManagement/domain/Team.java
+M	base.core/src/main/java/eapli/base/teamManagement/repositories/TeamRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryTeamRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaClientUserRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaTeamRepository.java
+M	base.persistence.impl/src/main/resources/META-INF/persistence.xml
+
+commit a7340f0d74bd903163ec3e6e69ebb44a05cf7af0
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Wed May 12 17:26:40 2021 +0100
+
+    L2S20-4 Implementation working without function
+
+M	.idea/dataSources.xml
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateCriticalityLevelUI.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchCatalogController.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/application/AssociateRemoveCollaboratorTeamController.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/application/SpecifyCollaboratorController.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/domain/ClientUser.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/dto/ClientUserDTO.java
+A	base.core/src/main/java/eapli/base/funcaomanagement/aplication/AddFunctionController.java
+M	base.core/src/main/java/eapli/base/funcaomanagement/domain/Function.java
+A	base.core/src/main/java/eapli/base/funcaomanagement/repositories/FunctionRepository.java
+M	base.core/src/main/java/eapli/base/infrastructure/persistence/RepositoryFactory.java
+A	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryFunctionRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryRepositoryFactory.java
+A	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaFunctionRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaRepositoryFactory.java
+M	base.persistence.impl/src/main/resources/META-INF/persistence.xml

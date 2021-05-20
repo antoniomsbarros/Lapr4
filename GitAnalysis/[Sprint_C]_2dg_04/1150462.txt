@@ -1,0 +1,58 @@
+commit 700a4caee3955e94600362460d14d2d698671fd8
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sat May 15 00:38:59 2021 +0100
+
+    L2S20-10 Implementation (Bootstrap done) and L2S20-4 corrections (AddFunction)
+
+M	base.app.bootstrap/src/main/java/eapli/base/app/bootstrap/BaseBootstrap.java
+A	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/CreateTeamBootstrapper.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/OrganicStructureDemoBootstrapper.java
+A	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/SpecifyCollaboratorBootstrapper.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/TeamTypeBootstrapper.java
+M	base.core/src/main/java/eapli/base/funcaomanagement/aplication/AddFunctionController.java
+M	base.core/src/main/java/eapli/base/funcaomanagement/domain/Function.java
+A	base.core/src/main/java/eapli/base/funcaomanagement/domain/FunctionBuilder.java
+M	base.core/src/main/java/eapli/base/funcaomanagement/repositories/FunctionRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryFunctionRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaFunctionRepository.java
+
+commit a4a3a292c1189c357b8ffae492812a1071f04ef4
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Wed May 12 22:33:51 2021 +0100
+
+    L2S20-29 Implementation (Refactoring)
+
+M	base.core/src/main/java/eapli/base/teamManagement/application/CreateTeamTypeController.java
+
+commit 6fc391ce3662d5d4b8f2f872c31a811f77ebbfd0
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Wed May 12 21:09:39 2021 +0100
+
+    L2S20-29 Implementation (Reviewd and functional)
+
+M	base.core/src/main/java/eapli/base/teamManagement/application/CreateTeamTypeController.java
+M	base.core/src/main/java/eapli/base/teamManagement/application/RegisterTeamController.java
+M	base.core/src/main/java/eapli/base/teamManagement/domain/TeamType.java
+M	base.core/src/main/java/eapli/base/teamManagement/repositories/TeamTypeRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryTeamTypeRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaTeamTypesRepository.java
+
+commit 3f83462d08d50d2d125fc427c0c5274ea607d242
+Author: joseteixeira1150462 <1150462@isep.ipp.pt>
+Date:   Wed May 12 14:31:19 2021 +0100
+
+    L2S20-29 Implementation (update MainMenu option)
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+
+commit ab91b76343f733bc398e5af111492e3e9773f072
+Author: joseteixeira1150462 <1150462@isep.ipp.pt>
+Date:   Wed May 12 12:15:29 2021 +0100
+
+    L2S20-29 Implementation (add UI and update methods on Controller
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateTeamTypeAction.java
+M	base.core/src/main/java/eapli/base/teamManagement/application/CreateTeamTypeController.java
+M	base.core/src/main/java/eapli/base/teamManagement/repositories/TeamTypeRepository.java
+M	base.persistence.impl/src/main/resources/META-INF/persistence.xml

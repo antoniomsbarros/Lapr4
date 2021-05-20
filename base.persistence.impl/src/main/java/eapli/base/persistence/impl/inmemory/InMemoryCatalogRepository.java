@@ -24,11 +24,6 @@ public class InMemoryCatalogRepository extends InMemoryDomainRepository<Catalog,
     }
 
     @Override
-    public Iterable<Catalog> getAllCatalogs() {
-        return null;
-    }
-
-    @Override
     public Optional<Catalog> getCatalogByTitle(Description title) {
         return matchOne(e -> e.Title().equals(title));
     }

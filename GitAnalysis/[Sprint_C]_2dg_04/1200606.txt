@@ -1,0 +1,31 @@
+commit b0b959e34eacd6c5d560fd2d6dd431be14d7eb95
+Author: Antonio Barros <1200606@isep.ipp.pt>
+Date:   Sun May 16 12:32:02 2021 +0100
+
+    L2S20-50 Implementation
+
+M	.idea/dataSources.xml
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/RegisterTeamUI.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/domain/ClientUser.java
+M	base.core/src/main/java/eapli/base/teamManagement/domain/TeamType.java
+
+commit 2461b6a7684a290c8d8f1f925dae053ffa659fdc
+Author: Antonio Barros <1200606@isep.ipp.pt>
+Date:   Sat May 15 17:06:06 2021 +0100
+
+    L2S20 bug fix1
+
+M	base.persistence.impl/src/main/resources/META-INF/persistence.xml
+
+commit 3a466b1347a1388f0617e26cfa24d6a555dcbd6e
+Author: Antonio Barros <1200606@isep.ipp.pt>
+Date:   Wed May 12 14:21:36 2021 +0100
+
+    L2S20 bug fix
+
+M	.idea/dataSources.xml
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/RegisterTeamUI.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/application/SpecifyCollaboratorController.java
+M	base.core/src/main/java/eapli/base/teamManagement/application/RegisterTeamController.java
+M	base.core/src/main/java/eapli/base/teamManagement/domain/Team.java
+M	base.core/src/main/java/eapli/base/teamManagement/domain/TeamBuilder.java

@@ -10,6 +10,7 @@ import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 //import sun.security.krb5.internal.crypto.Des;
 
 import java.beans.DesignMode;
+import java.util.List;
 
 public class SearchCatalogController {
     private final AuthorizationService authz;
@@ -30,6 +31,10 @@ public class SearchCatalogController {
 
     public Catalog searchCatalogByLongDescription(Description longdescription){
         return catalogRepository.getCatalogByLongDescription(longdescription).get();
+    }
+
+    public Iterable<Catalog> findAllCatalogs(){
+        return catalogRepository.findAll();
     }
 
 }
