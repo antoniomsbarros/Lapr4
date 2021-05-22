@@ -35,7 +35,7 @@ public class AssociateRemoveCollaboratorTeamController {
                 BaseRoles.RRH_MANAGER);
 
         Optional<ClientUser> collaborator = collaboratorRepository.findByMecanographicNumber(new MecanographicNumber(collaboratorID));
-        Optional<Team> team = teamRepository.ofIdentity(new Uniquecode(teamID));
+        Optional<Team> team = teams.findbyID(new Uniquecode(teamID));
 
         if (collaborator.isPresent() && team.isPresent()){
             if ((teams.belongToThisTeamType(team.get(), collaborator.get().mecanographicNumber()))){
@@ -57,7 +57,7 @@ public class AssociateRemoveCollaboratorTeamController {
                 BaseRoles.RRH_MANAGER);
 
         Optional<ClientUser> collaborator = collaboratorRepository.findByMecanographicNumber(new MecanographicNumber(collaboratorID));
-        Optional<Team> team = teamRepository.ofIdentity(new Uniquecode(teamID));
+        Optional<Team> team = teams.findbyID(new Uniquecode(teamID));
 
         if (collaborator.isPresent() && team.isPresent()){
 
