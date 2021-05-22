@@ -32,6 +32,6 @@ public class AddFunctionController {
         functionRepository.save(functionBuilder.build());
     }
 
-    public Iterable<Function> allFunctions(){ return  functionRepository.activeFunctions();}
+    public Iterable<Function> getAllFunctions(){ return  functionRepository.findAll();}
 
 }

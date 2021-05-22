@@ -137,7 +137,7 @@ public class SpecifyCollaboratorBootstrapper implements Action {
 
       try{
           specifyCollaboratorController.specifyCollaborator(mecanographicNumber, fullName, function, email, birth, phoneNumber, shortname,
-                  placeofresidence,null);
+                  placeofresidence,roleTypes);
       } catch (final ConcurrencyException | IntegrityViolationException e) {
           // ignoring exception. assuming it is just a primary key violation
           // due to the tentative of inserting a duplicated user

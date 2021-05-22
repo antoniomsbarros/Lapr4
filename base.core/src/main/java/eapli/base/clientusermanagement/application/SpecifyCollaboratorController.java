@@ -2,8 +2,6 @@ package eapli.base.clientusermanagement.application;
 
 import eapli.base.clientusermanagement.domain.*;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
-import eapli.base.funcaomanagement.aplication.AddFunctionController;
-import eapli.base.funcaomanagement.aplication.FunctionService;
 import eapli.base.funcaomanagement.domain.Function;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.usermanagement.application.AddUserController;
@@ -36,18 +34,14 @@ public class SpecifyCollaboratorController {
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final ClientUserRepository collaboratorRepository = PersistenceContext.repositories().clientUsers();
     private final AddUserController addUserController = new AddUserController();
-    private final FunctionService functionService = new FunctionService();
 
     public void specifyCollaborator(final String mecanographicNumber, final String fullName, final Function function,
                                      final String email, final Calendar birth, final Long phoneNumber,
-                                     final String shortname, final Placeofresidence placeofresidence,
-                                    final ClientUser clientUser) {
+                                     final String shortname, final Placeofresidence placeofresidence, Set<Role> roleTypes) {
 
        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER,
                 BaseRoles.ADMIN, BaseRoles.RRH_MANAGER);
 
-        Set<Role> roleTypes = new HashSet<>();
-        roleTypes.add(BaseRoles.COLLABORATOR);
         RandomPassword randomPassword = new RandomPassword();
         System.out.println("PALAVRA-PASSE: " + randomPassword.toString());
 
@@ -56,7 +50,7 @@ public class SpecifyCollaboratorController {
             SystemUser systemUser = this.addUserController.addUser(email, randomPassword.toString(), name[0], name[1], email, roleTypes);
             final ClientUser colaborador = new ClientUser(new MecanographicNumber(mecanographicNumber), Description.valueOf(fullName),
                     function, new CollaboratorEmail(email), new Dateofbirth(birth), phoneNumber, Designation.valueOf(shortname),
-                    placeofresidence, systemUser, clientUser);
+                    placeofresidence, systemUser);
             collaboratorRepository.save(colaborador);
         }catch (ArrayIndexOutOfBoundsException e){
             System.out.println("\nERROR: Collaborator shortname too short!");
@@ -64,9 +58,5 @@ public class SpecifyCollaboratorController {
             System.out.println(e);
         }
     }
-
-    public Iterable<Function> allFunctions(){ return functionService.functions();}
-
-    public Iterable<ClientUser> allCollaborators(){ return collaboratorRepository.findAllActive();}
 
 }

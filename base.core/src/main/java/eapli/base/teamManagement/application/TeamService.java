@@ -12,7 +12,6 @@ import eapli.base.teamManagement.repositories.TeamRepository;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
-import eapli.framework.infrastructure.authz.domain.model.Username;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,12 +32,6 @@ public class TeamService {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER);
 
         return toTeamsDTO(teamRepository.activeTeams());
-    }
-
-    public Optional<Team> findbyID(final Uniquecode uniquecode) {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER,
-                BaseRoles.RRH_MANAGER);
-        return teamRepository.findByUniquecode(uniquecode);
     }
 
     public Iterable<TeamDTO> collaboratorTeams(MecanographicNumber collaboratorID){

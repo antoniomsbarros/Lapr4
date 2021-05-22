@@ -40,7 +40,7 @@ public class AssociateRemoveCollaboratorTeamUI extends AbstractUI {
                         final ClientUserDTO collaboratorDTO = collaboratorDTOSelectWidget.selectedElement();
 
                         final SelectWidget<TeamDTO> teamDTOSelectWidgets = new SelectWidget<>("Teams:",
-                                associateRemoveCollaboratorTeamController.teamListWithoutThisCollaborator(collaboratorDTO.mecanographicNumber), new teamDTOListPrinter());
+                                associateRemoveCollaboratorTeamController.teamList(), new teamDTOListPrinter());
                         teamDTOSelectWidgets.show();
                         final TeamDTO teamDTO = teamDTOSelectWidgets.selectedElement();
                         associateRemoveCollaboratorTeamController.associateCollaboratorTeamController(collaboratorDTO.mecanographicNumber,
