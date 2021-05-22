@@ -189,7 +189,23 @@ public class MainMenu extends AbstractUI {
             final Menu teamTypeMenu = builderTeamTypeMenu();
             mainMenu.addSubMenu(TEAM_TYPE_OPTION,teamTypeMenu);
         }
+        if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER)) {
+            final Menu teamTypeMenu = builderTeamTypeMenu();
+            mainMenu.addSubMenu(TEAM_TYPE_OPTION,teamTypeMenu);
+            final Menu teamMenu=builderTeamMenu();
+            mainMenu.addSubMenu(TEAM_OPTION, teamMenu);
+            final Menu collaboratorMenu = builderCollaboratorMenu();
+            mainMenu.addSubMenu(COLLABORATOR_OPTION, collaboratorMenu);
+        }
 
+        if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.POWER_USER, BaseRoles.GSH_MANAGER)){
+            final Menu criticalityMenu = builderCriticalitylevelMenu();
+            mainMenu.addSubMenu(CRITICALITYLEVEL_OPTION, criticalityMenu);
+            final Menu catalogMenu = builderCatalogMenu();
+            mainMenu.addSubMenu(CATALOG_OPTION, catalogMenu);
+            final Menu serviceMenu = builderServiceMenu();
+            mainMenu.addSubMenu(SERVICE_OPTION, serviceMenu);
+        }
         if (!Application.settings().isMenuLayoutHorizontal()) {
             mainMenu.addItem(MenuItem.separator(SEPARATOR_LABEL));
         }

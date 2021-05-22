@@ -25,7 +25,7 @@ public class Catalog implements AggregateRoot<Long> {
     @AttributeOverride(name = "value", column = @Column(name = "icone"))
     private Description icone;
 
-    @OneToMany()
+    @ManyToMany()
     private List<Team> team;
 
     @OneToOne()

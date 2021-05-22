@@ -21,6 +21,8 @@ public class OrganicStructureDemoBootstrapper implements Action {
         final Action[] actions = { new TeamTypeBootstrapper(),
                                     new SpecifyCollaboratorBootstrapper(),
                                     new CreateTeamBootstrapper(),
+                                    new TeamBootstrapper(),
+                                    new CatalogBootstrapper(),
 
 
                // new AddFunctionBootstrapper()
