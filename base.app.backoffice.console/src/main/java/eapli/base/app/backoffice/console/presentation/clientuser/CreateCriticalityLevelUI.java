@@ -1,15 +1,12 @@
 package eapli.base.app.backoffice.console.presentation.clientuser;
 
-import eapli.base.catalogmanagement.application.CreateCatalogController;
 import eapli.base.catalogmanagement.application.CreateCriticalitylevelController;
 import eapli.base.catalogmanagement.domain.Step;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
-//import jdk.swing.interop.SwingInterOpUtils;
 
 import java.awt.*;
-import java.sql.Time;
 
 public class CreateCriticalityLevelUI extends AbstractUI {
     CreateCriticalitylevelController controller;
@@ -22,7 +19,10 @@ public class CreateCriticalityLevelUI extends AbstractUI {
     protected boolean doShow() {
         final Description value = Description.valueOf(Console.readLine("Value: "));
         final Description tag = Description.valueOf(Console.readLine("Tag: "));
-        final Description color = Description.valueOf(Console.readLine("Color: "));
+        final int red = Integer.parseInt(Console.readLine("Color red component[0-255]: "));
+        final int green = Integer.parseInt(Console.readLine("Color green component[0-255]: "));
+        final int blue = Integer.parseInt(Console.readLine("Color blue component[0-255]: "));
+        final Color color = new Color(red, green, blue);
         final Description maxTime = Description.valueOf(Console.readLine("Maximum time: "));
         final Description averageTime = Description.valueOf(Console.readLine("Average time: "));
         final String step = Console.readLine("Step (resolution(1)/aprovation(2)): ");
@@ -38,8 +38,7 @@ public class CreateCriticalityLevelUI extends AbstractUI {
             return false;
         }
 
-
-        controller.createCriticalityLevel(value, tag, color, maxTime, averageTime, s);
+        System.out.println("## ## ##" +controller.createCriticalityLevel(value, tag, color, maxTime, averageTime, s));
 
         return true;
     }
