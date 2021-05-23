@@ -19,6 +19,6 @@ public class Keyword implements ValueObject, Serializable {
 
     @Override
     public String toString() {
-        return "Keyword: " + this.keyword + "\n";
+        return " " + this.keyword;
     }
 }

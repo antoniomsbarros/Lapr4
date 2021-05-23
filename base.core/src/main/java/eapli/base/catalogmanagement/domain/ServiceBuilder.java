@@ -23,11 +23,13 @@ public class ServiceBuilder implements DomainFactory<Service> {
 
     private Catalog catalog;
 
-    private Criticalitylevel criticalitylevel;
+    //private Criticalitylevel criticalitylevel;
 
-    private Workflow workflow;
+    //private Workflow workflow;
 
     private List<Form> form;
+
+    public ServiceBuilder() {}
 
     public ServiceBuilder withTitle(Description t) {
         this.title = t;
@@ -82,7 +84,7 @@ public class ServiceBuilder implements DomainFactory<Service> {
     @Override
     public Service build() {
         return new Service(this.form,/*this.criticalitylevel,*/this.title,this.fulldescription,this.smalldescription, this.requirefeedback,
-                            this.keyword, this.icon, this.catalog/*, this.workflow*/);
+                            this.keyword, this.icon/*, this.catalog, this.workflow*/);
     }
 
 }

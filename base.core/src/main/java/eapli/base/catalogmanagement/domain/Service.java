@@ -17,7 +17,7 @@ public class Service implements AggregateRoot<Long> {
 
     @Id
     @GeneratedValue
-    private  Long uniquecode;
+    private Long uniquecode;
 
     @AttributeOverride(name = "value", column = @Column(name = "title"))
     private Description title;
@@ -39,8 +39,8 @@ public class Service implements AggregateRoot<Long> {
 
 
 
-    @OneToOne(optional = false)
-    private Catalog catalog;
+    //@OneToOne(optional = false)
+    //private Catalog catalog;
 /*
     @OneToOne(optional = false)
     private Criticalitylevel criticalitylevel;
@@ -54,8 +54,8 @@ public class Service implements AggregateRoot<Long> {
 
     public Service(final List<Form> form,/*final Criticalitylevel criticalitylevel,*/ final Description title,final Description fulldescription,
                    final Description smalldescription,final String requirefeedback, final Set<Keyword> keyword,
-                   final Description icon,final Catalog catalog/*,Workflow workflow*/) {
-        Preconditions.noneNull(form,title,fulldescription, smalldescription, keyword,catalog/*, criticalitylevel*/);
+                   final Description icon/*,final Catalog catalog,Workflow workflow*/) {
+        Preconditions.noneNull(form,title,fulldescription, smalldescription, keyword/*, criticalitylevel*/);
         if (title.length()>50){
             throw new IllegalArgumentException("the title of the service is superior to 50 caracters");
         }
@@ -72,7 +72,7 @@ public class Service implements AggregateRoot<Long> {
         this.requirefeedback = requirefeedback;
         this.keyword = keyword;
         this.icon = icon;
-        this.catalog = catalog;
+        //this.catalog = catalog;
         //this.criticalitylevel=criticalitylevel;
         //this.workflow=workflow;
     }
@@ -89,8 +89,7 @@ public class Service implements AggregateRoot<Long> {
         }
         return identity().equals(service.identity()) && title.equals(service.title)
                 && fulldescription.equals(service.fulldescription) && smalldescription.equals(service.smalldescription)
-                && requirefeedback.equals(service.requirefeedback) && keyword.equals(service.keyword)
-                && catalog.equals(service.catalog);
+                && requirefeedback.equals(service.requirefeedback) && keyword.equals(service.keyword);
     }
 
     @Override
@@ -106,19 +105,20 @@ public class Service implements AggregateRoot<Long> {
         return uniquecode.equals(service.uniquecode) && title.equals(service.title)
                 && fulldescription.equals(service.fulldescription) && smalldescription.equals(service.smalldescription)
                 && requirefeedback.equals(service.requirefeedback) && keyword.equals(service.keyword)
-                && icon.equals(service.icon) && catalog.equals(service.catalog);
+                && icon.equals(service.icon);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uniquecode, title, fulldescription, smalldescription, requirefeedback, keyword, icon, catalog);
+        return Objects.hash(uniquecode, title, fulldescription, smalldescription, requirefeedback, keyword, icon);
     }
 
     @Override
     public String toString() {
         return "uniquecode=" + uniquecode.toString() + ", title=" + title.toString() + ", fulldescription=" + fulldescription.toString() +
-                ", smalldescription=" + smalldescription.toString() + ", requireFeedback=" + requirefeedback.toString() +
+                ", smalldescription=" + smalldescription.toString() + ", requireFeedback=" + requirefeedback +
                 ", keyword=" + keyword.toString() +
-                ", icon=" + icon.toString() + ", catalog=" + catalog.toString();
+                ", icon=" + icon.toString() +
+                ", FORM=" + form.toString();
     }
 }
