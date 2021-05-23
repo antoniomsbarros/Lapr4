@@ -16,6 +16,8 @@ public class AttributeBuilder{
 
     private TypeofData typeofData;
 
+    public AttributeBuilder() {}
+
     public AttributeBuilder withDescription(Description description) {
         this.description = description;
         return this;

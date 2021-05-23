@@ -7,6 +7,7 @@ import eapli.framework.validations.Preconditions;
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Form implements AggregateRoot<Long> {
@@ -16,16 +17,17 @@ public class Form implements AggregateRoot<Long> {
     private Long identifier;
     @Version
     private Long version;
+    @AttributeOverride(name = "value", column = @Column(name = "name"))
     private Description name;
-    @OneToMany()
-    private List<Attribute> attribute;
+    @OneToMany
+    private Set<Attribute> attribute;
 
     public Form() {
     }
 
-    public Form(Description name, List<Attribute> attribute) {
-        Preconditions.noneNull(name,attribute);
-        if (name.length()<50){
+    public Form(final Description name,final Set<Attribute> attribute) {
+        Preconditions.noneNull(name);
+        if (name.length()>50){
             throw new IllegalArgumentException("the name of the form cant have more then 50 characters");
         }
         this.name = name;
@@ -59,11 +61,12 @@ public class Form implements AggregateRoot<Long> {
 
     @Override
     public int hashCode() {
-        return Objects.hash(identifier, version, name, attribute);
+        return Objects.hash(identifier, version, name);
     }
 
     @Override
     public String toString() {
-        return "identifier=" + identifier + ", name=" + name + ", attribute=" + attribute.toString();
+
+        return "identifier=" + identifier + ", name=" + name.toString() + ", Attribute:" + attribute;
     }
 }
