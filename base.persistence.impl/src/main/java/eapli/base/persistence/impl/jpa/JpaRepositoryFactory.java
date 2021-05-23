@@ -68,13 +68,22 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 
 	@Override
 	public FormRepository forms() {
-		return new JpaFormRepository();
+		return new JpaFormRepository(Application.settings().getPersistenceUnitName());
+	}
+
+	public FormRepository forms(final TransactionalContext autoTx) {
+		return new JpaFormRepository(autoTx);
 	}
 
 	@Override
 	public ServiceRepository services() {
-		return new JpaServiceRepository();
+		return new JpaServiceRepository(Application.settings().getPersistenceUnitName());
 	}
+
+	public ServiceRepository services(final TransactionalContext autoTx) {
+		return new JpaServiceRepository(autoTx);
+	}
+
 
 	@Override
 	public CriticalityLevelRepository criticalityLevels() {
