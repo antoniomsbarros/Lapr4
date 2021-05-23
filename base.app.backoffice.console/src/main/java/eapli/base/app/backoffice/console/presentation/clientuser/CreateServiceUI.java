@@ -1,16 +1,16 @@
 package eapli.base.app.backoffice.console.presentation.clientuser;
 
-import eapli.base.catalogmanagement.application.CreateCatalogController;
 import eapli.base.catalogmanagement.application.CreateServiceController;
-import eapli.base.catalogmanagement.domain.Catalog;
 import eapli.base.catalogmanagement.domain.Keyword;
 import eapli.base.catalogmanagement.domain.Service;
+import eapli.base.ordermanagement.domain.Attribute;
+import eapli.base.ordermanagement.domain.Form;
 import eapli.base.ordermanagement.domain.TypeofData;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
 
-import java.util.Optional;
+import java.util.*;
 
 public class CreateServiceUI extends AbstractUI {
     CreateServiceController controller;
@@ -43,31 +43,43 @@ public class CreateServiceUI extends AbstractUI {
         else
             controller.disableFeedback();
 
-        System.out.println(controller.getCatalogs());
-        Long id = Console.readLong("Choose an id of a Catalog: ");
-        Optional<Catalog> choosenCatalog = controller.getCatalogByIdentifier(id);
+        //System.out.println(controller.getCatalogs());
+        //Long id = Console.readLong("Choose an id of a Catalog: ");
+        //Optional<Catalog> choosenCatalog = controller.getCatalogByIdentifier(id);
+        List<Form> lstForm = new ArrayList<>();
+        Set<Attribute> lstAttribute = new HashSet<>();
 
-        final Description nameForm = Description.valueOf( Console.readLine("Form name: "));
-        controller.addForm(nameForm);
+        System.out.println("Formulario de solicitacao de servico:");
+        answer = "y";
+        String answer2 = "y";
+        while(answer.equals("y")) {
 
-        final Description description = Description.valueOf( Console.readLine("Description: "));
-        final Description nameAttribute = Description.valueOf( Console.readLine("Attribute name: "));
-        final Description label = Description.valueOf( Console.readLine("Label: "));
-        final Description regularexpression = Description.valueOf( Console.readLine("Regular expression: "));
-        final Description script = Description.valueOf( Console.readLine("Script: "));
-        controller.addAttribute(description, nameAttribute, label, regularexpression, script);
+            /*Form Info*/
+            final Description nameForm = Description.valueOf( Console.readLine("Form name: "));
+            //controller.addForm(nameForm);
 
-        TypeofData td = TypeofData.valueOf(Console.readLine("Choose a data type (INTEGER, String, Bool, Data, Ficheiro, ListaDeValores): "));
-        controller.addAttributeType(td);
+            /*Attribute Info*/
+            while (answer2.equals("y")) {
+                final Description description = Description.valueOf(Console.readLine("Description: "));
+                final Description nameAttribute = Description.valueOf(Console.readLine("Attribute name: "));
+                final Description label = Description.valueOf(Console.readLine("Label: "));
+                final Description regularexpression = Description.valueOf(Console.readLine("Regular expression: "));
+                final Description script = Description.valueOf(Console.readLine("Script: "));
+                final TypeofData td = TypeofData.valueOf(Console.readLine("Choose a data type (INTEGER, String, Bool, Data, Ficheiro, ListaDeValores): "));
+                System.out.println(controller.addAttribute(description, nameAttribute, label, regularexpression, script, td));
+                lstAttribute.add(controller.addAttribute(description, nameAttribute, label, regularexpression, script, td));
+                answer2 = Console.readLine("Do you want to add more Attributes to the Form?(y/n)");
+            }
+            lstForm.add(controller.saveForm(nameForm,lstAttribute));
 
-        controller.saveForm();
-
+            answer = Console.readLine("Do you want to add a manual task Form?(y/n)");
+        }
         String temp = Console.readLine("Do you confirm the data (y/n)");
         if(temp.equals("n"))
             return false;
 
-        Service createdService = controller.saveService(choosenCatalog);
-
+        Service createdService = controller.saveService(/*choosenCatalog*/lstForm);
+        System.out.println("Service created.\n" + createdService);
         return true;
     }
 
