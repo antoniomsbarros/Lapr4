@@ -13,7 +13,7 @@
 	- Existências de Formulários;
 - Requisitos
 	- Solicitar o serviço pretendido;
-	- Preencher o Pedido para submeter ou deixar como Rascunho;
+	- Preencher o Pedido para submeter;
 	- Preencher o Formulário;
 - Pós-Requisitos
 	- Solicitação realizada;
@@ -22,9 +22,12 @@ A interpretação feita deste requisito foi no sentido de um utilizador puder so
 
 # 2. Análise
 
-*Neste secção a equipa deve relatar o estudo/análise/comparação que fez com o intuito de tomar as melhores opções de design para a funcionalidade bem como aplicar diagramas/artefactos de análise adequados.*
+	A análise foi realizada tendo em conta as reuniões com o Cliente e as respostas dadas no Fórum para esclarecimento de dúvidas.
 
-*Recomenda-se que organize este conteúdo por subsecções.*
+	*A pesquisa do serviço é realizada por catálogo
+	*Toda a informação do formulário tem de ser preenchida.
+	*O Pedido tem de ter toda a informação necessária.
+
 
 # 3. Design
 
