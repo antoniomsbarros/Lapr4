@@ -64,15 +64,15 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     @EmbeddedId
     private MecanographicNumber mecanographicNumber;
 
-    @ManyToOne(optional = true)
+   @ManyToOne(optional = true)
     private Function function;
 
     @OneToMany()
     private List<Catalog> listcatalog;
     //@OneToMany()
     //private List<Team> list;
+
     @OneToOne
-    @Column(nullable = true)
     private ClientUser clientUser;
 
 
@@ -87,7 +87,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     /**
      * cascade = CascadeType.NONE as the systemUser is part of another aggregate
      */
-    @OneToOne()
+    @OneToOne
     private SystemUser systemUser;
 
     public ClientUser(MecanographicNumber mecanographicNumber, Function function, List<Catalog> listcatalog,
@@ -150,6 +150,41 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         this.placeofresidence = placeofresidence;
         this.systemUser = systemUser;
         this.clientUser = clientUser;
+    }
+
+    public ClientUser(final MecanographicNumber mecanographicNumber, final Description fullName, final Function function,
+                      final CollaboratorEmail collaboratorEmail, final Dateofbirth dateofbirth, final Long phoneNumber, final Designation shortname,
+                      final Placeofresidence placeofresidence, final SystemUser systemUser) {
+        if (mecanographicNumber == null || systemUser == null) {
+            throw new IllegalArgumentException("mecanographicNumber or systemUser null");
+        }
+        if (fullName.length() > 80) {
+            throw new IllegalArgumentException("The full name has passed the limit of 80 caracteres");
+        }
+        if (shortname.length() > 30) {
+            throw new IllegalArgumentException("The short name Cant passed 30 caracteres");
+        }
+
+        try {
+            if (!(Calendars.now().compareTo(dateofbirth.Date())==1)) {
+                throw new IllegalArgumentException("Invalid Date!");
+            }
+        }catch (NullPointerException | IllegalArgumentException e){
+            System.out.println("Invalid Date: " + e);
+        }
+
+        this.mecanographicNumber = mecanographicNumber;
+        this.function = function;
+        this.listcatalog = new ArrayList<>();
+        //this.list = new ArrayList<>();
+        this.fullName = fullName;
+        this.collaboratorEmail = collaboratorEmail;
+        this.dateofbirth = dateofbirth;
+        this.phoneNumber = phoneNumber;
+        this.shortname = shortname;
+        this.placeofresidence = placeofresidence;
+        this.systemUser = systemUser;
+        //this.clientUser =  new ClientUser();
     }
 
     public ClientUser(final SystemUser user, final MecanographicNumber mecanographicNumber) {

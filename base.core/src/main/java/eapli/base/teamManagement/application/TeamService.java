@@ -30,27 +30,31 @@ public class TeamService {
 
     public Iterable<TeamDTO> teams(){
 
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER,
+                BaseRoles.ADMIN);
 
         return toTeamsDTO(teamRepository.activeTeams());
     }
 
     public Optional<Team> findbyID(final Uniquecode uniquecode) {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER,
-                BaseRoles.RRH_MANAGER);
+                BaseRoles.RRH_MANAGER,
+                BaseRoles.ADMIN);
         return teamRepository.findByUniquecode(uniquecode);
     }
 
     public Iterable<TeamDTO> collaboratorTeams(MecanographicNumber collaboratorID){
 
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER,
+                BaseRoles.ADMIN);
 
         return toTeamsDTO(teamRepository.collaboratorTeams(collaboratorID));
     }
 
     public Iterable<ClientUserDTO> collaboratorList(Uniquecode teamID){
 
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER,
+                BaseRoles.ADMIN);
 
         return toClientUsersDTO(teamRepository.collaboratorList(teamID));
     }
@@ -67,7 +71,8 @@ public class TeamService {
 
     public Iterable<TeamDTO> teamsWithOutThisCollaborator(MecanographicNumber collaboratorID){
 
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER,
+                BaseRoles.ADMIN);
 
         return toTeamsDTO(teamRepository.teamsWithOutThisCollaborator(collaboratorID));
     }

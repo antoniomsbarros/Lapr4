@@ -8,6 +8,8 @@ import eapli.base.teamManagement.domain.Team;
 import eapli.base.teamManagement.domain.Uniquecode;
 import eapli.base.teamManagement.dto.TeamDTO;
 import eapli.base.usermanagement.domain.BaseRoles;
+import eapli.framework.general.domain.model.Description;
+import eapli.framework.general.domain.model.Designation;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 
@@ -26,15 +28,22 @@ public class FunctionService {
 
     public Iterable<Function> functions(){
 
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER, BaseRoles.ADMIN);
 
         return functionRepository.activeFunctions();
     }
 
     public Optional<Function> findbyID(final Long functionCode) {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER,
-                BaseRoles.RRH_MANAGER);
+                BaseRoles.RRH_MANAGER, BaseRoles.ADMIN);
 
-        return functionRepository.findFunctionbyID(functionCode);
+        return functionRepository.ofIdentity(functionCode);
+    }
+
+    public Optional<Function> findbyName(final Designation functionName) {
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER,
+                BaseRoles.RRH_MANAGER, BaseRoles.ADMIN);
+
+        return functionRepository.findFunctionbyName(functionName);
     }
 }

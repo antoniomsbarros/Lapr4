@@ -31,8 +31,7 @@ public class AssociateRemoveCollaboratorTeamController {
     private final TeamService teams = new TeamService();
 
     public void associateCollaboratorTeamController(String collaboratorID, String teamID) throws IllegalAccessException {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER,
-                BaseRoles.RRH_MANAGER);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.ADMIN, BaseRoles.RRH_MANAGER);
 
         Optional<ClientUser> collaborator = collaboratorRepository.findByMecanographicNumber(new MecanographicNumber(collaboratorID));
         Optional<Team> team = teams.findbyID(new Uniquecode(teamID));
@@ -53,8 +52,7 @@ public class AssociateRemoveCollaboratorTeamController {
     }
 
     public void removeCollaboratorTeamController(String collaboratorID, String teamID) throws IllegalAccessException {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER,
-                BaseRoles.RRH_MANAGER);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.ADMIN, BaseRoles.RRH_MANAGER);
 
         Optional<ClientUser> collaborator = collaboratorRepository.findByMecanographicNumber(new MecanographicNumber(collaboratorID));
         Optional<Team> team = teams.findbyID(new Uniquecode(teamID));
@@ -89,8 +87,6 @@ public class AssociateRemoveCollaboratorTeamController {
     public Iterable<TeamDTO> collaboratorTeams(String collaboratorID){
         return teams.collaboratorTeams(new MecanographicNumber(collaboratorID));
     }
-
-
 
     public Iterable<ClientUserDTO> collaboratorsOfTeam(String teamID) {
         Iterable<ClientUserDTO> c = null;

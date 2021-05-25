@@ -35,14 +35,13 @@ public class SpecifyCollaboratorUI extends AbstractUI {
     @Override
     protected boolean doShow() {
 
-        ClientUser clientUser = null;
         final String mecanographicNumber = Console.readLine("Mecanographic Number: ");
         final String fullName = Console.readLine("Full Name: ");
         final String email = Console.readLine("Email: ");
         final Calendar birth = Console.readCalendar("Date of Birth: ");
         final Long phoneNumber = Console.readLong("Phone Number: ");
         final String shortname = Console.readLine("Short Name: ");
-        Function function = null;
+        Function function = new Function();
 
         String country = Console.readLine("Country: ");
         String county = Console.readLine("County: ");
@@ -56,15 +55,20 @@ public class SpecifyCollaboratorUI extends AbstractUI {
         Placeofresidence placeofresidence = new Placeofresidence(country, county, District, City, street, doorNumber,
                 floorNumber, PostalCode);
 
-        final String f = Console.readLine("Do you want to select the function? (y/n): ");
-        if (f == "y"){
+        final Set<Role> roleTypes = new HashSet<>();
+        boolean show;
+        do {
+            show = showRoles(roleTypes);
+        } while (!show);
+
+        //final String f = Console.readLine("Do you want to select the function? (y/n): ");
+        //if (f == "y"){
             final SelectWidget<Function> functionSelectWidget = new SelectWidget<>("Functions:",
                     specifyCollaboratorController.allFunctions(), new FunctionPrinter());
             if (specifyCollaboratorController.allFunctions().iterator().hasNext()){
                 functionSelectWidget.show();
                 try {
                     function = functionSelectWidget.selectedElement();
-                    System.out.println("\n Funcao Selecionada: " + functionSelectWidget.selectedElement());
                 }catch (NullPointerException e){
                     System.out.println("Invalid Option: " + e);
                 }
@@ -73,18 +77,25 @@ public class SpecifyCollaboratorUI extends AbstractUI {
                 System.out.println("Without Functions!");
             }
 
-        }
+       // }
 
         final String answer = Console.readLine("Do you want to select the hierarchical responsible? (y/n):");
-        if (answer == "y"){
+        if (answer.equals("y")){
             final SelectWidget<ClientUser> clientUserSelectWidget = new SelectWidget<>("Collaborators:",
                     specifyCollaboratorController.allCollaborators(), new CollaboratorPrinter());
             if (specifyCollaboratorController.allCollaborators().iterator().hasNext()){
                 clientUserSelectWidget.show();
                 try {
-                    clientUser = clientUserSelectWidget.selectedElement();
+                    ClientUser clientUser = clientUserSelectWidget.selectedElement();
+                    specifyCollaboratorController.specifyCollaboratorWithResponsible(mecanographicNumber, fullName, function, email,
+                                                    birth, phoneNumber, shortname, placeofresidence, roleTypes, clientUser);
+
                 }catch (NullPointerException e){
                     System.out.println("Invalid Option: " + e);
+                }catch (final IntegrityViolationException | ConcurrencyException e) {
+                    System.out.println("That username is already in use.");
+                }catch (final IllegalAccessException e) {
+                    System.out.println("Object does not exist: " + e);
                 }
             }
             else {
@@ -92,12 +103,15 @@ public class SpecifyCollaboratorUI extends AbstractUI {
             }
 
         }
-
-        try {
-            specifyCollaboratorController.specifyCollaborator(mecanographicNumber, fullName, function, email, birth, phoneNumber,
-                    shortname, placeofresidence, clientUser);
-        } catch (final IntegrityViolationException | ConcurrencyException e) {
-            System.out.println("That username is already in use.");
+        else{
+            try {
+                specifyCollaboratorController.specifyCollaborator(mecanographicNumber, fullName, function, email, birth, phoneNumber,
+                        shortname, placeofresidence, roleTypes);
+            } catch (final IntegrityViolationException | ConcurrencyException e) {
+                System.out.println("That username is already in use.");
+            }catch (final IllegalAccessException e) {
+                System.out.println("Object does not exist: " + e);
+            }
         }
 
         return false;
@@ -108,4 +122,20 @@ public class SpecifyCollaboratorUI extends AbstractUI {
         return "Especify Collaborator";
     }
 
+    private boolean showRoles(final Set<Role> roleTypes) {
+        // TODO we could also use the "widget" classes from the framework...
+        final Menu rolesMenu = buildRolesMenu(roleTypes);
+        final MenuRenderer renderer = new VerticalMenuRenderer(rolesMenu, MenuItemRenderer.DEFAULT);
+        return renderer.render();
+    }
+
+    private Menu buildRolesMenu(final Set<Role> roleTypes) {
+        final Menu rolesMenu = new Menu();
+        int counter = 0;
+        rolesMenu.addItem(MenuItem.of(counter++, "No Role", Actions.SUCCESS));
+        for (final Role roleType : addUserController.getRoleTypes()) {
+            rolesMenu.addItem(MenuItem.of(counter++, roleType.toString(), () -> roleTypes.add(roleType)));
+        }
+        return rolesMenu;
+    }
 }

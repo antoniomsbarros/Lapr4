@@ -5,6 +5,7 @@ import eapli.base.funcaomanagement.repositories.FunctionRepository;
 import eapli.base.teamManagement.domain.TeamType;
 import eapli.base.teamManagement.domain.Uniquecode;
 import eapli.framework.general.domain.model.Description;
+import eapli.framework.general.domain.model.Designation;
 import eapli.framework.infrastructure.repositories.impl.inmemory.InMemoryDomainRepository;
 
 import java.util.Optional;
@@ -21,8 +22,8 @@ public class InMemoryFunctionRepository extends InMemoryDomainRepository<Functio
     }
 
     @Override
-    public Optional<Function> findFunctionbyID(Long uniquecode) {
-        return Optional.of(data().get(uniquecode));
+    public Optional<Function> findFunctionbyName(Designation name) {
+        return Optional.of(data().get(name));
     }
 
     @Override

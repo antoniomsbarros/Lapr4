@@ -44,14 +44,11 @@ public class SpecifyCollaboratorBootstrapper implements Action {
         Role [] roleList = addUserController.getRoleTypes();
         Set<Role> roleSet = new HashSet<>();
 
-
-
-        /**
-         * TODO: Iterate through roleList and ADD roles
-         */
-        for (Role r: roleList) {
-            roleSet.add(r);
-        }
+/**
+ * TODO: Iterate through roleList and ADD colab role to roleSet
+ */
+        Set<Role> v=new HashSet<>();
+        v.add(roleList[2]);
 
 
 
@@ -59,7 +56,8 @@ public class SpecifyCollaboratorBootstrapper implements Action {
       addFunction(Designation.valueOf("Funcao2"), Description.valueOf("Responsavel_Funcao2"));
 
 
-        specifyCollaborator( "112345",
+        specifyCollaborator(
+                "112345",
          "Jose Pereira Alves",
          new Function(Designation.valueOf("Funcao1"), Description.valueOf("Responsavel_Funcao1")),
          "colab1@isep.ipp.pt",
@@ -67,7 +65,7 @@ public class SpecifyCollaboratorBootstrapper implements Action {
          Long.valueOf("912345678"),
          "Jose Alves",
          new Placeofresidence("Portugal","Matosinhos","Porto","Porto","R.Costa",
-         Long.valueOf("101"),Long.valueOf("0"),"4460-524"),roleSet);
+         Long.valueOf("101"),Long.valueOf("0"),"4460-524"),v);
 
         c1.set(1992,4,2);
 
@@ -79,7 +77,7 @@ public class SpecifyCollaboratorBootstrapper implements Action {
                 Long.valueOf("962345678"),
                 "Filipa Carvalho",
                 new Placeofresidence("Portugal","Gaia","Porto","Porto","R.Almada Negreiros",
-                        Long.valueOf("276"),Long.valueOf("0"),"4230-512"),roleSet);
+                        Long.valueOf("276"),Long.valueOf("0"),"4230-512"),v);
 
 
 
@@ -93,7 +91,7 @@ public class SpecifyCollaboratorBootstrapper implements Action {
                 Long.valueOf("972345678"),
                 "Filipa Oliveira",
                 new Placeofresidence("Portugal","Porto","Porto","Porto","R.A Negreiros",
-                        Long.valueOf("276"),Long.valueOf("0"),"4260-512"),roleSet);
+                        Long.valueOf("276"),Long.valueOf("0"),"4260-512"),v);
 
         c1.set(1988,5,1);
 
@@ -105,9 +103,7 @@ public class SpecifyCollaboratorBootstrapper implements Action {
                 Long.valueOf("982345678"),
                 "Andreia Oliveira",
                 new Placeofresidence("Portugal","Porto","Porto","Porto","R.A N",
-                        Long.valueOf("276"),Long.valueOf("0"),"4860-512"),roleSet);
-
-
+                        Long.valueOf("276"),Long.valueOf("0"),"4860-512"),v);
 
 
 
@@ -124,10 +120,11 @@ public class SpecifyCollaboratorBootstrapper implements Action {
 
       try{
           specifyCollaboratorController.specifyCollaborator(mecanographicNumber, fullName, function, email, birth, phoneNumber, shortname,
-                  placeofresidence,null);
-      } catch (final ConcurrencyException | IntegrityViolationException e) {
+                  placeofresidence, roleTypes);
+      } catch (final ConcurrencyException | IntegrityViolationException | IllegalAccessException e) {
           // ignoring exception. assuming it is just a primary key violation
           // due to the tentative of inserting a duplicated user
+          System.out.println("ERRO BOOTSTRAP: " + e);
           LOGGER.warn("Assuming {} already exists (activate trace log for details)", fullName);
           LOGGER.trace("Assuming existing record", e);
       }
@@ -137,9 +134,10 @@ public class SpecifyCollaboratorBootstrapper implements Action {
     public void addFunction (final Designation designation, final Description description){
         try{
             addFunctionController.addFunction(designation,description);
-        } catch (final ConcurrencyException | IntegrityViolationException e) {
+        } catch (final ConcurrencyException | IntegrityViolationException | IllegalAccessException e) {
             // ignoring exception. assuming it is just a primary key violation
             // due to the tentative of inserting a duplicated user
+            System.out.println("ERRO BOOTSTRAP: " + e);
             LOGGER.warn("Assuming {} already exists (activate trace log for details)", description);
             LOGGER.trace("Assuming existing record", e);
         }

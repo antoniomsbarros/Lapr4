@@ -28,10 +28,10 @@ public class JpaFunctionRepository extends JpaAutoTxRepository<Function, Long, L
     }
 
     @Override
-    public Optional<Function> findFunctionbyID(Long uniquecode) {
+    public Optional<Function> findFunctionbyName(Designation name) {
         final Map<String, Object> params = new HashMap<>();
-        params.put("code", uniquecode);
-        return matchOne("e.code=:uniquecode", params);
+        params.put("code", name);
+        return matchOne("e.functionname=:code", params);
     }
 
 
@@ -41,4 +41,15 @@ public class JpaFunctionRepository extends JpaAutoTxRepository<Function, Long, L
         return match("e.active=true");
     }
 
+    @Override
+    public Optional<Function> ofIdentity(Long id) {
+        final Map<String, Object> params = new HashMap<>();
+        params.put("code", id);
+        return matchOne("e.functioncode=:code", params);
+    }
+
+    @Override
+    public void deleteOfIdentity(Long entityId) {
+
+    }
 }

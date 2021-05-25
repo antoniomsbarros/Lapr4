@@ -42,14 +42,16 @@ Foram aplicados os padrões:
 
 ## 3.3. Testes 
 
-Foram realizados testes para garantir a integridade dos requisitos.
+Foram realizados testes para garantir a integridade dos requisitos:
 
-**Teste 1:** Verificar que não é possível criar uma instância da classe Exemplo com valores nulos.
+**Teste 1:** Verificar que não é possível criar um colaborador com número mecanográfico nulo.
 
 	@Test(expected = IllegalArgumentException.class)
-		public void ensureNullIsNotAllowed() {
-		Exemplo instance = new Exemplo(null, null);
-	}
+    public void ensureMecanographicNumberNotNull() {
+        System.out.println("must have a Mecanographic Number!");
+        new ClientUserBuilder().withMecanographicNumber((MecanographicNumber) null)
+                .withSystemUser(getNewUser1()).build();
+    }
 
 # 4. Implementação
 
