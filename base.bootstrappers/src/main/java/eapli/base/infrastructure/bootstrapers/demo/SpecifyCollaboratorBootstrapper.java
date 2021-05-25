@@ -98,7 +98,7 @@ public class SpecifyCollaboratorBootstrapper implements Action {
 
         c1.set(1988,5,1);
 
-        specifyCollaborator( "112348",
+            specifyCollaborator( "112348",
                 "Andreia Santos Oliveira",
                 new Function(Designation.valueOf("Funcao2"), Description.valueOf("Responsavel_Funcao2")),
                 "colab4@isep.ipp.pt",
