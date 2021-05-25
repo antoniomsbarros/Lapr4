@@ -1,20 +1,21 @@
 package eapli.base.catalogmanagement.domain;
 
+import eapli.framework.domain.model.ValueObject;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
 import java.util.Objects;
 
-@Entity
-public class Objective  {
-    @Id
-    @GeneratedValue
-    private Long id;
+@Embeddable
+public class Objective implements ValueObject, Comparable<Objective> {
+    
     @AttributeOverride(name = "value", column = @Column(name = "maxTime"))
     private Description maxTime;
+
     @AttributeOverride(name = "value", column = @Column(name = "averageTime"))
     private Description averageTime;
+
     private Step step;
 
 
@@ -43,6 +44,17 @@ public class Objective  {
 
     @Override
     public String toString() {
-        return "id=" + id + ", maxTime=" + maxTime.toString() + ", averageTime=" + averageTime.toString() + ", step=" + step.toString();
+        return "MAXTIME=" + maxTime.toString() + ", AVERAGETIME=" + averageTime.toString() + ", STEP=" + step.toString();
+    }
+
+
+    @Override
+    public int compareTo(Objective o) {
+        if(this.hashCode() > o.hashCode()) {
+            return -1;
+        } else if (this.hashCode() == o.hashCode()) {
+            return 0;
+        }else
+            return 1;
     }
 }

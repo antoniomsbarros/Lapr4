@@ -11,9 +11,19 @@ public class CriticalitylevelBuilder implements DomainFactory<Criticalitylevel> 
 
     private Description tag;
 
-    private Description color;
+    private Color color;
 
     private Objective objective;
+
+    public CriticalitylevelBuilder(){}
+
+    public CriticalitylevelBuilder (final Description value, final Description tag,
+                                    final Color color, Objective objective){
+        this.value = value;
+        this.tag = tag;
+        this.color = color;
+        this.objective = objective;
+    }
 
     public CriticalitylevelBuilder withValue(Description value) {
         this.value = value;
@@ -25,7 +35,7 @@ public class CriticalitylevelBuilder implements DomainFactory<Criticalitylevel> 
         return this;
     }
 
-    public CriticalitylevelBuilder withColor(Description color) {
+    public CriticalitylevelBuilder withColor(Color color) {
         this.color = color;
         return this;
     }
@@ -37,6 +47,6 @@ public class CriticalitylevelBuilder implements DomainFactory<Criticalitylevel> 
 
     @Override
     public Criticalitylevel build() {
-        return new Criticalitylevel(this.value, this.tag, this.color, this.objective);
+        return new Criticalitylevel(value, tag, color, objective);
     }
 }
