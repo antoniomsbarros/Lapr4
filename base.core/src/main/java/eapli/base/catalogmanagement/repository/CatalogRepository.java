@@ -1,6 +1,7 @@
 package eapli.base.catalogmanagement.repository;
 
 import eapli.base.catalogmanagement.domain.Catalog;
+import eapli.base.teamManagement.domain.Team;
 import eapli.framework.domain.repositories.DomainRepository;
 
 import eapli.framework.general.domain.model.Description;
@@ -29,5 +30,7 @@ public interface CatalogRepository extends DomainRepository<Long, Catalog> {
     default Optional<Catalog> findByIdentifier(Long number) {
         return ofIdentity(number);
     }
+
+    Iterable<Catalog> findByTeams(Team team);
 
 }

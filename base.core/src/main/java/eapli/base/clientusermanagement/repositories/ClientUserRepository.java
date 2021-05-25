@@ -2,11 +2,15 @@ package eapli.base.clientusermanagement.repositories;
 
 import java.util.Optional;
 
+import eapli.base.catalogmanagement.domain.Catalog;
 import eapli.base.clientusermanagement.domain.ClientUser;
+import eapli.base.clientusermanagement.domain.CollaboratorEmail;
 import eapli.base.clientusermanagement.domain.MecanographicNumber;
 import eapli.base.teamManagement.domain.Uniquecode;
 import eapli.framework.domain.repositories.DomainRepository;
+import eapli.framework.general.domain.model.Description;
 import eapli.framework.infrastructure.authz.domain.model.Username;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  *
@@ -35,5 +39,8 @@ public interface ClientUserRepository
     }
 
     public Iterable<ClientUser> findAllActive();
+
+    @Query(value = "SELECT email FROM ClientUser WHERE email = :email",nativeQuery = true)
+    Optional<ClientUser> getClientUserByEmail(CollaboratorEmail email);
 
 }
