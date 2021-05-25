@@ -64,23 +64,19 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     @EmbeddedId
     private MecanographicNumber mecanographicNumber;
 
-    //@ManyToOne(optional = true)
-    //private Function function;
+    @ManyToOne(optional = true)
+    private Function function;
 
     @OneToMany()
     private List<Catalog> listcatalog;
-
-    @OneToMany()
-    private List<Team> listTeam;
-
+    //@OneToMany()
+    //private List<Team> list;
     @OneToOne
     private ClientUser clientUser;
 
 
     private Description fullName;
-
     private CollaboratorEmail collaboratorEmail;
-
     private Dateofbirth dateofbirth;
     private Long phoneNumber;
     private Designation shortname;
@@ -96,7 +92,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     public ClientUser(MecanographicNumber mecanographicNumber, Function function, List<Catalog> listcatalog,
                       List<Team> list, Description fullName, CollaboratorEmail collaboratorEmail,
                       Dateofbirth dateofbirth, Long phoneNumber, Designation shortname,
-                      Placeofresidence placeofresidence, SystemUser systemUser) {
+                      Placeofresidence placeofresidence, SystemUser systemUser, ClientUser clientUser) {
         if (mecanographicNumber == null || systemUser == null) {
             throw new IllegalArgumentException();
         }
@@ -107,7 +103,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
             throw new IllegalArgumentException("The short name Cant passed 30 caracteres");
         }
         this.mecanographicNumber = mecanographicNumber;
-        //this.function = function;
+        this.function = function;
         this.listcatalog = listcatalog;
         //this.list = list;
         this.fullName = fullName;
@@ -117,6 +113,42 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         this.shortname = shortname;
         this.placeofresidence = placeofresidence;
         this.systemUser = systemUser;
+        this.clientUser = clientUser;
+    }
+
+    public ClientUser(final MecanographicNumber mecanographicNumber, final Description fullName, final Function function,
+                      final CollaboratorEmail collaboratorEmail, final Dateofbirth dateofbirth, final Long phoneNumber, final Designation shortname,
+                      final Placeofresidence placeofresidence, final SystemUser systemUser, final ClientUser clientUser) {
+        if (mecanographicNumber == null || systemUser == null) {
+            throw new IllegalArgumentException("mecanographicNumber or systemUser null");
+        }
+        if (fullName.length() > 80) {
+            throw new IllegalArgumentException("The full name has passed the limit of 80 caracteres");
+        }
+        if (shortname.length() > 30) {
+            throw new IllegalArgumentException("The short name Cant passed 30 caracteres");
+        }
+
+        try {
+            if (!(Calendars.now().compareTo(dateofbirth.Date())==1)) {
+                throw new IllegalArgumentException("Invalid Date!");
+            }
+        }catch (NullPointerException | IllegalArgumentException e){
+            System.out.println("Invalid Date: " + e);
+        }
+
+        this.mecanographicNumber = mecanographicNumber;
+        this.function = function;
+        this.listcatalog = new ArrayList<>();
+        //this.list = new ArrayList<>();
+        this.fullName = fullName;
+        this.collaboratorEmail = collaboratorEmail;
+        this.dateofbirth = dateofbirth;
+        this.phoneNumber = phoneNumber;
+        this.shortname = shortname;
+        this.placeofresidence = placeofresidence;
+        this.systemUser = systemUser;
+        this.clientUser = clientUser;
     }
 
     public ClientUser(final MecanographicNumber mecanographicNumber, final Description fullName, final Function function,
@@ -141,7 +173,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         }
 
         this.mecanographicNumber = mecanographicNumber;
-        //this.function = function;
+        this.function = function;
         this.listcatalog = new ArrayList<>();
         //this.list = new ArrayList<>();
         this.fullName = fullName;
@@ -188,6 +220,15 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         return identity();
     }
 
+    public Description fullname() {
+        return fullName;
+    }
+
+    public CollaboratorEmail email() {
+        return collaboratorEmail;
+    }
+
+
     @Override
     public MecanographicNumber identity() {
         return this.mecanographicNumber;
@@ -215,7 +256,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     }
 
 
-*/
+
     public boolean belongToThisTeamType(Team team) {
 
         for (Team t:listTeam){
@@ -252,5 +293,5 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
 
     public CollaboratorEmail collaboratorEmail(){
         return collaboratorEmail;
-    }
+    }*/
 }

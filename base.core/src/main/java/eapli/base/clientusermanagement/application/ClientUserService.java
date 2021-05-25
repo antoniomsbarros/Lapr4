@@ -66,7 +66,8 @@ public class ClientUserService {
 
     public Iterable<ClientUserDTO> findAllClientUser() {
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER,
-                BaseRoles.RRH_MANAGER);
+                BaseRoles.RRH_MANAGER,
+                BaseRoles.ADMIN);
 
         Iterable<ClientUser> collaborators = repo.findAllActive();
         List<ClientUserDTO> collaboratorsDTO = new ArrayList<>();

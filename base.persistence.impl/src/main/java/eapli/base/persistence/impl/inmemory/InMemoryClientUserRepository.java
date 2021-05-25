@@ -40,6 +40,6 @@ public class InMemoryClientUserRepository
 
     @Override
     public Optional<ClientUser> getClientUserByEmail(CollaboratorEmail email){
-        return matchOne(e -> e.collaboratorEmail().equals(email));
+        return matchOne(e -> e.email().equals(email));
     }
 }

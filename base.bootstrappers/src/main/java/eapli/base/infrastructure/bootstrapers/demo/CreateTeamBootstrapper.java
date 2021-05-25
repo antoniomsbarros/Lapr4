@@ -65,10 +65,9 @@ public class CreateTeamBootstrapper implements Action {
         }
 
 
-
         registerTeam("1", responsable, collaborators,"Team1", "T1",tp1);
-      // registerTeam("2", responsable, collaborators,"Team2", "T2" ,tp1);
-       // registerTeam("3", responsable, collaborators,"Team3", "T3" ,tp3);
+      registerTeam("2", responsable, collaborators,"Team2", "T2" ,tp1);
+       //registerTeam("3", responsable, collaborators,"Team3", "T3" ,tp3);
 
 
 

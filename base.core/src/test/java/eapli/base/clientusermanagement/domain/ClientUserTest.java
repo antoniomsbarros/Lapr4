@@ -55,9 +55,15 @@ public class ClientUserTest {
     private SystemUser getNewDummyUser() {
         return dummyUser("dummy", BaseRoles.ADMIN);
     }
-
     private SystemUser getNewDummyUserTwo() {
         return dummyUser("dummy-two", BaseRoles.ADMIN);
+    }
+
+    private SystemUser getNewUser1() {
+        return dummyUser("dummy", BaseRoles.POWER_USER);
+    }
+    private SystemUser getNewUserTwo() {
+        return dummyUser("dummy-two", BaseRoles.POWER_USER);
     }
 
     @Test
@@ -136,4 +142,14 @@ public class ClientUserTest {
 
         assertFalse(expected);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void ensureMecanographicNumberNotNull() {
+        System.out.println("must have a Mecanographic Number!");
+        new ClientUserBuilder().withMecanographicNumber((MecanographicNumber) null)
+                .withSystemUser(getNewUser1()).build();
+    }
+
 }
+
+

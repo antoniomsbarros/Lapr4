@@ -9,6 +9,8 @@ import eapli.framework.general.domain.model.Description;
 import eapli.framework.general.domain.model.Designation;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
+
+import java.util.Optional;
 //import sun.security.krb5.internal.crypto.Des;
 
 /**
@@ -18,18 +20,25 @@ import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 public class AddFunctionController {
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final FunctionRepository functionRepository = PersistenceContext.repositories().functions();
+    private final FunctionService functionService = new FunctionService();
 
-    public void addFunction(final Designation designation, final Description description) {
+    public void addFunction(final Designation designation, final Description description) throws IllegalAccessException {
 
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.ADMIN,
                 BaseRoles.RRH_MANAGER);
+
+        Optional<Function> optionalFunction = functionService.findbyName(designation);
+
+        if (optionalFunction.isPresent()){
+            throw new IllegalAccessException("ERROR: Function already exist!");
+        }
 
         final FunctionBuilder functionBuilder = new FunctionBuilder();
 
         functionBuilder.withFunctionName(designation).withFunctionDescription(description);
 
-
         functionRepository.save(functionBuilder.build());
+        System.out.println("\nFunction saved!");
     }
 
     public Iterable<Function> getAllFunctions(){ return  functionRepository.findAll();}
