@@ -1,8 +1,6 @@
 package eapli.base.funcaomanagement.domain;
 
-import eapli.base.funcaomanagement.dto.FunctionDTO;
 import eapli.base.teamManagement.domain.Uniquecode;
-import eapli.base.teamManagement.dto.TeamDTO;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.general.domain.model.Designation;
@@ -72,9 +70,5 @@ public class Function implements AggregateRoot<Long> {
 
     public boolean isActive() {
         return active;
-    }
-
-    public FunctionDTO toDTO(){
-        return new FunctionDTO(functioncode, functionname.toString(), descriptionFunction.toString());
     }
 }

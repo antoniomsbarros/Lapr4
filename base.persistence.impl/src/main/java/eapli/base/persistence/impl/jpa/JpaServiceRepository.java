@@ -13,7 +13,7 @@ import java.util.Optional;
 public class JpaServiceRepository extends JpaAutoTxRepository<Service,Long,Long> implements ServiceRepository {
 
     public JpaServiceRepository(final TransactionalContext autoTx){
-            super(autoTx,"identifier");
+            super(autoTx,"uniquecode");
         }
         
     public JpaServiceRepository(String name){

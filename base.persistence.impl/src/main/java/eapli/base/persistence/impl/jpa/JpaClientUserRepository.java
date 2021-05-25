@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import eapli.base.Application;
 import eapli.base.clientusermanagement.domain.ClientUser;
+import eapli.base.clientusermanagement.domain.CollaboratorEmail;
 import eapli.base.clientusermanagement.domain.MecanographicNumber;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.teamManagement.domain.Team;
@@ -50,6 +51,13 @@ class JpaClientUserRepository
     @Override
     public Iterable<ClientUser> findAllActive() {
         return match("e.systemUser.active = true");
+    }
+
+    @Override
+    public Optional<ClientUser> getClientUserByEmail(CollaboratorEmail email) {
+        final Map<String, Object> params = new HashMap<>();
+        params.put("collaboratorEmail", email);
+        return matchOne("e.collaboratorEmail=:email", params);
     }
 
 }

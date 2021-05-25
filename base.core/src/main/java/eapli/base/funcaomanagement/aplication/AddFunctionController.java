@@ -41,6 +41,6 @@ public class AddFunctionController {
         System.out.println("\nFunction saved!");
     }
 
-    public Iterable<Function> allFunctions(){ return  functionRepository.activeFunctions();}
+    public Iterable<Function> getAllFunctions(){ return  functionRepository.findAll();}
 
 }

@@ -12,6 +12,7 @@ import eapli.base.ordermanagement.domain.AttributeBuilder;
 import eapli.base.ordermanagement.domain.Form;
 import eapli.base.ordermanagement.domain.TypeofData;
 import eapli.base.ordermanagement.domain.repository.FormRepository;
+import eapli.framework.application.UseCaseController;
 import eapli.framework.general.domain.model.Description;
 import eapli.base.ordermanagement.domain.FormBuilder;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
@@ -19,25 +20,32 @@ import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 
 import java.util.*;
 
+@UseCaseController
 public class CreateServiceController {
 
-    private final AuthorizationService authz = AuthzRegistry.authorizationService();
-    private final CatalogRepository catalogRepository = PersistenceContext.repositories().catalogs();
-    private final FormRepository formRepository = PersistenceContext.repositories().forms();
-    private final ServiceRepository serviceRepository = PersistenceContext.repositories().services();
+    private final AuthorizationService authz;
+    private final CatalogRepository catalogRepository;
+    private final FormRepository formRepository;
+    private final ServiceRepository serviceRepository;
     private ServiceBuilder serviceBuilder;
     private FormBuilder formBuilder;
     private AttributeBuilder attributeBuilder;
-    private Set<Keyword> lstKeywords = new HashSet<>();
-    private Description feedback;
-    private List<Attribute> lstAttribute = new ArrayList<>();
-    private List<Form> lstForm = new ArrayList<>();
+    private Set<Keyword> lstKeywords;
+
+    public CreateServiceController() {
+        this.authz = AuthzRegistry.authorizationService();
+        this.catalogRepository = PersistenceContext.repositories().catalogs();
+        this.formRepository = PersistenceContext.repositories().forms();
+        this.serviceRepository = PersistenceContext.repositories().services();
+        this.serviceBuilder = new ServiceBuilder();
+        this.formBuilder = new FormBuilder();
+        this.attributeBuilder = new AttributeBuilder();
+        this.lstKeywords = new HashSet<>();
+    }
 
     public void createService(Description title,Description smalldescription, Description fulldescription, Description icon){
-        serviceBuilder.withTitle(title);
-        serviceBuilder.withSmallDescription(smalldescription);
-        serviceBuilder.withFullDescription(fulldescription);
-        serviceBuilder.withIcon(icon);
+        serviceBuilder.withTitle(title).withSmallDescription(smalldescription)
+                .withFullDescription(fulldescription).withIcon(icon);
     }
 
     public void addKeyword(Keyword keyword) {
@@ -64,34 +72,24 @@ public class CreateServiceController {
         return catalogRepository.findByIdentifier(id);
     }
 
-    public void addForm(Description name) {
+    /*public void addForm(Description name) {
         formBuilder.withName(name);
-        this.lstAttribute = new ArrayList<>();
+    }*/
+
+    public Attribute addAttribute(Description description, Description name, Description label, Description regularexpression, Description script,TypeofData dataType) {
+        return attributeBuilder.withDescription(description).withName(name).withLabel(label)
+                .withRegularExpression(regularexpression).withScript(script).withTypeofData(dataType).build();
     }
 
-    public void addAttribute(Description description, Description name, Description label, Description regularexpression, Description script) {
-        attributeBuilder.withDescription(description);
-        attributeBuilder.withName(name);
-        attributeBuilder.withLabel(label);
-        attributeBuilder.withRegularExpression(regularexpression);
-        attributeBuilder.withScript(script);
+    public Form saveForm(Description name,Set<Attribute> lstAttributes) {
+        formBuilder.withName(name).withAttribute(lstAttributes);
+        return formRepository.save(formBuilder.build());
     }
 
-    public void addAttributeType(TypeofData dataType) {
-        attributeBuilder.withTypeofData(dataType);
-        lstAttribute.add(attributeBuilder.build());
-    }
-
-    public Form saveForm() {
-        formBuilder.withAttribute(this.lstAttribute);
-        Form f = formBuilder.build();
-        lstForm.add(f);
-        return formRepository.save(f);
-    }
-
-    public Service saveService(Optional<Catalog> choosenCatalog ) {
+    public Service saveService(/*Optional<Catalog> choosenCatalog, */List<Form> lstForm ) {
         serviceBuilder.withForm(lstForm);
-        serviceBuilder.withCatalog(choosenCatalog.get());
+        System.out.println(lstForm);
+        //serviceBuilder.withCatalog(choosenCatalog.get());
         return serviceRepository.save(serviceBuilder.build());
     }
 

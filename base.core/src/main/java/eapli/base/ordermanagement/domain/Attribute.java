@@ -1,20 +1,18 @@
 package eapli.base.ordermanagement.domain;
 
+import eapli.framework.domain.model.DomainEntity;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
+public class Attribute implements DomainEntity<Long>{
 
-public class Attribute{
     @Id
     @GeneratedValue
-    private Long attributecode;
-    @Version
-    private Long version;
+    private Long id;
     @AttributeOverride(name = "value", column = @Column(name = "description"))
     private Description description;
     @AttributeOverride(name = "value", column = @Column(name = "name"))
@@ -40,7 +38,7 @@ public class Attribute{
         }
         if (name.toString().length()>50){
             throw new IllegalArgumentException(
-                    "the complete description cant be more then 100 characters"
+                    "the complete description cant be more then 50 characters"
             );
         }
         this.description = description;
@@ -56,25 +54,44 @@ public class Attribute{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Attribute attribute = (Attribute) o;
-        return attributecode.equals(attribute.attributecode) &&
-                version.equals(attribute.version) && description.equals(attribute.description)
+        return  identity().equals(attribute.identity()) && description.equals(attribute.description)
                 && name.equals(attribute.name) && label.equals(attribute.label)
                 && regularexpression.equals(attribute.regularexpression) && script.equals(attribute.script)
-                && typeofData == attribute.typeofData;
+                && typeofData.equals(attribute.typeofData);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(attributecode, version, description, name, label, regularexpression, script, typeofData);
+        return Objects.hash(id, description, name, label, regularexpression, script, typeofData);
+    }
+
+    @Override
+    public boolean sameAs(Object other) {
+        if(!(other instanceof Attribute)){
+            return false;
+        }
+        Attribute attribute=(Attribute) other;
+        if (this==attribute){
+            return true;
+        }
+        return identity().equals(attribute.identity()) && description.equals(attribute.description) && name.equals(attribute.name)
+                && label.equals(attribute.label) && regularexpression.equals(attribute.regularexpression)
+                && script.equals(attribute.script) && typeofData.equals(attribute.typeofData);
     }
 
     @Override
     public String toString() {
-        return ", description=" + description +
-                ", name=" + name +
-                ", label=" + label +
-                ", regularexpression=" + regularexpression +
-                ", script=" + script +
-                ", typeofData=" + typeofData;
+        return  "AttributeCode= " + id +
+                ", description=" + description.toString() +
+                ", name=" + name.toString() +
+                ", label=" + label.toString() +
+                ", regularexpression=" + regularexpression.toString() +
+                ", script=" + script.toString() +
+                ", typeofData=" + typeofData.toString();
+    }
+
+    @Override
+    public Long identity() {
+        return this.id;
     }
 }

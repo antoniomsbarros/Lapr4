@@ -3,6 +3,7 @@ package eapli.base.persistence.impl.inmemory;
 import eapli.base.catalogmanagement.domain.Catalog;
 import eapli.base.catalogmanagement.repository.CatalogRepository;
 
+import eapli.base.teamManagement.domain.Team;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.general.domain.model.Designation;
 
@@ -41,4 +42,10 @@ public class InMemoryCatalogRepository extends InMemoryDomainRepository<Catalog,
     public Optional<Catalog> findByIdentifier(Long identifier) {
         return Optional.of(data().get(identifier));
     }
+
+    @Override
+    public Iterable<Catalog> findByTeams(Team team) {
+        return match(e -> e.ListofTeams().contains(team));
+    }
+
 }

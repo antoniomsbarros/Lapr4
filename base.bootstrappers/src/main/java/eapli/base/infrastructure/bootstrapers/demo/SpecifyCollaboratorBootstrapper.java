@@ -103,7 +103,21 @@ public class SpecifyCollaboratorBootstrapper implements Action {
                 Long.valueOf("982345678"),
                 "Andreia Oliveira",
                 new Placeofresidence("Portugal","Porto","Porto","Porto","R.A N",
+                        Long.valueOf("276"),Long.valueOf("0"),"4860-512"),roleSet);
+
+
+    Set<Role> v=new HashSet<>();
+    v.add(roleList[1]);
+        specifyCollaborator( "112349",
+                "Antonio Barros",
+                new Function(Designation.valueOf("Funcao2"), Description.valueOf("Responsavel_Funcao2")),
+                "colab5@isep.ipp.pt",
+                c1,
+                Long.valueOf("982345678"),
+                "Antonio Barros",
+                new Placeofresidence("Portugal","Porto","Porto","Porto","R.A N",
                         Long.valueOf("276"),Long.valueOf("0"),"4860-512"),v);
+
 
 
 

@@ -60,7 +60,7 @@ public final class BaseRoles {
      *
      * @return
      */
-    public static Role[] nonUserValues() {
+    public static Role[]nonUserValues() {
         return new Role[] { ADMIN, RRH_MANAGER, COLLABORATOR, GSH_MANAGER };
     }
 
