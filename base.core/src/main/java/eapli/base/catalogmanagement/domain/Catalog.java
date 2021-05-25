@@ -31,15 +31,15 @@ public class Catalog implements AggregateRoot<Long> {
     @OneToOne()
     private ClientUser responsiblecollaborator;
 
-    /*
+    @OneToMany()
+    private List<Service> services;
+
     @OneToOne
     private Criticalitylevel criticalitylevel;
-    */
 
     public Catalog() {
 
     }
-
 
     public Catalog(Description title, Description shortdescription, Description longdescription, Description icone,
                    List<Team> team, ClientUser responsiblecollaborator) {
@@ -116,5 +116,9 @@ public class Catalog implements AggregateRoot<Long> {
                 ", team=" + team +
                 ", responsiblecollaborator=" + responsiblecollaborator +
                 '}';
+    }
+
+    public List<Service> listService(){
+        return services;
     }
 }

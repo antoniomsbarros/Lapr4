@@ -121,4 +121,8 @@ public class Service implements AggregateRoot<Long> {
                 ", icon=" + icon.toString() +
                 ", FORM=" + form.toString();
     }
+
+    public String print(){
+        return uniquecode.toString() + " - " + title.toString();
+    }
 }

@@ -69,14 +69,18 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
 
     @OneToMany()
     private List<Catalog> listcatalog;
-    //@OneToMany()
-    //private List<Team> list;
+
+    @OneToMany()
+    private List<Team> listTeam;
+
     @OneToOne
     private ClientUser clientUser;
 
 
     private Description fullName;
+
     private CollaboratorEmail collaboratorEmail;
+
     private Dateofbirth dateofbirth;
     private Long phoneNumber;
     private Designation shortname;
@@ -211,16 +215,42 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     }
 
 
-*//*
+*/
     public boolean belongToThisTeamType(Team team) {
 
-        for (Team t:list){
+        for (Team t:listTeam){
             if (t.teamType().sameAs(team.teamType())){
                 return true;
             }
         }
         return false;
-    }*/
+    }
 
-  //  public void addTeam(Team team) {        list.add(team);    }
+    public boolean addTeam(Team team) {
+
+        if(listTeam.isEmpty()){
+            listTeam.add(team);
+            return true;
+        }
+
+        if(belongToThisTeamType(team)){
+            return false;
+        }
+
+        listTeam.add(team);
+        return true;
+    }
+
+
+    public boolean belongToTheTeam(Team team){
+        return listTeam.contains(team);
+    }
+
+    public List<Team> listOfTeams(){
+        return listTeam;
+    }
+
+    public CollaboratorEmail collaboratorEmail(){
+        return collaboratorEmail;
+    }
 }
