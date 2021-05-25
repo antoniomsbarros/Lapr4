@@ -151,6 +151,40 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         this.clientUser = clientUser;
     }
 
+    public ClientUser(final MecanographicNumber mecanographicNumber, final Description fullName, final Function function,
+                      final CollaboratorEmail collaboratorEmail, final Dateofbirth dateofbirth, final Long phoneNumber, final Designation shortname,
+                      final Placeofresidence placeofresidence, final SystemUser systemUser) {
+        if (mecanographicNumber == null || systemUser == null) {
+            throw new IllegalArgumentException("mecanographicNumber or systemUser null");
+        }
+        if (fullName.length() > 80) {
+            throw new IllegalArgumentException("The full name has passed the limit of 80 caracteres");
+        }
+        if (shortname.length() > 30) {
+            throw new IllegalArgumentException("The short name Cant passed 30 caracteres");
+        }
+
+        try {
+            if (!(Calendars.now().compareTo(dateofbirth.Date())==1)) {
+                throw new IllegalArgumentException("Invalid Date!");
+            }
+        }catch (NullPointerException | IllegalArgumentException e){
+            System.out.println("Invalid Date: " + e);
+        }
+
+        this.mecanographicNumber = mecanographicNumber;
+        this.function = function;
+        this.listcatalog = new ArrayList<>();
+        //this.list = new ArrayList<>();
+        this.fullName = fullName;
+        this.collaboratorEmail = collaboratorEmail;
+        this.dateofbirth = dateofbirth;
+        this.phoneNumber = phoneNumber;
+        this.shortname = shortname;
+        this.placeofresidence = placeofresidence;
+        this.systemUser = systemUser;
+    }
+
     public ClientUser(final SystemUser user, final MecanographicNumber mecanographicNumber) {
         if (mecanographicNumber == null || user == null) {
             throw new IllegalArgumentException();
@@ -222,7 +256,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     }
 
 
-*//*
+
     public boolean belongToThisTeamType(Team team) {
 
         for (Team t:listTeam){
@@ -259,5 +293,5 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
 
     public CollaboratorEmail collaboratorEmail(){
         return collaboratorEmail;
-    }
+    }*/
 }
