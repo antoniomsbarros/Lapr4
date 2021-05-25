@@ -31,7 +31,8 @@ public class Activity implements AggregateRoot<Long> {
     @AttributeOverride(name = "value", column = @Column(name = "complementaryinformation"))
     private Description complementaryinformation;
 
-    @ManyToOne()
+
+    @OneToOne
     private ClientUser collaborator;
     @OneToOne()
     private Form form;
@@ -39,8 +40,10 @@ public class Activity implements AggregateRoot<Long> {
     private Sequence sequence;
     @OneToOne()
     private Criticalitylevel criticalitylevel;
-    @OneToOne
+
+    @OneToOne()
     private Responsable responsable;
+
     public Activity() {
     }
 

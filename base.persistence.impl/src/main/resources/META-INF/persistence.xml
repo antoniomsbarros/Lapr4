@@ -27,6 +27,9 @@
     <class>eapli.base.ordermanagement.domain.Form</class>
     <class>eapli.base.ordermanagement.domain.Attribute</class>
     <class>eapli.base.catalogmanagement.domain.Sequence</class>
+    <class>eapli.base.catalogmanagement.domain.Activity</class>
+    <class>eapli.base.catalogmanagement.domain.Responsable</class>
+    <class>eapli.base.catalogmanagement.domain.Delegaction</class>
     <properties>
       <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/base"/>-->
 

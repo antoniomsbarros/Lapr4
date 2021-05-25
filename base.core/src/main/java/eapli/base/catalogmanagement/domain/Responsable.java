@@ -1,6 +1,7 @@
 package eapli.base.catalogmanagement.domain;
 
 import eapli.base.clientusermanagement.domain.ClientUser;
+import eapli.framework.domain.model.DomainEntity;
 import eapli.framework.validations.Preconditions;
 
 import javax.persistence.Entity;
@@ -9,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Responsable {
+public class Responsable implements DomainEntity<Long>{
 
     @Id
     @GeneratedValue
@@ -37,5 +38,19 @@ public class Responsable {
                 ", responsable=" + responsable.toString() +
                 ", delegaction=" + delegaction.toString() +
                 '}';
+    }
+
+    @Override
+    public boolean sameAs(Object other) {
+        if(!(other instanceof Responsable)){
+            return false;
+        }
+        Catalog temp= (Catalog) other;
+        return identity().equals(temp.identity()) && responsable.equals(temp.responsiblecollaborator());
+    }
+
+    @Override
+    public Long identity() {
+        return id;
     }
 }
