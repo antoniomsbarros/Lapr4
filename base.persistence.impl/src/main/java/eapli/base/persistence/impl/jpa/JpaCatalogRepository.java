@@ -48,12 +48,16 @@ class JpaCatalogRepository extends BasepaRepositoryBase<Catalog,Long,Long> imple
 
     @Override
     public Iterable<Catalog> findByTeams(Team team) {
-
+    /*
             final TypedQuery<Catalog> query = entityManager().createQuery(
                     "SELECT c FROM eapli.base.catalogmanagement.domain.Catalog as c WHERE eapli.base.catalogmanagement.domain.Catalog.team = team", Catalog.class);
             query.setParameter("eapli.base.catalogmanagement.domain.Catalog.team", team);
             return query.getResultList();
         }
+
+     */
+        return null;
     }
+
 
 }
