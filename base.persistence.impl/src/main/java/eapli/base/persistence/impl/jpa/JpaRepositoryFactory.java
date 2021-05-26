@@ -1,12 +1,12 @@
 package eapli.base.persistence.impl.jpa;
 
 import eapli.base.Application;
-import eapli.base.catalogmanagement.repository.CatalogRepository;
 import eapli.base.catalogmanagement.repository.CriticalityLevelRepository;
 import eapli.base.catalogmanagement.repository.ServiceRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.infrastructure.persistence.RepositoryFactory;
 import eapli.base.ordermanagement.domain.repository.FormRepository;
+import eapli.base.taskmanagement.repositories.AutomaticTaskRepository;
 import eapli.base.teamManagement.repositories.TeamRepository;
 import eapli.base.teamManagement.repositories.TeamTypeRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
@@ -102,6 +102,16 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 	@Override
 	public JpaFunctionRepository functions() {
 		return new JpaFunctionRepository(Application.settings().getPersistenceUnitName());
+	}
+
+	@Override
+	public AutomaticTaskRepository AutomaticTasks(final TransactionalContext autoTx) {
+		return new JpaAutomaticTaskRepository(autoTx);
+	}
+
+	@Override
+	public AutomaticTaskRepository AutomaticTasks() {
+		return new JpaAutomaticTaskRepository(Application.settings().getPersistenceUnitName());
 	}
 
 	@Override
