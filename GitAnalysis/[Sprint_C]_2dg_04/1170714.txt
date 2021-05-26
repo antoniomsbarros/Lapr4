@@ -1,0 +1,57 @@
+commit 3683ffe291742b78e3ac5f6dc19281992a99c0ae
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sun May 23 16:43:49 2021 +0100
+
+    L2S20-33-45 #implementation Create service Jpa classes updated
+
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaRepositoryFactory.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaServiceRepository.java
+
+commit 0ffbc3187a7523cb61c57adc04fe32542902c4d5
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sun May 23 16:43:19 2021 +0100
+
+    L2S20-33-45 #implementation Create service 'Controller' update
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/CreateServiceController.java
+
+commit 84502de71f7f15e90a318f0fc20cf50d5233dbbc
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sun May 23 16:43:09 2021 +0100
+
+    L2S20-33-45 #implementation Create service 'UI' update
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateServiceUI.java
+
+commit 86c4c41d6d34d520e726cd59c4f9ee934737819c
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sun May 23 16:42:11 2021 +0100
+
+    L2S20-45 #implementation Create critacality level domain classes updated
+
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Attribute.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/AttributeBuilder.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Form.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/FormBuilder.java
+
+commit 87abab603b42cfdf424dc4079eb6ebeaa705f156
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sun May 23 16:39:40 2021 +0100
+
+    L2S20-45 #implementation Create critacality level 'Controller' update
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/CreateCriticalitylevelController.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Criticalitylevel.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/CriticalitylevelBuilder.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Keyword.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Objective.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Service.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/ServiceBuilder.java
+
+commit 64497c246b3db4c7622c6f9d12d7b7213b0c7bc1
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sun May 23 16:38:56 2021 +0100
+
+    L2S20-45 #implementation Create critacality level 'UI' update
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateCriticalityLevelUI.java

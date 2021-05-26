@@ -1,3 +1,31 @@
+a46eb09,2021-05-26 21:59:36 +0100,Marly Pimpita,1191444@isep.ipp.pt,refactoring the project structure (because of mistake in the last commit)
+97769e3,2021-05-26 21:24:40 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-66 persistence
+e6146ea,2021-05-26 20:55:14 +0100,Jose Teixeira,1150462@isep.ipp.pt,L2S20-75 #close Requirements added to md file
+b5291d9,2021-05-26 20:54:05 +0100,Jose Teixeira,1150462@isep.ipp.pt,fix a reverse commit cause untracked class
+4c1b897,2021-05-26 20:49:49 +0100,Jose Teixeira,1150462@isep.ipp.pt,Revert "https://ant-nio-barros-1200606-833.atlassian.net/browse/L2S20-75 #Documents/US1005_ManualTask/Requirements add Requirements to US1005_ManualTask.md"
+51fa7ba,2021-05-26 20:48:14 +0100,Jose Teixeira,1150462@isep.ipp.pt,https://ant-nio-barros-1200606-833.atlassian.net/browse/L2S20-75 #Documents/US1005_ManualTask/Requirements add Requirements to US1005_ManualTask.md
+40cdb18,2021-05-26 01:11:24 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-67 #close Analisys
+b8deed0,2021-05-25 20:12:35 +0100,Antonio,antoniomsbarros@gmail.com,bug fix in Activity of references an unknown entity on Delegaction and Responsable
+a7e0c39,2021-05-25 16:45:02 +0100,Marly Pimpita,1191444@isep.ipp.pt,fixing the project creating classes that have been deleted
+df77cb9,2021-05-25 15:48:29 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-4 Implementation Collaborator Responsible solved
+33585f3,2021-05-25 15:21:44 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-62 Fix an error on JPACatalogRepository
+6d6a193,2021-05-25 15:16:20 +0100,Antonio,antoniomsbarros@gmail.com,L2S20-65  creted class for the US of the dashboard
+5479a48,2021-05-25 15:10:22 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-62 Correction and addition of new methods in JPA  and inMemory Catalog and Client User
+4c1aabe,2021-05-25 15:08:12 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-62 Add new methods of searching to the repositories Catalog and ClientUser
+b838a8c,2021-05-25 15:06:22 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-62 Correction of the domains Catalog, Service and ClienteUser
+b08a8b4,2021-05-25 15:04:06 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-60 Completing the Analysis
+b0e689f,2021-05-23 17:11:34 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-58 Completing the Requirements Analysis
+3683ffe,2021-05-23 16:43:49 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-33-45 #implementation Create service Jpa classes updated
+0ffbc31,2021-05-23 16:43:19 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-33-45 #implementation Create service 'Controller' update
+84502de,2021-05-23 16:43:09 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-33-45 #implementation Create service 'UI' update
+86c4c41,2021-05-23 16:42:11 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-45 #implementation Create critacality level domain classes updated
+87abab6,2021-05-23 16:39:40 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-45 #implementation Create critacality level 'Controller' update
+64497c2,2021-05-23 16:38:56 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-45 #implementation Create critacality level 'UI' update
+13b1c46,2021-05-22 12:41:47 +0100,Antonio,antoniomsbarros@gmail.com,Revert "Merge branch 'master' of https://bitbucket.org/1200606/lei20_21_s4_2dg_04 into master"
+5d0565b,2021-05-22 12:27:29 +0100,Antonio,antoniomsbarros@gmail.com,L2S20-54 implementation of the bootstrap of catolog and adding new teams
+9509307,2021-05-22 12:01:29 +0100,Antonio Barros,1200606@isep.ipp.pt,L2S20-54 implementation of the bootstrap of catolog and main menu para diferent roles
+213997c,2021-05-20 13:51:23 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-4 and L2S20-6 Implementation Whole UC updated
+e7d0fa8,2021-05-19 22:23:26 +0100,Paulo Proença,prp@isep.ipp.pt,Repository Analysis
 66aae6a,2021-05-19 10:59:12 +0100,Paulo Proença,prp@isep.ipp.pt,Repository Analysis
 6d1ff4c,2021-05-16 22:29:14 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-47  L2S20-52 Implementation Correction Done
 b0b959e,2021-05-16 12:32:02 +0100,Antonio Barros,1200606@isep.ipp.pt,L2S20-50 Implementation

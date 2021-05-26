@@ -1,3 +1,147 @@
+commit e6146ea8042892d27b467727f63288ebde798da3
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Wed May 26 20:55:14 2021 +0100
+
+    L2S20-75 #close Requirements added to md file
+
+A	Documents/US1005-ManualTask/US1005_ManualTask.md
+
+commit b5291d9e8f3103f08274d2ecc7a51ec660809ced
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Wed May 26 20:54:05 2021 +0100
+
+    fix a reverse commit cause untracked class
+
+M	.gitignore
+R100	base.core/pom.xml	base.persistence.impl/base.core/pom.xml
+R100	base.core/src/main/java/eapli/base/AppSettings.java	base.persistence.impl/base.core/src/main/java/eapli/base/AppSettings.java
+R100	base.core/src/main/java/eapli/base/Application.java	base.persistence.impl/base.core/src/main/java/eapli/base/Application.java
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/DashBoardClient.java	base.persistence.impl/base.core/src/main/java/eapli/base/Dashboardmanagement/DashBoardClient.java
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/DashBoardServer.java	base.persistence.impl/base.core/src/main/java/eapli/base/Dashboardmanagement/DashBoardServer.java
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/HTTPAjaxDashboardRequest.java	base.persistence.impl/base.core/src/main/java/eapli/base/Dashboardmanagement/HTTPAjaxDashboardRequest.java
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/HTTPmessage.java	base.persistence.impl/base.core/src/main/java/eapli/base/Dashboardmanagement/HTTPmessage.java
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/www/dashboard.html	base.persistence.impl/base.core/src/main/java/eapli/base/Dashboardmanagement/www/dashboard.html
+R100	base.core/src/main/java/eapli/base/catalogmanagement/application/CreateCatalogController.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/application/CreateCatalogController.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/application/CreateCriticalitylevelController.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/application/CreateCriticalitylevelController.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/application/CreateServiceController.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/application/CreateServiceController.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchCatalogController.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/application/SearchCatalogController.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/domain/Activity.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/domain/Activity.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/domain/Catalog.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/domain/Catalog.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/domain/CatalogBuilder.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/domain/CatalogBuilder.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/domain/Criticalitylevel.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/domain/Criticalitylevel.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/domain/CriticalitylevelBuilder.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/domain/CriticalitylevelBuilder.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/domain/Delegaction.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/domain/Delegaction.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/domain/Keyword.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/domain/Keyword.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/domain/Objective.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/domain/Objective.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/domain/RequireFeedback.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/domain/RequireFeedback.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/domain/Responsable.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/domain/Responsable.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/domain/Sequence.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/domain/Sequence.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/domain/Service.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/domain/Service.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/domain/ServiceBuilder.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/domain/ServiceBuilder.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/domain/Step.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/domain/Step.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/domain/TypeofActivitie.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/domain/TypeofActivitie.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/domain/Workflow.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/domain/Workflow.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/repository/CatalogRepository.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/repository/CatalogRepository.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/repository/CriticalityLevelRepository.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/repository/CriticalityLevelRepository.java
+R100	base.core/src/main/java/eapli/base/catalogmanagement/repository/ServiceRepository.java	base.persistence.impl/base.core/src/main/java/eapli/base/catalogmanagement/repository/ServiceRepository.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/application/AcceptRefuseSignupFactory.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/application/AcceptRefuseSignupFactory.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/application/AcceptRefuseSignupRequestController.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/application/AcceptRefuseSignupRequestController.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/application/AcceptRefuseSignupRequestControllerEventfullImpl.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/application/AcceptRefuseSignupRequestControllerEventfullImpl.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/application/AcceptRefuseSignupRequestControllerTxImpl.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/application/AcceptRefuseSignupRequestControllerTxImpl.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/application/AssociateRemoveCollaboratorTeamController.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/application/AssociateRemoveCollaboratorTeamController.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/application/ClientUserService.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/application/ClientUserService.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/application/ListClientUsersController.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/application/ListClientUsersController.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/application/SpecifyCollaboratorController.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/application/SpecifyCollaboratorController.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/application/eventhandlers/AddClientUserOnSignupAcceptedController.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/application/eventhandlers/AddClientUserOnSignupAcceptedController.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/application/eventhandlers/NewUserRegisteredFromSignupWatchDog.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/application/eventhandlers/NewUserRegisteredFromSignupWatchDog.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/domain/ApprovalStatus.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/domain/ApprovalStatus.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/domain/ClientUser.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/domain/ClientUser.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/domain/ClientUserBuilder.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/domain/ClientUserBuilder.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/domain/CollaboratorEmail.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/domain/CollaboratorEmail.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/domain/Dateofbirth.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/domain/Dateofbirth.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/domain/MecanographicNumber.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/domain/MecanographicNumber.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/domain/Placeofresidence.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/domain/Placeofresidence.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/domain/RandomPassword.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/domain/RandomPassword.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/domain/SignupRequest.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/domain/SignupRequest.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/domain/SignupRequestBuilder.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/domain/SignupRequestBuilder.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/domain/events/NewUserRegisteredFromSignupEvent.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/domain/events/NewUserRegisteredFromSignupEvent.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/domain/events/SignupAcceptedEvent.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/domain/events/SignupAcceptedEvent.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/dto/ClientUserDTO.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/dto/ClientUserDTO.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/repositories/ClientUserRepository.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/repositories/ClientUserRepository.java
+R100	base.core/src/main/java/eapli/base/clientusermanagement/repositories/SignupRequestRepository.java	base.persistence.impl/base.core/src/main/java/eapli/base/clientusermanagement/repositories/SignupRequestRepository.java
+R100	base.core/src/main/java/eapli/base/funcaomanagement/aplication/AddFunctionController.java	base.persistence.impl/base.core/src/main/java/eapli/base/funcaomanagement/aplication/AddFunctionController.java
+R100	base.core/src/main/java/eapli/base/funcaomanagement/aplication/FunctionService.java	base.persistence.impl/base.core/src/main/java/eapli/base/funcaomanagement/aplication/FunctionService.java
+R100	base.core/src/main/java/eapli/base/funcaomanagement/domain/Function.java	base.persistence.impl/base.core/src/main/java/eapli/base/funcaomanagement/domain/Function.java
+R100	base.core/src/main/java/eapli/base/funcaomanagement/domain/FunctionBuilder.java	base.persistence.impl/base.core/src/main/java/eapli/base/funcaomanagement/domain/FunctionBuilder.java
+R100	base.core/src/main/java/eapli/base/funcaomanagement/dto/FunctionDTO.java	base.persistence.impl/base.core/src/main/java/eapli/base/funcaomanagement/dto/FunctionDTO.java
+R100	base.core/src/main/java/eapli/base/funcaomanagement/repositories/FunctionRepository.java	base.persistence.impl/base.core/src/main/java/eapli/base/funcaomanagement/repositories/FunctionRepository.java
+R100	base.core/src/main/java/eapli/base/infrastructure/persistence/PersistenceContext.java	base.persistence.impl/base.core/src/main/java/eapli/base/infrastructure/persistence/PersistenceContext.java
+R100	base.core/src/main/java/eapli/base/infrastructure/persistence/RepositoryFactory.java	base.persistence.impl/base.core/src/main/java/eapli/base/infrastructure/persistence/RepositoryFactory.java
+R100	base.core/src/main/java/eapli/base/myclientuser/application/MyClientUserService.java	base.persistence.impl/base.core/src/main/java/eapli/base/myclientuser/application/MyClientUserService.java
+R100	base.core/src/main/java/eapli/base/myclientuser/application/SignupController.java	base.persistence.impl/base.core/src/main/java/eapli/base/myclientuser/application/SignupController.java
+R100	base.core/src/main/java/eapli/base/ordermanagement/domain/Attribute.java	base.persistence.impl/base.core/src/main/java/eapli/base/ordermanagement/domain/Attribute.java
+R100	base.core/src/main/java/eapli/base/ordermanagement/domain/AttributeBuilder.java	base.persistence.impl/base.core/src/main/java/eapli/base/ordermanagement/domain/AttributeBuilder.java
+R100	base.core/src/main/java/eapli/base/ordermanagement/domain/Draft.java	base.persistence.impl/base.core/src/main/java/eapli/base/ordermanagement/domain/Draft.java
+R100	base.core/src/main/java/eapli/base/ordermanagement/domain/Feedback.java	base.persistence.impl/base.core/src/main/java/eapli/base/ordermanagement/domain/Feedback.java
+R100	base.core/src/main/java/eapli/base/ordermanagement/domain/Form.java	base.persistence.impl/base.core/src/main/java/eapli/base/ordermanagement/domain/Form.java
+R100	base.core/src/main/java/eapli/base/ordermanagement/domain/FormBuilder.java	base.persistence.impl/base.core/src/main/java/eapli/base/ordermanagement/domain/FormBuilder.java
+R100	base.core/src/main/java/eapli/base/ordermanagement/domain/Request.java	base.persistence.impl/base.core/src/main/java/eapli/base/ordermanagement/domain/Request.java
+R100	base.core/src/main/java/eapli/base/ordermanagement/domain/State.java	base.persistence.impl/base.core/src/main/java/eapli/base/ordermanagement/domain/State.java
+R100	base.core/src/main/java/eapli/base/ordermanagement/domain/Ticket.java	base.persistence.impl/base.core/src/main/java/eapli/base/ordermanagement/domain/Ticket.java
+R100	base.core/src/main/java/eapli/base/ordermanagement/domain/TypeofData.java	base.persistence.impl/base.core/src/main/java/eapli/base/ordermanagement/domain/TypeofData.java
+R100	base.core/src/main/java/eapli/base/ordermanagement/domain/repository/FormRepository.java	base.persistence.impl/base.core/src/main/java/eapli/base/ordermanagement/domain/repository/FormRepository.java
+R100	base.core/src/main/java/eapli/base/taskmanagement/domain/AutomaticTask.java	base.persistence.impl/base.core/src/main/java/eapli/base/taskmanagement/domain/AutomaticTask.java
+R100	base.core/src/main/java/eapli/base/taskmanagement/domain/Deadline.java	base.persistence.impl/base.core/src/main/java/eapli/base/taskmanagement/domain/Deadline.java
+R100	base.core/src/main/java/eapli/base/taskmanagement/domain/Task.java	base.persistence.impl/base.core/src/main/java/eapli/base/taskmanagement/domain/Task.java
+R100	base.core/src/main/java/eapli/base/taskmanagement/domain/TaskState.java	base.persistence.impl/base.core/src/main/java/eapli/base/taskmanagement/domain/TaskState.java
+R100	base.core/src/main/java/eapli/base/teamManagement/application/CreateTeamTypeController.java	base.persistence.impl/base.core/src/main/java/eapli/base/teamManagement/application/CreateTeamTypeController.java
+R100	base.core/src/main/java/eapli/base/teamManagement/application/RegisterTeamController.java	base.persistence.impl/base.core/src/main/java/eapli/base/teamManagement/application/RegisterTeamController.java
+R100	base.core/src/main/java/eapli/base/teamManagement/application/TeamService.java	base.persistence.impl/base.core/src/main/java/eapli/base/teamManagement/application/TeamService.java
+R100	base.core/src/main/java/eapli/base/teamManagement/domain/Acronym.java	base.persistence.impl/base.core/src/main/java/eapli/base/teamManagement/domain/Acronym.java
+R100	base.core/src/main/java/eapli/base/teamManagement/domain/Team.java	base.persistence.impl/base.core/src/main/java/eapli/base/teamManagement/domain/Team.java
+R100	base.core/src/main/java/eapli/base/teamManagement/domain/TeamBuilder.java	base.persistence.impl/base.core/src/main/java/eapli/base/teamManagement/domain/TeamBuilder.java
+R100	base.core/src/main/java/eapli/base/teamManagement/domain/TeamType.java	base.persistence.impl/base.core/src/main/java/eapli/base/teamManagement/domain/TeamType.java
+R100	base.core/src/main/java/eapli/base/teamManagement/domain/TeamTypeBuilder.java	base.persistence.impl/base.core/src/main/java/eapli/base/teamManagement/domain/TeamTypeBuilder.java
+R100	base.core/src/main/java/eapli/base/teamManagement/domain/Uniquecode.java	base.persistence.impl/base.core/src/main/java/eapli/base/teamManagement/domain/Uniquecode.java
+R100	base.core/src/main/java/eapli/base/teamManagement/dto/TeamDTO.java	base.persistence.impl/base.core/src/main/java/eapli/base/teamManagement/dto/TeamDTO.java
+R100	base.core/src/main/java/eapli/base/teamManagement/repositories/TeamRepository.java	base.persistence.impl/base.core/src/main/java/eapli/base/teamManagement/repositories/TeamRepository.java
+R100	base.core/src/main/java/eapli/base/teamManagement/repositories/TeamTypeRepository.java	base.persistence.impl/base.core/src/main/java/eapli/base/teamManagement/repositories/TeamTypeRepository.java
+R100	base.core/src/main/java/eapli/base/usermanagement/application/AddUserController.java	base.persistence.impl/base.core/src/main/java/eapli/base/usermanagement/application/AddUserController.java
+R100	base.core/src/main/java/eapli/base/usermanagement/application/DeactivateUserController.java	base.persistence.impl/base.core/src/main/java/eapli/base/usermanagement/application/DeactivateUserController.java
+R100	base.core/src/main/java/eapli/base/usermanagement/application/ListUsersController.java	base.persistence.impl/base.core/src/main/java/eapli/base/usermanagement/application/ListUsersController.java
+R100	base.core/src/main/java/eapli/base/usermanagement/application/eventhandlers/AddUserOnSignupAcceptedController.java	base.persistence.impl/base.core/src/main/java/eapli/base/usermanagement/application/eventhandlers/AddUserOnSignupAcceptedController.java
+R100	base.core/src/main/java/eapli/base/usermanagement/application/eventhandlers/SignupAcceptedWatchDog.java	base.persistence.impl/base.core/src/main/java/eapli/base/usermanagement/application/eventhandlers/SignupAcceptedWatchDog.java
+R100	base.core/src/main/java/eapli/base/usermanagement/domain/BasePasswordPolicy.java	base.persistence.impl/base.core/src/main/java/eapli/base/usermanagement/domain/BasePasswordPolicy.java
+R100	base.core/src/main/java/eapli/base/usermanagement/domain/BaseRoles.java	base.persistence.impl/base.core/src/main/java/eapli/base/usermanagement/domain/BaseRoles.java
+R100	base.core/src/main/java/eapli/base/usermanagement/domain/UserBuilderHelper.java	base.persistence.impl/base.core/src/main/java/eapli/base/usermanagement/domain/UserBuilderHelper.java
+R100	base.core/src/main/resources/ecafeteria.sample.properties	base.persistence.impl/base.core/src/main/resources/ecafeteria.sample.properties
+R100	base.core/src/test/java/eapli/base/clientusermanagement/domain/ClientUserTest.java	base.persistence.impl/base.core/src/test/java/eapli/base/clientusermanagement/domain/ClientUserTest.java
+A	base.persistence.impl/base.core/target/maven-archiver/pom.properties
+A	base.persistence.impl/base.core/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+A	base.persistence.impl/base.core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+A	base.persistence.impl/base.core/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst
+A	base.persistence.impl/base.core/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
+A	base.persistence.impl/base.core/target/surefire-reports/TEST-eapli.base.clientusermanagement.domain.ClientUserTest.xml
+A	base.persistence.impl/base.core/target/surefire-reports/eapli.base.clientusermanagement.domain.ClientUserTest.txt
+
+commit 4c1b8975de0dce87e24f31f01abe7676a9097dc4
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Wed May 26 20:49:49 2021 +0100
+
+    Revert "https://ant-nio-barros-1200606-833.atlassian.net/browse/L2S20-75 #Documents/US1005_ManualTask/Requirements add Requirements to US1005_ManualTask.md"
+    
+    This reverts commit 51fa7ba682bc4c3cab7a9ee2e4e4c54ad17df92f.
+
+D	Documents/UC1005-ManualTask/US1005_ManualTask.md
+
+commit 51fa7ba682bc4c3cab7a9ee2e4e4c54ad17df92f
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Wed May 26 20:48:14 2021 +0100
+
+    https://ant-nio-barros-1200606-833.atlassian.net/browse/L2S20-75 #Documents/US1005_ManualTask/Requirements add Requirements to US1005_ManualTask.md
+
+A	Documents/UC1005-ManualTask/US1005_ManualTask.md
+
 commit 700a4caee3955e94600362460d14d2d698671fd8
 Author: Jose Teixeira <1150462@isep.ipp.pt>
 Date:   Sat May 15 00:38:59 2021 +0100

@@ -1,3 +1,58 @@
+commit 33585f35543e09fc09d7d766995c96badbd0dc87
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Tue May 25 15:21:44 2021 +0100
+
+    L2S20-62 Fix an error on JPACatalogRepository
+
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaCatalogRepository.java
+
+commit 5479a485fd76983f351c82a36491d5bd3e2444a1
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Tue May 25 15:10:22 2021 +0100
+
+    L2S20-62 Correction and addition of new methods in JPA  and inMemory Catalog and Client User
+
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryCatalogRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryClientUserRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaCatalogRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaClientUserRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaRepositoryFactory.java
+
+commit 4c1aabe3b830a7fedc5659965f25d9c4f4026494
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Tue May 25 15:08:12 2021 +0100
+
+    L2S20-62 Add new methods of searching to the repositories Catalog and ClientUser
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/repository/CatalogRepository.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/repositories/ClientUserRepository.java
+
+commit b838a8c893e5a342638cfb9f92a59e4d1e159924
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Tue May 25 15:06:22 2021 +0100
+
+    L2S20-62 Correction of the domains Catalog, Service and ClienteUser
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Catalog.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Service.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/domain/ClientUser.java
+
+commit b08a8b4f4438d03915dd2e6e155b17da1fd88cbd
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Tue May 25 15:04:06 2021 +0100
+
+    L2S20-60 Completing the Analysis
+
+M	Documents/US3002/ProcessoEngenhariaFuncionalidade.md
+
+commit b0e689f73dde74301f3ac49a44da5a2ff5a7cee0
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Sun May 23 17:11:34 2021 +0100
+
+    L2S20-58 Completing the Requirements Analysis
+
+A	Documents/US3002/ProcessoEngenhariaFuncionalidade.md
+
 commit 6d1ff4cef957be2d74600a047af44a0051505ed8
 Author: Daniel Reis <1200608@isep.ipp.pt>
 Date:   Sun May 16 22:29:14 2021 +0100

@@ -1,3 +1,16 @@
+commit 9509307917d61b49ab769011e3bc9d4355442fb5
+Author: Antonio Barros <1200606@isep.ipp.pt>
+Date:   Sat May 22 12:01:29 2021 +0100
+
+    L2S20-54 implementation of the bootstrap of catolog and main menu para diferent roles
+
+M	Documents/UC2052/L2S20-5.vpp
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/OrganicStructureDemoBootstrapper.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/SpecifyCollaboratorBootstrapper.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Catalog.java
+M	base.core/src/main/java/eapli/base/usermanagement/domain/BaseRoles.java
+
 commit b0b959e34eacd6c5d560fd2d6dd431be14d7eb95
 Author: Antonio Barros <1200606@isep.ipp.pt>
 Date:   Sun May 16 12:32:02 2021 +0100
