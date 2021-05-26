@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.Optional;
 
 public interface FunctionRepository extends DomainRepository<Long, Function> {
-    @Query(value = "SELECT functioncode FROM Function WHERE functioncode =:unicode",nativeQuery = true)
+    @Query(value = "SELECT code FROM Function WHERE code =:unicode",nativeQuery = true)
     Optional<Function> findFunctionbyName(Designation name);
     Optional<Function> ofIdentity(Long id);
     void deleteOfIdentity(Long entityId);
