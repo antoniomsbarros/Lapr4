@@ -36,8 +36,8 @@
       <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/base"/>-->
 
       <!--property name="javax.persistence.jdbc.url" value="jdbc:h2:~/test;MV_STORE=FALSE;AUTO_SERVER=true;"/-->
-      <property name="javax.persistence.jdbc.url" value="jdbc:h2:..\db\base;MV_STORE=FALSE;AUTO_SERVER=true;"/>
-      <property name="javax.persistence.jdbc.user" value=""/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://vs267.dei.isep.ipp.pt:2225/databaseNameb;MV_STORE=FALSE;AUTO_SERVER=true;"/>
+      <property name="javax.persistence.jdbc.user" value="admin"/>
       <property name="javax.persistence.jdbc.password" value=""/>
       <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
