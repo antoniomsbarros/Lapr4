@@ -23,7 +23,8 @@ A interpretação feita deste requisito foi no sentido é que esta Us é respons
 # 2. Análise
 
 	A análise foi realizada tendo em conta as reuniões com o Cliente e as respostas dadas no Fórum para esclarecimento de dúvidas.
-
+	* O motor de fluxo é responsavel por cada pedido desdo o seu tratamento desde a criação das suas atividades e fazer 
+      com que ela avance no workflow e que seja finalizada.
 
 
 # 3. Design
