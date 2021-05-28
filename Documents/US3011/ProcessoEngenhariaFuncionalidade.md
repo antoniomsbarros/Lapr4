@@ -22,9 +22,10 @@ sem que aja a necessidade de atualizar.
 
 	A análise foi realizada tendo em conta as reuniões com o Cliente e as respostas dadas no Fórum para esclarecimento de dúvidas.
 
-	*A pesquisa do serviço é realizada por catálogo
-	*Toda a informação do formulário tem de ser preenchida.
-	*O Pedido tem de ter toda a informação necessária.
+	* O dashboard deve aparecer quando o colaborador faz o login
+	* O dashboard deve mostrar tudas as atividades feitas pelo colaborador 
+	* O dashboard deve mostrar as atividades que faltam fazer mostrando o tempo pelo que faltam fazer
+	* O dashboard deve mostrar as atividades por prioridade
 
 
 # 3. Design
