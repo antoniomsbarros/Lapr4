@@ -23,6 +23,7 @@
  */
 package eapli.base.infrastructure.bootstrapers;
 
+import eapli.base.infrastructure.bootstrapers.demo.AutomaticTaskBootstrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

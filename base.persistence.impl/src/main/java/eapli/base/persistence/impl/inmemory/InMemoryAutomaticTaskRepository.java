@@ -24,7 +24,7 @@ public class InMemoryAutomaticTaskRepository extends InMemoryDomainRepository<Au
 
     @Override
     public Iterable<AutomaticTask> findAllActive() {
-        return match(Task::isActive);
+        return null;
     }
 
     @Override

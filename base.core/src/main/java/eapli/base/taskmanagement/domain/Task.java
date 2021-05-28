@@ -2,8 +2,6 @@ package eapli.base.taskmanagement.domain;
 
 
 import eapli.framework.domain.model.AggregateRoot;
-import eapli.framework.domain.model.DomainEntities;
-import eapli.framework.domain.model.DomainEntity;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -13,7 +11,7 @@ import java.util.Objects;
  * @author marly
  */
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Task implements AggregateRoot<Long> {
 
     private static final long serialVersionUID = 1L;
@@ -22,11 +20,12 @@ public abstract class Task implements AggregateRoot<Long> {
     private Long version;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long taskCode;
 
     @Enumerated(EnumType.STRING)
     private TaskState state;
+
     private Deadline deadline;
     private Integer priority;
 
