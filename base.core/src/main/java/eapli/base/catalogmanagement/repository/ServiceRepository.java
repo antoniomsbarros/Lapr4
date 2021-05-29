@@ -1,7 +1,11 @@
 package eapli.base.catalogmanagement.repository;
 
+import eapli.base.catalogmanagement.domain.Catalog;
 import eapli.base.catalogmanagement.domain.Service;
+import eapli.base.ordermanagement.domain.TypeofData;
 import eapli.framework.domain.repositories.DomainRepository;
+import eapli.framework.general.domain.model.Description;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.Optional;
 
