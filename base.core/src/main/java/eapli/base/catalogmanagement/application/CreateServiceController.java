@@ -76,12 +76,11 @@ public class CreateServiceController {
         formBuilder.withName(name);
     }*/
 
-    public Attribute addAttribute(Description description, Description name, Description label, Description regularexpression, Description script,TypeofData dataType) {
-        return attributeBuilder.withDescription(description).withName(name).withLabel(label)
-                .withRegularExpression(regularexpression).withScript(script).withTypeofData(dataType).build();
+    public Attribute addAttribute(Long id, Description description, Description name, Description label, Description regularexpression, Description script,TypeofData dataType) {
+        return formRepository.saveAttribute(id, description, name, label, regularexpression, script, dataType);
     }
 
-    public Form saveForm(Description name,Set<Attribute> lstAttributes) {
+    public Form saveForm(Description name,List<Attribute> lstAttributes) {
         formBuilder.withName(name).withAttribute(lstAttributes);
         return formRepository.save(formBuilder.build());
     }
