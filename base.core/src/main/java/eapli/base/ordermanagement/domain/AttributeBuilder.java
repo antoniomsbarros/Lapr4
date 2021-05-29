@@ -1,8 +1,11 @@
 package eapli.base.ordermanagement.domain;
 
+import eapli.framework.domain.model.DomainFactory;
 import eapli.framework.general.domain.model.Description;
 
-public class AttributeBuilder{
+public class AttributeBuilder implements DomainFactory<Attribute> {
+
+    private Long id;
 
     private Description description;
 
@@ -17,6 +20,11 @@ public class AttributeBuilder{
     private TypeofData typeofData;
 
     public AttributeBuilder() {}
+
+    public AttributeBuilder withId(Long id) {
+        this.id = id;
+        return this;
+    }
 
     public AttributeBuilder withDescription(Description description) {
         this.description = description;
@@ -49,6 +57,6 @@ public class AttributeBuilder{
     }
 
     public Attribute build() {
-        return new Attribute(this.description, this.name, this.label, this.regularexpression, this.script, this.typeofData);
+        return new Attribute(id, description, name, label, regularexpression, script, typeofData);
     }
 }
