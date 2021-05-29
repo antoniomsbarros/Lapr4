@@ -98,4 +98,5 @@ public class Attribute implements DomainEntity<Long> , Serializable {
     public Long identity() {
         return this.id;
     }
+    public String description(){return this.description.toString();}
 }
