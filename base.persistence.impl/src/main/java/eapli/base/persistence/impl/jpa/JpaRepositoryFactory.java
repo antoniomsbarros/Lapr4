@@ -8,6 +8,7 @@ import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.infrastructure.persistence.RepositoryFactory;
 import eapli.base.ordermanagement.domain.repository.FormRepository;
 import eapli.base.taskmanagement.repositories.AutomaticTaskRepository;
+import eapli.base.taskmanagement.repositories.ManualTaskRepository;
 import eapli.base.teamManagement.repositories.TeamRepository;
 import eapli.base.teamManagement.repositories.TeamTypeRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
@@ -118,6 +119,16 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 	@Override
 	public AutomaticTaskRepository AutomaticTasks() {
 		return new JpaAutomaticTaskRepository(Application.settings().getPersistenceUnitName());
+	}
+
+	@Override
+	public ManualTaskRepository manualTasks(final TransactionalContext autoTx) {
+		return new JpaManualTaskRepository(autoTx);
+	}
+
+	@Override
+	public ManualTaskRepository manualTasks() {
+		return new JpaManualTaskRepository(Application.settings().getPersistenceUnitName());
 	}
 
 	@Override

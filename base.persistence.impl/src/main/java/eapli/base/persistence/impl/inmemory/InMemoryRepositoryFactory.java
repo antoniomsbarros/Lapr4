@@ -11,6 +11,7 @@ import eapli.base.infrastructure.bootstrapers.BaseBootstrapper;
 import eapli.base.infrastructure.persistence.RepositoryFactory;
 import eapli.base.ordermanagement.domain.repository.FormRepository;
 import eapli.base.taskmanagement.repositories.AutomaticTaskRepository;
+import eapli.base.taskmanagement.repositories.ManualTaskRepository;
 import eapli.base.teamManagement.repositories.TeamRepository;
 import eapli.base.teamManagement.repositories.TeamTypeRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
@@ -120,6 +121,17 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
 	public AutomaticTaskRepository AutomaticTasks(final TransactionalContext tx) {
 
 		return new InMemoryAutomaticTaskRepository();
+	}
+
+	@Override
+	public ManualTaskRepository manualTasks() {
+		return manualTasks(null);
+	}
+
+	@Override
+	public ManualTaskRepository manualTasks(final TransactionalContext tx) {
+
+		return new InMemoryManualTaskRepository();
 	}
 
 	@Override
