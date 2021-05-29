@@ -47,7 +47,7 @@ public class CreateServiceUI extends AbstractUI {
         //Long id = Console.readLong("Choose an id of a Catalog: ");
         //Optional<Catalog> choosenCatalog = controller.getCatalogByIdentifier(id);
         List<Form> lstForm = new ArrayList<>();
-        Set<Attribute> lstAttribute = new HashSet<>();
+        List<Attribute> lstAttribute = new ArrayList<>();
 
         System.out.println("Formulario de solicitacao de servico:");
         answer = "y";
@@ -60,14 +60,17 @@ public class CreateServiceUI extends AbstractUI {
 
             /*Attribute Info*/
             while (answer2.equals("y")) {
+                final Long id = Long.valueOf("10");
+                System.out.println(id);
                 final Description description = Description.valueOf(Console.readLine("Description: "));
                 final Description nameAttribute = Description.valueOf(Console.readLine("Attribute name: "));
                 final Description label = Description.valueOf(Console.readLine("Label: "));
                 final Description regularexpression = Description.valueOf(Console.readLine("Regular expression: "));
                 final Description script = Description.valueOf(Console.readLine("Script: "));
                 final TypeofData td = TypeofData.valueOf(Console.readLine("Choose a data type (INTEGER, String, Bool, Data, Ficheiro, ListaDeValores): "));
-                System.out.println(controller.addAttribute(description, nameAttribute, label, regularexpression, script, td));
-                lstAttribute.add(controller.addAttribute(description, nameAttribute, label, regularexpression, script, td));
+                Attribute at = controller.addAttribute(id, description, nameAttribute, label, regularexpression, script, td);
+                lstAttribute.add(at);
+                System.out.println(at);
                 answer2 = Console.readLine("Do you want to add more Attributes to the Form?(y/n)");
             }
             lstForm.add(controller.saveForm(nameForm,lstAttribute));
