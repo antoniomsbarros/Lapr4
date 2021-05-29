@@ -70,36 +70,6 @@ public class MainMenu extends AbstractUI {
     // SETTINGS
     private static final int SET_KITCHEN_ALERT_LIMIT_OPTION = 1;
 
-    // DISH TYPES
-    private static final int DISH_TYPE_REGISTER_OPTION = 1;
-    private static final int DISH_TYPE_LIST_OPTION = 2;
-    private static final int DISH_TYPE_CHANGE_OPTION = 3;
-    private static final int DISH_TYPE_ACTIVATE_DEACTIVATE_OPTION = 4;
-
-    // DISHES
-    private static final int DISH_REGISTER_OPTION = 5;
-    private static final int DISH_LIST_OPTION = 6;
-    private static final int DISH_REGISTER_DTO_OPTION = 7;
-    private static final int DISH_LIST_DTO_OPTION = 8;
-    private static final int DISH_ACTIVATE_DEACTIVATE_OPTION = 9;
-    private static final int DISH_CHANGE_OPTION = 10;
-
-    // DISH PROPERTIES
-    private static final int CHANGE_DISH_NUTRICIONAL_INFO_OPTION = 1;
-    private static final int CHANGE_DISH_PRICE_OPTION = 2;
-
-    // MATERIALS
-    private static final int MATERIAL_REGISTER_OPTION = 1;
-    private static final int MATERIAL_LIST_OPTION = 2;
-
-    // REPORTING
-    private static final int REPORTING_DISHES_PER_DISHTYPE_OPTION = 1;
-    private static final int REPORTING_HIGH_CALORIES_DISHES_OPTION = 2;
-    private static final int REPORTING_DISHES_PER_CALORIC_CATEGORY_OPTION = 3;
-
-    // MEALS
-    private static final int LIST_MEALS_OPTION = 1;
-    private static final int MEAL_REGISTER_OPTION = 2;
 
     // MAIN MENU
     private static final int MY_USER_OPTION = 1;
@@ -107,6 +77,7 @@ public class MainMenu extends AbstractUI {
     private static final int SETTINGS_OPTION = 3;
     private static final int COLLABORATOR_OPTION = 4;
     private static final int CATALOG_OPTION = 5;
+    private static final int DASHBOARD=10;
     // HEAD
     private static final int SERVICE_OPTION = 6;
     private static final int CRITICALITYLEVEL_OPTION = 7;
@@ -127,6 +98,8 @@ public class MainMenu extends AbstractUI {
     private static final  int CREATE_TEAM_OPTIOM= 13;
     private static final int CREATE_SERVICE_OPTION= 11;
 
+    //DASHBOARD
+    private static final int DASHBOARD1=1;
     private static final String SEPARATOR_LABEL = "--------------";
 
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
@@ -188,6 +161,8 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(CREATE_CRITICALITYLEVEL_OPTION,criticalitylevelMenu);
             final Menu teamTypeMenu = builderTeamTypeMenu();
             mainMenu.addSubMenu(TEAM_TYPE_OPTION,teamTypeMenu);
+            final  Menu dashboard=buildderDashboard();
+            mainMenu.addSubMenu(DASHBOARD, dashboard);
         }
         if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER)) {
             final Menu teamTypeMenu = builderTeamTypeMenu();
@@ -291,7 +266,11 @@ public class MainMenu extends AbstractUI {
 
         return menu;
     }
-
+private Menu buildderDashboard()  {
+    final Menu menu = new Menu("Dashboard >");
+    menu.addItem(DASHBOARD1, "dashboard", new DashboardUI()::show);
+    return menu;
+}
 
 
 
