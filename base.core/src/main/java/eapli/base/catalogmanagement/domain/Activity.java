@@ -8,6 +8,9 @@ import eapli.framework.general.domain.model.Description;
 import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Objects;
 
@@ -116,5 +119,20 @@ public class Activity implements AggregateRoot<Long> {
                 ", criticalitylevel=" + criticalitylevel +
                 ", responsable=" + responsable +
                 '}';
+    }
+
+    public Responsable responsable() {
+        return responsable;
+    }
+    public State state(){return state;}
+    public Long priorityofActivity(){
+        return  priority;
+    }
+    public String deadline(){
+        SimpleDateFormat formatter2=new SimpleDateFormat("dd-MM-yyyy");
+        return formatter2.format(dateconclusionL);
+    }
+    public Criticalitylevel criticalitylevel(){
+        return criticalitylevel;
     }
 }

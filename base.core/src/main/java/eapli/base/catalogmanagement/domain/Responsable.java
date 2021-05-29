@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import java.lang.invoke.MethodHandles;
 
 @Entity
 public class Responsable implements DomainEntity<Long>{
@@ -52,5 +53,10 @@ public class Responsable implements DomainEntity<Long>{
     @Override
     public Long identity() {
         return id;
+    }
+
+
+    public ClientUser responsable() {
+        return responsable;
     }
 }

@@ -1,6 +1,7 @@
 package eapli.base.persistence.impl.jpa;
 
 import eapli.base.Application;
+import eapli.base.catalogmanagement.repository.ActivityRepository;
 import eapli.base.catalogmanagement.repository.CriticalityLevelRepository;
 import eapli.base.catalogmanagement.repository.ServiceRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
@@ -39,6 +40,11 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 	@Override
 	public JpaClientUserRepository clientUsers() {
 		return new JpaClientUserRepository(Application.settings().getPersistenceUnitName());
+	}
+
+	@Override
+	public ActivityRepository activity() {
+		return new JpaActivityRepository();
 	}
 
 	@Override

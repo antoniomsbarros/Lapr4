@@ -78,4 +78,7 @@ public class Criticalitylevel implements AggregateRoot<Long> {
     public String toString() {
         return "{ID=" + id.toString() + ", VALUE=" + value.toString() + ", TAG=" + tag.toString() + ", COLOR=" + color.toString() + ", OBJECTIVE=" + objective.toString() ;
     }
+    public String print(){
+        return "VALUE=" + value.toString() + ", TAG=" + tag.toString() + ", COLOR=" + color.toString() + ", OBJECTIVE=" + objective.toString() ;
+    }
 }

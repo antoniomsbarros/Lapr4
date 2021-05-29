@@ -3,6 +3,7 @@
  */
 package eapli.base.infrastructure.persistence;
 
+import eapli.base.catalogmanagement.repository.ActivityRepository;
 import eapli.base.catalogmanagement.repository.CatalogRepository;
 import eapli.base.catalogmanagement.repository.CriticalityLevelRepository;
 import eapli.base.catalogmanagement.repository.ServiceRepository;
@@ -85,7 +86,7 @@ public interface RepositoryFactory {
 	 * @return
 	 */
 	ClientUserRepository clientUsers();
-
+	ActivityRepository activity();
 	/**
 	 *
 	 * @param autoTx the transactional context to enroll

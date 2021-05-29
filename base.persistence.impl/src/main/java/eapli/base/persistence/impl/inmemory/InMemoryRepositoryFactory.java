@@ -1,5 +1,6 @@
 package eapli.base.persistence.impl.inmemory;
 
+import eapli.base.catalogmanagement.repository.ActivityRepository;
 import eapli.base.catalogmanagement.repository.CatalogRepository;
 import eapli.base.catalogmanagement.repository.CriticalityLevelRepository;
 import eapli.base.catalogmanagement.repository.ServiceRepository;
@@ -47,6 +48,11 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
 	@Override
 	public ClientUserRepository clientUsers() {
 		return clientUsers(null);
+	}
+
+	@Override
+	public ActivityRepository activity() {
+		return new InMemoryActivityRepository();
 	}
 
 	@Override
