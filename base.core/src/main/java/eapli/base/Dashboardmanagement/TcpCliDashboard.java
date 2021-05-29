@@ -43,7 +43,7 @@ class TcpCliDashboard {
 
 
 		protocol protocol =new protocol(3);
-		protocol.send(sOut, "1");
+		protocol.send(sOut, "112345");
 		protocol =new protocol(sIn);
 		String str= protocol.getData();
 		System.out.println(str);

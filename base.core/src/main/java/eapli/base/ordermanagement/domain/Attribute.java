@@ -24,7 +24,7 @@ public class Attribute implements DomainEntity<Long> , Serializable {
     private Description regularexpression;
     @AttributeOverride(name = "value", column = @Column(name = "script"))
     private Description script;
-    
+    @Enumerated(EnumType.STRING)
     private TypeofData typeofData;
 
     public Attribute() {

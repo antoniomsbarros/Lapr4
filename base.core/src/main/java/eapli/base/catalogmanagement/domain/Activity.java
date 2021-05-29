@@ -8,6 +8,7 @@ import eapli.framework.general.domain.model.Description;
 import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
@@ -15,17 +16,19 @@ import java.util.Calendar;
 import java.util.Objects;
 
 @Entity
-public class Activity implements AggregateRoot<Long> {
+public class Activity implements AggregateRoot<Long>  {
     @Id
     @GeneratedValue
     private Long id;
     @Version
     private Long version;
     private Calendar dateconclusionL;
+    @Enumerated(EnumType.STRING)
     private TypeofActivitie typeofActivitie;
     @AttributeOverride(name = "value", column = @Column(name = "typeofexection"))
     private Description typeofexection;
     private Long priority;
+    @Enumerated(EnumType.STRING)
     private State state;
     @AttributeOverride(name = "value", column = @Column(name = "decision"))
     private Description decision;
@@ -134,5 +137,8 @@ public class Activity implements AggregateRoot<Long> {
     }
     public Criticalitylevel criticalitylevel(){
         return criticalitylevel;
+    }
+    public Calendar date(){
+        return  dateconclusionL;
     }
 }
