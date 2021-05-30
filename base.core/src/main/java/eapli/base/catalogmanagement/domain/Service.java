@@ -47,8 +47,9 @@ public class Service implements AggregateRoot<Long> {
     @OneToOne(optional = false)
     private Criticalitylevel criticalitylevel;
 
+ */
     @OneToOne()
-    private Workflow workflow;*/
+    private Workflow workflow;
 
     public Service() {
     }
@@ -121,6 +122,10 @@ public class Service implements AggregateRoot<Long> {
     }
     public boolean isCompleted() {
         return completedService;
+    }
+
+    public Workflow workflow(){
+        return workflow;
     }
 
     @Override

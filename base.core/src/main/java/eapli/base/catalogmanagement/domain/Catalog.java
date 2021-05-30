@@ -31,9 +31,6 @@ public class Catalog implements AggregateRoot<Long> {
     @OneToOne()
     private ClientUser responsiblecollaborator;
 
-    @OneToMany()
-    private List<Service> services;
-
     @OneToOne
     private Criticalitylevel criticalitylevel;
 
@@ -118,7 +115,4 @@ public class Catalog implements AggregateRoot<Long> {
                 '}';
     }
 
-    public List<Service> listService(){
-        return services;
-    }
 }
