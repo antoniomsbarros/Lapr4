@@ -30,7 +30,7 @@ public class Attribute implements DomainEntity<Long> , Serializable {
     public Attribute() {
     }
 
-    public Attribute(final Long id, final Description description, final Description name,
+    public Attribute(/*final Long id,*/ final Description description, final Description name,
                      final Description label, final Description regularexpression,
                      final Description script, TypeofData typeofData) {
         Preconditions.noneNull(description, name, label, typeofData);
