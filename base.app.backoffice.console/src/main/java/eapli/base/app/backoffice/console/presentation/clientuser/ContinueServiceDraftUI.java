@@ -29,22 +29,32 @@ public class ContinueServiceDraftUI extends AbstractUI {
 
         if (serviceDraft.title().equals(title)) {
             title = Description.valueOf(Console.readLine("Title(too leave empty write 'NA'): "));
+        } else {
+            title = serviceDraft.title();
         }
 
         if(serviceDraft.smalldescription().equals(smalldescription)) {
             smalldescription = Description.valueOf(Console.readLine("Small Description(too leave empty write 'NA'): "));
+        } else {
+            smalldescription = serviceDraft.smalldescription();
         }
 
         if(serviceDraft.fulldescription().equals(fulldescription)) {
             fulldescription = Description.valueOf(Console.readLine("Full Description(too leave empty write 'NA'): "));
+        } else {
+            fulldescription = serviceDraft.fulldescription();
         }
 
         if(serviceDraft.icon().equals(icon)) {
             icon = Description.valueOf(Console.readLine("Icon(too leave empty write 'NA'): "));
+        } else {
+            icon = serviceDraft.icon();
         }
 
         if(serviceDraft.requirefeedback().equals(feedback)) {
             feedback = Console.readLine("Icon(too leave empty write 'NA'): ");
+        } else {
+            feedback = serviceDraft.requirefeedback();
         }
 
         boolean isCompleted = controller.continueServiceDraft(serviceDraft.keyword(), serviceDraft.form(),
