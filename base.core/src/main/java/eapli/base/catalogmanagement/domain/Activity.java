@@ -7,12 +7,10 @@ import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.validations.Preconditions;
 
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -132,9 +130,32 @@ public class Activity implements AggregateRoot<Long>  {
         return  priority;
     }
     public String deadline(){
-        SimpleDateFormat formatter2=new SimpleDateFormat("dd-MM-yyyy");
-        return formatter2.format(dateconclusionL);
+       /* if (dateconclusionL.getTime().after(new Date())){
+            Date date1 = new Date();
+            Date date2 = dateconclusionL.getTime();
+            // Calucalte time difference in milliseconds
+            long time_difference = date2.getTime() - date1.getTime();
+            // Calucalte time difference in days
+            long days_difference = (time_difference / (1000*60*60*24)) % 365;
+            // Calucalte time difference in years
+            long years_difference = (time_difference / (1000l*60*60*24*365));
+            // Calucalte time difference in seconds
+            long seconds_difference = (time_difference / 1000)% 60;
+            // Calucalte time difference in minutes
+            long minutes_difference = (time_difference / (1000*60)) % 60;
+
+            // Calucalte time difference in hours
+            long hours_difference = (time_difference / (1000*60*60)) % 24;
+            return dateconclusionL.getTime().toString()+" Remaning time:"
+                    + " hours: "+hours_difference
+                    + " minutes: "+ minutes_difference
+                    + " seconds: "+ seconds_difference
+                    + " years: "+ years_difference
+                    + " days: "+ days_difference ;
+        }*/
+        return dateconclusionL.getTime().toString();
     }
+
     public Criticalitylevel criticalitylevel(){
         return criticalitylevel;
     }

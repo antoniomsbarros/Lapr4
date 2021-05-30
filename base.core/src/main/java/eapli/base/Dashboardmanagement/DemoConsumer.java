@@ -27,14 +27,14 @@ public class DemoConsumer {
 			System.exit(1);
 			}
 
-		try { serverPort = 80; }
+		try { serverPort = 70; }
 		catch(NumberFormatException ex) {
 			System.out.println("Invalid SERVER-PORT.");
 			System.exit(1);
 			}
- 
+		System.out.println("Connecting to http://" + "127.0.0.1" + ":" + serverPort + "/");
 		HTTPmessage request = new HTTPmessage();
-		request.setRequestMethod("PUT");
+		/*request.setRequestMethod("PUT");
 		request.setURI("/votes/1");
             	System.out.println("Casting " + VOTES_TO_CAST + " votes on the first candidate ...");
 
@@ -64,7 +64,7 @@ public class DemoConsumer {
 			System.out.println("HTTP server response status: " + response.getStatus());
 			try { sock.close(); } catch(IOException ex2) { System.out.println("Error closing socket."); }
 			}
-
+*/
         	} // MAIN METHOD
     	} // CLASS
     

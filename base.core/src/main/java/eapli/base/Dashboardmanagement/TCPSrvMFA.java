@@ -2,6 +2,7 @@ package eapli.base.Dashboardmanagement;
 
 import eapli.base.catalogmanagement.application.SearchActivity;
 import eapli.base.catalogmanagement.domain.Activity;
+import eapli.base.catalogmanagement.domain.Criticalitylevel;
 import eapli.base.catalogmanagement.repository.ActivityRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.framework.application.UseCaseController;
@@ -64,23 +65,29 @@ class TCPSrvMFAThread implements Runnable {
 			switch (code){
 				case 3:
 					String data=protocol.getData();
-					System.out.println(data);
 					List<Activity> activityList=searchActivity.prepareactivity(Integer.valueOf(data));
-					System.out.println(activityList.toString());
-					System.out.println(Arrays.toString(preparelistofActivitysincomplete( activityList)));
 					protocol.send(sOut, Arrays.toString(preparelistofActivitysincomplete( activityList)));
-					protocol.getCode();
+					System.out.println(Arrays.toString(preparelistofActivitysincomplete( activityList)));
+					break;
+				case 4:
+					String data1=protocol.getData();
+					List<Activity> activityList1=searchActivity.prepareactivity(Integer.valueOf(data1));
+					String[] str=allActivitys( activityList1);
+					protocol.send(sOut,Arrays.toString(str));
+					System.out.println(Arrays.toString(str));
+
+					break;
+				case 5:
+					String data2=protocol.getData();
+					List<Activity> activityList2=searchActivity.prepareactivity(Integer.valueOf(data2));
+					String[] str1=activitysByPriority( activityList2);
+					protocol.send(sOut,Arrays.toString(str1));
+					System.out.println(Arrays.toString(str1));
+
+				default:
+					protocol.send(sOut,"Code invalido");
 					break;
 			}
-			/*if (code==3){
-
-			}
-			if (code==4){
-				List<Activity> activityList=prepareactivity(Integer.valueOf(protocol.getData()));
-				protocol.send(sOut, Arrays.toString(preparebyremaningandpriority( prepareactitivityByPriority(activityList))));
-			}*/
-
-
 			System.out.println("Client " + clientIP.getHostAddress() + ", port number: " + s.getPort() + 
 				" disconnected");
 			s.close();
@@ -102,11 +109,16 @@ class TCPSrvMFAThread implements Runnable {
 			for (int i = 0; i < activityList.size(); i++) {
 				if (activityList.get(i).state().toString().equals("EMRESOLUCAO")){
 					Activity activity=activityList.get(i);
-					temp[y]="ActivitY N: " +activity.identity()+" Priority: "+activity.priorityofActivity()+
-							" DeadLine: " +activity.deadline()+"criticality: "+activity.criticalitylevel().print();
+					if (activity.criticalitylevel()==null){
+						temp[y]="ActivitY N: " +activity.identity()+" Priority: "+activity.priorityofActivity()+
+								" DeadLine: " +activity.deadline();
+					}else{
+						temp[y]="ActivitY N: " +activity.identity()+" Priority: "+activity.priorityofActivity()+
+								" DeadLine: " +activity.deadline()+"criticality: "+activity.criticalitylevel().print();
+					}
+y++;
 				}
 			}
-			System.out.println(temp.toString());
 			return temp;
 		}
 		private List<Activity> prepareremaningTestbydate(List<Activity>activityList){
@@ -134,17 +146,40 @@ class TCPSrvMFAThread implements Runnable {
 			}
 			return resoluction;
 		}
-		private String[] preparebyremaningandpriority(List<Activity>activityList){
+		private String[] activitysByPriority(List<Activity>activityList){
+
+			List<Activity> listofactivitysbypriority=prepareactitivityByPriority(activityList);
+			String[] result=new String[activityList.size()];
+			int i=0;
+			for (Activity activity:listofactivitysbypriority) {
+				if (activity.criticalitylevel()==null){
+					result[i]="Activity N: " +activity.identity()+" Priority: "+activity.priorityofActivity()+
+							" DeadLine: " +activity.deadline();
+				}else {
+					result[i]="Activity N: " +activity.identity()+" Priority: "+activity.priorityofActivity()+
+							" DeadLine: " +activity.deadline()+"criticality: "+activity.criticalitylevel().print();
+				}
+				i++;
+			}
+			return result;
+		}
+		private String[] allActivitys(List<Activity>activityList){
 
 		String[] temp=new String[activityList.size()];
 		int i=0;
 		for (Activity activity:activityList) {
-			temp[i]="Activity N: " +activity.identity()+" Priority: "+activity.priorityofActivity()+
-					" DeadLine: " +activity.deadline()+"criticality: "+activity.criticalitylevel().print();
+			if (activity.criticalitylevel()==null){
+				temp[i]="Activity N: " +activity.identity()+" Priority: "+activity.priorityofActivity()+
+						" DeadLine: " +activity.deadline();
+			}else {
+				temp[i]="Activity N: " +activity.identity()+" Priority: "+activity.priorityofActivity()+
+						" DeadLine: " +activity.deadline()+"criticality: "+activity.criticalitylevel().print();
+			}
 			i++;
 			}
 		return temp;
 		}
+
 	}
 
 

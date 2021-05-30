@@ -9,23 +9,24 @@ import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 import eapli.framework.infrastructure.authz.application.UserSession;
 
 import java.io.*;
-import java.net.*; 
+import java.net.*;
+import java.util.Arrays;
 
 class TcpCliDashboard {
 	static InetAddress serverIP;
 	static Socket sock;
-	private  ClientUserRepository clientUserRepository;
-	private  AuthorizationService authorizationService;
-	private static ClientUser collaborator;
+	//private  ClientUserRepository clientUserRepository;
+	//private  AuthorizationService authorizationService;
+	//private static ClientUser collaborator;
 
 	public TcpCliDashboard() {
-		this.clientUserRepository = PersistenceContext.repositories().clientUsers();
-		this.authorizationService= AuthzRegistry.authorizationService();
-		collaborator=currentCollaborator();
+		//this.clientUserRepository = PersistenceContext.repositories().clientUsers();
+		//this.authorizationService= AuthzRegistry.authorizationService();
+		//collaborator=currentCollaborator();
+
 	}
 
-	public static void main(String args[]) throws Exception {
-
+	public static  String[] tcpinfo(int code) throws Exception {
 
 		try { serverIP = InetAddress.getByName("127.0.0.1"); }
 		catch(UnknownHostException ex) {
@@ -37,26 +38,33 @@ class TcpCliDashboard {
 			System.out.println("Failed to establish TCP connection");
 			System.exit(1); }
 
+
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		DataOutputStream sOut = new DataOutputStream(sock.getOutputStream());
 		DataInputStream sIn = new DataInputStream(sock.getInputStream());
 
 
-		protocol protocol =new protocol(3);
+		protocol protocol =new protocol(code);
 		protocol.send(sOut, "112345");
-		protocol =new protocol(sIn);
-		String str= protocol.getData();
-		System.out.println(str);
+		protocol = new protocol(sIn);
+		String str=protocol.getData();
+		str.replace("[","");
+		str.replace("]","");
+		String[] result=str.split(",");
+		//System.out.println(Arrays.toString(result));
 
 		sock.close();
+		return result;
 		}
 
+/*
 	private  ClientUser currentCollaborator(){
 		UserSession session= authorizationService.session().get();
 		CollaboratorEmail collaboratorEmail=new CollaboratorEmail(session.authenticatedUser().email().toString());
 		ClientUser clientUser= clientUserRepository.getClientUserByEmail(collaboratorEmail).get();
 		return clientUser;
 	}
+*/
 
 	}
 
