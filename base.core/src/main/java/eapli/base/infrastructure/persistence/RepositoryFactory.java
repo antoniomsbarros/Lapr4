@@ -12,6 +12,8 @@ import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.funcaomanagement.repositories.FunctionRepository;
 import eapli.base.ordermanagement.domain.repository.FormRepository;
+import eapli.base.ordermanagement.repository.DraftRepository;
+import eapli.base.ordermanagement.repository.RequestRepository;
 import eapli.base.taskmanagement.repositories.AutomaticTaskRepository;
 import eapli.base.taskmanagement.repositories.ManualTaskRepository;
 import eapli.base.teamManagement.repositories.TeamRepository;
@@ -141,4 +143,8 @@ public interface RepositoryFactory {
 	 * @return
 	 */
 	TeamTypeRepository teamTypes();
+
+	DraftRepository drafts();
+
+	RequestRepository requests();
 }

@@ -77,6 +77,7 @@ public class MainMenu extends AbstractUI {
     private static final int SETTINGS_OPTION = 3;
     private static final int COLLABORATOR_OPTION = 4;
     private static final int CATALOG_OPTION = 5;
+    private static final int REQUESTSERVICE_OPTION = 6;
     private static final int DASHBOARD=10;
     // HEAD
     private static final int SERVICE_OPTION = 6;
@@ -181,6 +182,12 @@ public class MainMenu extends AbstractUI {
             final Menu serviceMenu = builderServiceMenu();
             mainMenu.addSubMenu(SERVICE_OPTION, serviceMenu);
         }
+
+        if(authz.isAuthenticatedUserAuthorizedTo(BaseRoles.POWER_USER, BaseRoles.COLLABORATOR)){
+            final Menu requestServiceMenu = builderRequestServiceMenu();
+            mainMenu.addSubMenu(REQUESTSERVICE_OPTION,requestServiceMenu);
+        }
+
         if (!Application.settings().isMenuLayoutHorizontal()) {
             mainMenu.addItem(MenuItem.separator(SEPARATOR_LABEL));
         }
@@ -221,6 +228,14 @@ public class MainMenu extends AbstractUI {
         menu.addItem(SEARCH_CATALOGBYSHORT_OPTION,"Search Catalog By Short Description", new SearchByShortDescriptionUI()::show);
         menu.addItem(SEARCH_CATALOGBYLONG_OPTION,"Search Catalog By Long Description", new SearchByLongDescriptionUI()::show);
         menu.addItem(LIST_CATALOG_OPTION,"List all Catalogs",new ListAllCatalogsUI()::show);
+
+        return menu;
+    }
+
+    private Menu builderRequestServiceMenu(){
+        final Menu menu = new Menu("Request Service >");
+
+        menu.addItem(REQUESTSERVICE_OPTION,"Request Service", new RequestServiceUI()::show);
 
         return menu;
     }

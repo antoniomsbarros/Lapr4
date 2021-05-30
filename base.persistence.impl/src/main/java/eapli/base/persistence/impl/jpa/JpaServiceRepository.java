@@ -1,6 +1,7 @@
 package eapli.base.persistence.impl.jpa;
 
 import eapli.base.Application;
+import eapli.base.catalogmanagement.domain.Catalog;
 import eapli.base.catalogmanagement.domain.Service;
 import eapli.base.catalogmanagement.repository.ServiceRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
@@ -29,6 +30,13 @@ public class JpaServiceRepository extends JpaAutoTxRepository<Service,Long,Long>
         final Map<String, Object> params = new HashMap<>();
         params.put("serviceID", lngID);
         return matchOne("e.id=:serviceID", params);
+    }
+
+    @Override
+    public Iterable<Service> findByCatalog(Catalog catalog) {
+        final Map<String,Object> params = new HashMap<>();
+        params.put("catalog", catalog);
+        return match("e.catalog=:catalog",params);
     }
 }
 

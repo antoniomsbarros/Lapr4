@@ -7,6 +7,8 @@ import eapli.base.catalogmanagement.repository.ServiceRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.infrastructure.persistence.RepositoryFactory;
 import eapli.base.ordermanagement.domain.repository.FormRepository;
+import eapli.base.ordermanagement.repository.DraftRepository;
+import eapli.base.ordermanagement.repository.RequestRepository;
 import eapli.base.taskmanagement.repositories.AutomaticTaskRepository;
 import eapli.base.taskmanagement.repositories.ManualTaskRepository;
 import eapli.base.teamManagement.repositories.TeamRepository;
@@ -130,6 +132,23 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 	public ManualTaskRepository manualTasks() {
 		return new JpaManualTaskRepository(Application.settings().getPersistenceUnitName());
 	}
+
+	public DraftRepository drafts(){
+		return new JpaDraftRepository(Application.settings().getPersistenceUnitName());
+	}
+
+	public DraftRepository drafts(final TransactionalContext autoTx){
+		return new JpaDraftRepository(autoTx);
+	}
+
+	public RequestRepository requests(){
+		return new JpaRequestRepository(Application.settings().getPersistenceUnitName());
+	}
+
+	public RequestRepository requests(final TransactionalContext autoTx){
+		return new JpaRequestRepository(autoTx);
+	}
+
 
 	@Override
 	public TransactionalContext newTransactionalContext() {
