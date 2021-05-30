@@ -7,7 +7,6 @@ import eapli.base.catalogmanagement.domain.ServiceBuilder;
 import eapli.base.catalogmanagement.repository.CatalogRepository;
 import eapli.base.catalogmanagement.repository.ServiceRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
-import eapli.base.ordermanagement.domain.Attribute;
 import eapli.base.ordermanagement.domain.AttributeBuilder;
 import eapli.base.ordermanagement.domain.Form;
 import eapli.base.ordermanagement.domain.repository.FormRepository;
@@ -16,8 +15,6 @@ import eapli.framework.general.domain.model.Description;
 import eapli.base.ordermanagement.domain.FormBuilder;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
-import javassist.runtime.Desc;
-import sun.security.krb5.internal.crypto.Des;
 
 import java.util.*;
 
@@ -51,12 +48,12 @@ public class CreateServiceController {
     }
 
     public void checkIfServiceIsComplete(Description title,Description smalldescription, Description fulldescription,
-                                         Description icon) {
+                                         Description icon, String enableFeedback) {
         Description desc = Description.valueOf("NA");
-        if (title.equals(desc) || smalldescription.equals(desc) || fulldescription.equals(desc) || icon.equals(desc)){
-            serviceBuilder.withCompletedService(Description.valueOf("Not Completed"));
+        if (title.equals(desc) || smalldescription.equals(desc) || fulldescription.equals(desc) || icon.equals(desc) || enableFeedback.equals("NA")){
+            serviceBuilder.withCompletedService(false);
         } else
-            serviceBuilder.withCompletedService(Description.valueOf("Completed"));
+            serviceBuilder.withCompletedService(true);
     }
 
     public void addKeyword(Keyword keyword) {
