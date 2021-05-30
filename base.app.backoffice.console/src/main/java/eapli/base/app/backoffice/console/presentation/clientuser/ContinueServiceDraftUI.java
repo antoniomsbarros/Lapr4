@@ -1,7 +1,9 @@
 package eapli.base.app.backoffice.console.presentation.clientuser;
 
 import eapli.base.catalogmanagement.application.ContinueServiceDraftController;
+import eapli.base.catalogmanagement.domain.Keyword;
 import eapli.base.catalogmanagement.domain.Service;
+import eapli.base.ordermanagement.domain.Form;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
 import eapli.framework.general.domain.model.Description;
@@ -25,6 +27,8 @@ public class ContinueServiceDraftUI extends AbstractUI {
         Description smalldescription = Description.valueOf("NA");
         Description fulldescription = Description.valueOf("NA");
         Description icon = Description.valueOf("NA");
+        Set<Keyword> setKey = new HashSet<>();
+        setKey.add(new Keyword("NA"));
         String feedback = "NA";
 
         if (serviceDraft.title().equals(title)) {
@@ -55,6 +59,16 @@ public class ContinueServiceDraftUI extends AbstractUI {
             feedback = Console.readLine("Icon(too leave empty write 'NA'): ");
         } else {
             feedback = serviceDraft.requirefeedback();
+        }
+
+        String resp = Console.readLine("Do you want to add more forms?(y/n)");
+        while (resp.equals("y")){
+            System.out.println("-----Form Especification-----");
+            final Description nameForm = Description.valueOf( Console.readLine("Form name: "));
+            final Description script = Description.valueOf(Console.readLine("Script: "));
+            Form form = controller.newForm(nameForm, script);
+            serviceDraft.form().add(form);
+            resp = Console.readLine("Do you wish to add more forms? (y/n)");
         }
 
         boolean isCompleted = controller.continueServiceDraft(serviceDraft.keyword(), serviceDraft.form(),
