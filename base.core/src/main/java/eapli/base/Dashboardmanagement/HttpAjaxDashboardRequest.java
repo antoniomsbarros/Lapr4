@@ -3,13 +3,13 @@ package eapli.base.Dashboardmanagement;
 import java.io.*;
 import java.net.Socket;
 
-public class HttpAjaxVotingRequest extends Thread {
+public class HttpAjaxDashboardRequest extends Thread {
 	String baseFolder;
 	Socket sock;
 	DataInputStream inS;
 	DataOutputStream outS;
     
-	public HttpAjaxVotingRequest(Socket s, String f) {
+	public HttpAjaxDashboardRequest(Socket s, String f) {
 		baseFolder=f; sock=s;
 		}	
     
@@ -26,7 +26,7 @@ public class HttpAjaxVotingRequest extends Thread {
                     
         		if(request.getMethod().equals("GET")) {
         			if(request.getURI().equals("/atividade")) {
-					response.setContentFromString(HttpServerAjaxVoting.preparactionActivities(), "text/html");
+					response.setContentFromString(HttpServerAjaxDashboard.preparactionActivities(), "text/html");
 					response.setResponseStatus("200 Ok");
 					}
 				else {

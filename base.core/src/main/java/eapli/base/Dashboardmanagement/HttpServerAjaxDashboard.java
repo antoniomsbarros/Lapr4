@@ -3,12 +3,8 @@ package eapli.base.Dashboardmanagement;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Arrays;
-import java.util.Date;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
-public class HttpServerAjaxVoting {
+public class HttpServerAjaxDashboard {
     static private final String BASE_FOLDER="www";
     static private ServerSocket sock;
     private static TcpCliDashboard tcpCliDashboard;
@@ -43,7 +39,7 @@ public class HttpServerAjaxVoting {
             }
 	while(true) { 
             cliSock=sock.accept();
-            HttpAjaxVotingRequest req=new HttpAjaxVotingRequest(cliSock, BASE_FOLDER);
+            HttpAjaxDashboardRequest req=new HttpAjaxDashboardRequest(cliSock, BASE_FOLDER);
             req.start();
 
             }
