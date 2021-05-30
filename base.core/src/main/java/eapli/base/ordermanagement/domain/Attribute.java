@@ -1,17 +1,18 @@
 package eapli.base.ordermanagement.domain;
 
+
 import eapli.framework.domain.model.DomainEntity;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Attribute implements DomainEntity<Long>{
+public class Attribute implements DomainEntity<Long> , Serializable {
 
     @Id
-    @GeneratedValue
     private Long id;
     @AttributeOverride(name = "value", column = @Column(name = "description"))
     private Description description;
@@ -29,7 +30,9 @@ public class Attribute implements DomainEntity<Long>{
     public Attribute() {
     }
 
-    public Attribute(Description description, Description name, Description label, Description regularexpression, Description script, TypeofData typeofData) {
+    public Attribute(/*final Long id,*/ final Description description, final Description name,
+                     final Description label, final Description regularexpression,
+                     final Description script, TypeofData typeofData) {
         Preconditions.noneNull(description, name, label, typeofData);
         if (description.toString().length()>100){
             throw new IllegalArgumentException(
@@ -41,6 +44,7 @@ public class Attribute implements DomainEntity<Long>{
                     "the complete description cant be more then 50 characters"
             );
         }
+        this.id = id;
         this.description = description;
         this.name = name;
         this.label = label;
@@ -54,7 +58,7 @@ public class Attribute implements DomainEntity<Long>{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Attribute attribute = (Attribute) o;
-        return  identity().equals(attribute.identity()) && description.equals(attribute.description)
+        return  id.equals(attribute.id) && description.equals(attribute.description)
                 && name.equals(attribute.name) && label.equals(attribute.label)
                 && regularexpression.equals(attribute.regularexpression) && script.equals(attribute.script)
                 && typeofData.equals(attribute.typeofData);
@@ -74,7 +78,7 @@ public class Attribute implements DomainEntity<Long>{
         if (this==attribute){
             return true;
         }
-        return identity().equals(attribute.identity()) && description.equals(attribute.description) && name.equals(attribute.name)
+        return id.equals(attribute.id) && description.equals(attribute.description) && name.equals(attribute.name)
                 && label.equals(attribute.label) && regularexpression.equals(attribute.regularexpression)
                 && script.equals(attribute.script) && typeofData.equals(attribute.typeofData);
     }
@@ -94,4 +98,5 @@ public class Attribute implements DomainEntity<Long>{
     public Long identity() {
         return this.id;
     }
+    public String description(){return this.description.toString();}
 }

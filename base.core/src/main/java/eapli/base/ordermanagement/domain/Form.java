@@ -5,9 +5,7 @@ import eapli.framework.general.domain.model.Description;
 import eapli.framework.validations.Preconditions;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Form implements AggregateRoot<Long> {
@@ -19,19 +17,22 @@ public class Form implements AggregateRoot<Long> {
     private Long version;
     @AttributeOverride(name = "value", column = @Column(name = "name"))
     private Description name;
-    @OneToMany
-    private Set<Attribute> attribute;
+    @AttributeOverride(name = "value", column = @Column(name = "script"))
+    private Description script;
+    //@OneToMany()
+    //private List<Attribute> attribute;
 
     public Form() {
     }
 
-    public Form(final Description name,final Set<Attribute> attribute) {
+    public Form(final Description name, final Description script/*,final List<Attribute> attribute*/) {
         Preconditions.noneNull(name);
         if (name.length()>50){
             throw new IllegalArgumentException("the name of the form cant have more then 50 characters");
         }
         this.name = name;
-        this.attribute = attribute;
+        this.script = script;
+        //this.attribute = attribute;
     }
 
     @Override
@@ -43,7 +44,7 @@ public class Form implements AggregateRoot<Long> {
         if (this==form){
             return true;
         }
-        return identity().equals(form.identity()) && name.equals(form.name) && attribute.equals(form.attribute);
+        return identifier.equals(form.identifier) && name.equals(form.name) && script.equals(form.script)/*attribute.equals(form.attribute)*/;
     }
 
     @Override
@@ -56,7 +57,7 @@ public class Form implements AggregateRoot<Long> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Form form = (Form) o;
-        return identifier.equals(form.identifier) && version.equals(form.version) && name.equals(form.name) && attribute.equals(form.attribute);
+        return identifier.equals(form.identifier) && version.equals(form.version) && name.equals(form.name) && script.equals(form.script)/* attribute.equals(form.attribute)*/;
     }
 
     @Override
@@ -66,7 +67,6 @@ public class Form implements AggregateRoot<Long> {
 
     @Override
     public String toString() {
-
-        return "identifier=" + identifier + ", name=" + name.toString() + ", Attribute:" + attribute;
+        return "identifier=" + identifier + ", name=" + name.toString() + ", script =" + script/*", Attribute:" + attribute.toString()*/;
     }
 }

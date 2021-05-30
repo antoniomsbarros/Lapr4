@@ -7,10 +7,8 @@ import eapli.base.catalogmanagement.domain.ServiceBuilder;
 import eapli.base.catalogmanagement.repository.CatalogRepository;
 import eapli.base.catalogmanagement.repository.ServiceRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
-import eapli.base.ordermanagement.domain.Attribute;
 import eapli.base.ordermanagement.domain.AttributeBuilder;
 import eapli.base.ordermanagement.domain.Form;
-import eapli.base.ordermanagement.domain.TypeofData;
 import eapli.base.ordermanagement.domain.repository.FormRepository;
 import eapli.framework.application.UseCaseController;
 import eapli.framework.general.domain.model.Description;
@@ -43,9 +41,19 @@ public class CreateServiceController {
         this.lstKeywords = new HashSet<>();
     }
 
-    public void createService(Description title,Description smalldescription, Description fulldescription, Description icon){
+    public void createService(Description title,Description smalldescription, Description fulldescription,
+                              Description icon, Catalog choosenCatalog){
         serviceBuilder.withTitle(title).withSmallDescription(smalldescription)
-                .withFullDescription(fulldescription).withIcon(icon);
+                .withFullDescription(fulldescription).withIcon(icon).withCatalog(choosenCatalog);
+    }
+
+    public void checkIfServiceIsComplete(Description title,Description smalldescription, Description fulldescription,
+                                         Description icon, String enableFeedback) {
+        Description desc = Description.valueOf("NA");
+        if (title.equals(desc) || smalldescription.equals(desc) || fulldescription.equals(desc) || icon.equals(desc) || enableFeedback.equals("NA")){
+            serviceBuilder.withCompletedService(false);
+        } else
+            serviceBuilder.withCompletedService(true);
     }
 
     public void addKeyword(Keyword keyword) {
@@ -56,13 +64,10 @@ public class CreateServiceController {
         serviceBuilder.withKeyword(lstKeywords);
     }
 
-    public void enableFeedback() {
-        serviceBuilder.withRequireFeedback("yes");
+    public void setFeedback(String s) {
+        serviceBuilder.withRequireFeedback(s);
     }
 
-    public void disableFeedback() {
-        serviceBuilder.withRequireFeedback("no");
-    }
 
     public Iterable<Catalog> getCatalogs(){
         return catalogRepository.findAll();
@@ -76,20 +81,17 @@ public class CreateServiceController {
         formBuilder.withName(name);
     }*/
 
-    public Attribute addAttribute(Description description, Description name, Description label, Description regularexpression, Description script,TypeofData dataType) {
-        return attributeBuilder.withDescription(description).withName(name).withLabel(label)
-                .withRegularExpression(regularexpression).withScript(script).withTypeofData(dataType).build();
-    }
+    //public Attribute addAttribute(Long id, Description description, Description name, Description label, Description regularexpression, Description script,TypeofData dataType) {
+        //return formRepository.saveAttribute(id, description, name, label, regularexpression, script, dataType);
+    //}
 
-    public Form saveForm(Description name,Set<Attribute> lstAttributes) {
-        formBuilder.withName(name).withAttribute(lstAttributes);
+    public Form saveForm(Description name,Description script) {
+        formBuilder.withName(name).withScript(script)/*.withAttribute(lstAttributes)*/;
         return formRepository.save(formBuilder.build());
     }
 
-    public Service saveService(/*Optional<Catalog> choosenCatalog, */List<Form> lstForm ) {
+    public Service saveService(List<Form> lstForm ) {
         serviceBuilder.withForm(lstForm);
-        System.out.println(lstForm);
-        //serviceBuilder.withCatalog(choosenCatalog.get());
         return serviceRepository.save(serviceBuilder.build());
     }
 

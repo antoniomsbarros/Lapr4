@@ -13,6 +13,7 @@ import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.funcaomanagement.repositories.FunctionRepository;
 import eapli.base.ordermanagement.domain.repository.FormRepository;
 import eapli.base.taskmanagement.repositories.AutomaticTaskRepository;
+import eapli.base.taskmanagement.repositories.ManualTaskRepository;
 import eapli.base.teamManagement.repositories.TeamRepository;
 import eapli.base.teamManagement.repositories.TeamTypeRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
@@ -50,6 +51,22 @@ public interface RepositoryFactory {
 	 * @return
 	 */
 	AutomaticTaskRepository AutomaticTasks();
+
+
+	/**
+	 *
+	 * @param autoTx the transactional context to enroll
+	 * @return
+	 */
+	ManualTaskRepository manualTasks(TransactionalContext autoTx);
+
+
+	/**
+	 * repository will be created in auto transaction mode
+	 *
+	 * @return
+	 */
+	ManualTaskRepository manualTasks();
 
 
 	/**

@@ -3,34 +3,35 @@ package eapli.base.ordermanagement.domain;
 import eapli.framework.domain.model.DomainFactory;
 import eapli.framework.general.domain.model.Description;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class FormBuilder implements DomainFactory<Form> {
 
     private Description name;
 
-    private Set<Attribute> attribute;
+    private Description script;
 
-    public FormBuilder() {
-        this.attribute = new HashSet<>();
-    }
+    //private List<Attribute> attribute;
+
+    public FormBuilder() { }
 
     public FormBuilder withName(Description name) {
         this.name = name;
         return this;
     }
 
-    public FormBuilder withAttribute(Set<Attribute> at) {
-        this.attribute = at;
+    public FormBuilder withScript(Description script) {
+        this.script = script;
         return this;
     }
 
+    /*public FormBuilder withAttribute(List<Attribute> at) {
+        this.attribute = at;
+        return this;
+    }*/
+
     @Override
     public Form build() {
-        return new Form(name, attribute);
+        return new Form(this.name, this.script /*this.attribute*/);
     }
-
-
 }
