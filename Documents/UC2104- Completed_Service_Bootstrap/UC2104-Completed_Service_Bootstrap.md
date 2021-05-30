@@ -18,14 +18,20 @@ Para definir o bootstrap de Serviços Completos, é pré-requisito que:
 
 
 
-**Seja atribuido aquando a criação de um serviço de:**
+**Seja atribuido/disponibilizado aquando da criação de um serviço completo, de:**
         
         * Titulo
-        * Descição Curta
+        * Descrição Curta
         * Descrição Longa
         * Icone
+        * Catalogo
         * Keyword
         * Feedback (POSITIVO)
-        * Attribute
         * Form
-Para tal apoós criar o serviço e exista um feedback positivo um atributo é criado e adicionado a um formulário.
+Para tal, necessitamos de criar o serviço completo (com todos os campos preenchidos), 
+        
+        - Exista um feedback positivo; 
+        - Esteja associado um formulário, 
+        - Exista/m uma/várias keywords;
+        - Tenha um catalogo atribuido.
+
