@@ -1,7 +1,6 @@
 package eapli.base.persistence.impl.jpa;
 
 import eapli.base.Application;
-import eapli.base.catalogmanagement.domain.Catalog;
 import eapli.base.ordermanagement.domain.Attribute;
 import eapli.base.ordermanagement.domain.Form;
 import eapli.base.ordermanagement.domain.TypeofData;
@@ -20,8 +19,8 @@ import java.util.Optional;
 
 public class JpaFormRepository extends JpaAutoTxRepository<Form, Long, Long> implements FormRepository {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+    //@PersistenceContext
+    //private EntityManager entityManager;
 
 
     public JpaFormRepository(final TransactionalContext autoTx){
@@ -36,7 +35,7 @@ public class JpaFormRepository extends JpaAutoTxRepository<Form, Long, Long> imp
         super("identifier", Application.settings().getExtendedPersistenceProperties(),"identifier");
     }
 
-    @Transactional
+    /*@Transactional
     public Attribute saveAttribute(Long id, Description description, Description name, Description label, Description regularexpression, Description script, TypeofData dataType) {
         entityManager.createNativeQuery("INSERT INTO ATTRIBUTE(ID, DESCRIPTION, LABEL, NAME, REGULAREXPRESSION, SCRIPT, TYPEOFDATA) VALUES(?,?,?,?,?,?,?)")
                     .setParameter(1, id)
@@ -48,5 +47,5 @@ public class JpaFormRepository extends JpaAutoTxRepository<Form, Long, Long> imp
                     .setParameter(7,dataType)
                     .executeUpdate();
         return new Attribute(id, description, name, label, regularexpression, script, dataType);
-    }
+    }*/
 }

@@ -13,16 +13,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 public class InMemoryFormRepository extends InMemoryDomainRepository<Form, Long> implements FormRepository {
-    @PersistenceContext
-    protected EntityManager entityManager;
+    //@PersistenceContext
+    //protected EntityManager entityManager;
     static {
         InMemoryInitializer.init();
     }
 
-    @Override
+    /*@Override
     public Attribute saveAttribute(Long id, Description description, Description label, Description name, Description regularexpression, Description script, TypeofData dataType) {
         Attribute at = new Attribute(id,description,name,label,regularexpression,script,dataType);
         entityManager.persist(at);
         return at;
-    }
+    }*/
 }
