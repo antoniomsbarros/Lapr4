@@ -33,7 +33,7 @@ class TcpCliDashboard {
 			System.out.println("Invalid server specified: " + "10.9.21.107");
 			System.exit(1); }
 
-		try { sock = new Socket(serverIP, 80); }
+		try { sock = new Socket(serverIP, 70); }
 		catch(IOException ex) {
 			System.out.println("Failed to establish TCP connection");
 			System.exit(1); }
