@@ -83,6 +83,11 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
 
 	@Override
 	public ServiceRepository services() {
+		return services(null);
+	}
+
+
+	public ServiceRepository services(final TransactionalContext tx){
 		return new InMemoryServiceRepository();
 	}
 
