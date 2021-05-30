@@ -24,7 +24,7 @@ public class ServiceBuilder implements DomainFactory<Service> {
 
     private Catalog catalog;
 
-    private Description completedService;
+    private boolean completedService;
 
     //private Criticalitylevel criticalitylevel;
 
@@ -69,7 +69,7 @@ public class ServiceBuilder implements DomainFactory<Service> {
         return this;
     }
 
-    public ServiceBuilder withCompletedService(Description completedService) {
+    public ServiceBuilder withCompletedService(boolean completedService) {
         this.completedService = completedService;
         return this;
     }

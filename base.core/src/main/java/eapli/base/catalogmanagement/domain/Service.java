@@ -36,14 +36,13 @@ public class Service implements AggregateRoot<Long> {
     @ElementCollection
     private Set<Keyword> keyword;
 
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     private Catalog catalog;
 
     @OneToMany()
     private List<Form> form;
 
-    @AttributeOverride(name = "value", column = @Column(name = "completedService"))
-    private Description completedService;
+    private boolean completedService;
 /*
     @OneToOne(optional = false)
     private Criticalitylevel criticalitylevel;
@@ -56,7 +55,7 @@ public class Service implements AggregateRoot<Long> {
 
     public Service(final List<Form> form,/*final Criticalitylevel criticalitylevel,*/ final Description title,final Description fulldescription,
                    final Description smalldescription,final String requirefeedback, final Set<Keyword> keyword,
-                   final Description icon,final Catalog catalog, Description completedService/*,Workflow workflow*/) {
+                   final Description icon,final Catalog catalog, boolean completedService/*,Workflow workflow*/) {
         Preconditions.noneNull(form,title,fulldescription, smalldescription, requirefeedback, icon/*, criticalitylevel*/);
         if (title.length()>50){
             throw new IllegalArgumentException("the title of the service is superior to 50 caracters");
@@ -93,7 +92,7 @@ public class Service implements AggregateRoot<Long> {
         return identity().equals(service.identity()) && title.equals(service.title)
                 && fulldescription.equals(service.fulldescription) && smalldescription.equals(service.smalldescription)
                 && requirefeedback.equals(service.requirefeedback) && keyword.equals(service.keyword)
-                && catalog.equals(service.catalog) && completedService.equals(service.completedService);
+                && catalog.equals(service.catalog) && completedService==service.completedService;
     }
 
     @Override
@@ -116,10 +115,11 @@ public class Service implements AggregateRoot<Long> {
     public Description icon() {
         return icon;
     }
+    public List<Form> form() { return form; }
     public Catalog servicecatalog() {
         return catalog;
     }
-    public Description completedService() {
+    public boolean isCompleted() {
         return completedService;
     }
 
@@ -131,7 +131,7 @@ public class Service implements AggregateRoot<Long> {
         return uniquecode.equals(service.uniquecode) && title.equals(service.title)
                 && fulldescription.equals(service.fulldescription) && smalldescription.equals(service.smalldescription)
                 && requirefeedback.equals(service.requirefeedback) && keyword.equals(service.keyword)
-                && icon.equals(service.icon) && catalog.equals(service.catalog) && completedService.equals(service.completedService);
+                && icon.equals(service.icon) && catalog.equals(service.catalog) && completedService==service.completedService;
     }
 
     @Override
@@ -147,7 +147,7 @@ public class Service implements AggregateRoot<Long> {
                 ", icon=" + icon.toString() +
                 ", CatalogID =" + catalog.identity() +
                 ", FORM=" + form.toString() +
-                ", Completed?=" + completedService.toString();
+                ", Completed?=" + completedService;
     }
 
     public String print(){
