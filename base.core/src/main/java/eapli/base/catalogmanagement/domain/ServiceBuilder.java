@@ -5,6 +5,7 @@ import eapli.framework.domain.model.DomainFactory;
 import eapli.framework.general.domain.model.Description;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 public class ServiceBuilder implements DomainFactory<Service> {
@@ -22,6 +23,8 @@ public class ServiceBuilder implements DomainFactory<Service> {
     private Description icon;
 
     private Catalog catalog;
+
+    private Description completedService;
 
     //private Criticalitylevel criticalitylevel;
 
@@ -66,6 +69,11 @@ public class ServiceBuilder implements DomainFactory<Service> {
         return this;
     }
 
+    public ServiceBuilder withCompletedService(Description completedService) {
+        this.completedService = completedService;
+        return this;
+    }
+
     /*public ServiceBuilder withCriticalityLevel(Criticalitylevel c) {
         this.criticalitylevel = c;
         return this;
@@ -84,7 +92,7 @@ public class ServiceBuilder implements DomainFactory<Service> {
     @Override
     public Service build() {
         return new Service(this.form,/*this.criticalitylevel,*/this.title,this.fulldescription,this.smalldescription, this.requirefeedback,
-                            this.keyword, this.icon/*, this.catalog, this.workflow*/);
+                            this.keyword, this.icon, this.catalog, this.completedService/*, this.workflow*/);
     }
 
 }
