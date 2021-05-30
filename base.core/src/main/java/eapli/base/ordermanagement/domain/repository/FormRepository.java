@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface FormRepository extends DomainRepository<Long, Form> {
 
-    @Query(value = "INSERT INTO ATTRIBUTE(ID, DESCRIPTION, LABEL, NAME, REGULAREXPRESSION, SCRIPT, TYPEOFDATA) VALUES(id, description, label, name, regularexpression, script, dataType) ",nativeQuery = true)
+    /*@Query(value = "INSERT INTO ATTRIBUTE(ID, DESCRIPTION, LABEL, NAME, REGULAREXPRESSION, SCRIPT, TYPEOFDATA) VALUES(id, description, label, name, regularexpression, script, dataType) ",nativeQuery = true)
     Attribute saveAttribute(Long id, Description description, Description label, Description name, Description regularexpression, Description script, TypeofData dataType);
-
+    */
 }
