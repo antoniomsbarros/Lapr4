@@ -31,6 +31,6 @@ public class DemoConsumer {
 			}
 		System.out.println("Connecting to http://" + "127.0.0.1" + ":" + serverPort + "/");
 		HTTPmessage request = new HTTPmessage();
-        	} // MAIN METHOD
-    	} // CLASS
+        	}
+    	}
     
