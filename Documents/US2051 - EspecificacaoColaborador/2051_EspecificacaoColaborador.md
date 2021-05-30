@@ -19,7 +19,8 @@ Este caso de uso pretende permitir a especificação de um colaborador. Onde seu
 
 # 3. Design
 
-O diagrama doptado foi o diagrama de sequência, a fim de descrever o fluxo de realização do caso de uso. Satisfazendo a funcionalidade desejada.
+O diagrama doptado foi o diagrama de sequência, a fim de descrever o fluxo de realização do caso de uso. 
+Satisfazendo a funcionalidade desejada.
 
 ## 3.1. Realização da Funcionalidade
 
