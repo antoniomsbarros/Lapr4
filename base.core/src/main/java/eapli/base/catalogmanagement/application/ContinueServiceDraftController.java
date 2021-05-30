@@ -40,14 +40,14 @@ public class ContinueServiceDraftController {
                                         Description smalldescription, Description fulldescription, Description icon, String feedback) {
 
         Description desc = Description.valueOf("NA");
+        serviceBuilder.withTitle(title).withSmallDescription(smalldescription).withFullDescription(fulldescription).withRequireFeedback(feedback)
+                .withIcon(icon).withKeyword(lstKeyword).withForm(lstForm).withCatalog(catalog);
 
         if (title.equals(desc) || smalldescription.equals(desc) || fulldescription.equals(desc) || icon.equals(desc) || feedback.equals("NA")) {
-            serviceBuilder.withTitle(title).withSmallDescription(smalldescription).withFullDescription(fulldescription).withRequireFeedback(feedback)
-                    .withIcon(icon).withKeyword(lstKeyword).withForm(lstForm).withCatalog(catalog).withCompletedService(false);
+            serviceBuilder.withCompletedService(false);
             return false;
         } else {
-            serviceBuilder.withTitle(title).withSmallDescription(smalldescription).withFullDescription(fulldescription).withRequireFeedback(feedback)
-                    .withIcon(icon).withKeyword(lstKeyword).withForm(lstForm).withCatalog(catalog).withCompletedService(true);
+            serviceBuilder.withCompletedService(true);
             return true;
         }
     }
