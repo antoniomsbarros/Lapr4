@@ -25,7 +25,7 @@ class TCPSrvMFA {
 	public static void main(String args[]) throws Exception {
 		Socket cliSock;
 
-		try { sock = new ServerSocket(80); }
+		try { sock = new ServerSocket(70); }
 		catch(IOException ex) {
 			System.out.println("Failed to open server socket");
 			System.exit(1);
