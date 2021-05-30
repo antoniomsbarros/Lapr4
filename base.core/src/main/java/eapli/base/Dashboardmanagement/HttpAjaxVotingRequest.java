@@ -3,10 +3,6 @@ package eapli.base.Dashboardmanagement;
 import java.io.*;
 import java.net.Socket;
 
-/**
- *
- * @author ANDRE MOREIRA (asc@isep.ipp.pt)
- */
 public class HttpAjaxVotingRequest extends Thread {
 	String baseFolder;
 	Socket sock;
@@ -29,9 +25,8 @@ public class HttpAjaxVotingRequest extends Thread {
         		// System.out.println(request.getURI());
                     
         		if(request.getMethod().equals("GET")) {
-        			if(request.getURI().equals("atividade")) {
-					response.setContentFromString(
-						HttpServerAjaxVoting.preparactionActivities(), "text/html");
+        			if(request.getURI().equals("/atividade")) {
+					response.setContentFromString(HttpServerAjaxVoting.preparactionActivities(), "text/html");
 					response.setResponseStatus("200 Ok");
 					}
 				else {

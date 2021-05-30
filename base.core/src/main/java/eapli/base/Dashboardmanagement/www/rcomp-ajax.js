@@ -3,7 +3,7 @@
 //            previous request is fully processed either successfully
 //	      or not.
 
-function refreshVotes() {
+function refreshActivitys() {
 	var request = new XMLHttpRequest();
         var vBoard=document.getElementById("atividade");
         
@@ -25,7 +25,7 @@ function refreshVotes() {
             setTimeout(refreshVotes, 5000); 
         };
         
-  	request.open("GET", "atividade", true);
+  	request.open("GET", "/atividade", true);
 	request.timeout = 5000;
   	request.send();
 
