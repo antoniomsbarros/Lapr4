@@ -24,17 +24,20 @@ public class Request implements AggregateRoot<Long> {
     private Workflow workflow;
     @OneToOne(optional = false)
     private Draft draft;
+    @OneToOne
+    private Form form;
 
     public Request() {
     }
 
-    public Request(final Workflow workflow,final State stateofResquest,final Calendar dateofRequest,final Feedback feedback,final Draft draft) {
-        Preconditions.noneNull(draft,dateofRequest,stateofResquest,workflow);
+    public Request(final Workflow workflow,final State stateofResquest,final Calendar dateofRequest,final Feedback feedback,final Draft draft,final Form form) {
+        Preconditions.noneNull(draft,dateofRequest,stateofResquest,workflow,form);
         this.stateofResquest = stateofResquest;
         this.dateofRequest = dateofRequest;
         this.feedback = feedback;
         this.draft = draft;
         this.workflow=workflow;
+        this.form = form;
     }
 
     @Override
@@ -47,7 +50,7 @@ public class Request implements AggregateRoot<Long> {
             return true;
         }
         return  identity().equals(((Request) other).identity()) && stateofResquest.equals(((Request) other).stateofResquest)
-                && dateofRequest.equals(((Request) other).dateofRequest) && feedback.equals(request.feedback) && workflow.equals(request.workflow);
+                && dateofRequest.equals(((Request) other).dateofRequest) && feedback.equals(request.feedback) && workflow.equals(request.workflow) && form.equals(request.form);
     }
 
     @Override
@@ -60,11 +63,11 @@ public class Request implements AggregateRoot<Long> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Request request = (Request) o;
-        return idRequest.equals(request.idRequest) && stateofResquest == request.stateofResquest && dateofRequest.equals(request.dateofRequest) && Objects.equals(feedback, request.feedback) && draft.equals(request.draft);
+        return idRequest.equals(request.idRequest) && stateofResquest == request.stateofResquest && dateofRequest.equals(request.dateofRequest) && Objects.equals(feedback, request.feedback) && draft.equals(request.draft) && form.equals(request.form);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idRequest, stateofResquest, dateofRequest, feedback, draft);
+        return Objects.hash(idRequest, stateofResquest, dateofRequest, feedback, draft, form);
     }
 }

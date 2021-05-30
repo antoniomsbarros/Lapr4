@@ -19,8 +19,8 @@ public class Form implements AggregateRoot<Long> {
     private Description name;
     @AttributeOverride(name = "value", column = @Column(name = "script"))
     private Description script;
-    //@OneToMany()
-    //private List<Attribute> attribute;
+    @OneToMany()
+    private Set<Attribute> attribute;
 
     public Form() {
     }
@@ -68,5 +68,9 @@ public class Form implements AggregateRoot<Long> {
     @Override
     public String toString() {
         return "identifier=" + identifier + ", name=" + name.toString() + ", script =" + script/*", Attribute:" + attribute.toString()*/;
+    }
+
+    public Set<Attribute> attribute(){
+        return attribute;
     }
 }

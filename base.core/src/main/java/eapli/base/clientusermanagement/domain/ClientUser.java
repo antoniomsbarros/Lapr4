@@ -69,8 +69,8 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
 
     @OneToMany()
     private List<Catalog> listcatalog;
-    //@OneToMany()
-    //private List<Team> list;
+    @OneToMany()
+    private List<Team> listTeam;
     @OneToOne
     private ClientUser clientUser;
 
@@ -90,7 +90,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
     private SystemUser systemUser;
 
     public ClientUser(MecanographicNumber mecanographicNumber, Function function, List<Catalog> listcatalog,
-                      List<Team> list, Description fullName, CollaboratorEmail collaboratorEmail,
+                      List<Team> listTeam, Description fullName, CollaboratorEmail collaboratorEmail,
                       Dateofbirth dateofbirth, Long phoneNumber, Designation shortname,
                       Placeofresidence placeofresidence, SystemUser systemUser, ClientUser clientUser) {
         if (mecanographicNumber == null || systemUser == null) {
@@ -105,7 +105,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         this.mecanographicNumber = mecanographicNumber;
         this.function = function;
         this.listcatalog = listcatalog;
-        //this.list = list;
+        this.listTeam = listTeam;
         this.fullName = fullName;
         this.collaboratorEmail = collaboratorEmail;
         this.dateofbirth = dateofbirth;
@@ -140,7 +140,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         this.mecanographicNumber = mecanographicNumber;
         this.function = function;
         this.listcatalog = new ArrayList<>();
-        //this.list = new ArrayList<>();
+        this.listTeam = new ArrayList<>();
         this.fullName = fullName;
         this.collaboratorEmail = collaboratorEmail;
         this.dateofbirth = dateofbirth;
@@ -175,7 +175,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
         this.mecanographicNumber = mecanographicNumber;
         this.function = function;
         this.listcatalog = new ArrayList<>();
-        //this.list = new ArrayList<>();
+        this.listTeam = new ArrayList<>();
         this.fullName = fullName;
         this.collaboratorEmail = collaboratorEmail;
         this.dateofbirth = dateofbirth;
@@ -255,7 +255,7 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
                 placeofresidence.street(), placeofresidence.doorNumber(), placeofresidence.floorNUmber(), placeofresidence.postalCode());
     }
 
-
+*/
 
     public boolean belongToThisTeamType(Team team) {
 
@@ -293,5 +293,5 @@ public class ClientUser implements AggregateRoot<MecanographicNumber> {
 
     public CollaboratorEmail collaboratorEmail(){
         return collaboratorEmail;
-    }*/
+    }
 }

@@ -14,7 +14,8 @@ de atividades.
 Segundo o caderno de encargos, existem dois tipos de tarefas: as manuais e as automáticas. As tarefas 
 automáticas são executadas sem intervenção de pessoas, ou seja, pela execução de um script. Por causa 
 deste cenário achamos apropriado implementar o conceito de herança na criação da componente, para que o 
-sistema que suporte as tarefas automáticas e outras tarefas futuras.
+sistema que suporte as tarefas automáticas e outras tarefas futuras. Assim, a classe abstrata é composta pelos
+campos em comum das tarefas e as concretas pelos seus campos individuais.
 
 ## 2.1 Pós-requisito
 
@@ -38,6 +39,14 @@ satisfação dos requisitos.*
 
 # 4. Implementação
 
+A classe abstrata Task:
+
+![Task.PNG](Task.PNG)
+
+
+A classe concreta AutomaticTask:
+
+![AutomaticTask.PNG](AutomaticTask.PNG)
 
 
 # 5. Integração/Demonstração

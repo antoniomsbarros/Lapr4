@@ -18,4 +18,6 @@ public interface ServiceRepository extends DomainRepository<Long, Service> {
 
     Iterable<Service> findAll();
 
+    @Query(value = "SELECT * FROM Service WHERE catalog = :catalog ",nativeQuery = true)
+    Iterable<Service> findByCatalog(Catalog catalog);
 }

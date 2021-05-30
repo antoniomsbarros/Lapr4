@@ -16,7 +16,7 @@ import java.util.Arrays;
  * @author marly
  */
 @Entity
-public class AutomaticTask extends Task implements DomainEntity<Long> {
+public class AutomaticTask extends Task implements  DomainEntity<Long> {
 
     private Description scriptPath;
 
@@ -35,12 +35,12 @@ public class AutomaticTask extends Task implements DomainEntity<Long> {
         }catch (NullPointerException | IllegalArgumentException e){
             System.out.println("Invalid DeadLine: " + e);
         }
-/*
+        /*
         File file = new File(scriptPath.toString());
         if(!file.isFile()){
             throw new IllegalArgumentException("The file " + scriptPath.toString() + " does not exist");
         }
-*/
+        */
         this.scriptPath = scriptPath;
     }
 
