@@ -29,7 +29,7 @@ public class HttpAjaxVotingRequest extends Thread {
         		// System.out.println(request.getURI());
                     
         		if(request.getMethod().equals("GET")) {
-        			if(request.getURI().equals("/atividade")) {
+        			if(request.getURI().equals("atividade")) {
 					response.setContentFromString(
 						HttpServerAjaxVoting.preparactionActivities(), "text/html");
 					response.setResponseStatus("200 Ok");
@@ -49,18 +49,8 @@ public class HttpAjaxVotingRequest extends Thread {
                         	response.send(outS);                        
                         	}
                     	else { // NOT GET
-                        	if(request.getMethod().equals("PUT") 
-                                	&& request.getURI().startsWith("/votes/")) {
-                            		HttpServerAjaxVoting.castVote(request.getURI().substring(7));
-                            		response.setResponseStatus("200 Ok");
-                            		}
-                       		else {
-                            		response.setContentFromString(
-                                    		"<html><body><h1>ERROR: 405 Method Not Allowed</h1></body></html>",
-                                    		"text/html");
-                            		response.setResponseStatus("405 Method Not Allowed");
-                            		}
-                        	response.send(outS); 
+
+                        	response.send(outS);
                         	}
                     	}
                 catch(IOException ex) { System.out.println("Thread error when reading request"); }

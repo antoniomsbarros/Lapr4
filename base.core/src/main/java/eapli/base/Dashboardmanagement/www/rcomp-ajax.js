@@ -25,7 +25,7 @@ function refreshVotes() {
             setTimeout(refreshVotes, 5000); 
         };
         
-  	request.open("GET", "/atividade", true);
+  	request.open("GET", "atividade", true);
 	request.timeout = 5000;
   	request.send();
 
