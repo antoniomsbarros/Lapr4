@@ -53,7 +53,7 @@ public class ContinueServiceDraftController {
     }
 
     public Service saveContinuedService(Service oldService) {
-        serviceRepository.delete(oldService);
+        serviceRepository.remove(oldService);
         return serviceRepository.save(serviceBuilder.build());
     }
 }
