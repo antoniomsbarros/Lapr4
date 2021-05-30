@@ -1,6 +1,7 @@
 package eapli.base.app.backoffice.console.presentation.clientuser;
 
 import eapli.base.catalogmanagement.application.CreateServiceController;
+import eapli.base.catalogmanagement.domain.Catalog;
 import eapli.base.catalogmanagement.domain.Keyword;
 import eapli.base.catalogmanagement.domain.Service;
 import eapli.base.ordermanagement.domain.Attribute;
@@ -21,27 +22,35 @@ public class CreateServiceUI extends AbstractUI {
 
     @Override
     protected boolean doShow() {
-        final Description title = Description.valueOf(Console.readLine("Title: "));
-        final Description smalldescription = Description.valueOf(Console.readLine("Small Description: "));
-        final Description fulldescription = Description.valueOf(Console.readLine("Full Description: "));
-        final Description icon = Description.valueOf(Console.readLine("Icon: "));
+        final Description title = Description.valueOf(Console.readLine("Title(too leave empty write 'NA'): "));
+        final Description smalldescription = Description.valueOf(Console.readLine("Small Description(too leave empty write 'NA'): "));
+        final Description fulldescription = Description.valueOf(Console.readLine("Full Description(too leave empty write 'NA'): "));
+        final Description icon = Description.valueOf(Console.readLine("Icon(too leave empty write 'NA'): "));
 
-        controller.createService(title,smalldescription,fulldescription,icon);
+        // Gets all the CATALOGS
+        Iterable<Catalog> lstCatalogs = controller.getCatalogs();
+        Long catalogID = chooseCatalog(lstCatalogs);
+
+        //Gets a CATALOG by his ID
+        Catalog catalog = controller.getCatalogByIdentifier(catalogID).get();
+
+        // Checks if the service information is complete
+
+        // Inserts some of the SERVICE data
+        controller.createService(title,smalldescription,fulldescription,icon,catalog);
+        controller.checkIfServiceIsComplete(title,smalldescription,fulldescription,icon);
 
         String answer = "y";
         Keyword keyword;
         while (answer.equals("y")) {
-            keyword = new Keyword(Console.readLine("keyword: "));
+            keyword = new Keyword(Console.readLine("keyword(too leave empty write 'NA'): "));
             controller.addKeyword(keyword);
             answer = Console.readLine("Do you wish to add more keywords? (y/n)");
         }
 
         controller.addKeywordListToService();
-        answer = Console.readLine("Do you want to enable feedback in this service? (y/n)");
-        if (answer.equals("y"))
-            controller.enableFeedback();
-        else
-            controller.disableFeedback();
+        answer = Console.readLine("Do you want to enable feedback in this service? (y/n)(too leave empty write 'NA')");
+        controller.setFeedback(answer);
 
         //System.out.println(controller.getCatalogs());
         //Long id = Console.readLong("Choose an id of a Catalog: ");
@@ -49,17 +58,17 @@ public class CreateServiceUI extends AbstractUI {
         List<Form> lstForm = new ArrayList<>();
         List<Attribute> lstAttribute = new ArrayList<>();
 
-        System.out.println("Formulario de solicitacao de servico:");
         answer = "y";
-        String answer2 = "y";
+        //String answer2 = "y";
         while(answer.equals("y")) {
 
             /*Form Info*/
+            System.out.println("-----Form Especification-----");
             final Description nameForm = Description.valueOf( Console.readLine("Form name: "));
             //controller.addForm(nameForm);
-
+            final Description script = Description.valueOf(Console.readLine("Script: "));
             /*Attribute Info*/
-            while (answer2.equals("y")) {
+            /*while (answer2.equals("y")) {
                 final Long id = Long.valueOf("10");
                 System.out.println(id);
                 final Description description = Description.valueOf(Console.readLine("Description: "));
@@ -72,8 +81,8 @@ public class CreateServiceUI extends AbstractUI {
                 lstAttribute.add(at);
                 System.out.println(at);
                 answer2 = Console.readLine("Do you want to add more Attributes to the Form?(y/n)");
-            }
-            lstForm.add(controller.saveForm(nameForm,lstAttribute));
+            }*/
+            lstForm.add(controller.saveForm(nameForm,script));
 
             answer = Console.readLine("Do you want to add a manual task Form?(y/n)");
         }
@@ -81,9 +90,21 @@ public class CreateServiceUI extends AbstractUI {
         if(temp.equals("n"))
             return false;
 
-        Service createdService = controller.saveService(/*choosenCatalog*/lstForm);
+        Service createdService = controller.saveService(lstForm);
         System.out.println("Service created.\n" + createdService);
         return true;
+    }
+
+    public Long chooseCatalog(Iterable<Catalog> lstCatalogs){
+        int i = 1;
+        Iterator<Catalog> it = lstCatalogs.iterator();
+        System.out.println("--List of CATALOGS--");
+        while(it.hasNext()) {
+            System.out.println(i + ". Id: " + it.next().identity() + ", Title: " + it.next().Title());
+            i++;
+        }
+        Long choosenId = Long.valueOf(Console.readLine("Choose the ID of the CATALOG you want to insert the Service on:"));
+        return choosenId;
     }
 
     @Override
