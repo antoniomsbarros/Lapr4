@@ -10,19 +10,19 @@ function refreshActivitys() {
         request.onload = function() {
             vBoard.innerHTML = this.responseText;
             vBoard.style.color="black";
-            setTimeout(refreshVotes, 2000);
+            setTimeout(refreshActivitys, 2000);
             };
             
         request.ontimeout = function() {
             vBoard.innerHTML = "Server timeout, still trying ...";
             vBoard.style.color="red";
-            setTimeout(refreshVotes, 100); 
+            setTimeout(refreshActivitys, 100);
         };
         
         request.onerror = function() { 
             vBoard.innerHTML = "No server reply, still trying ...";
             vBoard.style.color="red";
-            setTimeout(refreshVotes, 5000); 
+            setTimeout(refreshActivitys, 5000);
         };
         
   	request.open("GET", "/atividade", true);

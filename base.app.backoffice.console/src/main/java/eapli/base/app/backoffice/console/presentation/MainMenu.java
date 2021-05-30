@@ -162,8 +162,8 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(CREATE_CRITICALITYLEVEL_OPTION,criticalitylevelMenu);
             final Menu teamTypeMenu = builderTeamTypeMenu();
             mainMenu.addSubMenu(TEAM_TYPE_OPTION,teamTypeMenu);
-            final  Menu dashboard=buildderDashboard();
-            mainMenu.addSubMenu(DASHBOARD, dashboard);
+            //final  Menu dashboard=buildderDashboard();
+            //mainMenu.addSubMenu(DASHBOARD, dashboard);
         }
         if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER)) {
             final Menu teamTypeMenu = builderTeamTypeMenu();

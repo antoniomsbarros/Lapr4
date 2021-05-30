@@ -3,6 +3,7 @@ package eapli.base.Dashboardmanagement;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Arrays;
 
 public class HttpServerAjaxDashboard {
     static private final String BASE_FOLDER="www";
