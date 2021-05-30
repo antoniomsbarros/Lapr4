@@ -6,7 +6,6 @@ import eapli.base.catalogmanagement.domain.Keyword;
 import eapli.base.catalogmanagement.domain.Service;
 import eapli.base.ordermanagement.domain.Attribute;
 import eapli.base.ordermanagement.domain.Form;
-import eapli.base.ordermanagement.domain.TypeofData;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
@@ -38,7 +37,7 @@ public class CreateServiceUI extends AbstractUI {
 
         // Inserts some of the SERVICE data
         controller.createService(title,smalldescription,fulldescription,icon,catalog);
-        controller.checkIfServiceIsComplete(title,smalldescription,fulldescription,icon);
+
 
         String answer = "y";
         Keyword keyword;
@@ -49,12 +48,11 @@ public class CreateServiceUI extends AbstractUI {
         }
 
         controller.addKeywordListToService();
-        answer = Console.readLine("Do you want to enable feedback in this service? (y/n)(too leave empty write 'NA')");
-        controller.setFeedback(answer);
+        String feedback = Console.readLine("Do you want to enable feedback in this service? (y/n)(too leave empty write 'NA')");
+        controller.setFeedback(feedback);
 
-        //System.out.println(controller.getCatalogs());
-        //Long id = Console.readLong("Choose an id of a Catalog: ");
-        //Optional<Catalog> choosenCatalog = controller.getCatalogByIdentifier(id);
+        controller.checkIfServiceIsComplete(title,smalldescription,fulldescription,icon,feedback);
+
         List<Form> lstForm = new ArrayList<>();
         List<Attribute> lstAttribute = new ArrayList<>();
 
