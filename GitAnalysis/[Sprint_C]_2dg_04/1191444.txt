@@ -1,3 +1,20 @@
+commit 9b3f7face54e99cb89fa28a339467dd60b082dcf
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Fri May 28 18:13:38 2021 +0100
+
+    L2S20-66 bootstrap
+
+M	.idea/encodings.xml
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/BaseBootstrapper.java
+A	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/AutomaticTaskBootstrapper.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/OrganicStructureDemoBootstrapper.java
+A	base.core/src/main/java/eapli/base/taskmanagement/application/AddAutomaticTaskController.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/AutomaticTask.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/Task.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryAutomaticTaskRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaAutomaticTaskRepository.java
+M	base.persistence.impl/src/main/resources/META-INF/persistence.xml
+
 commit a46eb09468a3cced63c834a1fbaa4db541179a13
 Author: Marly Pimpita <1191444@isep.ipp.pt>
 Date:   Wed May 26 21:59:36 2021 +0100

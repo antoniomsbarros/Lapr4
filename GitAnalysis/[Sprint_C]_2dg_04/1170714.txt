@@ -1,3 +1,133 @@
+commit 73fc5d9b45153211c391531b1d8c5c421a6e8a7c
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sun May 30 01:46:54 2021 +0100
+
+    L2S20-78 #Implementation Persistance classes updated (UC 2003)
+
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryFormRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaFormRepository.java
+
+commit eefab37d08cb3de6b888589e9f5db99cea0dd751
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sun May 30 01:46:24 2021 +0100
+
+    L2S20-78 #Implementation UI updated (UC 2003)
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateServiceUI.java
+
+commit 6d4c153f70c9a921aa4963aa6d9dd971a2d75bdd
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sun May 30 01:46:02 2021 +0100
+
+    L2S20-78 #Implementation Controller class updated (UC 2003)
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/CreateServiceController.java
+
+commit e8b4228c1f6353bad556248c8d361dab7e48399e
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sun May 30 01:45:49 2021 +0100
+
+    L2S20-78 #Implementation Domain classes updated (UC 2003)
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Service.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/ServiceBuilder.java
+
+commit 0d13fc192eeee475f76249e6b1a778f62e1e52b9
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sun May 30 01:45:17 2021 +0100
+
+    L2S20-78 #Implementation Domain classes updated (UC 2003)
+
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Attribute.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/AttributeBuilder.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Form.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/FormBuilder.java
+
+commit f17c207596d85f81b2f2e7166d8f075d8370e2f5
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sun May 30 01:44:41 2021 +0100
+
+    L2S20-78 #Implementation Form repository updated of UC 2003
+
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/repository/FormRepository.java
+
+commit cb1f0667d4576fd82ddb7079dbf314aae00d246c
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sat May 29 19:11:48 2021 +0100
+
+    L2S20-78 #Implementation Repository of Service updated of "Continue Specification Draft" UC 2003
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/repository/ServiceRepository.java
+
+commit d6a4f56375df899392cf9e9d13158beeab6e8919
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sat May 29 19:11:25 2021 +0100
+
+    L2S20-78 #Implementation JPA and InMemory of Form updated  of "Continue Specification Draft" UC 2003
+
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryFormRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaFormRepository.java
+
+commit 093c3b012b4ca4c20ece3ec0ea2deecad93f538e
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sat May 29 19:10:42 2021 +0100
+
+    L2S20-78 #Implementation Form repository updated of "Continue Specification Draft" UC 2003
+
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/repository/FormRepository.java
+
+commit f0ab825b6a3875c25e6f20d4b707313b720b72d6
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sat May 29 19:10:21 2021 +0100
+
+    L2S20-78 #Implementation controller updated of "Continue Specification Draft" UC 2003
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/CreateServiceController.java
+
+commit 1d00830722c5737581c19f231c37e1412ce7ffdc
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sat May 29 19:10:09 2021 +0100
+
+    L2S20-78 #Implementation UI updated of "Continue Specification Draft" UC 2003
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateServiceUI.java
+
+commit 90edd28a97ce03a4f62e23add99ca19b64df694e
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sat May 29 19:07:16 2021 +0100
+
+    L2S20-78 #Implementation domain classes updated of "Continue Specification Draft" UC 2003
+
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Attribute.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/AttributeBuilder.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Form.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/FormBuilder.java
+
+commit 640f3c7898e08e26dc48829f4a27b36a9573aeb0
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sat May 29 15:50:49 2021 +0100
+
+    L2S20-78 #Design Design of "Continue Specification Draft" UC 2003
+
+M	Documents/UC2003/ProcessoEngenhariaFuncionalidade.md
+A	Documents/UC2003/UC2003.jpg
+
+commit 2317fa30ebe9789675a3f81c1e9b445b948cf3f8
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Fri May 28 12:05:42 2021 +0100
+
+    L2S20-78 #Analysis Analysis of "Continue Specification Draft" UC 2003
+
+M	Documents/UC2003/ProcessoEngenhariaFuncionalidade.md
+
+commit c43cd6989ecf76487b520fc2c143125012ead8a2
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Thu May 27 12:30:28 2021 +0100
+
+    L2S20-78 #Requirements  Requirements of "Continue Specification Draft" UC 2003
+
+A	Documents/UC2003/ProcessoEngenhariaFuncionalidade.md
+
 commit 3683ffe291742b78e3ac5f6dc19281992a99c0ae
 Author: Joao Freitas <1170714@isep.ipp.pt>
 Date:   Sun May 23 16:43:49 2021 +0100
