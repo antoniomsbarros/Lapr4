@@ -1,14 +1,13 @@
 package eapli.base.catalogmanagement.domain;
 
 import eapli.base.clientusermanagement.domain.ClientUser;
+import eapli.base.teamManagement.domain.Team;
 import eapli.framework.domain.model.DomainEntity;
 import eapli.framework.validations.Preconditions;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.lang.invoke.MethodHandles;
+import java.util.List;
 
 @Entity
 public class Responsable implements DomainEntity<Long>{
@@ -23,12 +22,16 @@ public class Responsable implements DomainEntity<Long>{
     @OneToOne
     private Delegaction delegaction;
 
+    @ManyToOne(optional = true)
+    private Team team;
+
     public Responsable() {
     }
 
-    public Responsable(ClientUser responsable, Delegaction delegaction) {
+    public Responsable(ClientUser responsable, Delegaction delegaction, Team team) {
         Preconditions.noneNull(responsable, delegaction);
         this.responsable = responsable;
+        this.team = team;
         this.delegaction = delegaction;
     }
 
@@ -36,8 +39,9 @@ public class Responsable implements DomainEntity<Long>{
     public String toString() {
         return "Responsable{" +
                 "id=" + id +
-                ", responsable=" + responsable.toString() +
-                ", delegaction=" + delegaction.toString() +
+                ", responsable=" + responsable +
+                ", delegaction=" + delegaction +
+                ", team=" + team +
                 '}';
     }
 
