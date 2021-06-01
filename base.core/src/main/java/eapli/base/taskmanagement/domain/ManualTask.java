@@ -4,6 +4,7 @@ import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.ordermanagement.domain.Attribute;
 import eapli.framework.domain.model.DomainEntity;
 
+import eapli.framework.general.domain.model.Description;
 import eapli.framework.time.util.Calendars;
 
 
@@ -14,27 +15,25 @@ import java.util.Set;
 @Entity
 public class ManualTask extends Task implements DomainEntity<Long> {
 
-
+    @Enumerated(EnumType.STRING)
     private TaskType type;
 
     @OneToOne
     private ClientUser collaborator;
 
-    @OneToMany
-    private Set<Attribute> commentaryList;
-
-    @OneToMany
-    private Set<Attribute> decisionList;
+    private Description commentary;
+    private Description decision;
 
     public ManualTask() {
 
     }
 
 
-    public ManualTask(TaskType type,TaskState state, Deadline deadline, Integer priority,
+    public ManualTask(TaskState state, Deadline deadline, Integer priority,
+                      TaskType type,
                       ClientUser collaborator,
-                      Set<Attribute> decisionList,
-                      Set<Attribute> commentaryList) {
+                      Description decision,
+                      Description commentary) {
 
         super(state, deadline, priority);
 
@@ -45,40 +44,28 @@ public class ManualTask extends Task implements DomainEntity<Long> {
         } catch (NullPointerException | IllegalArgumentException e) {
             System.out.println("Invalid DeadLine: " + e);
         }
+
+
         this.collaborator = collaborator;
-        this.type = type;
-        this.decisionList = decisionList;
-        this.commentaryList = commentaryList;
-    }
 
-    public boolean verifyCommentaryToManualTask(Attribute commentary){
-       for (Attribute a : commentaryList){
-           if(a.description().equals(commentary)){
-               return true;
-           }
-       }
-       return false;
-    }
-
-    public boolean verifyDecisionToManualTask(Attribute decision){
-        for (Attribute a : decisionList){
-            if(a.description().equals(decision)){
-                return true;
+        try {
+            if (this.collaborator == null) {
+                throw new IllegalArgumentException("Invalid Collaborator!");
             }
+        } catch (NullPointerException | IllegalArgumentException e) {
+            System.out.println("Invalid Collaborator: " + e);
         }
-        return false;
+        this.type = type;
+        this.decision = decision;
+        this.commentary = commentary;
     }
 
-    public boolean addDecisionToManualTask(Attribute decision){
-        return decisionList.add(decision);
+
+    public boolean isCollabValid (List<ClientUser> collaboratorList){
+        return collaboratorList.contains(this.collaborator);
     }
 
-    public boolean addCommentaryToManualTask(Attribute commentary){
-        return commentaryList.add(commentary);
+    public void setType(TaskType type) {
+        this.type = type;
     }
-
-    public boolean isCollabValid (List<ClientUser> collaboratorList,ClientUser clientUser){
-        return collaboratorList.contains(clientUser);
-    }
-
 }
