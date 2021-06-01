@@ -30,8 +30,14 @@ public class Responsable implements DomainEntity<Long>{
 
     public Responsable(ClientUser responsable, Delegaction delegaction, Team team) {
         Preconditions.noneNull(responsable, delegaction);
-        this.responsable = responsable;
         this.team = team;
+
+        if (verifyTeamResponsable(responsable)){
+            this.responsable = responsable;
+        }else{
+            this.responsable = responsable;
+        }
+
         this.delegaction = delegaction;
     }
 
@@ -62,5 +68,14 @@ public class Responsable implements DomainEntity<Long>{
 
     public ClientUser responsable() {
         return responsable;
+    }
+
+    public Team team(){ return team;}
+
+    public boolean verifyTeamResponsable (ClientUser responsable){
+        if (team.exist(responsable)){
+            return true;
+        }
+        return false;
     }
 }
