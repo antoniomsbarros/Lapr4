@@ -25,16 +25,26 @@ campos em comum das tarefas e as concretas pelos seus campos individuais.
 
 * **Herança:** Para suportar diferentes tipos de tarefas no sistema.
 
-## 3.1. Testes 
+## 3.1. Testes
 
-*Nesta secção deve sistematizar como os testes foram concebidos para permitir uma correta aferição da 
-satisfação dos requisitos.*
-
-**Teste 1:** Verificar que não é possível criar uma instância da classe Exemplo com valores nulos.
+**Teste 1:** Verificar que não é possível criar uma instância da classe AutomaticTask com um ficheiro
+inexistente.
 
 	@Test(expected = IllegalArgumentException.class)
-		public void ensureNullIsNotAllowed() {
-		Exemplo instance = new Exemplo(null, null);
+    public void ensureFileIsValid() {
+        Calendar date = Calendar.getInstance();
+        date.set(2021, 11, 05);
+        Task automatic = new AutomaticTask(TasskState.PENDING, new Deadline(date), 10, Description.valueOf("NonExistentScript.bat"));
+    }
+
+**Teste 2:** Verificar que não é possível criar uma instância da classe AutomaticTask com a data limite
+inferior a atual.
+
+	@Test(expected = IllegalArgumentException.class)
+    public void ensureDeadLineDateIsValid() {
+        Calendar date = Calendar.getInstance();
+        date.set(2021, 03, 05);
+        Task automatic = new AutomaticTask(TaskState.PENDING, new Deadline(date), 10, Description.valueOf("script.bat"));
 	}
 
 # 4. Implementação
