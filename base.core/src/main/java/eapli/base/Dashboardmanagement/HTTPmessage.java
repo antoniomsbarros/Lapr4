@@ -1,12 +1,6 @@
-package eapli.base.Dashboardmanagement;
+package eapli.base.DashboardManagement;
 
 import java.io.*;
-
-
-/**
- *
- * @author ANDRE MOREIRA (asc@isep.ipp.pt)
- */
 
 public class HTTPmessage {
     
@@ -59,7 +53,7 @@ public class HTTPmessage {
     private byte[] content;
     
     /**
-     * Creates a new HTTPmessage by receiving it from an DataInputStream
+     * Creates a new http.HTTPmessage by receiving it from an DataInputStream
      * @param in 
      * @throws IOException
      */

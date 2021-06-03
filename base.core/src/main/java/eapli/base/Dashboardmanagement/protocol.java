@@ -1,4 +1,4 @@
-package eapli.base.Dashboardmanagement;
+package eapli.base.DashboardManagement;
 
 import java.io.*;
 

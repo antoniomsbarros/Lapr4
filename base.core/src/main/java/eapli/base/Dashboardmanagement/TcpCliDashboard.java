@@ -1,4 +1,4 @@
-package eapli.base.Dashboardmanagement;
+package eapli.base.DashboardManagement;
 
 import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.clientusermanagement.domain.CollaboratorEmail;
@@ -28,7 +28,7 @@ class TcpCliDashboard {
 
 	public static  String[] tcpinfo(int code) throws Exception {
 
-		try { serverIP = InetAddress.getByName("127.0.0.1"); }
+		try { serverIP = InetAddress.getByName("10.9.21.107"); }
 		catch(UnknownHostException ex) {
 			System.out.println("Invalid server specified: " + "10.9.21.107");
 			System.exit(1); }
