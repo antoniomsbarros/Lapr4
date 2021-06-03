@@ -11,10 +11,9 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
-
 @UseCaseController
-public
-class TCPSrvMFA {
+@SuppressWarnings("squid:S106")
+public final class TCPSrvMFA {
 	static ServerSocket sock;
 
 
