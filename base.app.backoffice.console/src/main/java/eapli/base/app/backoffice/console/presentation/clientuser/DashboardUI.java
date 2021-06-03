@@ -1,10 +1,19 @@
 package eapli.base.app.backoffice.console.presentation.clientuser;
 
-import eapli.base.Dashboardmanagement.TCPSrvMFA;
+
 import eapli.framework.presentation.console.AbstractUI;
 
 public class DashboardUI extends AbstractUI {
-    private TCPSrvMFA tcpSrvMFA;
+    @Override
+    protected boolean doShow() {
+        return false;
+    }
+
+    @Override
+    public String headline() {
+        return null;
+    }
+    /*private TCPSrvMFA tcpSrvMFA;
 
     public DashboardUI(){
         try {
@@ -26,5 +35,5 @@ public class DashboardUI extends AbstractUI {
         return null;
     }
 
-
+*/
 }

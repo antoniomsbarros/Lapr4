@@ -282,11 +282,11 @@ public class MainMenu extends AbstractUI {
 
         return menu;
     }
-private Menu buildderDashboard()  {
+/*private Menu buildderDashboard()  {
     final Menu menu = new Menu("Dashboard >");
     menu.addItem(DASHBOARD1, "dashboard", new DashboardUI()::show);
     return menu;
-}
+}*/
 
 
 
