@@ -1,3 +1,27 @@
+commit fd714c24c678d3a276db9caac9694e2ff961c9cf
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Sat May 29 19:01:05 2021 +0100
+
+    implementaction of the Tcp server and client changes in the domain of activity
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/DashboardUI.java
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/TCPSrvMFA.java
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/TcpCliDashboard.java
+A	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchActivity.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Activity.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Attribute.java
+A	base.core/src/main/resources/application.properties
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaActivityRepository.java
+
+commit 7621de9436e3cfa2697dcd7a08e85133fc9be696
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Sat May 29 00:18:59 2021 +0100
+
+    L2S20-93  Anlysis done
+
+M	Documents/US4001/ProcessoEngenhariaFuncionalidade.md
+
 commit 9509307917d61b49ab769011e3bc9d4355442fb5
 Author: Antonio Barros <1200606@isep.ipp.pt>
 Date:   Sat May 22 12:01:29 2021 +0100
