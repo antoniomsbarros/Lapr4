@@ -23,6 +23,9 @@ campos em comum das tarefas e as concretas pelos seus campos individuais.
 
 # 3. Padrões Aplicados
 
+* **Repository:** Para comunicar com a base de dados, ter acesso aos dados
+  por meio das queries feitas.
+* **Use-Case Controller:** Para gerir o fluxo de execução do caso de uso.
 * **Herança:** Para suportar diferentes tipos de tarefas no sistema.
 
 ## 3.1. Testes

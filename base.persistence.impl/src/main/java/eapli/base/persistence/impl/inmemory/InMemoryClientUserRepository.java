@@ -11,6 +11,8 @@ import eapli.framework.general.domain.model.Description;
 import eapli.framework.infrastructure.authz.domain.model.Username;
 import eapli.framework.infrastructure.repositories.impl.inmemory.InMemoryDomainRepository;
 
+import javax.persistence.TypedQuery;
+
 /**
  *
  * @author Jorge Santos ajs@isep.ipp.pt 02/04/2016
@@ -42,4 +44,5 @@ public class InMemoryClientUserRepository
     public Optional<ClientUser> getClientUserByEmail(CollaboratorEmail email){
         return matchOne(e -> e.email().equals(email));
     }
+
 }

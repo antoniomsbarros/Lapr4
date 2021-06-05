@@ -56,7 +56,7 @@ class JpaClientUserRepository
     @Override
     public Optional<ClientUser> getClientUserByEmail(CollaboratorEmail email) {
         final Map<String, Object> params = new HashMap<>();
-        params.put("collaboratorEmail", email);
+        params.put("email", email);
         return matchOne("e.collaboratorEmail=:email", params);
     }
 
