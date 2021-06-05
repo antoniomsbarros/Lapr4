@@ -28,7 +28,7 @@ class TcpCliDashboard {
 
 	public static  String[] tcpinfo(int code) throws Exception {
 
-		try { serverIP = InetAddress.getByName("10.9.21.107"); }
+		try { serverIP = InetAddress.getByName("127.0.0.1"); }
 		catch(UnknownHostException ex) {
 			System.out.println("Invalid server specified: " + "10.9.21.107");
 			System.exit(1); }

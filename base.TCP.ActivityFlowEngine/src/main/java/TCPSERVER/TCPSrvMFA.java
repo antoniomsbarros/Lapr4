@@ -3,7 +3,12 @@ package TCPSERVER;
 import eapli.base.DashboardManagement.protocol;
 import eapli.base.catalogmanagement.application.SearchActivity;
 import eapli.base.catalogmanagement.domain.Activity;
+import eapli.base.infrastructure.persistence.PersistenceContext;
+import eapli.base.usermanagement.domain.BasePasswordPolicy;
 import eapli.framework.application.UseCaseController;
+import eapli.framework.infrastructure.authz.application.AuthzRegistry;
+import eapli.framework.infrastructure.authz.domain.model.PlainTextEncoder;
+
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
@@ -19,6 +24,9 @@ public final class TCPSrvMFA {
 
 	public static void main(String args[]) throws Exception {
 		Socket cliSock;
+		AuthzRegistry.configure(PersistenceContext.repositories().users(), new BasePasswordPolicy(),
+				new PlainTextEncoder());
+
 
 		try { sock = new ServerSocket(70); }
 		catch(IOException ex) {
@@ -47,6 +55,7 @@ class TCPSrvMFAThread implements Runnable {
 
 	public void run() {
 		InetAddress clientIP;
+
 
 		clientIP=s.getInetAddress();
 		System.out.println("New client connection from " + clientIP.getHostAddress() + 
