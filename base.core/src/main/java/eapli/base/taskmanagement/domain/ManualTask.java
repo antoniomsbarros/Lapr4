@@ -54,4 +54,8 @@ public class ManualTask extends Task implements DomainEntity<Long> {
     public void setType(TaskType type) {
         this.type = type;
     }
+
+    public Responsable Responsible() {
+        return collaborator;
+    }
 }
