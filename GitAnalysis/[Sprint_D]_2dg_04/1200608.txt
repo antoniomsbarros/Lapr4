@@ -1,0 +1,7 @@
+commit c9e4f7aa56d34c47714e8bab2bc5ee2b91579258
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Fri Jun 4 15:12:15 2021 +0100
+
+    L2S20-105 Start of Analysis and Design
+
+A	Documents/US1004/ProcessoEngenhariaFuncionalidade.md
