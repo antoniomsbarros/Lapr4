@@ -1,9 +1,11 @@
 package eapli.base.taskmanagement.application;
 
 import eapli.base.catalogmanagement.domain.Responsable;
+import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.taskmanagement.domain.*;
 import eapli.base.taskmanagement.repositories.ManualTaskRepository;
+import eapli.base.teamManagement.domain.Team;
 import eapli.base.teamManagement.repositories.TeamRepository;
 import eapli.base.usermanagement.domain.BaseRoles;
 import eapli.framework.general.domain.model.Description;
@@ -20,7 +22,7 @@ public class AddManualTaskController {
 
     public void addManualTask(Calendar deadline, Integer priority,
                               Responsable collaborator, Description commentary, Description decision ) {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.ADMIN,BaseRoles.GSH_MANAGER);
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.COLLABORATOR);
 
         try {
             final ManualTask manualTask = new ManualTask(TaskState.PENDING, new Deadline(deadline),
@@ -32,6 +34,17 @@ public class AddManualTaskController {
 
         System.out.println("\nAutomaticTask saved!");
 
+    }
+
+    public Iterable<Team> getTeamResponsible(ClientUser c){
+        Iterable<Team> teams = teamRepository.activeTeams();
+
+        while(teams.iterator().hasNext()){
+            if (teams.iterator().next().exist(c)){
+                return teams;
+            }
+        }
+        return null;
     }
 
     public void choosetaskType(TaskType t, ManualTask task){
