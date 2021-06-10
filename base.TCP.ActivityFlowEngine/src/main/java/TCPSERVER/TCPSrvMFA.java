@@ -4,15 +4,15 @@ import eapli.base.DashboardManagement.protocol;
 import eapli.base.catalogmanagement.application.SearchActivity;
 import eapli.base.catalogmanagement.domain.Activity;
 import eapli.base.infrastructure.persistence.PersistenceContext;
+import eapli.base.taskmanagement.domain.Task;
 import eapli.base.usermanagement.domain.BasePasswordPolicy;
 import eapli.framework.application.UseCaseController;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 import eapli.framework.infrastructure.authz.domain.model.PlainTextEncoder;
-
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.Calendar;
 import java.util.List;
 
@@ -26,7 +26,8 @@ public final class TCPSrvMFA {
 		Socket cliSock;
 		AuthzRegistry.configure(PersistenceContext.repositories().users(), new BasePasswordPolicy(),
 				new PlainTextEncoder());
-
+			RequestWorkflow requestWorkflow=new RequestWorkflow();
+			requestWorkflow.createWorkflowPedido("22","22");
 
 		try { sock = new ServerSocket(70); }
 		catch(IOException ex) {
@@ -69,25 +70,39 @@ class TCPSrvMFAThread implements Runnable {
 			switch (code){
 				case 3:
 					String data=protocol.getData();
-					List<Activity> activityList=searchActivity.prepareactivity(Integer.valueOf(data));
-					protocol.send(sOut, Arrays.toString(preparelistofActivitysincomplete( activityList)));
-					System.out.println(Arrays.toString(preparelistofActivitysincomplete( activityList)));
+					List<Activity> activityList=searchActivity.prepareactivity(Integer.valueOf(data.split(" ")[0]));
+					String[]result= preparelistofActivitysincomplete( activityList);
+					if (!data.contains(" ")){
+						protocol.send(sOut, String.valueOf(result.length));
+					}else {
+						protocol.send(sOut, String.valueOf(result[Integer.parseInt(data.split(" ")[1])]));
+					}
 					break;
 				case 4:
 					String data1=protocol.getData();
-					List<Activity> activityList1=searchActivity.prepareactivity(Integer.valueOf(data1));
-					String[] str=allActivitys( activityList1);
-					protocol.send(sOut,Arrays.toString(str));
-					System.out.println(Arrays.toString(str));
+					List<Activity> activityList1=searchActivity.prepareactivity(Integer.valueOf(data1.split(" ")[0]));
+					String[]result1= allActivitys( activityList1);
+					if (!data1.contains(" ")){
+						protocol.send(sOut, String.valueOf(result1.length));
+					}else {
+						protocol.send(sOut, String.valueOf(result1[Integer.parseInt(data1.split(" ")[1])]));
+					}
 
 					break;
 				case 5:
 					String data2=protocol.getData();
-					List<Activity> activityList2=searchActivity.prepareactivity(Integer.valueOf(data2));
-					String[] str1=activitysByPriority( activityList2);
-					protocol.send(sOut,Arrays.toString(str1));
-					System.out.println(Arrays.toString(str1));
+					List<Activity> activityList2=searchActivity.prepareactivity(Integer.valueOf(data2.split(" ")[0]));
+					String[]result2= preparelistofActivitysincomplete( activityList2);
+					if (!data2.contains(" ")){
+						protocol.send(sOut, String.valueOf(result2.length));
+					}else {
+						protocol.send(sOut, String.valueOf(result2[Integer.parseInt(data2.split(" ")[1])]));
+					}
+				case 6:
+						String data3=protocol.getData();
+						List<Task> tasks=new ArrayList<>();
 
+					break;
 				default:
 					protocol.send(sOut,"Code invalido");
 					break;
@@ -120,7 +135,7 @@ class TCPSrvMFAThread implements Runnable {
 						temp[y]="ActivitY N: " +activity.identity()+" Priority: "+activity.priorityofActivity()+
 								" DeadLine: " +activity.deadline()+"criticality: "+activity.criticalitylevel().print();
 					}
-y++;
+					y++;
 				}
 			}
 			return temp;
