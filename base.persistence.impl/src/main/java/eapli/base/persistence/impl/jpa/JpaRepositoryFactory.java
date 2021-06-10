@@ -1,10 +1,7 @@
 package eapli.base.persistence.impl.jpa;
 
 import eapli.base.Application;
-import eapli.base.catalogmanagement.repository.ActivityRepository;
-import eapli.base.catalogmanagement.repository.CriticalityLevelRepository;
-import eapli.base.catalogmanagement.repository.ServiceRepository;
-import eapli.base.catalogmanagement.repository.WorkflowRepository;
+import eapli.base.catalogmanagement.repository.*;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.infrastructure.persistence.RepositoryFactory;
 import eapli.base.ordermanagement.domain.repository.FormRepository;
@@ -83,6 +80,11 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 	@Override
 	public ServiceRepository services() {
 		return new JpaServiceRepository(Application.settings().getPersistenceUnitName());
+	}
+
+	@Override
+	public SequenceRepository sequences() {
+		return new JpaSequenceRepository(Application.settings().getPersistenceUnitName());
 	}
 
 	public ServiceRepository services(final TransactionalContext autoTx) {

@@ -85,6 +85,11 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
 		return services(null);
 	}
 
+	@Override
+	public SequenceRepository sequences() {
+		return new InMemorySequenceRepository();
+	}
+
 
 	public ServiceRepository services(final TransactionalContext tx){
 		return new InMemoryServiceRepository();
