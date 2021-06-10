@@ -27,7 +27,7 @@ class TcpCliDashboard {
 
 	}
 
-	public static  String[] tcpinfo(int code) throws Exception {
+	public static  String[] tcpinfo(int code, String data) throws Exception {
 
 		try { serverIP = InetAddress.getByName("10.9.21.107"); }
 		catch(UnknownHostException ex) {
@@ -46,7 +46,7 @@ class TcpCliDashboard {
 
 
 		protocol protocol =new protocol(code);
-		protocol.send(sOut, "112345");
+		protocol.send(sOut, data);
 		protocol = new protocol(sIn);
 		String[] temp=protocol.getData().split(" ");
 		String str=temp[0];

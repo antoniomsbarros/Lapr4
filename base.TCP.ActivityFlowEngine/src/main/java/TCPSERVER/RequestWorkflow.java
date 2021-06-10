@@ -16,7 +16,7 @@ public class RequestWorkflow {
     public void createWorkflowPedido(String idPedido, String idservice){
         Preconditions.noneNull(idPedido, idservice);
          Workflow workflow= searchWorkflowService.getWorkflowByService(22l);
-        //System.out.println(workflow.toString());
+        System.out.println(workflow.toString());
 
     }
 }

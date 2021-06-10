@@ -21,13 +21,13 @@ public class HttpServerAjaxVoting {
                 candidateVotes[i] = 0;
             }
         tcpCliDashboard=new TcpCliDashboard();
-        activityResolucao=tcpCliDashboard.tcpinfo(3);
+        activityResolucao=tcpCliDashboard.tcpinfo(3, "112345");
         System.out.println(Arrays.toString(activityResolucao));
         tcpCliDashboard=new TcpCliDashboard();
-        allactivitys=tcpCliDashboard.tcpinfo(4);
+        allactivitys=tcpCliDashboard.tcpinfo(4, "112345");
         System.out.println(Arrays.toString(allactivitys));
         tcpCliDashboard=new TcpCliDashboard();
-        activitysremaningbypriority=tcpCliDashboard.tcpinfo(5);
+        activitysremaningbypriority=tcpCliDashboard.tcpinfo(5, "112345");
         System.out.println(Arrays.toString(activitysremaningbypriority));
 
 

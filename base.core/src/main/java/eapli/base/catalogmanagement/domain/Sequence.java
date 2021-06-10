@@ -3,10 +3,8 @@ package eapli.base.catalogmanagement.domain;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.validations.Preconditions;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -17,8 +15,8 @@ public class Sequence implements AggregateRoot<Long> {
     private Long id;
 
     private Long position;
-    @ManyToOne
-    private Activity activity;
+    @ManyToMany
+    private List<Activity> activity;
     public Sequence() {
     }
 
