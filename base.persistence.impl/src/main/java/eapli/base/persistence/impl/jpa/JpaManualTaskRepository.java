@@ -1,12 +1,16 @@
 package eapli.base.persistence.impl.jpa;
 
 import eapli.base.Application;
+import eapli.base.clientusermanagement.domain.ClientUser;
+import eapli.base.clientusermanagement.domain.MecanographicNumber;
 import eapli.base.taskmanagement.domain.ManualTask;
 import eapli.base.taskmanagement.domain.TaskType;
 import eapli.base.taskmanagement.repositories.ManualTaskRepository;
+import eapli.base.teamManagement.domain.Team;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.repositories.impl.jpa.JpaAutoTxRepository;
 
+import javax.persistence.TypedQuery;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -49,6 +53,16 @@ public class JpaManualTaskRepository extends JpaAutoTxRepository<ManualTask, Lon
     @Override
     public void deleteOfIdentity(Long entityId) {
 
+    }
+
+    @Override
+    public Iterable<ManualTask> manualTaskToClaim(final Team team) {
+
+        final TypedQuery<ManualTask> q = createQuery("SELECT m FROM ManualTask m " +
+                        " WHERE (m.collaborator.team =:team) AND (m.collaborator.responsable = null)",
+                ManualTask.class);
+        q.setParameter("team", team);
+        return q.getResultList();
     }
 }
 

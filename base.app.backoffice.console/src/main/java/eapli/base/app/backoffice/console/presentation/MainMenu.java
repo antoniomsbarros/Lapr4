@@ -23,6 +23,7 @@
  */
 package eapli.base.app.backoffice.console.presentation;
 
+import eapli.base.app.backoffice.console.presentation.ManualTask.SearchManualTaskToClaimAction;
 import eapli.base.app.backoffice.console.presentation.clientuser.*;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
 import eapli.base.Application;
@@ -83,9 +84,9 @@ public class MainMenu extends AbstractUI {
     private static final int SERVICE_OPTION = 6;
     private static final int CRITICALITYLEVEL_OPTION = 7;
 
-
     private static final int TEAM_OPTION=8;
     private static final int TEAM_TYPE_OPTION = 9;
+    private static final int MANUALTASK_OPTION = 15;
 
     //CATALOG
     private static final int CREATE_CATALOG_OPTION = 1;
@@ -102,6 +103,11 @@ public class MainMenu extends AbstractUI {
     //DASHBOARD
     private static final int DASHBOARD1=1;
     private static final String SEPARATOR_LABEL = "--------------";
+
+    //MANUAL TASK
+    private static final int CREATE_MANUALTASK_OPTION = 1;
+    private static final int SEARCH_MANUALTASK_OPTION = 2;
+
 
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
 
@@ -167,7 +173,7 @@ public class MainMenu extends AbstractUI {
         }
         if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER)) {
             final Menu teamTypeMenu = builderTeamTypeMenu();
-            mainMenu.addSubMenu(TEAM_TYPE_OPTION,teamTypeMenu);
+           mainMenu.addSubMenu(TEAM_TYPE_OPTION,teamTypeMenu);
             final Menu teamMenu=builderTeamMenu();
             mainMenu.addSubMenu(TEAM_OPTION, teamMenu);
             final Menu collaboratorMenu = builderCollaboratorMenu();
@@ -186,6 +192,8 @@ public class MainMenu extends AbstractUI {
         if(authz.isAuthenticatedUserAuthorizedTo(BaseRoles.POWER_USER, BaseRoles.COLLABORATOR)){
             final Menu requestServiceMenu = builderRequestServiceMenu();
             mainMenu.addSubMenu(REQUESTSERVICE_OPTION,requestServiceMenu);
+            final Menu manualTaskMenu = builderManualTaskMenu();
+            mainMenu.addSubMenu(MANUALTASK_OPTION,manualTaskMenu);
         }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
@@ -270,6 +278,19 @@ public class MainMenu extends AbstractUI {
                 new SpecifyCollaboratorAction());
         menu.addItem(ASSOCIATE_REMOVE_COLLABORATOR_TEAM_OPTION, "Associate/Remove Collaborator-Team",
                 new AssociateRemoveCollaboratorTeamAction());
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
+    private Menu builderManualTaskMenu(){
+        final Menu menu = new Menu("Manual Task >");
+
+        menu.addItem(CREATE_MANUALTASK_OPTION,"Create Manual Task",
+                new CreateManualTaskUI()::show);
+
+        menu.addItem(SEARCH_MANUALTASK_OPTION, "Search Manual Task To Claim",
+                new SearchManualTaskToClaimAction());
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;

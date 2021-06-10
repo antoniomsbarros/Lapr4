@@ -78,4 +78,8 @@ public class Responsable implements DomainEntity<Long>{
         }
         return false;
     }
+
+    public void claim(ClientUser collaborator) {
+        responsable = collaborator;
+    }
 }

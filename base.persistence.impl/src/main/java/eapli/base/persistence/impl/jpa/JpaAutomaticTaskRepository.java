@@ -33,7 +33,7 @@ public class JpaAutomaticTaskRepository extends JpaAutoTxRepository<AutomaticTas
 
     @Override
     public Iterable<AutomaticTask> findAllActive() {
-        return null;
+        return match("e.active = true");
     }
 
     @Override

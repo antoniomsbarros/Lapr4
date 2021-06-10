@@ -90,6 +90,7 @@ public class Team implements AggregateRoot<Uniquecode>{
     public  String designationTeam(){
         return designationTeam.toString();
     }
+    public  ClientUser clientUser() {return responsable;}
     public  TeamType teamType(){
         return  teamType;
     }

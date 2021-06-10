@@ -1,0 +1,47 @@
+commit 5545b043eacdf3adffcd088c0bdbb9c64c83fab2
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Tue Jun 1 17:56:32 2021 +0100
+
+    L2S20-75 #Domain Manual Task refinement
+
+M	base.core/src/main/java/eapli/base/taskmanagement/application/AddManualTaskController.java
+
+commit b386077db6630308101d05599f5e2e5ccf02616b
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Tue Jun 1 17:55:47 2021 +0100
+
+    L2S20-75 #domain Manual Task update
+
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/ManualTask.java
+
+commit b9c2ccf7a33aed2926856b8cfb7f3b6a0c260b72
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Tue Jun 1 17:54:24 2021 +0100
+
+    #domain  catalogmanagement/domain/Responsable update
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Responsable.java
+
+commit d17041826031cafeb49c22141ce28e8957c853e6
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Tue Jun 1 16:59:44 2021 +0100
+
+    #domain  catalogmanagement/domain/Responsable refinement
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Responsable.java
+
+commit a7298a82ba6d497b60e1bdc0ae59e7d2b47154c6
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Tue Jun 1 15:51:29 2021 +0100
+
+    L2S20-75 #application  taskmanagement/ application/AddManualTaskController refinement
+
+M	base.core/src/main/java/eapli/base/taskmanagement/application/AddManualTaskController.java
+
+commit 7a1367ed905d23455bd83917d3ea2565eed5cf0f
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Tue Jun 1 15:49:18 2021 +0100
+
+    L2S20-75 #Domain Manual Task refinement
+
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/ManualTask.java
