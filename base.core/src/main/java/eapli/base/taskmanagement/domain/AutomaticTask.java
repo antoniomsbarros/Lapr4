@@ -73,4 +73,11 @@ public class AutomaticTask extends Task implements  DomainEntity<Long> {
         String os = System.getProperty("os.name");
         return os.toLowerCase().contains("windows");
     }
+
+    @Override
+    public String toString() {
+        return "AutomaticTask{" +
+                "scriptPath=" + scriptPath +
+                '}';
+    }
 }

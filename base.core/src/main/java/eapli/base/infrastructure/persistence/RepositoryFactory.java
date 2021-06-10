@@ -124,7 +124,7 @@ public interface RepositoryFactory {
 	FormRepository forms();
 
 	ServiceRepository services();
-
+	SequenceRepository sequences();
 	CriticalityLevelRepository criticalityLevels();
 
 	/**

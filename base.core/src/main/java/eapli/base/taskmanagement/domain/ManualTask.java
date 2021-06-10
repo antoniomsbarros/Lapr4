@@ -59,4 +59,14 @@ public class ManualTask extends Task implements DomainEntity<Long> {
     public Responsable Responsible() {
         return collaborator;
     }
+
+    @Override
+    public String toString() {
+        return "ManualTask{" +
+                "type=" + type +
+                ", collaborator=" + collaborator +
+                ", commentary=" + commentary +
+                ", decision=" + decision +
+                '}';
+    }
 }

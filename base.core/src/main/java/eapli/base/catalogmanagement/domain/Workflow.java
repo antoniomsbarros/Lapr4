@@ -47,10 +47,14 @@ public class Workflow implements AggregateRoot<Long> {
 
     @Override
     public String toString() {
+        String str="";
+        for (Sequence s:sequences
+             ) {
+            str+=s.identity();
+        }
         return "Workflow{" +
                 "id=" + id +
+                ", sequences="+ str+
                 '}';
     }
-
-
 }

@@ -1,5 +1,6 @@
 package eapli.base.catalogmanagement.domain;
 
+import eapli.base.taskmanagement.domain.Task;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.validations.Preconditions;
 
@@ -15,8 +16,8 @@ public class Sequence implements AggregateRoot<Long> {
     private Long id;
 
     private Long position;
-    @ManyToMany
-    private List<Activity> activity;
+    @OneToOne
+    private Task activity;
     public Sequence() {
     }
 
@@ -46,5 +47,7 @@ public class Sequence implements AggregateRoot<Long> {
         return this.id;
     }
 
-
+    public Task tasks(){
+        return activity;
+    }
 }
