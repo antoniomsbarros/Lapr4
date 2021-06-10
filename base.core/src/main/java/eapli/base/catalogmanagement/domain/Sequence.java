@@ -6,6 +6,7 @@ import eapli.framework.validations.Preconditions;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -16,7 +17,8 @@ public class Sequence implements AggregateRoot<Long> {
     private Long id;
 
     private Long position;
-
+    @ManyToOne
+    private Activity activity;
     public Sequence() {
     }
 

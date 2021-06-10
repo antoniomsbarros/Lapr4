@@ -34,10 +34,22 @@ public class Workflow implements AggregateRoot<Long> {
         }
         return identity().equals(workflow.identity());
     }
-
+    public List<Sequence> Sequences() {
+        return sequences;
+    }
+    public void AlterListofSequences(List<Sequence> sequences){
+        this.sequences=sequences;
+    }
     @Override
     public Long identity() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Workflow{" +
+                "id=" + id +
+                '}';
     }
 
 

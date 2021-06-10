@@ -3,6 +3,7 @@ package eapli.base.persistence.impl.jpa;
 import eapli.base.Application;
 import eapli.base.catalogmanagement.domain.Catalog;
 import eapli.base.catalogmanagement.domain.Service;
+import eapli.base.catalogmanagement.domain.Workflow;
 import eapli.base.catalogmanagement.repository.ServiceRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.repositories.impl.jpa.JpaAutoTxRepository;
@@ -37,6 +38,15 @@ public class JpaServiceRepository extends JpaAutoTxRepository<Service,Long,Long>
         final Map<String,Object> params = new HashMap<>();
         params.put("catalog", catalog);
         return match("e.catalog=:catalog",params);
+    }
+
+    @Override
+    public Optional<Workflow> findbyidServiceworkflow(Long id_service) {
+        final Map<String, Object> params=new HashMap<>();
+        params.put("serviceID", id_service);
+        Optional<Service> optionalService= matchOne("e.id=: serviceID", params);
+        System.out.println(optionalService.get().toString());
+        return Optional.ofNullable(optionalService.get().workflow());
     }
 }
 

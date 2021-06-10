@@ -3,10 +3,7 @@
  */
 package eapli.base.infrastructure.persistence;
 
-import eapli.base.catalogmanagement.repository.ActivityRepository;
-import eapli.base.catalogmanagement.repository.CatalogRepository;
-import eapli.base.catalogmanagement.repository.CriticalityLevelRepository;
-import eapli.base.catalogmanagement.repository.ServiceRepository;
+import eapli.base.catalogmanagement.repository.*;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
@@ -147,4 +144,5 @@ public interface RepositoryFactory {
 	DraftRepository drafts();
 
 	RequestRepository requests();
+	WorkflowRepository workflow();
 }

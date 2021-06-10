@@ -4,6 +4,7 @@ import eapli.base.Application;
 import eapli.base.catalogmanagement.repository.ActivityRepository;
 import eapli.base.catalogmanagement.repository.CriticalityLevelRepository;
 import eapli.base.catalogmanagement.repository.ServiceRepository;
+import eapli.base.catalogmanagement.repository.WorkflowRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.infrastructure.persistence.RepositoryFactory;
 import eapli.base.ordermanagement.domain.repository.FormRepository;
@@ -143,6 +144,11 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 
 	public RequestRepository requests(){
 		return new JpaRequestRepository(Application.settings().getPersistenceUnitName());
+	}
+
+	@Override
+	public WorkflowRepository workflow() {
+		return new JpaWorkflowRepository(Application.settings().getPersistenceUnitName());
 	}
 
 	public RequestRepository requests(final TransactionalContext autoTx){
