@@ -11,6 +11,6 @@ import eapli.framework.visitor.Visitor;
 public class ManualTaskPrinter implements Visitor<ManualTask> {
     @Override
     public void visit(ManualTask visitee) {
-        System.out.printf("%-50s%n", visitee.identity());
+        System.out.printf("%s - Responsible: %s\n", visitee.toString(), visitee.Responsible().responsable().toString());
     }
 }
