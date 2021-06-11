@@ -5,6 +5,8 @@ import eapli.framework.general.domain.model.Description;
 
 public class AttributeBuilder implements DomainFactory<Attribute> {
 
+    private Long id;
+
     private Description description;
 
     private Description name;
@@ -51,6 +53,6 @@ public class AttributeBuilder implements DomainFactory<Attribute> {
 
     @Override
     public Attribute build() {
-        return new Attribute(/*id,*/ description, name, label, regularexpression, script, typeofData);
+        return new Attribute(id, description, name, label, regularexpression, typeofData);
     }
 }
