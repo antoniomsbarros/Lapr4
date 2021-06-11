@@ -11,6 +11,7 @@ import eapli.framework.infrastructure.authz.application.UserSession;
 import java.io.*;
 import java.net.*;
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
 
 class TcpCliDashboard {
 	static InetAddress serverIP;
@@ -26,9 +27,9 @@ class TcpCliDashboard {
 
 	}
 
-	public static  String[] tcpinfo(int code) throws Exception {
+	public static  String[] tcpinfo(int code, String data) throws Exception {
 
-		try { serverIP = InetAddress.getByName("127.0.0.1"); }
+		try { serverIP = InetAddress.getByName("10.9.21.107"); }
 		catch(UnknownHostException ex) {
 			System.out.println("Invalid server specified: " + "10.9.21.107");
 			System.exit(1); }
@@ -45,16 +46,31 @@ class TcpCliDashboard {
 
 
 		protocol protocol =new protocol(code);
-		protocol.send(sOut, "112345");
+		protocol.send(sOut, data);
 		protocol = new protocol(sIn);
-		String str=protocol.getData();
+		String[] temp=protocol.getData().split(" ");
+		String str=temp[0];
+		sock.close();
+		String result1[]=new String[Integer.parseInt(str)];
+		for (int i = 0; i < Integer.parseInt(str); i++) {
+			sock=new Socket(serverIP, 70);
+			BufferedReader in1 = new BufferedReader(new InputStreamReader(System.in));
+			DataOutputStream sOut1 = new DataOutputStream(sock.getOutputStream());
+			DataInputStream sIn1 = new DataInputStream(sock.getInputStream());
+			protocol protocol1 =new protocol(code);
+			protocol1.send(sOut1, "112345"+" "+i);
+			protocol1 = new protocol(sIn1);
+			result1[i]=protocol1.getData();
+			System.out.println(result1[i]);
+			sock.close();
+		}
 		str.replace("[","");
 		str.replace("]","");
 		String[] result=str.split(",");
-		//System.out.println(Arrays.toString(result));
 
-		sock.close();
-		return result;
+
+
+		return result1;
 		}
 
 /*

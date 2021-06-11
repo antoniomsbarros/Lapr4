@@ -21,11 +21,13 @@ public class HttpServerAjaxVoting {
                 candidateVotes[i] = 0;
             }
         tcpCliDashboard=new TcpCliDashboard();
-        activityResolucao=tcpCliDashboard.tcpinfo(3);
+        activityResolucao=tcpCliDashboard.tcpinfo(3, "112345");
         System.out.println(Arrays.toString(activityResolucao));
-        allactivitys=tcpCliDashboard.tcpinfo(4);
+        tcpCliDashboard=new TcpCliDashboard();
+        allactivitys=tcpCliDashboard.tcpinfo(4, "112345");
         System.out.println(Arrays.toString(allactivitys));
-        activitysremaningbypriority=tcpCliDashboard.tcpinfo(5);
+        tcpCliDashboard=new TcpCliDashboard();
+        activitysremaningbypriority=tcpCliDashboard.tcpinfo(5, "112345");
         System.out.println(Arrays.toString(activitysremaningbypriority));
 
 
@@ -77,13 +79,18 @@ public class HttpServerAjaxVoting {
         return textHtml;
         }
     public static synchronized String preparactionActivities() {
-        String textHtml="<hr><ul><h2> Activitys in resolution</h2>";
+        String textHtml="";
+        if (activityResolucao.length==0 && activitysremaningbypriority.length==0 && allactivitys.length==0){
+            textHtml="<div><h1 align=center >The Collaborator has no activities</h1></div>";
+            return textHtml;
+        }
+        textHtml="<hr><ul><h2> Activitys in resolution</h2>";
         for (int i = 0; i < activityResolucao.length; i++) {
             textHtml=textHtml+"<li style=\"color:red\">" +activityResolucao[i]+"</li>";
         }
         textHtml=textHtml+"</ul></hr>";
-        textHtml=textHtml+"<div><hr><ul>";
-        textHtml="<hr><ul><h2> Activitys Remaning by Priority </h2>";
+        textHtml=textHtml+"<div>";
+        textHtml=textHtml+"<hr><ul><h2> Activitys Remaning by Priority </h2>";
         for (int i = 0; i < activitysremaningbypriority.length; i++) {
             textHtml=textHtml+"<li style=\"color:red\">" +activitysremaningbypriority[i]+"</li>";
         }
@@ -94,6 +101,7 @@ public class HttpServerAjaxVoting {
             textHtml=textHtml+"<li style=\"color:red\">" +allactivitys[i]+"</li>";
         }
         textHtml=textHtml+"</ul></hr></div>";
+
         return textHtml;
     }
     public static synchronized void castVote(String i) {

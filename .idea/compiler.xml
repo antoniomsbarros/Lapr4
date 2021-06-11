@@ -18,6 +18,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="activityFlowEngine" target="11" />
       <module name="base" target="11" />
       <module name="base.app.backoffice.console" target="1.8" />
       <module name="base.app.bootstrap" target="1.8" />
@@ -26,6 +27,9 @@
       <module name="base.app.user.console" target="1.8" />
       <module name="base.bootstrappers" target="1.8" />
       <module name="base.core" target="1.8" />
+      <module name="base.dashboard" target="11" />
+      <module name="base.flowengine" target="11" />
+      <module name="base.MotorFlow" target="11" />
       <module name="base.persistence.impl" target="1.8" />
       <module name="base.TCP.ActivityFlowEngine" target="11" />
       <module name="Lapr4" target="11" />

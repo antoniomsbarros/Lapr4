@@ -105,7 +105,8 @@ public class MainMenu extends AbstractUI {
     private static final String SEPARATOR_LABEL = "--------------";
 
     //MANUAL TASK
-    private static final int SEARCH_MANUALTASK_OPTION = 1;
+    private static final int CREATE_MANUALTASK_OPTION = 1;
+    private static final int SEARCH_MANUALTASK_OPTION = 2;
 
 
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
@@ -284,6 +285,9 @@ public class MainMenu extends AbstractUI {
 
     private Menu builderManualTaskMenu(){
         final Menu menu = new Menu("Manual Task >");
+
+        menu.addItem(CREATE_MANUALTASK_OPTION,"Create Manual Task",
+                new CreateManualTaskUI()::show);
 
         menu.addItem(SEARCH_MANUALTASK_OPTION, "Search Manual Task To Claim",
                 new SearchManualTaskToClaimAction());

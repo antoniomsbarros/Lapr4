@@ -1,11 +1,11 @@
 package eapli.base.catalogmanagement.domain;
 
+import eapli.base.taskmanagement.domain.Task;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.validations.Preconditions;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -16,8 +16,15 @@ public class Sequence implements AggregateRoot<Long> {
     private Long id;
 
     private Long position;
+    @OneToOne
+    private Task activity;
 
     public Sequence() {
+    }
+
+    public Sequence(Long position, Task activity) {
+        this.position = position;
+        this.activity = activity;
     }
 
     public Sequence(final Long posicao) {
@@ -46,5 +53,16 @@ public class Sequence implements AggregateRoot<Long> {
         return this.id;
     }
 
+    public Task tasks(){
+        return activity;
+    }
 
+    @Override
+    public String toString() {
+        return "Sequence{" +
+                "id=" + id +
+                ", position=" + position +
+                ", activity=" + activity +
+                '}';
+    }
 }

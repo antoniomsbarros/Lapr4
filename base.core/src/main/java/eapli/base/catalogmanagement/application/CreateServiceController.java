@@ -7,12 +7,10 @@ import eapli.base.catalogmanagement.domain.ServiceBuilder;
 import eapli.base.catalogmanagement.repository.CatalogRepository;
 import eapli.base.catalogmanagement.repository.ServiceRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
-import eapli.base.ordermanagement.domain.AttributeBuilder;
-import eapli.base.ordermanagement.domain.Form;
+import eapli.base.ordermanagement.domain.*;
 import eapli.base.ordermanagement.domain.repository.FormRepository;
 import eapli.framework.application.UseCaseController;
 import eapli.framework.general.domain.model.Description;
-import eapli.base.ordermanagement.domain.FormBuilder;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 
@@ -29,6 +27,8 @@ public class CreateServiceController {
     private FormBuilder formBuilder;
     private AttributeBuilder attributeBuilder;
     private Set<Keyword> lstKeywords;
+    private List<Form> lstForms;
+    private List<Attribute> lstAttrbutes;
 
     public CreateServiceController() {
         this.authz = AuthzRegistry.authorizationService();
@@ -39,6 +39,8 @@ public class CreateServiceController {
         this.formBuilder = new FormBuilder();
         this.attributeBuilder = new AttributeBuilder();
         this.lstKeywords = new HashSet<>();
+        this.lstForms = new ArrayList<>();
+        this.lstAttrbutes = new ArrayList<>();
     }
 
     public void createService(Description title,Description smalldescription, Description fulldescription,
@@ -81,17 +83,24 @@ public class CreateServiceController {
         formBuilder.withName(name);
     }*/
 
-    //public Attribute addAttribute(Long id, Description description, Description name, Description label, Description regularexpression, Description script,TypeofData dataType) {
-        //return formRepository.saveAttribute(id, description, name, label, regularexpression, script, dataType);
-    //}
-
-    public Form saveForm(Description name,Description script) {
-        formBuilder.withName(name).withScript(script)/*.withAttribute(lstAttributes)*/;
-        return formRepository.save(formBuilder.build());
+    public void addAttribute(Long id, Description description, Description name, Description label, Description regularexpression, TypeofData dataType) {
+        lstAttrbutes.add(new Attribute(id, description, name, label, regularexpression, dataType ));
     }
 
-    public Service saveService(List<Form> lstForm ) {
-        serviceBuilder.withForm(lstForm);
+    public void saveForm(Description name,Description script) {
+        formBuilder.withName(name).withScript(script);
+        Form f = formBuilder.build();
+
+        for (Attribute at : lstAttrbutes) {
+            System.out.println(at);
+            f.addAttribute(at);
+        }
+        Form form = formRepository.save(f);
+        lstForms.add(form);
+    }
+
+    public Service saveService() {
+        serviceBuilder.withForm(lstForms);
         return serviceRepository.save(serviceBuilder.build());
     }
 

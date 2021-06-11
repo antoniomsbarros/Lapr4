@@ -6,6 +6,7 @@ import eapli.base.catalogmanagement.domain.Keyword;
 import eapli.base.catalogmanagement.domain.Service;
 import eapli.base.ordermanagement.domain.Attribute;
 import eapli.base.ordermanagement.domain.Form;
+import eapli.base.ordermanagement.domain.TypeofData;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
@@ -53,11 +54,8 @@ public class CreateServiceUI extends AbstractUI {
 
         controller.checkIfServiceIsComplete(title,smalldescription,fulldescription,icon,feedback);
 
-        List<Form> lstForm = new ArrayList<>();
-        List<Attribute> lstAttribute = new ArrayList<>();
-
         answer = "y";
-        //String answer2 = "y";
+        String answer2 = "y";
         while(answer.equals("y")) {
 
             /*Form Info*/
@@ -66,21 +64,20 @@ public class CreateServiceUI extends AbstractUI {
             //controller.addForm(nameForm);
             final Description script = Description.valueOf(Console.readLine("Script: "));
             /*Attribute Info*/
-            /*while (answer2.equals("y")) {
-                final Long id = Long.valueOf("10");
+            while (answer2.equals("y")) {
+                final Long id = Long.valueOf(Console.readLine("ID Attribute: "));
                 System.out.println(id);
                 final Description description = Description.valueOf(Console.readLine("Description: "));
                 final Description nameAttribute = Description.valueOf(Console.readLine("Attribute name: "));
                 final Description label = Description.valueOf(Console.readLine("Label: "));
                 final Description regularexpression = Description.valueOf(Console.readLine("Regular expression: "));
-                final Description script = Description.valueOf(Console.readLine("Script: "));
                 final TypeofData td = TypeofData.valueOf(Console.readLine("Choose a data type (INTEGER, String, Bool, Data, Ficheiro, ListaDeValores): "));
-                Attribute at = controller.addAttribute(id, description, nameAttribute, label, regularexpression, script, td);
-                lstAttribute.add(at);
-                System.out.println(at);
+
+                controller.addAttribute(id, description, nameAttribute, label, regularexpression, td);
+
                 answer2 = Console.readLine("Do you want to add more Attributes to the Form?(y/n)");
-            }*/
-            lstForm.add(controller.saveForm(nameForm,script));
+            }
+            controller.saveForm(nameForm,script);
 
             answer = Console.readLine("Do you want to add a manual task Form?(y/n)");
         }
@@ -88,7 +85,7 @@ public class CreateServiceUI extends AbstractUI {
         if(temp.equals("n"))
             return false;
 
-        Service createdService = controller.saveService(lstForm);
+        Service createdService = controller.saveService();
         System.out.println("Service created.\n" + createdService);
         return true;
     }

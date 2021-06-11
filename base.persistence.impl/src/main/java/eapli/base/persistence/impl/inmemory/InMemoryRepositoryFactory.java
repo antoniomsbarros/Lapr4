@@ -1,9 +1,6 @@
 package eapli.base.persistence.impl.inmemory;
 
-import eapli.base.catalogmanagement.repository.ActivityRepository;
-import eapli.base.catalogmanagement.repository.CatalogRepository;
-import eapli.base.catalogmanagement.repository.CriticalityLevelRepository;
-import eapli.base.catalogmanagement.repository.ServiceRepository;
+import eapli.base.catalogmanagement.repository.*;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.clientusermanagement.repositories.SignupRequestRepository;
 import eapli.base.funcaomanagement.repositories.FunctionRepository;
@@ -88,6 +85,11 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
 		return services(null);
 	}
 
+	@Override
+	public SequenceRepository sequences() {
+		return new InMemorySequenceRepository();
+	}
+
 
 	public ServiceRepository services(final TransactionalContext tx){
 		return new InMemoryServiceRepository();
@@ -152,6 +154,11 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
 
 	public RequestRepository requests(){
 		return new InMemoryRequestRepository();
+	}
+
+	@Override
+	public WorkflowRepository workflow() {
+		return new InMemoryWorkflowRepository();
 	}
 
 	@Override

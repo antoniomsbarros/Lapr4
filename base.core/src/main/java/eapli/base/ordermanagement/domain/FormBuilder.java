@@ -11,7 +11,7 @@ public class FormBuilder implements DomainFactory<Form> {
 
     private Description script;
 
-    //private List<Attribute> attribute;
+    private List<Attribute> attribute;
 
     public FormBuilder() { }
 
@@ -25,13 +25,13 @@ public class FormBuilder implements DomainFactory<Form> {
         return this;
     }
 
-    /*public FormBuilder withAttribute(List<Attribute> at) {
+    public FormBuilder withAttribute(List<Attribute> at) {
         this.attribute = at;
         return this;
-    }*/
+    }
 
     @Override
     public Form build() {
-        return new Form(this.name, this.script /*this.attribute*/);
+        return new Form(this.name, this.script);
     }
 }

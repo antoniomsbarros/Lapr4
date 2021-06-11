@@ -32,6 +32,7 @@
     <class>eapli.base.catalogmanagement.domain.Delegaction</class>
     <class>eapli.base.taskmanagement.domain.Task</class>
     <class>eapli.base.taskmanagement.domain.AutomaticTask</class>
+    <class>eapli.base.taskmanagement.domain.ManualTask</class>
     <properties>
       <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/base"/>-->
 

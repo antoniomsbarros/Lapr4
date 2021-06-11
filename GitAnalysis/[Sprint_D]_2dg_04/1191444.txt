@@ -1,0 +1,48 @@
+commit 3e4bdd781187a7fdc1d58732f305ab197fc9bca2
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Sat Jun 5 17:52:51 2021 +0100
+
+    L2S20-112 presentation layer
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/ManualTask/ManualTaskPrinter.java
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/ManualTask/SearchManualTaskToClaimAction.java
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/ManualTask/SearchManualTaskToClaimUI.java
+
+commit bae314774096808b747d7cdf2d48ff2922830898
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Sat Jun 5 17:51:49 2021 +0100
+
+    L2S20-112 application layer
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Responsable.java
+A	base.core/src/main/java/eapli/base/taskmanagement/application/ManualTaskToClaimController.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/ManualTask.java
+
+commit a3abb225573387941409dab2e16a42df1e84db9c
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Sat Jun 5 17:50:15 2021 +0100
+
+    L2S20-112 persistence
+
+M	.idea/compiler.xml
+M	.idea/dataSources.xml
+M	.idea/encodings.xml
+M	Documents/US1006-AutomaticTask/US1006_AutomaticTaskComponent.md
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.TCP.ActivityFlowEngine/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+D	base.TCP.ActivityFlowEngine/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
+M	base.core/src/main/java/eapli/base/taskmanagement/repositories/ManualTaskRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryClientUserRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryManualTaskRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaAutomaticTaskRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaClientUserRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaManualTaskRepository.java
+
+commit 93c40e1d250b2107e23fd1af77cacb3329c0be85
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Wed Jun 2 23:31:30 2021 +0100
+
+    Test
+
+M	Documents/US1006-AutomaticTask/US1006_AutomaticTaskComponent.md

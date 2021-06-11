@@ -16,8 +16,9 @@ public class ManualTask extends Task implements DomainEntity<Long> {
 
     @OneToOne
     private Responsable collaborator;
-
+    @AttributeOverride(name = "value", column = @Column(name = "commentary"))
     private Description commentary;
+    @AttributeOverride(name = "value", column = @Column(name = "decision"))
     private Description decision;
 
     public ManualTask() {}
@@ -57,5 +58,15 @@ public class ManualTask extends Task implements DomainEntity<Long> {
 
     public Responsable Responsible() {
         return collaborator;
+    }
+
+    @Override
+    public String toString() {
+        return "ManualTask{" +
+                "type=" + type +
+                ", collaborator=" + collaborator.identity() +
+                ", commentary=" + commentary +
+                ", decision=" + decision +
+                '}';
     }
 }

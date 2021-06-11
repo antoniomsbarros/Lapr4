@@ -12,7 +12,7 @@ public class Workflow implements AggregateRoot<Long> {
     @GeneratedValue
     private Long id;
 
-    @OneToMany
+    @OneToMany()
     private List<Sequence> sequences;
 
     public Workflow() {
@@ -34,11 +34,27 @@ public class Workflow implements AggregateRoot<Long> {
         }
         return identity().equals(workflow.identity());
     }
-
+    public List<Sequence> Sequences() {
+        return sequences;
+    }
+    public void AlterListofSequences(List<Sequence> sequences){
+        this.sequences=sequences;
+    }
     @Override
     public Long identity() {
         return id;
     }
 
-
+    @Override
+    public String toString() {
+        String str="";
+        for (Sequence s:sequences
+             ) {
+            str+=s.identity();
+        }
+        return "Workflow{" +
+                "id=" + id +
+                ", sequences="+ str+
+                '}';
+    }
 }

@@ -1,0 +1,62 @@
+commit 3d7890ee2637d79556002a72bd99c427b0ba8526
+Author: António Barros(1200606) <1200606@isep.ipp.pt>
+Date:   Fri Jun 4 11:56:20 2021 +0100
+
+    fix a bug on the server about authorization service
+
+A	.idea/artifacts/Lapr4_jar.xml
+A	.idea/artifacts/base_TCP_ActivityFlowEngine_jar.xml
+A	.idea/artifacts/base_core_jar.xml
+A	.idea/artifacts/base_persistence_impl_jar.xml
+M	base.TCP.ActivityFlowEngine/pom.xml
+A	base.TCP.ActivityFlowEngine/src/main/java/META-INF/MANIFEST.MF
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/TCPSrvMFA.java
+A	base.TCP.ActivityFlowEngine/src/main/resources/ecafeteria.sample.properties
+A	base.TCP.ActivityFlowEngine/src/main/resources/logback.xml
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/HttpServerAjaxVoting.java
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/TcpCliDashboard.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchActivity.java
+
+commit f2934b653a7b1ab2868715cd295a0e53703d906b
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Thu Jun 3 15:37:06 2021 +0100
+
+    adding final and sppresswarnings on TCPSrvMfa class
+
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/TCPSrvMFA.java
+
+commit 8447f8419b8ec983d55c9b9c5e799ed2d452effa
+Author: António Barros (1200606@isep.ipp.pt) <1200606@isep.ipp.pt>
+Date:   Thu Jun 3 12:51:50 2021 +0100
+
+    ActivityFlowEngine changes
+
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.TCP.ActivityFlowEngine/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+M	base.TCP.ActivityFlowEngine/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+
+commit d816a78b574cf5adfedc9d12bd06b1d1bd4a2a6a
+Author: António Barros (1200606@isep.ipp.pt) <1200606@isep.ipp.pt>
+Date:   Thu Jun 3 12:47:38 2021 +0100
+
+    L2S20-119 refactor of the US of the dashboard
+
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/DemoConsumer.java
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/HTTPmessage.java
+D	base.core/src/main/java/eapli/base/Dashboardmanagement/HttpAjaxDashboardRequest.java
+D	base.core/src/main/java/eapli/base/Dashboardmanagement/HttpServerAjaxDashboard.java
+D	base.core/src/main/java/eapli/base/Dashboardmanagement/TCPSrvMFA.java
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/TcpCliDashboard.java
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/protocol.java
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/www/index.html
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/www/rcomp-ajax.js
+M	pom.xml
+
+commit 88fb59fe1640d90e87223d0e4ee0e6f8cce150f5
+Author: António Barros (1200606@isep.ipp.pt) <1200606@isep.ipp.pt>
+Date:   Thu Jun 3 12:31:31 2021 +0100
+
+    runner for the flow engine in the server
+
+M	run-activityflowengine.sh

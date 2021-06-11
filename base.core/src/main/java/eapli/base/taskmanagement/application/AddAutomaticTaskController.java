@@ -25,17 +25,19 @@ public class AddAutomaticTaskController {
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
     private final AutomaticTaskRepository automaticTaskRepository = PersistenceContext.repositories().AutomaticTasks();
 
-    public void addAutomaticTask(Calendar deadline, Integer priority, String scriptPath) {
+    public AutomaticTask addAutomaticTask(Calendar deadline, Integer priority, String scriptPath) {
 
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.ADMIN,
                 BaseRoles.RRH_MANAGER);
+        AutomaticTask task = new AutomaticTask();
     try{
         final AutomaticTask automaticTask = new AutomaticTask(TaskState.PENDING, new Deadline(deadline), priority, Description.valueOf(scriptPath));
-        automaticTaskRepository.save(automaticTask);
+        task= automaticTaskRepository.save(automaticTask);
     }catch (IllegalArgumentException e){
         System.out.println(e);
     }
 
         System.out.println("\nAutomaticTask saved!");
+    return task;
     }
 }
