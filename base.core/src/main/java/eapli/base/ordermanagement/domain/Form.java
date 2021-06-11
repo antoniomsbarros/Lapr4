@@ -19,7 +19,7 @@ public class Form implements AggregateRoot<Long> {
     private Description name;
     @AttributeOverride(name = "value", column = @Column(name = "script"))
     private Description script;
-    @OneToMany()
+    @OneToMany(mappedBy="id",cascade=CascadeType.MERGE)
     private Set<Attribute> attribute;
 
     public Form() {
@@ -32,7 +32,7 @@ public class Form implements AggregateRoot<Long> {
         }
         this.name = name;
         this.script = script;
-        //this.attribute = attribute;
+        this.attribute = new HashSet<>();
     }
 
     @Override
@@ -68,6 +68,10 @@ public class Form implements AggregateRoot<Long> {
     @Override
     public String toString() {
         return "identifier=" + identifier + ", name=" + name.toString() + ", script =" + script/*", Attribute:" + attribute.toString()*/;
+    }
+
+    public void addAttribute(Attribute attribute) {
+        this.attribute.add(attribute);
     }
 
     public Set<Attribute> attribute(){

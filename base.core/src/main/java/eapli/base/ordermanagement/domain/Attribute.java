@@ -22,17 +22,15 @@ public class Attribute implements DomainEntity<Long> , Serializable {
     private Description label;
     @AttributeOverride(name = "value", column = @Column(name = "regularexpression"))
     private Description regularexpression;
-    @AttributeOverride(name = "value", column = @Column(name = "script"))
-    private Description script;
     @Enumerated(EnumType.STRING)
     private TypeofData typeofData;
 
     public Attribute() {
     }
 
-    public Attribute(/*final Long id,*/ final Description description, final Description name,
+    public Attribute(final Long id, final Description description, final Description name,
                      final Description label, final Description regularexpression,
-                     final Description script, TypeofData typeofData) {
+                     TypeofData typeofData) {
         Preconditions.noneNull(description, name, label, typeofData);
         if (description.toString().length()>100){
             throw new IllegalArgumentException(
@@ -49,7 +47,6 @@ public class Attribute implements DomainEntity<Long> , Serializable {
         this.name = name;
         this.label = label;
         this.regularexpression = regularexpression;
-        this.script = script;
         this.typeofData = typeofData;
     }
 
@@ -60,13 +57,13 @@ public class Attribute implements DomainEntity<Long> , Serializable {
         Attribute attribute = (Attribute) o;
         return  id.equals(attribute.id) && description.equals(attribute.description)
                 && name.equals(attribute.name) && label.equals(attribute.label)
-                && regularexpression.equals(attribute.regularexpression) && script.equals(attribute.script)
+                && regularexpression.equals(attribute.regularexpression)
                 && typeofData.equals(attribute.typeofData);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, description, name, label, regularexpression, script, typeofData);
+        return Objects.hash(id, description, name, label, regularexpression, typeofData);
     }
 
     @Override
@@ -80,7 +77,7 @@ public class Attribute implements DomainEntity<Long> , Serializable {
         }
         return id.equals(attribute.id) && description.equals(attribute.description) && name.equals(attribute.name)
                 && label.equals(attribute.label) && regularexpression.equals(attribute.regularexpression)
-                && script.equals(attribute.script) && typeofData.equals(attribute.typeofData);
+                && typeofData.equals(attribute.typeofData);
     }
 
     @Override
@@ -90,7 +87,6 @@ public class Attribute implements DomainEntity<Long> , Serializable {
                 ", name=" + name.toString() +
                 ", label=" + label.toString() +
                 ", regularexpression=" + regularexpression.toString() +
-                ", script=" + script.toString() +
                 ", typeofData=" + typeofData.toString();
     }
 

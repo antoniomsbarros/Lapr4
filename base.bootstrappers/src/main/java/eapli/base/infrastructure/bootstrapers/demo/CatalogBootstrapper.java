@@ -68,7 +68,7 @@ public class CatalogBootstrapper implements Action {
 
     public void createCompletedServices(Description title,Description smalldescription, Description fulldescription,
                                         Description icon, Catalog choosenCatalog,String enableFeedback,String keyword ,String formName, String scriptName){
-        List<Form> forms = new ArrayList<>();
+        //List<Form> forms = new ArrayList<>();
 
                 createServiceController.createService(title,smalldescription,fulldescription,icon,choosenCatalog);
 
@@ -81,9 +81,9 @@ public class CatalogBootstrapper implements Action {
 
 
 
-        forms.add(createServiceController.saveForm(Description.valueOf(formName),Description.valueOf(scriptName)));
+        createServiceController.saveForm(Description.valueOf(formName),Description.valueOf(scriptName));
 
-        createServiceController.saveService(forms);
+        createServiceController.saveService();
     }
 
     private Catalog createCatalog(final Description title, Description shortdescription, Description longdescription, Description icone,
