@@ -104,4 +104,10 @@ public abstract class Task implements AggregateRoot<Long> {
         return this.taskCode;
     }
 
+    @Override
+    public String toString() {
+        return String.format("Task Code: %s - Deadline: %s - Priority: %s\n",
+                taskCode, deadline.Date(), priority);
+    }
+
 }
