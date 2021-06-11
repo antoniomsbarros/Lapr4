@@ -64,7 +64,7 @@ public class ManualTask extends Task implements DomainEntity<Long> {
     public String toString() {
         return "ManualTask{" +
                 "type=" + type +
-                ", collaborator=" + collaborator +
+                ", collaborator=" + collaborator.identity() +
                 ", commentary=" + commentary +
                 ", decision=" + decision +
                 '}';

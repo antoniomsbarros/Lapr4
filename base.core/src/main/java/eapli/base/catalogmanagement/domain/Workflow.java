@@ -12,7 +12,7 @@ public class Workflow implements AggregateRoot<Long> {
     @GeneratedValue
     private Long id;
 
-    @OneToMany
+    @OneToMany()
     private List<Sequence> sequences;
 
     public Workflow() {
