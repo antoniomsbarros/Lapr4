@@ -19,7 +19,7 @@ public class Form implements AggregateRoot<Long> {
     private Description name;
     @AttributeOverride(name = "value", column = @Column(name = "script"))
     private Description script;
-    @OneToMany()
+    @OneToMany(mappedBy="id",cascade=CascadeType.MERGE)
     private Set<Attribute> attribute;
 
     public Form() {
