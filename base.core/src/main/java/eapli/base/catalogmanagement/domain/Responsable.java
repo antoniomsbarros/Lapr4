@@ -45,7 +45,7 @@ public class Responsable implements DomainEntity<Long>{
     public String toString() {
         return "Responsable{" +
                 "id=" + id +
-                ", responsable=" + responsable +
+                ", responsable=" + responsable.toString() +
                 ", delegaction=" + delegaction +
                 ", team=" + team +
                 '}';

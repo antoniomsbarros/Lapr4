@@ -18,7 +18,13 @@ public class Sequence implements AggregateRoot<Long> {
     private Long position;
     @OneToOne
     private Task activity;
+
     public Sequence() {
+    }
+
+    public Sequence(Long position, Task activity) {
+        this.position = position;
+        this.activity = activity;
     }
 
     public Sequence(final Long posicao) {
@@ -49,5 +55,14 @@ public class Sequence implements AggregateRoot<Long> {
 
     public Task tasks(){
         return activity;
+    }
+
+    @Override
+    public String toString() {
+        return "Sequence{" +
+                "id=" + id +
+                ", position=" + position +
+                ", activity=" + activity +
+                '}';
     }
 }
