@@ -80,4 +80,7 @@ public class AutomaticTask extends Task implements  DomainEntity<Long> {
                 "scriptPath=" + scriptPath +
                 '}';
     }
+    public Description script(){
+        return this.scriptPath;
+    }
 }

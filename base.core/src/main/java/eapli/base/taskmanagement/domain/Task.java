@@ -103,5 +103,7 @@ public abstract class Task implements AggregateRoot<Long> {
     public Long identity() {
         return this.taskCode;
     }
-
+    public Integer priority(){
+        return priority;
+    }
 }
