@@ -1,10 +1,15 @@
 package eapli.base.app.backoffice.console.presentation.clientuser;
 
+import eapli.base.catalogmanagement.application.CreateServiceController;
 import eapli.base.catalogmanagement.domain.Delegaction;
 import eapli.base.catalogmanagement.domain.Responsable;
 import eapli.base.clientusermanagement.application.ClientUserService;
 import eapli.base.clientusermanagement.domain.ClientUser;
+import eapli.base.ordermanagement.domain.Attribute;
+import eapli.base.ordermanagement.domain.Form;
+import eapli.base.ordermanagement.domain.TypeofData;
 import eapli.base.taskmanagement.application.AddManualTaskController;
+import eapli.base.taskmanagement.domain.Answer;
 import eapli.base.taskmanagement.domain.Deadline;
 import eapli.base.taskmanagement.domain.TaskState;
 import eapli.base.taskmanagement.domain.TaskType;
@@ -24,6 +29,7 @@ public class CreateManualTaskUI extends AbstractUI {
     private RegisterTeamController teamController;
 
 
+
     public CreateManualTaskUI() {
         this.controller = new AddManualTaskController();
         this.teamController = new RegisterTeamController();
@@ -39,6 +45,7 @@ public class CreateManualTaskUI extends AbstractUI {
         ClientUser collab = null;
         Team team = null;
         Delegaction delegaction = null;
+        Form form = null;
         int position;
 
 
@@ -161,11 +168,22 @@ public class CreateManualTaskUI extends AbstractUI {
             taskType = TaskType.RESOLUTION;
         }
 
-        controller.addManualTask(date,priority,responsable,commentary,decision);
+        Description name = Description.valueOf(Console.readLine("Nome da Form da Atividade:"));
+        Description script = Description.valueOf(Console.readLine("Nome do Script da Form da Atividade:"));
+
+        form = new Form(name,script);
+
+        Attribute atb = new Attribute(Long.valueOf(1),Description.valueOf("DescAttrb1"),Description.valueOf("Attrb1"),Description.valueOf("LBL1"),Description.valueOf("regularExp"), TypeofData.Data);
+
+        form.addAttribute(atb);
+
+        List<Answer> lstAnswer = new ArrayList<>();
+
+
+        controller.addManualTask(date,priority,responsable,commentary,decision,form,lstAnswer);
 
         return true;
     }
-
     @Override
     public String headline() {
        return "Create Manual Task";
