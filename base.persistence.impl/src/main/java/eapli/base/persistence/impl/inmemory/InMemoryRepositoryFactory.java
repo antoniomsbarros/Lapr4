@@ -12,6 +12,7 @@ import eapli.base.ordermanagement.repository.RequestRepository;
 import eapli.base.ordermanagement.repository.TicketRepository;
 import eapli.base.taskmanagement.repositories.AutomaticTaskRepository;
 import eapli.base.taskmanagement.repositories.ManualTaskRepository;
+import eapli.base.taskmanagement.repositories.TaskRepository;
 import eapli.base.teamManagement.repositories.TeamRepository;
 import eapli.base.teamManagement.repositories.TeamTypeRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
@@ -126,6 +127,13 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
 	public AutomaticTaskRepository AutomaticTasks() {
 		return AutomaticTasks(null);
 	}
+
+	@Override
+	public TaskRepository Task() {
+		return new InMemoryTaskRepository();
+	}
+
+
 
 	@Override
 	public AutomaticTaskRepository AutomaticTasks(final TransactionalContext tx) {
