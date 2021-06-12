@@ -1,12 +1,16 @@
 package eapli.base.taskmanagement.domain;
 
 import eapli.base.catalogmanagement.domain.Responsable;
+import eapli.base.ordermanagement.domain.Form;
 import eapli.framework.domain.model.DomainEntity;
 
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.time.util.Calendars;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class ManualTask extends Task implements DomainEntity<Long> {
@@ -20,6 +24,11 @@ public class ManualTask extends Task implements DomainEntity<Long> {
     private Description commentary;
     @AttributeOverride(name = "value", column = @Column(name = "decision"))
     private Description decision;
+    @OneToOne
+    private Form form;
+
+    @ElementCollection
+    private List<Answer> lstResposta;
 
     public ManualTask() {}
 
@@ -28,7 +37,7 @@ public class ManualTask extends Task implements DomainEntity<Long> {
                       TaskType type,
                       Responsable collaborator,
                       Description decision,
-                      Description commentary) {
+                      Description commentary, Form form, List<Answer> lstResposta) {
         super(state, deadline, priority);
         try {
             if (Calendars.now().compareTo(deadline.Date()) == 1) {
@@ -50,6 +59,8 @@ public class ManualTask extends Task implements DomainEntity<Long> {
         this.type = type;
         this.decision = decision;
         this.commentary = commentary;
+        this.form = form;
+        this.lstResposta = lstResposta;
     }
 
     public void setType(TaskType type) {
@@ -60,13 +71,17 @@ public class ManualTask extends Task implements DomainEntity<Long> {
         return collaborator;
     }
 
+    public Form Form(){return form;}
+
+
     @Override
     public String toString() {
         return "ManualTask{" +
                 "type=" + type +
-                ", collaborator=" + collaborator.identity() +
+                ", collaborator=" + collaborator +
                 ", commentary=" + commentary +
                 ", decision=" + decision +
+                ", form=" + form +
                 '}';
     }
 }
