@@ -1,10 +1,12 @@
 package eapli.base.ordermanagement.domain;
 
 import eapli.base.catalogmanagement.domain.Workflow;
+import eapli.base.taskmanagement.domain.Answer;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.validations.Preconditions;
 import javax.persistence.*;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -26,6 +28,8 @@ public class Request implements AggregateRoot<Long>  {
     private Draft draft;
     @OneToOne()
     private Form form;
+    @ElementCollection
+    private List<Answer> lstResposta;
 
     public Request() {
     }
