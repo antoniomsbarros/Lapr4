@@ -3,10 +3,8 @@ package eapli.base.ordermanagement.domain;
 import eapli.base.catalogmanagement.domain.Service;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.validations.Preconditions;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -19,7 +17,7 @@ public class Ticket implements AggregateRoot<Long> {
 
     @OneToOne(optional = false)
     private Request request;
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     private Service service;
     public Ticket() {
     }
@@ -71,7 +69,9 @@ public class Ticket implements AggregateRoot<Long> {
     public  Request request(){
         return  request;
     }
-
+    public Service TicketService(){
+        return  service;
+    }
     @Override
     public String toString() {
         return "identifier=" + identifier.toString() + ", priorityTicket=" + priorityTicket.toString() +

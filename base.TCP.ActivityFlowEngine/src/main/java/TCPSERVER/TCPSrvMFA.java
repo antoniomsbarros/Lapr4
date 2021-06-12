@@ -29,15 +29,9 @@ public final class TCPSrvMFA {
 		Socket cliSock;
 		AuthzRegistry.configure(PersistenceContext.repositories().users(), new BasePasswordPolicy(),
 				new PlainTextEncoder());
-			//RequestWorkflow requestWorkflow=new RequestWorkflow();
-			//requestWorkflow.createWorkflowPedido("22","22");
-		//SearchRequestController searchRequestController=new SearchRequestController();
-		//searchRequestController.getrequestbyid(1L);
-		//System.out.println(searchRequestController.getrequestbyid(1L).toString());
+			RequestWorkflow requestWorkflow=new RequestWorkflow();
+			requestWorkflow.createWorkflowPedido("1");
 
-		SearchTickController searchTickController=new SearchTickController();
-
-		System.out.println(searchTickController.searchTickbyRequestid(1L));
 		try { sock = new ServerSocket(70); }
 		catch(IOException ex) {
 			System.out.println("Failed to open server socket");

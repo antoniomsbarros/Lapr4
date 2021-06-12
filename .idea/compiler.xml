@@ -11,6 +11,7 @@
         <module name="base.app.other.console" />
         <module name="base.app.user.console" />
         <module name="base.core" />
+        <module name="AutomaticTask" />
         <module name="base.app.backoffice.console" />
         <module name="base.app.common.console" />
         <module name="base.bootstrappers" />
@@ -19,6 +20,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="activityFlowEngine" target="11" />
+      <module name="AutomaticTask" target="11" />
       <module name="base" target="11" />
       <module name="base.app.backoffice.console" target="1.8" />
       <module name="base.app.bootstrap" target="1.8" />

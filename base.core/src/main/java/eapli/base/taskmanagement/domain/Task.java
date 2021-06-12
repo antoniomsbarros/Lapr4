@@ -106,4 +106,9 @@ public abstract class Task implements AggregateRoot<Long> {
     public Integer priority(){
         return priority;
     }
+
+    public void changeStatus(TaskState taskState){
+        this.state=taskState;
+
+    }
 }
