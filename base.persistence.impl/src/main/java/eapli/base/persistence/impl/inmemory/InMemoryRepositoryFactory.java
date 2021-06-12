@@ -9,6 +9,7 @@ import eapli.base.infrastructure.persistence.RepositoryFactory;
 import eapli.base.ordermanagement.domain.repository.FormRepository;
 import eapli.base.ordermanagement.repository.DraftRepository;
 import eapli.base.ordermanagement.repository.RequestRepository;
+import eapli.base.ordermanagement.repository.TicketRepository;
 import eapli.base.taskmanagement.repositories.AutomaticTaskRepository;
 import eapli.base.taskmanagement.repositories.ManualTaskRepository;
 import eapli.base.teamManagement.repositories.TeamRepository;
@@ -159,6 +160,11 @@ public class InMemoryRepositoryFactory implements RepositoryFactory {
 	@Override
 	public WorkflowRepository workflow() {
 		return new InMemoryWorkflowRepository();
+	}
+
+	@Override
+	public TicketRepository ticket() {
+		return new InMemoryTicketRepository();
 	}
 
 	@Override

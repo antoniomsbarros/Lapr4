@@ -26,10 +26,10 @@ public interface CatalogRepository extends DomainRepository<Long, Catalog> {
 
     @Query(value = "SELECT longdescription FROM Catalog WHERE longdescription = :longdescription",nativeQuery = true)
     Optional<Catalog> getCatalogByLongDescription(Description longdescription);
-
     default Optional<Catalog> findByIdentifier(Long number) {
         return ofIdentity(number);
     }
+
 
     @Query(value = "SELECT * FROM Catalog WHERE team = :team",nativeQuery = true)
     Iterable<Catalog> findByTeams(Team team);
