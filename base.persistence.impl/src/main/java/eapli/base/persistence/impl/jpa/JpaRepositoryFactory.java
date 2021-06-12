@@ -7,6 +7,7 @@ import eapli.base.infrastructure.persistence.RepositoryFactory;
 import eapli.base.ordermanagement.domain.repository.FormRepository;
 import eapli.base.ordermanagement.repository.DraftRepository;
 import eapli.base.ordermanagement.repository.RequestRepository;
+import eapli.base.ordermanagement.repository.TicketRepository;
 import eapli.base.taskmanagement.repositories.AutomaticTaskRepository;
 import eapli.base.taskmanagement.repositories.ManualTaskRepository;
 import eapli.base.teamManagement.repositories.TeamRepository;
@@ -140,6 +141,8 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 		return new JpaDraftRepository(Application.settings().getPersistenceUnitName());
 	}
 
+
+
 	public DraftRepository drafts(final TransactionalContext autoTx){
 		return new JpaDraftRepository(autoTx);
 	}
@@ -151,6 +154,11 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 	@Override
 	public WorkflowRepository workflow() {
 		return new JpaWorkflowRepository(Application.settings().getPersistenceUnitName());
+	}
+
+	@Override
+	public TicketRepository ticket() {
+		return new JpaTicketRepository(Application.settings().getPersistenceUnitName());
 	}
 
 	public RequestRepository requests(final TransactionalContext autoTx){
