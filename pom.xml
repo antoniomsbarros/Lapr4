@@ -27,6 +27,7 @@
         <module>base.core</module>
         <module>base.persistence.impl</module>
         <module>base.TCP.ActivityFlowEngine</module>
+        <module>base.TCP.AutomaticTask</module>
 
     </modules>
 
