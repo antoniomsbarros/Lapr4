@@ -1,5 +1,6 @@
 package TCPSERVER;
 
+import eapli.base.DashboardManagement.TcpClient;
 import eapli.base.DashboardManagement.protocol;
 import eapli.base.catalogmanagement.application.CreateSequenceController;
 import eapli.base.catalogmanagement.application.CreateWorkflow;
@@ -8,12 +9,15 @@ import eapli.base.catalogmanagement.application.SequenceController;
 import eapli.base.catalogmanagement.domain.Responsable;
 import eapli.base.catalogmanagement.domain.Sequence;
 import eapli.base.catalogmanagement.domain.Workflow;
-import eapli.base.taskmanagement.application.AddAutomaticTaskController;
-import eapli.base.taskmanagement.application.AddManualTaskController;
-import eapli.base.taskmanagement.application.SearchAutomaticTask;
-import eapli.base.taskmanagement.application.SearchManualTask;
+import eapli.base.ordermanagement.application.ChangeStatusRequest;
+import eapli.base.ordermanagement.application.SearchRequestController;
+import eapli.base.ordermanagement.application.SearchTickController;
+import eapli.base.ordermanagement.domain.Request;
+import eapli.base.ordermanagement.domain.Ticket;
+import eapli.base.taskmanagement.application.*;
 import eapli.base.taskmanagement.domain.AutomaticTask;
 import eapli.base.taskmanagement.domain.ManualTask;
+import eapli.base.taskmanagement.domain.TaskState;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.validations.Preconditions;
 
@@ -28,6 +32,11 @@ public class RequestWorkflow {
     private CreateWorkflow createWorkflow;
     private AddAutomaticTaskController addAutomaticTaskController;
     private AddManualTaskController addManualTaskController;
+    private SearchRequestController searchRequestController;
+    private SearchTickController searchTickController;
+    private TcpClient tcpClient;
+    private ChangeStatusRequest changeStatusRequest;
+    private ChangeStatusofActivity changeStatusofActivity;
     public RequestWorkflow() {
         this.searchWorkflowService = new SearchWorkflowService();
         this.sequenceController=new SequenceController();
@@ -36,17 +45,23 @@ public class RequestWorkflow {
         createWorkflow=new CreateWorkflow();
         addAutomaticTaskController=new AddAutomaticTaskController();
         addManualTaskController=new AddManualTaskController();
+        searchRequestController=new SearchRequestController();
+        searchTickController=new SearchTickController();
+        tcpClient=new TcpClient();
+        changeStatusRequest=new ChangeStatusRequest();
+        changeStatusofActivity=new ChangeStatusofActivity();
     }
 
     public void createWorkflowPedido(String idPedido){
         Preconditions.noneNull(idPedido);
-
-
-         Workflow workflow= searchWorkflowService.getWorkflowByService(22l);
+        Request request=searchRequestController.getrequestbyid(Long.valueOf(idPedido));
+        Ticket ticket=searchTickController.searchTickbyRequestid(request.identity());
+        Workflow workflow= searchWorkflowService.getWorkflowByService(ticket.TicketService().identity());
 
         Map<Integer, AutomaticTask> tasks=new HashMap<>();
         Map<Integer, ManualTask> manualTasks=new HashMap<>();
-        System.out.println(workflow.Sequences().size());
+
+
         for (int i = 0; i < workflow.Sequences().size(); i++) {
             try {
                 AutomaticTask automaticTask= searchAutomaticTask.automaticTaskbyid(workflow.Sequences().get(i).tasks().identity());
@@ -56,7 +71,8 @@ public class RequestWorkflow {
                 manualTasks.put(i, manualTask);
             }
         }
-
+        System.out.println("Manual task size: "+manualTasks.size());
+        System.out.println("Automatic task size: "+tasks.size());
 
         CreateSequenceController sequenceController=new CreateSequenceController();
         List<Sequence> sequences=new LinkedList<>();
@@ -65,6 +81,7 @@ public class RequestWorkflow {
         List<Sequence> sequenceList=new LinkedList<>();
         Map<Integer, ManualTask> manualTaskrequest=new HashMap<>();
         Map<Integer, AutomaticTask> automaticTaskrequest=new HashMap<>();
+
         for (int i = 0; i <size ; i++) {
             if (manualTasks.containsKey(i)){
                 ManualTask manualTask1=manualTasks.get(i);
@@ -77,9 +94,11 @@ public class RequestWorkflow {
                /* ManualTask manualTask=addManualTaskController.addManualTask(date, manualTask1.priority(), responsable,Description.valueOf("") , Description.valueOf(""));
                 Sequence sequence= sequenceController.createSequence(manualTask, (long) i);
                 sequenceList.add(sequence);
-                manualTaskrequest.put(i, manualTask);*/
+                manualTaskrequest.put(i, manualTask);
+                changeStatusofActivity.changeStatsTask(manualTask, )*/
+
             }else if (tasks.containsKey(i)){
-                AutomaticTask automaticTask=new AutomaticTask();
+                AutomaticTask automaticTask;
                 Calendar date=addDays(new Date(), 15);
                 automaticTask=addAutomaticTaskController.addAutomaticTask(date, tasks.get(i).priority(), tasks.get(i).script().toString());
                 Sequence sequence=sequenceController.createSequence(automaticTask, (long) i);
@@ -92,6 +111,7 @@ public class RequestWorkflow {
 
         for (int i = 0; i < workflowRequest.Sequences().size(); i++) {
             if (automaticTaskrequest.containsKey(i)){
+               //US 4071
 
             }else if (manualTaskrequest.containsKey(i)){
 

@@ -83,4 +83,8 @@ public class Request implements AggregateRoot<Long>  {
                 ", form=" + form +
                 '}';
     }
+
+    public void changeState(State state) {
+        this.stateofResquest=state;
+    }
 }
