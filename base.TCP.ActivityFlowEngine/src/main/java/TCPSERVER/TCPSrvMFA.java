@@ -4,6 +4,8 @@ import eapli.base.DashboardManagement.protocol;
 import eapli.base.catalogmanagement.application.SearchActivity;
 import eapli.base.catalogmanagement.domain.Activity;
 import eapli.base.infrastructure.persistence.PersistenceContext;
+import eapli.base.ordermanagement.application.SearchRequestController;
+import eapli.base.ordermanagement.application.SearchTickController;
 import eapli.base.taskmanagement.domain.Task;
 import eapli.base.usermanagement.domain.BasePasswordPolicy;
 import eapli.framework.application.UseCaseController;
@@ -29,8 +31,13 @@ public final class TCPSrvMFA {
 				new PlainTextEncoder());
 			//RequestWorkflow requestWorkflow=new RequestWorkflow();
 			//requestWorkflow.createWorkflowPedido("22","22");
+		//SearchRequestController searchRequestController=new SearchRequestController();
+		//searchRequestController.getrequestbyid(1L);
+		//System.out.println(searchRequestController.getrequestbyid(1L).toString());
 
+		SearchTickController searchTickController=new SearchTickController();
 
+		System.out.println(searchTickController.searchTickbyRequestid(1L));
 		try { sock = new ServerSocket(70); }
 		catch(IOException ex) {
 			System.out.println("Failed to open server socket");
@@ -50,9 +57,11 @@ class TCPSrvMFAThread implements Runnable {
 	private DataOutputStream sOut;
 	private DataInputStream sIn;
 	private Dashboardsearch dashboardsearch;
+	RequestWorkflow requestWorkflow=new RequestWorkflow();
 	TCPSrvMFAThread(Socket cli_s) {
 		s=cli_s;
 		dashboardsearch=new Dashboardsearch();
+		requestWorkflow=new RequestWorkflow();
 	}
 
 	public void run() {
@@ -73,8 +82,7 @@ class TCPSrvMFAThread implements Runnable {
 					break;
 				case 6:
 						String data3=protocol.getData();
-						List<Task> tasks=new ArrayList<>();
-
+						requestWorkflow.createWorkflowPedido(data3);
 					break;
 				default:
 					protocol.send(sOut,"Code invalido");

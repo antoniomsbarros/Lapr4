@@ -27,7 +27,7 @@ public class RequestWorkflow {
     private SearchAutomaticTask searchAutomaticTask;
     private CreateWorkflow createWorkflow;
     private AddAutomaticTaskController addAutomaticTaskController;
-    private AddManualTaskController addManualTaskController;    
+    private AddManualTaskController addManualTaskController;
     public RequestWorkflow() {
         this.searchWorkflowService = new SearchWorkflowService();
         this.sequenceController=new SequenceController();
@@ -38,8 +38,10 @@ public class RequestWorkflow {
         addManualTaskController=new AddManualTaskController();
     }
 
-    public void createWorkflowPedido(String idPedido, String idservice){
-        Preconditions.noneNull(idPedido, idservice);
+    public void createWorkflowPedido(String idPedido){
+        Preconditions.noneNull(idPedido);
+
+
          Workflow workflow= searchWorkflowService.getWorkflowByService(22l);
 
         Map<Integer, AutomaticTask> tasks=new HashMap<>();
