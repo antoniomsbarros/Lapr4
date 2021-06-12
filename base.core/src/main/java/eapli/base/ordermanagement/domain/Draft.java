@@ -23,14 +23,14 @@ public class Draft implements AggregateRoot<Long> {
     @ManyToOne
     private ClientUser collaborator;
 
-    private Number urgency;
+    private Long urgency;
 
     private String assigned;
 
     public Draft() {
     }
 
-    public Draft(final ClientUser clientUser, final String assigned, final String filepath,final Calendar deadline,final Number urgency)  {
+    public Draft(final ClientUser clientUser, final String assigned, final String filepath,final Calendar deadline,final Long urgency)  {
         Preconditions.noneNull(assigned,filepath,deadline, urgency,clientUser);
         this.file = filepath;
         this.deadline = deadline;

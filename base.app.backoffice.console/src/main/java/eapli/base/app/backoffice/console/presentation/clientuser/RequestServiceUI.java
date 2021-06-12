@@ -49,7 +49,7 @@ public class RequestServiceUI extends AbstractUI {
             final String filepath = String.valueOf(Console.readLine("File path:"));
             final Calendar deadline = Calendar.getInstance();
             final String urgency = String.valueOf(Console.readLine("Urgency:"));
-            final Number urgency2 = Integer.parseInt(urgency);
+            final Long urgency2 = Long.valueOf(urgency);
 
             controller.creatDraft(user,assigned,filepath,deadline,urgency2);
             return true;
@@ -62,7 +62,7 @@ public class RequestServiceUI extends AbstractUI {
             final String filepath = String.valueOf(Console.readLine("File path:"));
             final Calendar deadline = Calendar.getInstance();
             final String urgency = String.valueOf(Console.readLine("Urgency:"));
-            final Number urgency2 = Integer.parseInt(urgency);
+            final Long urgency2 = Long.valueOf(urgency);
 
             final Draft draft = controller.creatDraft(user,assigned,filepath,deadline,urgency2);
 
