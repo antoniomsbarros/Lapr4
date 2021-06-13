@@ -10,7 +10,9 @@ import java.util.Arrays;
 public class HttpServerAjaxVoting {
     static private final String BASE_FOLDER= "C:\\Lapr4\\base.core\\src\\main\\java\\eapli\\base\\DashboardManagement\\www";
     static private ServerSocket sock;
-    private static TcpCliDashboard tcpCliDashboard;
+    private static TcpClient tcpClient;
+    private static  final  String IPAdress="10.9.21.107";
+    private static  final  String IPAdressTemp="127.0.0.1";
     public static void main(String args[]) throws Exception {
 	Socket cliSock;
 
@@ -20,14 +22,14 @@ public class HttpServerAjaxVoting {
                 candidateName[i] = "Candidate " + i;
                 candidateVotes[i] = 0;
             }
-        tcpCliDashboard=new TcpCliDashboard();
-        activityResolucao=tcpCliDashboard.tcpinfo(3, "112345");
+        tcpClient =new TcpClient();
+        activityResolucao= tcpClient.tcpConnecting(3, "112345 3",IPAdress);
         System.out.println(Arrays.toString(activityResolucao));
-        tcpCliDashboard=new TcpCliDashboard();
-        allactivitys=tcpCliDashboard.tcpinfo(4, "112345");
+        tcpClient =new TcpClient();
+        allactivitys= tcpClient.tcpConnecting(3, "112345 4", IPAdress);
         System.out.println(Arrays.toString(allactivitys));
-        tcpCliDashboard=new TcpCliDashboard();
-        activitysremaningbypriority=tcpCliDashboard.tcpinfo(5, "112345");
+        tcpClient =new TcpClient();
+        activitysremaningbypriority= tcpClient.tcpConnecting(3, "112345 5", IPAdress);
         System.out.println(Arrays.toString(activitysremaningbypriority));
 
 

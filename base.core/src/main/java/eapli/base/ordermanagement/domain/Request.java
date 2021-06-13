@@ -1,14 +1,16 @@
 package eapli.base.ordermanagement.domain;
 
 import eapli.base.catalogmanagement.domain.Workflow;
+import eapli.base.taskmanagement.domain.Answer;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.validations.Preconditions;
 import javax.persistence.*;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Request implements AggregateRoot<Long> {
+public class Request implements AggregateRoot<Long>  {
     @Id
     @GeneratedValue
     private Long idRequest;
@@ -24,8 +26,10 @@ public class Request implements AggregateRoot<Long> {
     private Workflow workflow;
     @OneToOne(optional = false)
     private Draft draft;
-    @OneToOne
+    @OneToOne()
     private Form form;
+    @ElementCollection
+    private List<Answer> lstResposta;
 
     public Request() {
     }
@@ -69,5 +73,22 @@ public class Request implements AggregateRoot<Long> {
     @Override
     public int hashCode() {
         return Objects.hash(idRequest, stateofResquest, dateofRequest, feedback, draft, form);
+    }
+
+    @Override
+    public String toString() {
+        return "Request{" +
+                "idRequest=" + idRequest +
+                ", stateofResquest=" + stateofResquest +
+                ", dateofRequest=" + dateofRequest +
+                ", feedback=" + feedback +
+                ", workflow=" + workflow +
+                ", draft=" + draft +
+                ", form=" + form +
+                '}';
+    }
+
+    public void changeState(State state) {
+        this.stateofResquest=state;
     }
 }

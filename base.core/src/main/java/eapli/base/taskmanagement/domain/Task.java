@@ -103,7 +103,14 @@ public abstract class Task implements AggregateRoot<Long> {
     public Long identity() {
         return this.taskCode;
     }
+    public Integer priority(){
+        return priority;
+    }
 
+    public void changeStatus(TaskState taskState){
+        this.state=taskState;
+
+    }
     @Override
     public String toString() {
         return String.format("Task Code: %s - Deadline: %s - Priority: %s\n",

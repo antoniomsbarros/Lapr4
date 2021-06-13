@@ -63,7 +63,7 @@ public class RequestServiceController {
         return sr.findByID(code).get();
     }
 
-    public Draft creatDraft(final ClientUser clientUser,final String assigned,final String filepath,final Calendar deadline,final Number urgency){
+    public Draft creatDraft(final ClientUser clientUser,final String assigned,final String filepath,final Calendar deadline,final Long urgency){
         final DraftBuilder draftBuilder = new DraftBuilder(filepath,deadline,clientUser,urgency,assigned);
         draftBuilder.withFile(filepath).withDeadLine(deadline).withCollaborator(clientUser).withUrgency(urgency).withAssigned(assigned);
         return dr.save(draftBuilder.build());

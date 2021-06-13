@@ -63,6 +63,6 @@ public class DemoConsumer {
 			try { sock.close(); } catch(IOException ex2) { System.out.println("Error closing socket."); }
 			}
 
-        	} // MAIN METHOD
-    	} // CLASS
+        	}
+    	}
     

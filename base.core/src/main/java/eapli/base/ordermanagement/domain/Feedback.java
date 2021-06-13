@@ -1,11 +1,12 @@
 package eapli.base.ordermanagement.domain;
 
+import eapli.framework.domain.model.DomainEntity;
 import eapli.framework.time.util.Calendars;
 import eapli.framework.validations.Preconditions;
 import javax.persistence.*;
 import java.util.Calendar;
 @Entity
-public class Feedback  {
+public class Feedback  implements DomainEntity<Long> {
     @Id
     @GeneratedValue
     private Long id;
@@ -39,5 +40,15 @@ public class Feedback  {
     @Override
     public String toString() {
         return ", feedbackScale=" + feedbackScale.toString() + ", date=" + Calendars.format(date);
+    }
+
+    @Override
+    public boolean sameAs(Object other) {
+        return false;
+    }
+
+    @Override
+    public Long identity() {
+        return id;
     }
 }

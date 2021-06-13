@@ -7,16 +7,16 @@ import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.repositories.impl.jpa.JpaAutoTxRepository;
 
 public class JpaRequestRepository extends JpaAutoTxRepository<Request, Long, Long> implements RequestRepository {
-
     public JpaRequestRepository(final TransactionalContext autoTx){
-        super(autoTx,"identifier");
+        super(autoTx,"idRequest");
     }
 
     public JpaRequestRepository(String name){
-        super(name, Application.settings().getExtendedPersistenceProperties(),"identifier");
+        super(name, Application.settings().getExtendedPersistenceProperties(),"idRequest");
     }
 
     public JpaRequestRepository(){
-        super("identifier", Application.settings().getExtendedPersistenceProperties(),"identifier");
+        super("idRequest", Application.settings().getExtendedPersistenceProperties(),"idRequest");
     }
+
 }

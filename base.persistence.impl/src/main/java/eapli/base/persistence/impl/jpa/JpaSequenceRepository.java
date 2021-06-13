@@ -10,7 +10,7 @@ import eapli.framework.infrastructure.repositories.impl.jpa.JpaAutoTxRepository;
 import java.util.HashMap;
 import java.util.Map;
 
-public class JpaSequenceRepository extends JpaAutoTxRepository<Sequence, Long, Long> implements SequenceRepository {
+public class  JpaSequenceRepository extends JpaAutoTxRepository<Sequence, Long, Long> implements SequenceRepository {
     public JpaSequenceRepository(final TransactionalContext autoTx){
         super(autoTx,"id");
     }
