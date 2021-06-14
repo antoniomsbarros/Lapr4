@@ -112,10 +112,19 @@ public abstract class Task implements AggregateRoot<Long> {
         this.state=taskState;
 
     }
+
     public Deadline deadline(){
         return this.deadline;
     }
     public TaskState state(){
         return this.state;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Task Code: %s - Deadline: %s - Priority: %s\n",
+                taskCode, deadline.Date(), priority);
+    }
+
+
 }

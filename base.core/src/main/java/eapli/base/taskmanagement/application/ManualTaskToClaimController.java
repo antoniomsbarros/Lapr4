@@ -48,14 +48,19 @@ public class ManualTaskToClaimController {
 
     public void claim(ManualTask manualTask){
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.COLLABORATOR);
-        if (collaborator.isPresent()){
-            manualTask.Responsible().claim(collaborator.get());;
-            manualTaskRepository.save(manualTask);
-        } else {
-            throw new IllegalArgumentException("There is no collaborator");
+        Optional<ManualTask> optionalManualTask = manualTaskRepository.findByID(manualTask.identity());
+        if (optionalManualTask.isPresent()){
+            if (collaborator.isPresent()){
+                manualTask.Responsible().claim(collaborator.get());;
+                manualTaskRepository.save(manualTask);
+            } else {
+                throw new IllegalArgumentException("There is no collaborator");
+            }
+        }else {
+            throw new IllegalArgumentException("This Manual Task does not exist in the database");
         }
 
-    }
 
+    }
 
 }
