@@ -1,6 +1,7 @@
 package eapli.base.taskmanagement.domain;
 
 
+import eapli.base.ordermanagement.domain.State;
 import eapli.framework.domain.model.AggregateRoot;
 
 import javax.persistence.*;
@@ -110,5 +111,11 @@ public abstract class Task implements AggregateRoot<Long> {
     public void changeStatus(TaskState taskState){
         this.state=taskState;
 
+    }
+    public Deadline deadline(){
+        return this.deadline;
+    }
+    public TaskState state(){
+        return this.state;
     }
 }

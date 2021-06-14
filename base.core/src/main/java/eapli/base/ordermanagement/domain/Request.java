@@ -91,4 +91,11 @@ public class Request implements AggregateRoot<Long>  {
     public void changeState(State state) {
         this.stateofResquest=state;
     }
+
+    public List<Answer> Answers(){
+        return this.lstResposta;
+    }
+    public Draft draft(){
+        return  this.draft;
+    }
 }

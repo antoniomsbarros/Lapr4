@@ -24,7 +24,7 @@ public class AddManualTaskController {
 
     public ManualTask addManualTask(Calendar deadline, Integer priority,
                                     Responsable collaborator, Description commentary, Description decision, Form form, List<Answer> lstResposta ) {
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.COLLABORATOR);
+        //authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.COLLABORATOR);
         ManualTask manualTask = null;
         try {
             manualTask = new ManualTask(TaskState.PENDING, new Deadline(deadline),

@@ -1,11 +1,15 @@
 package TCPSERVER;
 
 import eapli.base.DashboardManagement.protocol;
+import eapli.base.catalogmanagement.application.CreateSequenceController;
 import eapli.base.catalogmanagement.application.SearchActivity;
 import eapli.base.catalogmanagement.domain.Activity;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.ordermanagement.application.SearchRequestController;
 import eapli.base.ordermanagement.application.SearchTickController;
+import eapli.base.taskmanagement.application.AddManualTaskController;
+import eapli.base.taskmanagement.application.SearchManualTask;
+import eapli.base.taskmanagement.domain.ManualTask;
 import eapli.base.taskmanagement.domain.Task;
 import eapli.base.usermanagement.domain.BasePasswordPolicy;
 import eapli.framework.application.UseCaseController;
@@ -13,11 +17,7 @@ import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 import eapli.framework.infrastructure.authz.domain.model.PlainTextEncoder;
 import java.io.*;
 import java.net.*;
-import java.util.ArrayList;
-
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 @UseCaseController
 @SuppressWarnings("squid:S106")
@@ -29,8 +29,12 @@ public final class TCPSrvMFA {
 		Socket cliSock;
 		AuthzRegistry.configure(PersistenceContext.repositories().users(), new BasePasswordPolicy(),
 				new PlainTextEncoder());
-			RequestWorkflow requestWorkflow=new RequestWorkflow();
-			requestWorkflow.createWorkflowPedido("1");
+		//AddManualTaskController manualTaskController=new AddManualTaskController();
+		//ManualTask manualTask= manualTaskController.addManualTask(new Date(),1,  )
+		RequestWorkflow requestWorkflow=new RequestWorkflow();
+		requestWorkflow.createWorkflowPedido("1");
+
+
 
 		try { sock = new ServerSocket(70); }
 		catch(IOException ex) {

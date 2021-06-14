@@ -68,7 +68,9 @@ public class Draft implements AggregateRoot<Long> {
     public  String assigned(){
         return assigned;
     }
-
+    public ClientUser collaborator(){
+        return  this.collaborator;
+    }
     @Override
     public String toString() {
         return "id=" + id +  ", deadline=" + Calendars.format(deadline) + ", urgency=" + urgency.toString();

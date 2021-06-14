@@ -168,8 +168,8 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(CREATE_CRITICALITYLEVEL_OPTION,criticalitylevelMenu);
             final Menu teamTypeMenu = builderTeamTypeMenu();
             mainMenu.addSubMenu(TEAM_TYPE_OPTION,teamTypeMenu);
-            //final  Menu dashboard=buildderDashboard();
-            //mainMenu.addSubMenu(DASHBOARD, dashboard);
+            final  Menu dashboard=buildderDashboard();
+            mainMenu.addSubMenu(DASHBOARD, dashboard);
         }
         if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER)) {
             final Menu teamTypeMenu = builderTeamTypeMenu();
@@ -194,6 +194,8 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(REQUESTSERVICE_OPTION,requestServiceMenu);
             final Menu manualTaskMenu = builderManualTaskMenu();
             mainMenu.addSubMenu(MANUALTASK_OPTION,manualTaskMenu);
+            final  Menu dashboard=buildderDashboard();
+            mainMenu.addSubMenu(DASHBOARD, dashboard);
         }
 
         if (!Application.settings().isMenuLayoutHorizontal()) {
@@ -303,11 +305,11 @@ public class MainMenu extends AbstractUI {
 
         return menu;
     }
-/*private Menu buildderDashboard()  {
+private Menu buildderDashboard()  {
     final Menu menu = new Menu("Dashboard >");
-    menu.addItem(DASHBOARD1, "dashboard", new DashboardUI()::show);
+    menu.addItem(DASHBOARD1, "dashboard", new DashboardUi()::show);
     return menu;
-}*/
+}
 
 
 

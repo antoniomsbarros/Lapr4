@@ -1,6 +1,7 @@
 package eapli.base.persistence.impl.inmemory;
 
 import eapli.base.clientusermanagement.domain.ClientUser;
+import eapli.base.clientusermanagement.domain.MecanographicNumber;
 import eapli.base.taskmanagement.domain.AutomaticTask;
 import eapli.base.taskmanagement.domain.ManualTask;
 import eapli.base.taskmanagement.domain.TaskType;
@@ -35,6 +36,12 @@ public class InMemoryManualTaskRepository  extends InMemoryDomainRepository<Manu
     @Override
     public Iterable<ManualTask> manualTaskToClaim(final Team team){
         throw new UnsupportedOperationException("NOT IMPLEMENTED YET");
+    }
+
+    @Override
+    public Iterable<ManualTask> findManualTaskbyCollaborator(Integer Collaborator) {
+        //return match(e -> e.responsable().responsable().identity().equals(new MecanographicNumber(String.valueOf(RESPONSAVEL_NUMBER))));
+        return match(e->e.Responsible().identity().equals(String.valueOf(Collaborator)));
     }
 }
 

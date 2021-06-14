@@ -33,12 +33,8 @@ public class DemoConsumer {
 		HTTPmessage request = new HTTPmessage();
 		System.out.println("Connecting to http://" + "127.0.0.1" + ":" + serverPort + "/");
 			request.setRequestMethod("PUT");
-		request.setURI("/votes/1");
-            	System.out.println("Casting " + VOTES_TO_CAST + " votes on the first candidate ...");
-
-
-		for(int i=0; i<VOTES_TO_CAST; i++) {
-            		System.out.println("Connecting to http://" + "127.0.0.1" + ":" + serverPort + "/");
+		request.setURI("/votes/"+args[0]);
+            	System.out.println("Casting " + args[0] + " Manual Tasks ...");
 			try { sock = new Socket(serverIP, serverPort); }
 			catch(IOException ex) {
             			System.out.println("Failed to connect to provided SERVER-ADDRESS and SERVER-PORT.");
@@ -56,13 +52,11 @@ public class DemoConsumer {
             			System.out.println("Application aborted.");
             			System.exit(1);
             			}
-			System.out.println("Casting a vote");
 			request.send(sOut);				// send HTTP request
 			HTTPmessage response = new HTTPmessage(sIn);	// receive HTTP response
-			System.out.println("HTTP server response status: " + response.getStatus());
 			try { sock.close(); } catch(IOException ex2) { System.out.println("Error closing socket."); }
 			}
 
-        	}
+
     	}
     

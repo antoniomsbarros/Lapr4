@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 
 public class HttpServerAjaxVoting {
-    static private final String BASE_FOLDER= "C:\\Lapr4\\base.core\\src\\main\\java\\eapli\\base\\DashboardManagement\\www";
+    static private final String BASE_FOLDER= "base.core\\src\\main\\java\\eapli\\base\\DashboardManagement\\www";
     static private ServerSocket sock;
     private static TcpClient tcpClient;
     private static  final  String IPAdress="10.9.21.107";
@@ -23,27 +23,19 @@ public class HttpServerAjaxVoting {
                 candidateVotes[i] = 0;
             }
         tcpClient =new TcpClient();
-        activityResolucao= tcpClient.tcpConnecting(3, "112345 3",IPAdress);
-        System.out.println(Arrays.toString(activityResolucao));
+        activityResolucao= tcpClient.tcpConnecting(3, CollaboratorNumber+" 3",IPAdress);
+
+        System.out.println(Arrays.toString(activityResolucao) +" " +activityResolucao.length);
         tcpClient =new TcpClient();
-        allactivitys= tcpClient.tcpConnecting(3, "112345 4", IPAdress);
-        System.out.println(Arrays.toString(allactivitys));
+        allactivitys= tcpClient.tcpConnecting(3, CollaboratorNumber+" 4", IPAdress);
+
+        System.out.println(Arrays.toString(allactivitys)+" "+ allactivitys.length);
         tcpClient =new TcpClient();
-        activitysremaningbypriority= tcpClient.tcpConnecting(3, "112345 5", IPAdress);
-        System.out.println(Arrays.toString(activitysremaningbypriority));
+        activitysremaningbypriority= tcpClient.tcpConnecting(3, CollaboratorNumber+" 5", IPAdress);
+        System.out.println(Arrays.toString(activitysremaningbypriority)+ " "+ activitysremaningbypriority.length);
 
 
-        /*activityResolucao[0]="ActivitY N: 1 Priority: 1 DeadLine: Fri Nov 15 07:59:52 GMT 2030";
-        activityResolucao[1]="ActivitY N: 2 Priority: 1 DeadLine: Fri Nov 15 07:59:52 GMT 2030";
-        activityResolucao[2]="ActivitY N: 3 Priority: 1 DeadLine: Fri Nov 15 07:59:52 GMT 2030";
-        allactivitys=new String[3];
-        allactivitys[0]="ActivitY N: 1 Priority: 1 DeadLine: Fri Nov 15 07:59:52 GMT 2030";
-        allactivitys[1]="ActivitY N: 2 Priority: 1 DeadLine: Fri Nov 15 07:59:52 GMT 2030";
-        allactivitys[2]="ActivitY N: 3 Priority: 1 DeadLine: Fri Nov 15 07:59:52 GMT 2030";
-        activitysremaningbypriority=new String[3];
-        activitysremaningbypriority[0]="ActivitY N: 1 Priority: 1 DeadLine: Fri Nov 15 07:59:52 GMT 2030";
-        activitysremaningbypriority[1]="ActivitY N: 2 Priority: 1 DeadLine: Fri Nov 15 07:59:52 GMT 2030";
-        activitysremaningbypriority[2]="ActivitY N: 3 Priority: 1 DeadLine: Fri Nov 15 07:59:52 GMT 2030";*/
+
 	try { sock = new ServerSocket(70); }
 	catch(IOException ex) {
             System.out.println("Server failed to open local port " + 70);
@@ -65,6 +57,7 @@ public class HttpServerAjaxVoting {
     private static final String[] candidateName = new String[candidatesNumber];
     private static final int[] candidateVotes = new int[candidatesNumber];
     private static int accessesCounter;
+    private static  int CollaboratorNumber=112345312;
     private static String[] activityResolucao =new String[5];
     private static String[] allactivitys =new String[5];
     private static String[] activitysremaningbypriority =new String[5];
@@ -82,7 +75,7 @@ public class HttpServerAjaxVoting {
         }
     public static synchronized String preparactionActivities() {
         String textHtml="";
-        if (activityResolucao.length==0 && activitysremaningbypriority.length==0 && allactivitys.length==0){
+        if (activityResolucao.length==1 && activitysremaningbypriority.length==1 && allactivitys.length==1){
             textHtml="<div><h1 align=center >The Collaborator has no activities</h1></div>";
             return textHtml;
         }
@@ -106,14 +99,28 @@ public class HttpServerAjaxVoting {
 
         return textHtml;
     }
-    public static synchronized void castVote(String i) {
-        int cN;
-        try { cN=Integer.parseInt(i); }
-        catch(NumberFormatException ne) { return; }
-        cN--;
-        if(cN >= 0 && cN < candidatesNumber) candidateVotes[cN]++;
+
+
+
+    public static void castCollaborator(String substring) throws IOException {
+        try {
+            CollaboratorNumber=Integer.parseInt(substring);
+            System.out.println(substring);
+        } catch(NumberFormatException ne) { return; }
+        tcpClient =new TcpClient();
+        activityResolucao= tcpClient.tcpConnecting(3, CollaboratorNumber+" 3",IPAdress);
+        activityResolucao[0].replace("[", "");
+        activityResolucao[activityResolucao.length-1].replace("]", "");
+        System.out.println(Arrays.toString(activityResolucao));
+        tcpClient =new TcpClient();
+        allactivitys= tcpClient.tcpConnecting(3, CollaboratorNumber+" 4", IPAdress);
+        allactivitys[0].replace("[", "");
+        allactivitys[allactivitys.length-1].replace("]", "");
+        System.out.println(Arrays.toString(allactivitys));
+        tcpClient =new TcpClient();
+        activitysremaningbypriority= tcpClient.tcpConnecting(3, CollaboratorNumber+" 5", IPAdress);
+        activitysremaningbypriority[0].replace("[", "");
+        activitysremaningbypriority[activitysremaningbypriority.length-1].replace("]", "");
+        System.out.println(Arrays.toString(activitysremaningbypriority));
     }
-    
-    
-    
 }

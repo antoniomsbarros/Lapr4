@@ -14,4 +14,5 @@ public interface ManualTaskRepository extends DomainRepository<Long, ManualTask>
     Optional<ManualTask> findByID(Long id);
     Optional<ManualTask> findByType(TaskType type);
     Iterable<ManualTask> manualTaskToClaim(final Team team);
+    Iterable<ManualTask> findManualTaskbyCollaborator(Integer Collaborator);
 }

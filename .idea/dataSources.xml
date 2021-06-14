@@ -8,18 +8,18 @@
       <jdbc-url>jdbc:sqlite:C:\Lapr4_2dG4\Documents\UC2001\SD\SD-CriarCatalogo.vpp.bak_000f</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="databaseNameb@vs267.dei.isep.ipp.pt" uuid="df99f63f-4976-4cce-8d42-3732ff8c1d63">
-      <driver-ref>h2.unified</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.h2.Driver</jdbc-driver>
-      <jdbc-url>jdbc:h2:tcp://vs267.dei.isep.ipp.pt:2225/databaseNameb</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
     <data-source source="LOCAL" name="LS20-12_SSD_RegistNewTeamType" uuid="7ac43013-2df5-4eb8-bd3b-9820e912193e">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\Acer\Desktop\ProjectEapli\lei20_21_s4_2dg_04\Documents\UC2012-Create _New_Team_Type\US2012- Design\LS20-12_SSD_RegistNewTeamType.vpp</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="databaseNameb@vs267.dei.isep.ipp.pt" uuid="b7f49c60-6ff7-4056-951f-f3cd7d10c59e">
+      <driver-ref>h2.unified</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.h2.Driver</jdbc-driver>
+      <jdbc-url>jdbc:h2:tcp://vs267.dei.isep.ipp.pt:2225/databaseNameb</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

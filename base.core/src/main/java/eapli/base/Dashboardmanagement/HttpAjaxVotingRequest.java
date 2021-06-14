@@ -48,9 +48,9 @@ public class HttpAjaxVotingRequest extends Thread {
                         	response.send(outS);                        
                         	}
                     	else { // NOT GET
-                        	if(request.getMethod().equals("PUT") 
-                                	&& request.getURI().startsWith("/votes/")) {
-                            		HttpServerAjaxVoting.castVote(request.getURI().substring(7));
+                        	if(request.getMethod().equals("PUT") && request.getURI().startsWith("/votes/")) {
+								System.out.println(request.getURI().substring(7));
+                        			HttpServerAjaxVoting.castCollaborator(request.getURI().substring(7));
                             		response.setResponseStatus("200 Ok");
                             		}
                        		else {

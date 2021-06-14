@@ -73,10 +73,14 @@ public class ManualTask extends Task implements DomainEntity<Long> {
 
     public Form Form(){return form;}
 
+    public String decison(){
+        return  this.decision.toString();
+    }
 
     @Override
     public String toString() {
         return "ManualTask{" +
+                "id=" +identity()+
                 "type=" + type +
                 ", collaborator=" + collaborator +
                 ", commentary=" + commentary +

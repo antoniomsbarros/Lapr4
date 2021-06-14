@@ -2,10 +2,11 @@ package TCPSERVER;
 
 import eapli.base.catalogmanagement.application.SearchActivity;
 import eapli.base.catalogmanagement.domain.Activity;
+import eapli.base.taskmanagement.domain.ManualTask;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class Dashboardsearch {
     private SearchActivity searchActivity;
@@ -15,96 +16,91 @@ public class Dashboardsearch {
     }
 
     public String[] data(Integer number, String option){
-        List<Activity> activityList=searchActivity.prepareactivity(number);
+        List<ManualTask> activityList=searchActivity.prepareTask(number);
         switch (option){
             case "3":
                 return preparelistofActivitysincomplete( activityList);
             case "4":
                 return allActivitys(activityList);
             case "5":
-                return preparelistofActivitysincomplete(activityList);
+                String[] result=new String[0];
+                try {
+                    result= activitysByPriority(activityList);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                return result;
             default:
                 return new String[1];
         }
     }
-    private String[] preparelistofActivitysincomplete(List<Activity> activityList ){
+    private String[] preparelistofActivitysincomplete(List<ManualTask> activityList ){
         int cont=0;
-        for (Activity a: activityList) {
-            if (a.state().toString().equals("EMRESOLUCAO")){
+        for (ManualTask a: activityList) {
+            if (a.state().toString().equals("PENDING")){
                 cont++;
             }
         }
         String[] temp=new String[cont];
         int y=0;
         for (int i = 0; i < activityList.size(); i++) {
-            if (activityList.get(i).state().toString().equals("EMRESOLUCAO")){
-                Activity activity=activityList.get(i);
-                if (activity.criticalitylevel()==null){
-                    temp[y]="ActivitY N: " +activity.identity()+" Priority: "+activity.priorityofActivity()+
-                            " DeadLine: " +activity.deadline();
-                }else{
-                    temp[y]="ActivitY N: " +activity.identity()+" Priority: "+activity.priorityofActivity()+
-                            " DeadLine: " +activity.deadline()+"criticality: "+activity.criticalitylevel().print();
-                }
+            if (activityList.get(i).state().toString().equals("PENDING")){
+                ManualTask activity=activityList.get(i);
+                    temp[y]="Activity N: " +activity.identity()+" Priority: "+activity.priority()+
+                            " DeadLine: " +activity.deadline().toString();
                 y++;
             }
         }
         return temp;
     }
-    private List<Activity> prepareremaningTestbydate(List<Activity>activityList){
-        List<Activity> temp=new ArrayList<>();
-        for (Activity a: activityList) {
-            if (a.date().after(Calendar.getInstance()) && a.state().equals("EMRESOLUCAO")){
+    private List<ManualTask> prepareremaningTestbydate(List<ManualTask>activityList) throws ParseException {
+        List<ManualTask> temp=new ArrayList<>();
+        for (ManualTask a: activityList) {
+            if (a.deadline().Date().after(new Date()) && a.state().equals("PENDING")){
                 temp.add(a);
             }
         }
         return temp;
     }
-    private List<Activity>prepareactitivityByPriority(List<Activity>activityList){
-        List<Activity> temp=prepareremaningTestbydate(activityList);
-        List<Activity> resoluction=new ArrayList<>();
-        Activity tempactivity=null;
+
+
+    private List<ManualTask>prepareactitivityByPriority(List<ManualTask>activityList) throws ParseException {
+        List<ManualTask> temp=new LinkedList<>(activityList);
+        List<ManualTask> resoluction=new ArrayList<>();
+        ManualTask tempactivity=null;
         Long priority=99999L;
-        for (Activity a: activityList) {
-            for (Activity a1:activityList) {
-                if (a1.priorityofActivity()<priority && !resoluction.contains(a1)){
-                    priority=a1.priorityofActivity();
-                    tempactivity=a1;
-                }
-            }
-            resoluction.add(tempactivity);
-        }
+       while (temp.size()!=0){
+            tempactivity=temp.get(0);
+           for (ManualTask ma: temp) {
+               if (tempactivity.priority()> ma.priority()){
+                   tempactivity=ma;
+               }
+           }
+           temp.remove(tempactivity);
+           resoluction.add(tempactivity);
+
+       }
         return resoluction;
     }
-    private String[] activitysByPriority(List<Activity>activityList){
-
-        List<Activity> listofactivitysbypriority=prepareactitivityByPriority(activityList);
+    private String[] activitysByPriority(List<ManualTask>activityList) throws ParseException {
+        List<ManualTask> listofactivitysbypriority=prepareactitivityByPriority(activityList);
         String[] result=new String[activityList.size()];
         int i=0;
-        for (Activity activity:listofactivitysbypriority) {
-            if (activity.criticalitylevel()==null){
-                result[i]="Activity N: " +activity.identity()+" Priority: "+activity.priorityofActivity()+
-                        " DeadLine: " +activity.deadline();
-            }else {
-                result[i]="Activity N: " +activity.identity()+" Priority: "+activity.priorityofActivity()+
-                        " DeadLine: " +activity.deadline()+"criticality: "+activity.criticalitylevel().print();
-            }
+        for (ManualTask activity:listofactivitysbypriority) {
+                result[i]="Activity N: " +activity.identity()+" Priority: "+activity.priority()+
+                        " DeadLine: " +activity.deadline().toString();
             i++;
         }
         return result;
     }
-    private String[] allActivitys(List<Activity>activityList){
+    private String[] allActivitys(List<ManualTask>activityList){
 
         String[] temp=new String[activityList.size()];
         int i=0;
-        for (Activity activity:activityList) {
-            if (activity.criticalitylevel()==null){
-                temp[i]="Activity N: " +activity.identity()+" Priority: "+activity.priorityofActivity()+
-                        " DeadLine: " +activity.deadline();
-            }else {
-                temp[i]="Activity N: " +activity.identity()+" Priority: "+activity.priorityofActivity()+
-                        " DeadLine: " +activity.deadline()+"criticality: "+activity.criticalitylevel().print();
-            }
+        for (ManualTask activity:activityList) {
+                temp[i]="Activity N: " +activity.identity()+" Priority: "+activity.priority()+
+                        " DeadLine: " +activity.deadline().toString();
+
             i++;
         }
         return temp;

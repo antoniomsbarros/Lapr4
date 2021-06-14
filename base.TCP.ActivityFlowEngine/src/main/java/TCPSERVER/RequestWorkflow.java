@@ -2,44 +2,50 @@ package TCPSERVER;
 
 import eapli.base.DashboardManagement.TcpClient;
 import eapli.base.DashboardManagement.protocol;
-import eapli.base.catalogmanagement.application.CreateSequenceController;
-import eapli.base.catalogmanagement.application.CreateWorkflow;
-import eapli.base.catalogmanagement.application.SearchWorkflowService;
-import eapli.base.catalogmanagement.application.SequenceController;
+import eapli.base.catalogmanagement.application.*;
+import eapli.base.catalogmanagement.domain.Delegaction;
 import eapli.base.catalogmanagement.domain.Responsable;
 import eapli.base.catalogmanagement.domain.Sequence;
 import eapli.base.catalogmanagement.domain.Workflow;
 import eapli.base.ordermanagement.application.ChangeStatusRequest;
 import eapli.base.ordermanagement.application.SearchRequestController;
 import eapli.base.ordermanagement.application.SearchTickController;
+import eapli.base.ordermanagement.domain.Form;
 import eapli.base.ordermanagement.domain.Request;
+import eapli.base.ordermanagement.domain.State;
 import eapli.base.ordermanagement.domain.Ticket;
 import eapli.base.taskmanagement.application.*;
 import eapli.base.taskmanagement.domain.AutomaticTask;
 import eapli.base.taskmanagement.domain.ManualTask;
 import eapli.base.taskmanagement.domain.TaskState;
+import eapli.base.teamManagement.domain.Acronym;
+import eapli.base.teamManagement.domain.Team;
+import eapli.base.teamManagement.domain.TeamType;
+import eapli.base.teamManagement.domain.Uniquecode;
 import eapli.framework.general.domain.model.Description;
+import eapli.framework.general.domain.model.Designation;
 import eapli.framework.validations.Preconditions;
 
 import java.io.Serializable;
 import java.util.*;
 
 public class RequestWorkflow {
-    private SearchWorkflowService searchWorkflowService;
-    private SequenceController sequenceController;
-    private SearchManualTask searchManualTask;
-    private SearchAutomaticTask searchAutomaticTask;
-    private CreateWorkflow createWorkflow;
-    private AddAutomaticTaskController addAutomaticTaskController;
-    private AddManualTaskController addManualTaskController;
-    private SearchRequestController searchRequestController;
-    private SearchTickController searchTickController;
-    private TcpClient tcpClient;
-    private ChangeStatusRequest changeStatusRequest;
-    private ChangeStatusofActivity changeStatusofActivity;
+
+    private final SearchWorkflowService searchWorkflowService;
+    private final SearchManualTask searchManualTask;
+    private final SearchAutomaticTask searchAutomaticTask;
+    private final CreateWorkflow createWorkflow;
+    private final AddAutomaticTaskController addAutomaticTaskController;
+    private final AddManualTaskController addManualTaskController;
+    private final SearchRequestController searchRequestController;
+    private final SearchTickController searchTickController;
+    private final ChangeStatusRequest changeStatusRequest;
+    private final ChangeStatusofActivity changeStatusofActivity;
+    private final SearchService searchService;
+    private final SearchActivity searchActivity;
     public RequestWorkflow() {
+
         this.searchWorkflowService = new SearchWorkflowService();
-        this.sequenceController=new SequenceController();
         searchManualTask=new SearchManualTask();
         searchAutomaticTask=new SearchAutomaticTask();
         createWorkflow=new CreateWorkflow();
@@ -47,9 +53,10 @@ public class RequestWorkflow {
         addManualTaskController=new AddManualTaskController();
         searchRequestController=new SearchRequestController();
         searchTickController=new SearchTickController();
-        tcpClient=new TcpClient();
         changeStatusRequest=new ChangeStatusRequest();
         changeStatusofActivity=new ChangeStatusofActivity();
+        searchService=new SearchService();
+        searchActivity=new SearchActivity();
     }
 
     public void createWorkflowPedido(String idPedido){
@@ -57,7 +64,7 @@ public class RequestWorkflow {
         Request request=searchRequestController.getrequestbyid(Long.valueOf(idPedido));
         Ticket ticket=searchTickController.searchTickbyRequestid(request.identity());
         Workflow workflow= searchWorkflowService.getWorkflowByService(ticket.TicketService().identity());
-
+        changeStatusRequest.changeStatusofRequest(request, State.EMRESOLUCAO);
         Map<Integer, AutomaticTask> tasks=new HashMap<>();
         Map<Integer, ManualTask> manualTasks=new HashMap<>();
 
@@ -79,43 +86,67 @@ public class RequestWorkflow {
         sequences.add(sequenceController.createSequence(manualTasks.get(0),1L));
         int size=tasks.size()+ manualTasks.size();
         List<Sequence> sequenceList=new LinkedList<>();
-        Map<Integer, ManualTask> manualTaskrequest=new HashMap<>();
-        Map<Integer, AutomaticTask> automaticTaskrequest=new HashMap<>();
+        List<Form> formList=searchService.findServices(ticket.TicketService().identity()).form();
 
+
+        int error=0;
+        ///implementaction of creting and executing
         for (int i = 0; i <size ; i++) {
+            Long id=0L;
             if (manualTasks.containsKey(i)){
+                changeStatusRequest.changeStatusofRequest(request, State.EMAPROVACAO);
                 ManualTask manualTask1=manualTasks.get(i);
                 Calendar date=addDays(new Date(), 15);
                 Responsable responsable=new Responsable();
-                /// atribuição do responsable US 4072
+                // atribuição do responsable US 4072
 
 
 
-               /* ManualTask manualTask=addManualTaskController.addManualTask(date, manualTask1.priority(), responsable,Description.valueOf("") , Description.valueOf(""));
-                Sequence sequence= sequenceController.createSequence(manualTask, (long) i);
+
+
+                Form form= formList.get(i);
+
+                ManualTask manualTask=addManualTaskController.addManualTask(date, manualTask1.priority(), searchActivity.prepareTask(112345).get(0).Responsible(),Description.valueOf("ola") , Description.valueOf("ola"), form,request.Answers());
+                id=manualTask.identity();
+                System.out.println(id);
+                SearchManualTask searchManualTask=new SearchManualTask();
+                //System.out.println(manualTask.toString());
+                Sequence sequence= sequenceController.createSequence(searchManualTask.getmanualtask(manualTask.identity()), (long) i);
                 sequenceList.add(sequence);
-                manualTaskrequest.put(i, manualTask);
-                changeStatusofActivity.changeStatsTask(manualTask, )*/
-
+                System.out.println("sequencelist "+sequenceList.size());
             }else if (tasks.containsKey(i)){
+                boolean value=true;
+                ManualTask manualTask = null;
+              /*  while(value && id.intValue()!=0){
+                     manualTask=searchManualTask.getmanualtask(id);
+                    if (manualTask.state().equals(TaskState.DONE)){
+                        value=false;
+                    }
+                }*/
+                changeStatusRequest.changeStatusofRequest(request, State.EMRESOLUCAO);
                 AutomaticTask automaticTask;
                 Calendar date=addDays(new Date(), 15);
                 automaticTask=addAutomaticTaskController.addAutomaticTask(date, tasks.get(i).priority(), tasks.get(i).script().toString());
                 Sequence sequence=sequenceController.createSequence(automaticTask, (long) i);
                 sequenceList.add(sequence);
-                automaticTaskrequest.put(i,automaticTask);
+                /////US 4071
+                if (manualTask.decison().equals("Aprovado")){
+                    System.out.println("Aprovado");
+                   // TcpClient.tcpConnecting("", automaticTask.identity()+" "+"Aprovado "+request.Answers(),"");
+                }else {
+                    System.out.println("rejeitado");
+                    //TcpClient.tcpConnecting("", automaticTask.identity()+" "+"Rejeitado "+request.Answers(),"");
+                    error++;
+                }
+                changeStatusofActivity.changeStatsTask(automaticTask, TaskState.DONE);
+
             }
         }
         Workflow workflowRequest=createWorkflow.createWorkflow(sequenceList);
-
-
-        for (int i = 0; i < workflowRequest.Sequences().size(); i++) {
-            if (automaticTaskrequest.containsKey(i)){
-               //US 4071
-
-            }else if (manualTaskrequest.containsKey(i)){
-
-            }
+        if (error==0){
+            changeStatusRequest.changeStatusofRequest(request, State.CONCLUIDO);
+        }else {
+            changeStatusRequest.changeStatusofRequest(request, State.REJEITADO);
         }
 
     }

@@ -1,6 +1,7 @@
 package eapli.base.persistence.impl.jpa;
 
 import eapli.base.Application;
+import eapli.base.catalogmanagement.domain.Activity;
 import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.clientusermanagement.domain.MecanographicNumber;
 import eapli.base.taskmanagement.domain.ManualTask;
@@ -63,6 +64,19 @@ public class JpaManualTaskRepository extends JpaAutoTxRepository<ManualTask, Lon
                 ManualTask.class);
         q.setParameter("team", team);
         return q.getResultList();
+    }
+
+    @Override
+    public Iterable<ManualTask> findManualTaskbyCollaborator(Integer Collaborator) {
+        /*TypedQuery<Activity> query = createQuery("Select a from eapli.base.catalogmanagement.domain.Activity a INNER JOIN " +
+                "eapli.base.catalogmanagement.domain.Responsable r ON r.id=a.responsable where r.responsable.mecanographicNumber.number=: number", Activity.class);
+
+        query.setParameter("number",String.valueOf(RESPONSAVEL_NUMBER));
+        return query.getResultList();*/
+        TypedQuery<ManualTask> query1=createQuery("Select a from eapli.base.taskmanagement.domain.ManualTask a INNER JOIN "+
+                "eapli.base.catalogmanagement.domain.Responsable r ON r.id=a.collaborator where r.responsable.mecanographicNumber.number=: number", ManualTask.class);
+        query1.setParameter("number",String.valueOf(Collaborator));
+        return query1.getResultList();
     }
 }
 
