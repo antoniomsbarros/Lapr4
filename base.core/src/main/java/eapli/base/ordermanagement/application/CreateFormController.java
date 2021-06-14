@@ -26,18 +26,18 @@ public class CreateFormController {
         this.attributeBuilder = new AttributeBuilder();
         this.lstAttrbutes = new ArrayList<>();
     }
-
+/*
     public void addAttribute(Long id, Description description, Description name, Description label, Description regularexpression, TypeofData dataType) {
         attributeBuilder.withId(id).withDescription(description).withLabel(label).withRegularExpression(regularexpression)
                 .withName(name).withTypeofData(dataType);
         lstAttrbutes.add(attributeBuilder.build());
     }
-
+/*
     public Form saveForm(Description name, Description script) {
         formBuilder.withName(name).withScript(script);
         for (Attribute a : lstAttrbutes) {
             formBuilder.withAttribute(a);
         }
         return formRepository.save(formBuilder.build());
-    }
+    }*/
 }
