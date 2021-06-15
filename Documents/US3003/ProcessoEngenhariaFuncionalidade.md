@@ -30,9 +30,14 @@ A interpretação feita deste requisito foi no sentido de um utilizador puder so
 
 # 2. Análise
 
-*Neste secção a equipa deve relatar o estudo/análise/comparação que fez com o intuito de tomar as melhores opções de design para a funcionalidade bem como aplicar diagramas/artefactos de análise adequados.*
+	A análise foi realizada tendo em conta as reuniões com o Cliente e as respostas dadas no Fórum para esclarecimento de dúvidas.
 
-*Recomenda-se que organize este conteúdo por subsecções.*
+	*A Pesquisa do serviço é realizada por catálogo;
+	*Toda a informação do Formulário tem de ser preenchida;
+	*O Pedido tem de ter toda a informação necessária;
+	*Todos os Formulários têm de ser validados por  um script;
+	*Todas as respostas dadas aos Atributos dos Formulários têm de ser validades por um script;
+	*Após ser feita a solicitação de um Serviço, tem de ser gerado um ticket relativo a esse Pedido;
 
 # 3. Design
 
