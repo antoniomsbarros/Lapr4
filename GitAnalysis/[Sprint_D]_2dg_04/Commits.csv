@@ -1,3 +1,45 @@
+eef199d,2021-06-15 22:01:49 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-108 / L2S20-133 Analysis Completion #3003
+7fbf2ac,2021-06-15 21:45:11 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-108 Completion of Requirements Analysis US3003
+6eebd23,2021-06-14 22:58:41 +0100,António Barros (1200606),1200606@isep.ipp.pt,bug fixing
+4c78eb4,2021-06-14 22:54:46 +0100,António Barros (1200606),1200606@isep.ipp.pt,#implementaction of motor of fluxe engine
+6f09aaf,2021-06-14 18:02:25 +0100,Joao Freitas,1170714@isep.ipp.pt,Create Form Controller needed for other UC's
+89b827e,2021-06-12 23:09:03 +0100,António Barros (1200606),1200606@isep.ipp.pt,Implementaction of Jpa and inMemory  of a task Repository
+fd02fda,2021-06-12 23:00:35 +0100,António Barros (1200606),1200606@isep.ipp.pt,# implementaction of a change status of a activity
+51fe76c,2021-06-12 22:59:58 +0100,António Barros (1200606),1200606@isep.ipp.pt,#implementaction of a change on the status of a request
+120cf97,2021-06-12 22:59:05 +0100,Jose Teixeira,1150462@isep.ipp.pt,L2S20-75 #backoffice console/presentation/clientuser/CreateManualTaskUI update
+5477179,2021-06-12 22:58:10 +0100,Jose Teixeira,1150462@isep.ipp.pt,L2S20-75 #application taskmanagement/application/AddManualTaskController update
+c566dd7,2021-06-12 22:57:18 +0100,Jose Teixeira,1150462@isep.ipp.pt,L2S20-108 #domain ordermanagement/domain/Request update class
+9b4c1f4,2021-06-12 22:56:47 +0100,Jose Teixeira,1150462@isep.ipp.pt,L2S20-75 #domain taskmanagement/domain/ManualTask && taskmanagement/domain/Answer update classes
+e78e770,2021-06-12 16:16:20 +0100,António Barros (1200606),1200606@isep.ipp.pt,alteraction of the motorflow engine
+5cc52a6,2021-06-12 16:15:42 +0100,António Barros (1200606),1200606@isep.ipp.pt,Implementaction of a search method for the info of a request
+e03cdc4,2021-06-12 16:14:30 +0100,António Barros (1200606),1200606@isep.ipp.pt,implementaction of a search metoth that return the ticket of a request
+a0324f6,2021-06-12 16:13:17 +0100,António Barros (1200606),1200606@isep.ipp.pt,bug fixing on the class draft.java that number couldnt serialize
+aa7b46d,2021-06-12 15:21:13 +0100,Joao Freitas,1170714@isep.ipp.pt,Classes for the server of AutomaticTask (UC 5001)
+5b64483,2021-06-12 00:10:44 +0100,António Barros (1200606),1200606@isep.ipp.pt,#L2S20-123 #change of tcp client and tcp server to be more generic
+1497eac,2021-06-11 18:52:15 +0100,Paulo Proenca,prp@isep.ipp.pt,Correcao Ã  classe Form.Java
+fccffa3,2021-06-11 17:53:02 +0100,Joao Freitas,1170714@isep.ipp.pt,Update UC create Service for the professor to analyse
+bb4eb1a,2021-06-11 17:19:34 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-113 Analisys
+3514136,2021-06-11 17:14:11 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-112 Analisys updated
+f2e23ed,2021-06-11 17:09:11 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-112 printer changed
+8a9ec1f,2021-06-11 17:08:10 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-112 new method added in task
+5bf7d7e,2021-06-11 17:04:51 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-112 controller changes
+72c2a2e,2021-06-11 16:28:46 +0100,António Barros (1200606),1200606@isep.ipp.pt,alteraction of the method addAutomaticTask to return AutomaticTask
+32bc728,2021-06-11 14:50:35 +0100,António Barros (1200606),1200606@isep.ipp.pt,#L2S20-123 #Implementation of a creating workflow controller it workflow builder
+27a4b6a,2021-06-11 10:40:30 +0100,António Barros (1200606),1200606@isep.ipp.pt,#L2S20-123 #Implementation of a creating sequence with sequenceBuilder
+f06d9fd,2021-06-10 22:31:09 +0100,Antonio,antoniomsbarros@gmail.com,# L2S20-123 #implementaction
+99addbc,2021-06-10 22:30:29 +0100,António Barros (1200606),1200606@isep.ipp.pt,# implementaction of the altern of the method
+fd0630a,2021-06-10 22:29:45 +0100,António Barros (1200606),1200606@isep.ipp.pt, L2S20-123 #implementaction of a search method for the workflow
+80b2058,2021-06-10 17:37:35 +0100,António Barros (1200606),1200606@isep.ipp.pt,correct domain manual task
+5a6c9cb,2021-06-10 16:48:18 +0100,António Barros (1200606),1200606@isep.ipp.pt,alterction of the pom.properties of the Activity flow engine
+1f8d780,2021-06-10 16:45:24 +0100,António Barros (1200606),1200606@isep.ipp.pt,Alteraction off the design of the Us 3011
+f49255c,2021-06-10 16:44:41 +0100,António Barros (1200606),1200606@isep.ipp.pt,start implementaction of the method to revive all the activitys templates of a service
+e354a1e,2021-06-10 16:42:53 +0100,António Barros (1200606),1200606@isep.ipp.pt,adding logo of isep and armis to the dashboard web page
+9bf8d2c,2021-06-10 16:41:24 +0100,António Barros (1200606),1200606@isep.ipp.pt,alteraction on the activivty flow engine
+1f3523c,2021-06-09 19:34:30 +0100,Jose Teixeira,1150462@isep.ipp.pt,#domain teamManagement/domain/Team updated (add clientUser())
+ddfa3c7,2021-06-09 19:33:38 +0100,Jose Teixeira,1150462@isep.ipp.pt,L2S20-75 #application taskmanagement/application/AddManualTaskController updated
+0f9edb8,2021-06-09 19:32:39 +0100,Jose Teixeira,1150462@isep.ipp.pt,L2S20-75 #backoffice console/presentation/MainMenu updated
+04c0b95,2021-06-09 19:31:46 +0100,Jose Teixeira,1150462@isep.ipp.pt,L2S20-75 #backoffice console/presentation/CreateManualTaskUI added [need refinement]
+9f8cc95,2021-06-08 23:20:28 +0100,Paulo Proença,prp@isep.ipp.pt,Repository Analysis
 3e4bdd7,2021-06-05 17:52:51 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-112 presentation layer
 bae3147,2021-06-05 17:51:49 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-112 application layer
 a3abb22,2021-06-05 17:50:15 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-112 persistence

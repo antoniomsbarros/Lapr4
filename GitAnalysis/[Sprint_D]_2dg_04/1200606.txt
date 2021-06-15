@@ -1,3 +1,300 @@
+commit 6eebd23a63c7eb378df7b799823e3eefb1e99791
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Mon Jun 14 22:58:41 2021 +0100
+
+    bug fixing
+
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.TCP.AutomaticTask/target/maven-archiver/pom.properties
+M	base.core/src/main/java/eapli/base/ordermanagement/application/CreateFormController.java
+
+commit 4c78eb4000b8cfbc7cbc8ba12a47a324f1499a64
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Mon Jun 14 22:54:46 2021 +0100
+
+    #implementaction of motor of fluxe engine
+
+M	.idea/dataSources.xml
+A	.idea/discord.xml
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/Dashboardsearch.java
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/RequestWorkflow.java
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/TCPSrvMFA.java
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.TCP.AutomaticTask/target/maven-archiver/pom.properties
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+D	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/DashboardUI.java
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/DashboardUi.java
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/DemoConsumer.java
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/HttpAjaxVotingRequest.java
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/HttpServerAjaxVoting.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchActivity.java
+A	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchService.java
+A	base.core/src/main/java/eapli/base/clientusermanagement/application/SearchCollaboratorController.java
+A	base.core/src/main/java/eapli/base/ordermanagement/application/CreatFormController.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Draft.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Request.java
+M	base.core/src/main/java/eapli/base/taskmanagement/application/AddManualTaskController.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/ManualTask.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/Task.java
+M	base.core/src/main/java/eapli/base/taskmanagement/repositories/ManualTaskRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryManualTaskRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaManualTaskRepository.java
+
+commit 89b827ec4cf93d72820046bc67bb525fcff477e2
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Sat Jun 12 23:09:03 2021 +0100
+
+    Implementaction of Jpa and inMemory  of a task Repository
+
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.TCP.AutomaticTask/target/maven-archiver/pom.properties
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryRepositoryFactory.java
+A	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryTaskRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaRepositoryFactory.java
+A	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaTaskRepository.java
+
+commit fd02fda819cab39c2d6133fd9e9a7998d4da8e48
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Sat Jun 12 23:00:35 2021 +0100
+
+    # implementaction of a change status of a activity
+
+M	.idea/compiler.xml
+M	.idea/encodings.xml
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/TCPSrvMFA.java
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.TCP.AutomaticTask/target/maven-archiver/pom.properties
+M	base.TCP.AutomaticTask/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Ticket.java
+A	base.core/src/main/java/eapli/base/taskmanagement/application/ChangeStatusofActivity.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/Task.java
+A	base.core/src/main/java/eapli/base/taskmanagement/repositories/TaskRepository.java
+
+commit 51fe76c1bb39f79133c57ee653ac471805317851
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Sat Jun 12 22:59:58 2021 +0100
+
+    #implementaction of a change on the status of a request
+
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/RequestWorkflow.java
+D	base.TCP.AutomaticTask/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/TcpClient.java
+M	base.core/src/main/java/eapli/base/infrastructure/persistence/RepositoryFactory.java
+A	base.core/src/main/java/eapli/base/ordermanagement/application/ChangeStatusRequest.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Request.java
+
+commit e78e770595bcc8b90f9bc2cb46b94e54d7073498
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Sat Jun 12 16:16:20 2021 +0100
+
+    alteraction of the motorflow engine
+
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/RequestWorkflow.java
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/TCPSrvMFA.java
+A	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/TaskDelegater.java
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.TCP.ActivityFlowEngine/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+M	base.TCP.ActivityFlowEngine/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+
+commit 5cc52a64050a893ded9ca8dfe8af99c68f90871a
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Sat Jun 12 16:15:42 2021 +0100
+
+    Implementaction of a search method for the info of a request
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/repository/CatalogRepository.java
+A	base.core/src/main/java/eapli/base/ordermanagement/application/SearchRequestController.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Feedback.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Request.java
+M	base.core/src/main/java/eapli/base/ordermanagement/repository/RequestRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryRepositoryFactory.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaRequestRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaSequenceRepository.java
+
+commit e03cdc40324d094164e89ffc70324e374a3ad81e
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Sat Jun 12 16:14:30 2021 +0100
+
+    implementaction of a search metoth that return the ticket of a request
+
+M	base.core/src/main/java/eapli/base/infrastructure/persistence/RepositoryFactory.java
+A	base.core/src/main/java/eapli/base/ordermanagement/application/SearchTickController.java
+A	base.core/src/main/java/eapli/base/ordermanagement/repository/TicketRepository.java
+A	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryTicketRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaRepositoryFactory.java
+A	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaTicketRepository.java
+
+commit a0324f690c7548c191019f07814516220523fd98
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Sat Jun 12 16:13:17 2021 +0100
+
+    bug fixing on the class draft.java that number couldnt serialize
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/RequestServiceUI.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/RequestServiceController.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Draft.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/DraftBuilder.java
+
+commit 5b644836c7c852024338a78aa8e047052b91877c
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Sat Jun 12 00:10:44 2021 +0100
+
+    #L2S20-123 #change of tcp client and tcp server to be more generic
+
+A	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/Dashboardsearch.java
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/RequestWorkflow.java
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/TCPSrvMFA.java
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.TCP.ActivityFlowEngine/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+M	base.TCP.ActivityFlowEngine/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/DemoConsumer.java
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/HttpServerAjaxVoting.java
+R062	base.core/src/main/java/eapli/base/Dashboardmanagement/TcpCliDashboard.java	base.core/src/main/java/eapli/base/Dashboardmanagement/TcpClient.java
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/protocol.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/AutomaticTask.java
+A	base.core/src/main/java/eapli/base/taskmanagement/domain/Pair.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/Task.java
+
+commit 72c2a2e184b3ec66d777afa7c4e6449df4c14c99
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Fri Jun 11 16:28:46 2021 +0100
+
+    alteraction of the method addAutomaticTask to return AutomaticTask
+
+M	base.core/src/main/java/eapli/base/taskmanagement/application/AddAutomaticTaskController.java
+
+commit 32bc7287026faa5a7367270fbc09740afc1fa135
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Fri Jun 11 14:50:35 2021 +0100
+
+    #L2S20-123 #Implementation of a creating workflow controller it workflow builder
+
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/RequestWorkflow.java
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/CreateWorkflow.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Workflow.java
+A	base.core/src/main/java/eapli/base/catalogmanagement/domain/WorkflowBuilder.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/repository/WorkflowRepository.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/ManualTask.java
+
+commit 27a4b6a05532fe8465c785672904da769838a8e9
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Fri Jun 11 10:40:30 2021 +0100
+
+    #L2S20-123 #Implementation of a creating sequence with sequenceBuilder
+
+A	base.core/src/main/java/eapli/base/catalogmanagement/application/CreateSequenceController.java
+A	base.core/src/main/java/eapli/base/catalogmanagement/application/CreateWorkflow.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Responsable.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Sequence.java
+A	base.core/src/main/java/eapli/base/catalogmanagement/domain/SequenceBuilder.java
+
+commit 99addbc04b2974619f7c5e4dd2e9c78a2bf59ca8
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Thu Jun 10 22:30:29 2021 +0100
+
+    # implementaction of the altern of the method
+
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryRepositoryFactory.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemorySequenceRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaRepositoryFactory.java
+
+commit fd0630a74697b998aa6a3704c76624f67040603f
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Thu Jun 10 22:29:45 2021 +0100
+
+     L2S20-123 #implementaction of a search method for the workflow
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchWorkflowService.java
+A	base.core/src/main/java/eapli/base/catalogmanagement/application/SequenceController.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Sequence.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Workflow.java
+A	base.core/src/main/java/eapli/base/catalogmanagement/repository/SequenceRepository.java
+M	base.core/src/main/java/eapli/base/infrastructure/persistence/RepositoryFactory.java
+A	base.core/src/main/java/eapli/base/taskmanagement/application/SearchAutomaticTask.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/AutomaticTask.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/ManualTask.java
+A	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemorySequenceRepository.java
+
+commit 80b2058274cb53b8a83efc03a69f9a9a93cf292c
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Thu Jun 10 17:37:35 2021 +0100
+
+    correct domain manual task
+
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/RequestWorkflow.java
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/HttpServerAjaxVoting.java
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/TcpCliDashboard.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Sequence.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/ManualTask.java
+M	base.persistence.impl/src/main/resources/META-INF/persistence.xml
+
+commit 5a6c9cb08d6c36b1ff128ab5479253c455334db4
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Thu Jun 10 16:48:18 2021 +0100
+
+    alterction of the pom.properties of the Activity flow engine
+
+D	.idea/artifacts/Lapr4_jar.xml
+M	.idea/compiler.xml
+M	.idea/encodings.xml
+M	.idea/misc.xml
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+
+commit 1f8d7807868023e21d4b9517fc9eb16f2b74b8f5
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Thu Jun 10 16:45:24 2021 +0100
+
+    Alteraction off the design of the Us 3011
+
+D	Documents/US3011/SD/.US3011.vpp.lck
+A	Documents/US3011/SD/SD US 3011.jpg
+A	Documents/US3011/SD/US3011.vpp.bak_002d
+
+commit f49255cdbe5ee1e0628a0d9881c9b223dad7dcca
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Thu Jun 10 16:44:41 2021 +0100
+
+    start implementaction of the method to revive all the activitys templates of a service
+
+A	base.core/src/main/java/eapli/base/catalogmanagement/application/SearchWorkflowService.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Sequence.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Workflow.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/repository/ServiceRepository.java
+A	base.core/src/main/java/eapli/base/catalogmanagement/repository/WorkflowRepository.java
+M	base.core/src/main/java/eapli/base/infrastructure/persistence/RepositoryFactory.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryRepositoryFactory.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryServiceRepository.java
+A	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryWorkflowRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaRepositoryFactory.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaServiceRepository.java
+A	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaWorkflowRepository.java
+
+commit e354a1e59c9e46ff8dbefcefe9408f082e8873e9
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Thu Jun 10 16:42:53 2021 +0100
+
+    adding logo of isep and armis to the dashboard web page
+
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/HttpServerAjaxVoting.java
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/TcpCliDashboard.java
+A	base.core/src/main/java/eapli/base/Dashboardmanagement/www/1606738573626.jpg
+A	base.core/src/main/java/eapli/base/Dashboardmanagement/www/Isep-logo.png
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/www/index.html
+
+commit 9bf8d2cf81433749135a9750fce8c96b7b0d9f36
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Thu Jun 10 16:41:24 2021 +0100
+
+    alteraction on the activivty flow engine
+
+A	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/RequestWorkflow.java
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/TCPSrvMFA.java
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.TCP.ActivityFlowEngine/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+M	base.TCP.ActivityFlowEngine/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+
 commit 3d7890ee2637d79556002a72bd99c427b0ba8526
 Author: António Barros(1200606) <1200606@isep.ipp.pt>
 Date:   Fri Jun 4 11:56:20 2021 +0100
