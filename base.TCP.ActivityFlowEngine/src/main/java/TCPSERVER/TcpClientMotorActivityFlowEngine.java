@@ -1,34 +1,39 @@
-package eapli.base.DashboardManagement;
+package TCPSERVER;
+
+import eapli.base.DashboardManagement.Protocol;
 
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
-import java.net.*;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
-public class TcpClient {
+public class TcpClientMotorActivityFlowEngine {
 	static InetAddress serverIP;
 	static SSLSocket sock;
 	static final String KEYSTORE_PASS="forgotten";
-
-	public TcpClient() {
+	static final int SERVER_PORT=9999;
+	static final String IPAdress="10.9.21.116";//endereço do servidor gestor de tarefas automaticas
+	public TcpClientMotorActivityFlowEngine() {
 	}
-	public static  String[] tcpConnecting(int code , String data, String IPAdress) throws IOException {
-		// Trust these certificates provided by servers
+	public static  String[] tcpConnecting(int code , String data) throws IOException {
+		try { serverIP = InetAddress.getByName(IPAdress); }
+		catch(UnknownHostException ex) {
+			System.out.println("Invalid server specified: " + IPAdress);
+			System.exit(1); }
+
 		System.setProperty("javax.net.ssl.trustStore", "server.jks");
 		System.setProperty("javax.net.ssl.trustStorePassword",KEYSTORE_PASS);
-
-		// Use this certificate and private key for client certificate when requested by the server
 		System.setProperty("javax.net.ssl.keyStore","server.jks");
 		System.setProperty("javax.net.ssl.keyStorePassword",KEYSTORE_PASS);
-
 		SSLSocketFactory sf = (SSLSocketFactory) SSLSocketFactory.getDefault();
 
 		try { serverIP = InetAddress.getByName(IPAdress); }
 		catch(UnknownHostException ex) {
 			System.out.println("Invalid server specified: " + IPAdress);
 			System.exit(1); }
-
-		try { sock = (SSLSocket) sf.createSocket(serverIP,70); }
+		try { sock = (SSLSocket) sf.createSocket(serverIP,SERVER_PORT); }
 		catch(IOException ex) {
 			System.out.println("Failed to establish TCP connection");
 			System.exit(1); }
@@ -45,7 +50,6 @@ public class TcpClient {
 		String result=temp[0];
 		result.replace("[", "");
 		result.replace("]", "");
-		sock.close();
 		return result.split(", ");
 	}
 
