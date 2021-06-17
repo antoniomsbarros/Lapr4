@@ -1,3 +1,45 @@
+commit bb4eb1af8668d32ef27453e9af348f25f2123947
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Fri Jun 11 17:19:34 2021 +0100
+
+    L2S20-113 Analisys
+
+A	Documents/US3023 - DoManualTaskPending/US3023_DoManualTaskPending.md
+
+commit 3514136085600ccf1cb54b8eb68cf1ffcfaef708
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Fri Jun 11 17:14:11 2021 +0100
+
+    L2S20-112 Analisys updated
+
+D	Documents/US3022 - ConsultManualTask/US3022_ConsultManualTask.svg
+R074	Documents/US3022 - ConsultManualTask/US3022_ConsultManualTask.md	Documents/US3022 - SearchManualTaskToClaim/US3022_SearchManualTaskToClaim.md
+A	Documents/US3022 - SearchManualTaskToClaim/US3022_SearchManualTaskToClaim.svg
+
+commit f2e23ed831fdf3e9da8f39ef1d2bc19571f6a1a9
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Fri Jun 11 17:09:11 2021 +0100
+
+    L2S20-112 printer changed
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/ManualTask/ManualTaskPrinter.java
+
+commit 8a9ec1f0d965f92006dc121f3d12c6688f0452e0
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Fri Jun 11 17:08:10 2021 +0100
+
+    L2S20-112 new method added in task
+
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/Task.java
+
+commit 5bf7d7edff2bd9abdad7ed4244922ef6c7b36ef9
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Fri Jun 11 17:04:51 2021 +0100
+
+    L2S20-112 controller changes
+
+M	base.core/src/main/java/eapli/base/taskmanagement/application/ManualTaskToClaimController.java
+
 commit 3e4bdd781187a7fdc1d58732f305ab197fc9bca2
 Author: Marly Pimpita <1191444@isep.ipp.pt>
 Date:   Sat Jun 5 17:52:51 2021 +0100

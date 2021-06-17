@@ -30,7 +30,9 @@ public class ManualTask extends Task implements DomainEntity<Long> {
     @ElementCollection
     private List<Answer> lstResposta;
 
-    public ManualTask() {}
+    public ManualTask() {
+
+    }
 
 
     public ManualTask(TaskState state, Deadline deadline, Integer priority,

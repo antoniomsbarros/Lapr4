@@ -1,3 +1,68 @@
+commit 120cf9786ab383681f6811d7e1a15479338cdc91
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sat Jun 12 22:59:05 2021 +0100
+
+    L2S20-75 #backoffice console/presentation/clientuser/CreateManualTaskUI update
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateManualTaskUI.java
+
+commit 54771797900f402728fffefeb1252f235100f5cc
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sat Jun 12 22:58:10 2021 +0100
+
+    L2S20-75 #application taskmanagement/application/AddManualTaskController update
+
+M	base.core/src/main/java/eapli/base/taskmanagement/application/AddManualTaskController.java
+
+commit c566dd7b7ae97327bbc06220349ab5ea45891199
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sat Jun 12 22:57:18 2021 +0100
+
+    L2S20-108 #domain ordermanagement/domain/Request update class
+
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Request.java
+
+commit 9b4c1f41f7227d5bb38158341ff23e80eee6f844
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sat Jun 12 22:56:47 2021 +0100
+
+    L2S20-75 #domain taskmanagement/domain/ManualTask && taskmanagement/domain/Answer update classes
+
+A	base.core/src/main/java/eapli/base/taskmanagement/domain/Answer.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/ManualTask.java
+
+commit 1f3523cd88e3d2b83bf574de80c4c3458896ea03
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Wed Jun 9 19:34:30 2021 +0100
+
+    #domain teamManagement/domain/Team updated (add clientUser())
+
+M	base.core/src/main/java/eapli/base/teamManagement/domain/Team.java
+
+commit ddfa3c7a23bc13a90656796ed123bc1f105dafae
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Wed Jun 9 19:33:38 2021 +0100
+
+    L2S20-75 #application taskmanagement/application/AddManualTaskController updated
+
+M	base.core/src/main/java/eapli/base/taskmanagement/application/AddManualTaskController.java
+
+commit 0f9edb8634061d60dfae53766b2c58803d37ba47
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Wed Jun 9 19:32:39 2021 +0100
+
+    L2S20-75 #backoffice console/presentation/MainMenu updated
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+
+commit 04c0b959b1c6ac795778a5783dd6e70cf682d10c
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Wed Jun 9 19:31:46 2021 +0100
+
+    L2S20-75 #backoffice console/presentation/CreateManualTaskUI added [need refinement]
+
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateManualTaskUI.java
+
 commit 5545b043eacdf3adffcd088c0bdbb9c64c83fab2
 Author: Jose Teixeira <1150462@isep.ipp.pt>
 Date:   Tue Jun 1 17:56:32 2021 +0100
