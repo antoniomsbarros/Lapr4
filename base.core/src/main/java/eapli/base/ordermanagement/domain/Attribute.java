@@ -30,7 +30,7 @@ public class Attribute implements DomainEntity<Long> , Serializable {
 
     public Attribute(final Long id, final Description description, final Description name,
                      final Description label, final Description regularexpression,
-                     TypeofData typeofData) {
+                     final TypeofData typeofData) {
         Preconditions.noneNull(description, name, label, typeofData);
         if (description.toString().length()>100){
             throw new IllegalArgumentException(
@@ -82,7 +82,7 @@ public class Attribute implements DomainEntity<Long> , Serializable {
 
     @Override
     public String toString() {
-        return  "AttributeCode= " + id +
+        return  "AttributeCode= " + this.identity() +
                 ", description=" + description.toString() +
                 ", name=" + name.toString() +
                 ", label=" + label.toString() +
