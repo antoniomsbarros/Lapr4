@@ -20,12 +20,17 @@ sem que aja a necessidade de atualizar.
 
 # 2. Análise
 
-	A análise foi realizada tendo em conta as reuniões com o Cliente e as respostas dadas no Fórum para esclarecimento de dúvidas.
+A análise desta US foi em relação ao enunciado, tendo também reunião com o cliente em que foi perguntado tudo
+o tipo de dados que o cliente queria que tivessem representados no dashboard.
+Em que a resposta do cliente foi que tem de amostrar todas as atividades do colaborador, todas as atividades que se encontram incompletas e 
+também todas as atividades incompletas ordenadas pela sua prioridade. Tambem foi pedido pelo cliente 
+a implementacam de um protocolo de aplicação de mais precisamente o protocolo SDP2021. E que tambem foi pedido que o dashboard 
+unicamente se encontre disponível no localhost do colaborador e que tambem se mantenha sempre atualizado.
 
-	* O dashboard deve aparecer quando o colaborador faz o login
-	* O dashboard deve mostrar tudas as atividades feitas pelo colaborador 
-	* O dashboard deve mostrar as atividades que faltam fazer mostrando o tempo pelo que faltam fazer
-	* O dashboard deve mostrar as atividades por prioridade
+* Protocolo SDP2021: é o formato com que o tudas as comunicações entre a aplicação e os servidores tem de seguir desde a 
+a comunicação da aplicação do cliente com o servidor do motor de Fluxo de atividades e vice-versa, a forma como o motor de 
+  fluxo de atividade tem de comunicar com o servidor de executor de tarefas automáticas e vice-versa.
+  
 
 
 # 3. Design
