@@ -4,8 +4,6 @@ import eapli.base.catalogmanagement.application.CreateServiceController;
 import eapli.base.catalogmanagement.domain.Catalog;
 import eapli.base.catalogmanagement.domain.Keyword;
 import eapli.base.catalogmanagement.domain.Service;
-import eapli.base.ordermanagement.domain.Attribute;
-import eapli.base.ordermanagement.domain.Form;
 import eapli.base.ordermanagement.domain.TypeofData;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.io.util.Console;
@@ -66,7 +64,6 @@ public class CreateServiceUI extends AbstractUI {
             /*Attribute Info*/
             while (answer2.equals("y")) {
                 final Long id = Long.valueOf(Console.readLine("ID Attribute: "));
-                System.out.println(id);
                 final Description description = Description.valueOf(Console.readLine("Description: "));
                 final Description nameAttribute = Description.valueOf(Console.readLine("Attribute name: "));
                 final Description label = Description.valueOf(Console.readLine("Label: "));
@@ -86,17 +83,15 @@ public class CreateServiceUI extends AbstractUI {
             return false;
 
         Service createdService = controller.saveService();
-        System.out.println("Service created.\n" + createdService);
+        System.out.println("Service created successfully.\n");
         return true;
     }
 
     public Long chooseCatalog(Iterable<Catalog> lstCatalogs){
-        int i = 1;
         Iterator<Catalog> it = lstCatalogs.iterator();
         System.out.println("--List of CATALOGS--");
         while(it.hasNext()) {
-            System.out.println(i + ". Id: " + it.next().identity() + ", Title: " + it.next().Title());
-            i++;
+            System.out.println("Id: " + it.next().identity() + ", Title: " + it.next().Title());
         }
         Long choosenId = Long.valueOf(Console.readLine("Choose the ID of the CATALOG you want to insert the Service on:"));
         return choosenId;
