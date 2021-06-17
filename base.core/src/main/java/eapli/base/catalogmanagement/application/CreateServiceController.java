@@ -39,8 +39,8 @@ public class CreateServiceController {
         this.formBuilder = new FormBuilder();
         this.attributeBuilder = new AttributeBuilder();
         this.lstKeywords = new HashSet<>();
-        this.lstForms = new ArrayList<>();
-        this.lstAttrbutes = new ArrayList<>();
+        this.lstForms = new ArrayList<Form>();
+        this.lstAttrbutes = new ArrayList<Attribute>();
     }
 
     public void createService(Description title,Description smalldescription, Description fulldescription,
@@ -79,28 +79,24 @@ public class CreateServiceController {
         return catalogRepository.findByIdentifier(id);
     }
 
-    /*public void addForm(Description name) {
-        formBuilder.withName(name);
-    }*/
-
     public void addAttribute(Long id, Description description, Description name, Description label, Description regularexpression, TypeofData dataType) {
-        lstAttrbutes.add(new Attribute(id, description, name, label, regularexpression, dataType ));
+        attributeBuilder.withId(id).withDescription(description).withLabel(label).withRegularExpression(regularexpression)
+                .withName(name).withTypeofData(dataType);
+        lstAttrbutes.add(attributeBuilder.build());
     }
 
     public void saveForm(Description name,Description script) {
-        formBuilder.withName(name).withScript(script);
-        Form f = formBuilder.build();
-
-        for (Attribute at : lstAttrbutes) {
-            System.out.println(at);
-            f.addAttribute(at);
+        Form f = formBuilder.withName(name).withScript(script).build();
+        for (Attribute a : lstAttrbutes) {
+            f.addListAttributes(a);
         }
-        Form form = formRepository.save(f);
-        lstForms.add(form);
+        lstForms.add(formRepository.save(f));
+        lstAttrbutes = new ArrayList<Attribute>();
     }
 
     public Service saveService() {
         serviceBuilder.withForm(lstForms);
+        lstForms = new ArrayList<Form>();
         return serviceRepository.save(serviceBuilder.build());
     }
 
