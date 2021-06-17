@@ -41,30 +41,31 @@ A interpretação feita deste requisito foi no sentido de um utilizador puder so
 
 # 3. Design
 
-*Nesta secção a equipa deve descrever o design adotado para satisfazer a funcionalidade. Entre outros, a equipa deve apresentar diagrama(s) de realização da funcionalidade, diagrama(s) de classes, identificação de padrões aplicados e quais foram os principais testes especificados para validar a funcionalidade.*
-
-*Para além das secções sugeridas, podem ser incluídas outras.*
+Para a realização desta funcionalidade a equipa usou os padrões Controller, Repository e Builder.
+Foi criado o controller RequestServiceController que será responsável pela criação quer do Draft quer do Pedido submetidoe quer do Ticket gerado.
+Para se persistir a informação no sistema usou-se o padrão Repository.
+Após o Colaborador dar as informações necessárias será gerado ou um Draft no caso de ele não querer já submeter ou o Pedido para ser submetido.
+Após o Pedido ser criado e submetido será gerado um Ticket desse mesmo Pedido.
 
 ## 3.1. Realização da Funcionalidade
 
-*Nesta secção deve apresentar e descrever o fluxo/sequência que permite realizar a funcionalidade.*
+![SD_US3003](SD/SD_US3003.svg)
 
 ## 3.2. Diagrama de Classes
 
-*Nesta secção deve apresentar e descrever as principais classes envolvidas na realização da funcionalidade.*
+Por indicação do professor, não é necessário elaborar o Diagrama de Classes.
 
 ## 3.3. Padrões Aplicados
 
-*Nesta secção deve apresentar e explicar quais e como foram os padrões de design aplicados e as melhores práticas.*
+O padrão aplicado foi o padrão Controller e Repository e Builder.
 
 ## 3.4. Testes 
-*Nesta secção deve sistematizar como os testes foram concebidos para permitir uma correta aferição da satisfação dos requisitos.*
 
-**Teste 1:** Verificar que não é possível criar uma instância da classe Exemplo com valores nulos.
+**Teste 1 ... :** Verificar que não é possível criar uma instância de um Draft com valor nulos
 
 	@Test(expected = IllegalArgumentException.class)
-		public void ensureNullIsNotAllowed() {
-		Exemplo instance = new Exemplo(null, null);
+		public void ensureDraftCantAllowedNulls() {
+		Draft draft = new Exemplo(any attribute null );
 	}
 
 # 4. Implementação
