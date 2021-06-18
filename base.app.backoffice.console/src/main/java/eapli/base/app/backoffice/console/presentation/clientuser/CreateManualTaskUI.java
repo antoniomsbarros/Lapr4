@@ -48,7 +48,7 @@ public class CreateManualTaskUI extends AbstractUI {
         ClientUser collab = null;
         Team team = null;
         Delegaction delegaction = null;
-        Form form = null;
+        Form form = new Form();
         int position;
 
 
@@ -63,11 +63,7 @@ public class CreateManualTaskUI extends AbstractUI {
         int month = Console.readInteger(" ==> Mes da entrega da atividade: ");
         int day = Console.readInteger(" ==> Dia da entrega da atividade: ");
 
-        if (( year > 2020) && (month>6 && month<13) && (day>0 && day<32)){
-            date.set(year,month,day);
-        } else {
-            System.out.println("Campos da data são inválidos");
-        }
+        date.set(year,month-1,day);
 
         Deadline deadline = new Deadline(date);
 
@@ -116,6 +112,7 @@ public class CreateManualTaskUI extends AbstractUI {
 
         collab = team.clientUser();
         System.out.println("**Collaborador escolhido:** \n"+collab.toString());
+        Long dumbID = Long.valueOf(Console.readLine("Id de responsabilidade: "));
 
         /*  while(collabIT.hasNext()){
             collab = collabIT.next();
@@ -124,15 +121,15 @@ public class CreateManualTaskUI extends AbstractUI {
         System.out.println(collab.toString());
          System.out.println(team.toString());
         */
-
+        Long delegactionID = Long.valueOf(Console.readLine("Id de delegacao: "));
         Description justification = Description.valueOf(Console.readLine("Justificacao: "));
         Designation alternative = Designation.valueOf(Console.readLine("Designacao: "));
 
-        delegaction = new Delegaction(justification,alternative);
+        delegaction = new Delegaction(delegactionID,justification,alternative);
         //System.out.println(justification.toString());
         //System.out.println(alternative.toString());
 
-        responsable = new Responsable(collab,delegaction,team);
+        responsable = new Responsable(dumbID,collab,delegaction,team);
 
         String comment = Console.readLine("Comentário: ");
         Description commentary = Description.valueOf(comment);
@@ -192,14 +189,16 @@ public class CreateManualTaskUI extends AbstractUI {
 
             answer = Console.readLine("Do you want to add more Attributes to the Form?(y/n)");
             }
-        System.out.println(formController.saveForm(name,script));
+
+        form = formController.saveForm(name,script);
+        System.out.println(form);
 
         Attribute atb = new Attribute(Long.valueOf(1),Description.valueOf("DescAttrb1"),Description.valueOf("Attrb1"),Description.valueOf("LBL1"),Description.valueOf("regularExp"), TypeofData.Data);
 
         List<Answer> lstAnswer = new ArrayList<>();
 
 
-        controller.addManualTask(date,priority,responsable,commentary,decision,form,lstAnswer);
+        controller.addManualTask(deadline,priority,responsable,commentary,decision,form,lstAnswer);
 
         return true;
     }
