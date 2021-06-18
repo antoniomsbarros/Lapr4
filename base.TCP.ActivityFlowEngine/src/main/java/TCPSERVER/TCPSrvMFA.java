@@ -1,8 +1,15 @@
 package TCPSERVER;
 
 import eapli.base.DashboardManagement.Protocol;
+import eapli.base.catalogmanagement.application.CreateSequenceController;
+import eapli.base.catalogmanagement.application.CreateWorkflow;
+import eapli.base.catalogmanagement.application.SequenceAddToWorkflow;
+import eapli.base.catalogmanagement.domain.Sequence;
+import eapli.base.catalogmanagement.domain.Workflow;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 
+import eapli.base.taskmanagement.application.AddManualTaskController;
+import eapli.base.taskmanagement.application.SearchManualTask;
 import eapli.base.usermanagement.domain.BasePasswordPolicy;
 import eapli.framework.application.UseCaseController;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
@@ -26,8 +33,17 @@ public final class TCPSrvMFA {
 		Socket cliSock;
 		AuthzRegistry.configure(PersistenceContext.repositories().users(), new BasePasswordPolicy(),
 				new PlainTextEncoder());
+		CreateWorkflow createWorkflow=new CreateWorkflow();
+		CreateSequenceController createSequenceController=new CreateSequenceController();
+		SearchManualTask searchManualTask=new SearchManualTask();
+		List<Sequence> sequences=new LinkedList<>();
 
+		Workflow workflow= createWorkflow.createWorkflow(sequences);
 
+		Sequence sequence= createSequenceController.createSequence(searchManualTask.getmanualtask(1L), 1L);
+		SequenceAddToWorkflow sequenceAddToWorkflow=new SequenceAddToWorkflow();
+		workflow= sequenceAddToWorkflow.addSequencesToWorkflow(workflow, sequence);
+		System.out.println("ola");
 		System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE);
 		System.setProperty("javax.net.ssl.trustStorePassword",KEYSTORE_PASS);
 

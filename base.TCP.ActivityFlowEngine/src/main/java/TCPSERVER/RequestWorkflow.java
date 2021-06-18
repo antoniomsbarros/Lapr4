@@ -34,6 +34,8 @@ public class RequestWorkflow {
     private final ChangeStatusofActivity changeStatusofActivity;
     private final SearchService searchService;
     private final SearchActivity searchActivity;
+    private final SequenceAddToWorkflow sequenceAddToWorkflow;
+
     public RequestWorkflow() {
 
         this.searchWorkflowService = new SearchWorkflowService();
@@ -48,6 +50,7 @@ public class RequestWorkflow {
         changeStatusofActivity=new ChangeStatusofActivity();
         searchService=new SearchService();
         searchActivity=new SearchActivity();
+        sequenceAddToWorkflow=new SequenceAddToWorkflow();
     }
 
     public void createWorkflowPedido(String idPedido){
@@ -107,17 +110,19 @@ public class RequestWorkflow {
                 sequenceList.add(sequence);
                 if (i==0){
                     workflowRequest=createWorkflow.createWorkflow(sequenceList);
+                }else {
+                    workflowRequest= sequenceAddToWorkflow.addSequencesToWorkflow(workflow, sequence);
                 }
                 System.out.println("sequencelist "+sequenceList.size());
             }else if (tasks.containsKey(i)){
                 boolean value=true;
                 ManualTask manualTask = null;
-              /*  while(value && id.intValue()!=0){
+               while(value && id.intValue()!=0){
                      manualTask=searchManualTask.getmanualtask(id);
                     if (manualTask.state().equals(TaskState.DONE)){
                         value=false;
                     }
-                }*/
+                }
                 changeStatusRequest.changeStatusofRequest(request, State.EMRESOLUCAO);
                 AutomaticTask automaticTask;
                 Calendar date=addDays(new Date(), 15);
