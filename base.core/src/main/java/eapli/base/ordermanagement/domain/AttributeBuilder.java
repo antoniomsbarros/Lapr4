@@ -15,11 +15,14 @@ public class AttributeBuilder implements DomainFactory<Attribute> {
 
     private Description regularexpression;
 
-    private Description script;
-
     private TypeofData typeofData;
 
     public AttributeBuilder() {}
+
+    public AttributeBuilder withId(Long id) {
+        this.id = id;
+        return this;
+    }
 
     public AttributeBuilder withDescription(Description description) {
         this.description = description;
@@ -38,11 +41,6 @@ public class AttributeBuilder implements DomainFactory<Attribute> {
 
     public AttributeBuilder withRegularExpression(Description regularexpression) {
         this.regularexpression = regularexpression;
-        return this;
-    }
-
-    public AttributeBuilder withScript(Description script) {
-        this.script = script;
         return this;
     }
 

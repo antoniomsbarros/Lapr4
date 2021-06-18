@@ -5,6 +5,7 @@ import eapli.base.catalogmanagement.domain.Delegaction;
 import eapli.base.catalogmanagement.domain.Responsable;
 import eapli.base.clientusermanagement.application.ClientUserService;
 import eapli.base.clientusermanagement.domain.ClientUser;
+import eapli.base.ordermanagement.application.CreateFormController;
 import eapli.base.ordermanagement.domain.Attribute;
 import eapli.base.ordermanagement.domain.Form;
 import eapli.base.ordermanagement.domain.TypeofData;
@@ -27,12 +28,14 @@ public class CreateManualTaskUI extends AbstractUI {
 
     private AddManualTaskController controller;
     private RegisterTeamController teamController;
+    private CreateFormController formController;
 
 
 
     public CreateManualTaskUI() {
         this.controller = new AddManualTaskController();
         this.teamController = new RegisterTeamController();
+        this.formController = new CreateFormController();
     }
 
     @Override
@@ -168,14 +171,30 @@ public class CreateManualTaskUI extends AbstractUI {
             taskType = TaskType.RESOLUTION;
         }
 
+
+
+        String answer = "y";
+
+        /*Form Info*/
+        System.out.println("-----Form Especification-----");
         Description name = Description.valueOf(Console.readLine("Nome da Form da Atividade:"));
         Description script = Description.valueOf(Console.readLine("Nome do Script da Form da Atividade:"));
+        /*Attribute Info*/
+        while (answer.equals("y")) {
+            final Long id = Long.valueOf(Console.readLine("ID Attribute: "));
+            final Description description = Description.valueOf(Console.readLine("Description: "));
+            final Description nameAttribute = Description.valueOf(Console.readLine("Attribute name: "));
+            final Description label = Description.valueOf(Console.readLine("Label: "));
+            final Description regularexpression = Description.valueOf(Console.readLine("Regular expression: "));
+            final TypeofData td = TypeofData.valueOf(Console.readLine("Choose a data type (INTEGER, String, Bool, Data, Ficheiro, ListaDeValores): "));
 
-        form = new Form(name,script);
+            formController.addAttribute(id, description, nameAttribute, label, regularexpression, td);
+
+            answer = Console.readLine("Do you want to add more Attributes to the Form?(y/n)");
+            }
+        System.out.println(formController.saveForm(name,script));
 
         Attribute atb = new Attribute(Long.valueOf(1),Description.valueOf("DescAttrb1"),Description.valueOf("Attrb1"),Description.valueOf("LBL1"),Description.valueOf("regularExp"), TypeofData.Data);
-
-        form.addAttribute(atb);
 
         List<Answer> lstAnswer = new ArrayList<>();
 
