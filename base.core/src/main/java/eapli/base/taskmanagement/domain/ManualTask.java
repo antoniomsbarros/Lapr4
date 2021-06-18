@@ -77,6 +77,10 @@ public class ManualTask extends Task implements DomainEntity<Long> {
         return  this.decision.toString();
     }
 
+    public TaskType type(){
+        return type;
+    }
+
     @Override
     public String toString() {
         return "ManualTask{" +

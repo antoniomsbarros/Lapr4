@@ -120,6 +120,10 @@ public abstract class Task implements AggregateRoot<Long> {
         return this.state;
     }
 
+    public void done(){
+        state = TaskState.DONE;
+    }
+
     @Override
     public String toString() {
         return String.format("Task Code: %s - Deadline: %s - Priority: %s\n",
