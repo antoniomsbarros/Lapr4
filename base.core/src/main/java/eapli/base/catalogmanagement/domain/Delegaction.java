@@ -14,7 +14,6 @@ import javax.persistence.Id;
 public class Delegaction implements DomainEntity<Long> {
 
     @Id
-    @GeneratedValue
     private Long id;
 
     private Description justification;
@@ -24,8 +23,9 @@ public class Delegaction implements DomainEntity<Long> {
     public Delegaction() {
     }
 
-    public Delegaction(Description justification, Designation alternative) {
+    public Delegaction(Long id, Description justification, Designation alternative) {
         Preconditions.noneNull(justification, alternative);
+        this.id = id;
         this.justification = justification;
         this.alternative = alternative;
     }

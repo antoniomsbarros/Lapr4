@@ -43,6 +43,14 @@ public abstract class Task implements AggregateRoot<Long> {
         this.active = true;
     }
 
+    public Task(Long taskCode, TaskState state, Deadline deadline, Integer priority){
+        this.taskCode = taskCode;
+        this.state = state;
+        this.deadline = deadline;
+        this.priority = priority;
+        this.active = true;
+    }
+
     /**
      *
      * @return true or false whether is or not active

@@ -13,13 +13,12 @@ import java.util.List;
 public class Responsable implements DomainEntity<Long>{
 
     @Id
-    @GeneratedValue
     private Long id;
 
     @OneToOne
     private ClientUser responsable;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Delegaction delegaction;
 
     @ManyToOne(optional = true)
@@ -28,8 +27,9 @@ public class Responsable implements DomainEntity<Long>{
     public Responsable() {
     }
 
-    public Responsable(ClientUser responsable, Delegaction delegaction, Team team) {
+    public Responsable(Long id, ClientUser responsable, Delegaction delegaction, Team team) {
         Preconditions.noneNull(responsable, delegaction);
+        this.id = id;
         this.team = team;
 
         if (verifyTeamResponsable(responsable)){
