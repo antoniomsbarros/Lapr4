@@ -13,12 +13,12 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-public class ManualTask extends Task implements DomainEntity<Long> {
+public class ManualTask extends Task {
 
     @Enumerated(EnumType.STRING)
     private TaskType type;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Responsable collaborator;
     @AttributeOverride(name = "value", column = @Column(name = "commentary"))
     private Description commentary;
@@ -42,7 +42,7 @@ public class ManualTask extends Task implements DomainEntity<Long> {
                       Description commentary, Form form, List<Answer> lstResposta) {
         super(state, deadline, priority);
         try {
-            if (Calendars.now().compareTo(deadline.Date()) == 1) {
+            if (Calendars.now().compareTo(deadline.Date()) != 1) {
                 throw new IllegalArgumentException("Invalid DeadLine!");
             }
         } catch (NullPointerException | IllegalArgumentException e) {
@@ -87,7 +87,7 @@ public class ManualTask extends Task implements DomainEntity<Long> {
     public String toString() {
         return "ManualTask{" +
                 "id=" +identity()+
-                "type=" + type +
+                ", type=" + type +
                 ", collaborator=" + collaborator +
                 ", commentary=" + commentary +
                 ", decision=" + decision +

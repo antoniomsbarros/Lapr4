@@ -16,7 +16,7 @@ import java.util.Arrays;
  * @author marly
  */
 @Entity
-public class AutomaticTask extends Task implements  DomainEntity<Long> {
+public class AutomaticTask extends Task{
 
     private Description scriptPath;
 

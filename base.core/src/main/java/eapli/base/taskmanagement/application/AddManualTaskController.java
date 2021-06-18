@@ -22,13 +22,12 @@ public class AddManualTaskController {
     private final ManualTaskRepository manualTaskRepository = PersistenceContext.repositories().manualTasks();
     private final TeamRepository teamRepository = PersistenceContext.repositories().team();
 
-    public ManualTask addManualTask(Calendar deadline, Integer priority,
+    public ManualTask addManualTask(Deadline deadline, Integer priority,
                                     Responsable collaborator, Description commentary, Description decision, Form form, List<Answer> lstResposta ) {
-        //authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.COLLABORATOR);
         ManualTask manualTask = null;
         try {
-            manualTask = new ManualTask(TaskState.PENDING, new Deadline(deadline),
-                                                         priority,TaskType.UNKNOWN,collaborator,commentary,decision, form,lstResposta);
+            manualTask = new ManualTask(TaskState.PENDING, deadline, priority,
+                                        TaskType.UNKNOWN,collaborator,commentary,decision, form,lstResposta);
             manualTaskRepository.save(manualTask);
         } catch (IllegalArgumentException e) {
             System.out.println(e);
