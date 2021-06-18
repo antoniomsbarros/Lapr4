@@ -41,20 +41,11 @@ a comunicação da aplicação do cliente com o servidor do motor de Fluxo de at
 
 ## 3.1. Realização da Funcionalidade
 
-*Nesta secção deve apresentar e descrever o fluxo/sequência que permite realizar a funcionalidade.*
-
-## 3.2. Diagrama de Classes
-
-*Nesta secção deve apresentar e descrever as principais classes envolvidas na realização da funcionalidade.*
-
-## 3.3. Padrões Aplicados
-
-*Nesta secção deve apresentar e explicar quais e como foram os padrões de design aplicados e as melhores práticas.*
-
+![SDUS3011](SDUS3011.jpg)
 ## 3.4. Testes 
 *Nesta secção deve sistematizar como os testes foram concebidos para permitir uma correta aferição da satisfação dos requisitos.*
 
-**Teste 1:** Verificar que não é possível criar uma instância da classe Exemplo com valores nulos.
+**Teste 1:** Verificar 
 
 	@Test(expected = IllegalArgumentException.class)
 		public void ensureNullIsNotAllowed() {
