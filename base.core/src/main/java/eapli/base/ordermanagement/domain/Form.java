@@ -19,20 +19,26 @@ public class Form implements AggregateRoot<Long> {
     private Description name;
     @AttributeOverride(name = "value", column = @Column(name = "script"))
     private Description script;
-    @OneToMany(mappedBy="id",cascade=CascadeType.MERGE)
-    private Set<Attribute> attribute;
+    //@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "id")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Attribute> attribute = new ArrayList<Attribute>();
+
 
     public Form() {
     }
 
-    public Form(final Description name, final Description script/*,final List<Attribute> attribute*/) {
+    public Form(final Description name, final Description script,final List<Attribute> attribute) {
         Preconditions.noneNull(name);
         if (name.length()>50){
             throw new IllegalArgumentException("the name of the form cant have more then 50 characters");
         }
         this.name = name;
         this.script = script;
-        this.attribute = new HashSet<>();
+        this.attribute = attribute;
+    }
+
+    public void addListAttributes(final Attribute attribute) {
+        this.attribute.add(attribute);
     }
 
     @Override
@@ -44,7 +50,7 @@ public class Form implements AggregateRoot<Long> {
         if (this==form){
             return true;
         }
-        return identifier.equals(form.identifier) && name.equals(form.name) && script.equals(form.script)/*attribute.equals(form.attribute)*/;
+        return name.equals(form.name) && script.equals(form.script)/*attribute.equals(form.attribute)*/;
     }
 
     @Override
@@ -67,14 +73,15 @@ public class Form implements AggregateRoot<Long> {
 
     @Override
     public String toString() {
-        return "identifier=" + identifier + ", name=" + name.toString() + ", script =" + script/*", Attribute:" + attribute.toString()*/;
+        String ret = "identifier=" + identifier + ", name=" + name.toString() + ", script =" + script + ", Attribute:";
+        for (Attribute attribute : this.attribute) {
+            ret = ret + attribute.toString();
+        }
+        return ret;
     }
 
-    public void addAttribute(Attribute attribute) {
-        this.attribute.add(attribute);
-    }
 
-    public Set<Attribute> attribute(){
+    public List<Attribute> attribute(){
         return attribute;
     }
 }

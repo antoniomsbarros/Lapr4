@@ -3,6 +3,7 @@ package eapli.base.ordermanagement.domain;
 import eapli.framework.domain.model.DomainFactory;
 import eapli.framework.general.domain.model.Description;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FormBuilder implements DomainFactory<Form> {
@@ -11,7 +12,7 @@ public class FormBuilder implements DomainFactory<Form> {
 
     private Description script;
 
-    private List<Attribute> attribute;
+    private List<Attribute> attribute = new ArrayList<Attribute>();
 
     public FormBuilder() { }
 
@@ -25,13 +26,13 @@ public class FormBuilder implements DomainFactory<Form> {
         return this;
     }
 
-    public FormBuilder withAttribute(List<Attribute> at) {
-        this.attribute = at;
+    public FormBuilder withAttribute(Attribute at) {
+        this.attribute.add(at);
         return this;
     }
 
     @Override
     public Form build() {
-        return new Form(this.name, this.script);
+        return new Form(this.name, this.script, this.attribute);
     }
 }

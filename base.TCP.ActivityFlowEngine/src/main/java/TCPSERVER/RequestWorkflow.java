@@ -1,9 +1,6 @@
 package TCPSERVER;
 
-import eapli.base.DashboardManagement.TcpClient;
-import eapli.base.DashboardManagement.protocol;
 import eapli.base.catalogmanagement.application.*;
-import eapli.base.catalogmanagement.domain.Delegaction;
 import eapli.base.catalogmanagement.domain.Responsable;
 import eapli.base.catalogmanagement.domain.Sequence;
 import eapli.base.catalogmanagement.domain.Workflow;
@@ -18,15 +15,9 @@ import eapli.base.taskmanagement.application.*;
 import eapli.base.taskmanagement.domain.AutomaticTask;
 import eapli.base.taskmanagement.domain.ManualTask;
 import eapli.base.taskmanagement.domain.TaskState;
-import eapli.base.teamManagement.domain.Acronym;
-import eapli.base.teamManagement.domain.Team;
-import eapli.base.teamManagement.domain.TeamType;
-import eapli.base.teamManagement.domain.Uniquecode;
 import eapli.framework.general.domain.model.Description;
-import eapli.framework.general.domain.model.Designation;
 import eapli.framework.validations.Preconditions;
 
-import java.io.Serializable;
 import java.util.*;
 
 public class RequestWorkflow {
@@ -43,6 +34,8 @@ public class RequestWorkflow {
     private final ChangeStatusofActivity changeStatusofActivity;
     private final SearchService searchService;
     private final SearchActivity searchActivity;
+    private final SequenceAddToWorkflow sequenceAddToWorkflow;
+
     public RequestWorkflow() {
 
         this.searchWorkflowService = new SearchWorkflowService();
@@ -57,6 +50,7 @@ public class RequestWorkflow {
         changeStatusofActivity=new ChangeStatusofActivity();
         searchService=new SearchService();
         searchActivity=new SearchActivity();
+        sequenceAddToWorkflow=new SequenceAddToWorkflow();
     }
 
     public void createWorkflowPedido(String idPedido){
@@ -87,7 +81,7 @@ public class RequestWorkflow {
         int size=tasks.size()+ manualTasks.size();
         List<Sequence> sequenceList=new LinkedList<>();
         List<Form> formList=searchService.findServices(ticket.TicketService().identity()).form();
-
+        Workflow workflowRequest=null;
 
         int error=0;
         ///implementaction of creting and executing
@@ -108,21 +102,27 @@ public class RequestWorkflow {
 
                 ManualTask manualTask=addManualTaskController.addManualTask(date, manualTask1.priority(), searchActivity.prepareTask(112345).get(0).Responsible(),Description.valueOf("ola") , Description.valueOf("ola"), form,request.Answers());
                 id=manualTask.identity();
+
                 System.out.println(id);
                 SearchManualTask searchManualTask=new SearchManualTask();
                 //System.out.println(manualTask.toString());
                 Sequence sequence= sequenceController.createSequence(searchManualTask.getmanualtask(manualTask.identity()), (long) i);
                 sequenceList.add(sequence);
+                if (i==0){
+                    workflowRequest=createWorkflow.createWorkflow(sequenceList);
+                }else {
+                    workflowRequest= sequenceAddToWorkflow.addSequencesToWorkflow(workflow, sequence);
+                }
                 System.out.println("sequencelist "+sequenceList.size());
             }else if (tasks.containsKey(i)){
                 boolean value=true;
                 ManualTask manualTask = null;
-              /*  while(value && id.intValue()!=0){
+               while(value && id.intValue()!=0){
                      manualTask=searchManualTask.getmanualtask(id);
                     if (manualTask.state().equals(TaskState.DONE)){
                         value=false;
                     }
-                }*/
+                }
                 changeStatusRequest.changeStatusofRequest(request, State.EMRESOLUCAO);
                 AutomaticTask automaticTask;
                 Calendar date=addDays(new Date(), 15);
@@ -142,7 +142,7 @@ public class RequestWorkflow {
 
             }
         }
-        Workflow workflowRequest=createWorkflow.createWorkflow(sequenceList);
+      //  Workflow workflowRequest=createWorkflow.createWorkflow(sequenceList);
         if (error==0){
             changeStatusRequest.changeStatusofRequest(request, State.CONCLUIDO);
         }else {

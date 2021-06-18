@@ -1,4 +1,4 @@
-# US3002 - Como Gestor de Projeto, eu pretendo que seja desenvolvido no Motor de Fluxo de Atividade o mecanismo de gestão/controlo/avanço do fluxo de atividades de um dado pedido.
+# US4001- Como Gestor de Projeto, eu pretendo que seja desenvolvido no Motor de Fluxo de Atividade o mecanismo de gestão/controlo/avanço do fluxo de atividades de um dado pedido.
 =======================================
 
 
@@ -23,9 +23,12 @@ A interpretação feita deste requisito foi no sentido é que esta Us é respons
 # 2. Análise
 
 	A análise foi realizada tendo em conta as reuniões com o Cliente e as respostas dadas no Fórum para esclarecimento de dúvidas.
-	* O motor de fluxo é responsavel por cada pedido desdo o seu tratamento desde a criação das suas atividades e fazer 
-      com que ela avance no workflow e que seja finalizada.
-
+	* O motor de fluxo é responsavel por todos pedidos desde quando foram criado até ao seu estado de concluido o motor de fluxo
+	é responsavel por criar o workflow que o pedido segui, tambem é responsavel por fazer a mudança do estado do pedido e das 
+	atividades do pedido. E tambem caso exista tambem uma atividade manual anterior a uma atividade automatica atividade automática 
+	fica num estado de espera ativa até atividade manual estiver comcluida e depois é que é mandada para o executor de tarefas 
+	automáticas para ser executada e depois processa a resposta do executor de atividades automáticas e depois de tudas as atividades do
+	pedido faz a mudança do estado do pedido.
 
 # 3. Design
 

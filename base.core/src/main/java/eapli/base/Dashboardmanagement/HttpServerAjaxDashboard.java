@@ -5,12 +5,12 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Arrays;
+import eapli.base.DashboardManagement.TcpClient;
 
-
-public class HttpServerAjaxVoting {
+public class HttpServerAjaxDashboard {
     static private final String BASE_FOLDER= "base.core\\src\\main\\java\\eapli\\base\\DashboardManagement\\www";
     static private ServerSocket sock;
-    private static TcpClient tcpClient;
+    private static eapli.base.DashboardManagement.TcpClient tcpClient;
     private static  final  String IPAdress="10.9.21.107";
     private static  final  String IPAdressTemp="127.0.0.1";
     public static void main(String args[]) throws Exception {
@@ -22,7 +22,7 @@ public class HttpServerAjaxVoting {
                 candidateName[i] = "Candidate " + i;
                 candidateVotes[i] = 0;
             }
-        tcpClient =new TcpClient();
+       /// tcpClient =new TcpClient();
         activityResolucao= tcpClient.tcpConnecting(3, CollaboratorNumber+" 3",IPAdress);
 
         System.out.println(Arrays.toString(activityResolucao) +" " +activityResolucao.length);
@@ -41,9 +41,9 @@ public class HttpServerAjaxVoting {
             System.out.println("Server failed to open local port " + 70);
             System.exit(1);
             }
-	while(true) { 
+	while(true) {
             cliSock=sock.accept();
-            HttpAjaxVotingRequest req=new HttpAjaxVotingRequest(cliSock, BASE_FOLDER);
+            HttpAjaxDashboardRequest req=new HttpAjaxDashboardRequest(cliSock, BASE_FOLDER);
             req.start();
             incAccessesCounter();
             }
@@ -107,18 +107,18 @@ public class HttpServerAjaxVoting {
             CollaboratorNumber=Integer.parseInt(substring);
             System.out.println(substring);
         } catch(NumberFormatException ne) { return; }
-        tcpClient =new TcpClient();
-        activityResolucao= tcpClient.tcpConnecting(3, CollaboratorNumber+" 3",IPAdress);
+
+        activityResolucao= TcpClient.tcpConnecting(3, CollaboratorNumber+" 3",IPAdress);
         activityResolucao[0].replace("[", "");
         activityResolucao[activityResolucao.length-1].replace("]", "");
         System.out.println(Arrays.toString(activityResolucao));
-        tcpClient =new TcpClient();
-        allactivitys= tcpClient.tcpConnecting(3, CollaboratorNumber+" 4", IPAdress);
+
+        allactivitys= TcpClient.tcpConnecting(3, CollaboratorNumber+" 4", IPAdress);
         allactivitys[0].replace("[", "");
         allactivitys[allactivitys.length-1].replace("]", "");
         System.out.println(Arrays.toString(allactivitys));
-        tcpClient =new TcpClient();
-        activitysremaningbypriority= tcpClient.tcpConnecting(3, CollaboratorNumber+" 5", IPAdress);
+
+        activitysremaningbypriority= TcpClient.tcpConnecting(3, CollaboratorNumber+" 5", IPAdress);
         activitysremaningbypriority[0].replace("[", "");
         activitysremaningbypriority[activitysremaningbypriority.length-1].replace("]", "");
         System.out.println(Arrays.toString(activitysremaningbypriority));

@@ -1,9 +1,5 @@
 package eapli.base.DashboardManagement;
 
-
-
-
-
 import eapli.base.taskmanagement.domain.Pair;
 
 
@@ -12,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class protocol {
+public class Protocol {
 
     private static final int VERSION = 3;
 
@@ -40,7 +36,7 @@ public class protocol {
     private String data;
 
 
-    public protocol(DataInputStream in) throws IOException {
+    public Protocol(DataInputStream in) throws IOException {
         num_bytes = 0;
         StringBuilder tempData = new StringBuilder();
         int bytesToRead;
@@ -62,7 +58,7 @@ public class protocol {
 
     }
 
-    public protocol(int intCode) {
+    public Protocol(int intCode) {
         version = VERSION;
         code = intCode;
         num_bytes = null;

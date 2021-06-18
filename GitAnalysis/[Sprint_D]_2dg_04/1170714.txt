@@ -1,0 +1,38 @@
+commit 6f09aaf589933437e65f27017f61546983c5ea44
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Mon Jun 14 18:02:25 2021 +0100
+
+    Create Form Controller needed for other UC's
+
+A	base.core/src/main/java/eapli/base/ordermanagement/application/CreateFormController.java
+
+commit aa7b46d69c27ffd4ac5fbf2e2ee92fc3d76bc835
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sat Jun 12 15:21:13 2021 +0100
+
+    Classes for the server of AutomaticTask (UC 5001)
+
+A	base.TCP.AutomaticTask/pom.xml
+A	base.TCP.AutomaticTask/src/main/java/TCPSERVER/TcpSrvAutomaticTask.java
+A	base.TCP.AutomaticTask/src/main/resources/application.properties
+A	base.TCP.AutomaticTask/src/main/resources/logback.xml
+A	base.TCP.AutomaticTask/target/maven-archiver/pom.properties
+A	base.TCP.AutomaticTask/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+A	base.TCP.AutomaticTask/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+A	base.TCP.AutomaticTask/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
+M	pom.xml
+A	run-automaticTask.sh
+
+commit fccffa3bcee89fb8b0ccc7c79ebc503babb9eee6
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Fri Jun 11 17:53:02 2021 +0100
+
+    Update UC create Service for the professor to analyse
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateServiceUI.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/CatalogBootstrapper.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/CreateServiceController.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Attribute.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/AttributeBuilder.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Form.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/FormBuilder.java

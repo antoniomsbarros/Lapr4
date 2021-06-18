@@ -4,13 +4,13 @@ import java.io.*;
 import java.net.Socket;
 
 
-public class HttpAjaxVotingRequest extends Thread {
+	public class HttpAjaxDashboardRequest extends Thread {
 	String baseFolder;
 	Socket sock;
 	DataInputStream inS;
 	DataOutputStream outS;
     
-	public HttpAjaxVotingRequest(Socket s, String f) {
+	public HttpAjaxDashboardRequest(Socket s, String f) {
 		baseFolder=f; sock=s;
 		}	
     
@@ -27,8 +27,7 @@ public class HttpAjaxVotingRequest extends Thread {
                     
         		if(request.getMethod().equals("GET")) {
         			if(request.getURI().equals("/votes")) {
-					response.setContentFromString(
-						HttpServerAjaxVoting.preparactionActivities(), "text/html");
+							response.setContentFromString(HttpServerAjaxDashboard.preparactionActivities(), "text/html");
 					response.setResponseStatus("200 Ok");
 					}
 				else {
@@ -50,7 +49,7 @@ public class HttpAjaxVotingRequest extends Thread {
                     	else { // NOT GET
                         	if(request.getMethod().equals("PUT") && request.getURI().startsWith("/votes/")) {
 								System.out.println(request.getURI().substring(7));
-                        			HttpServerAjaxVoting.castCollaborator(request.getURI().substring(7));
+                        			HttpServerAjaxDashboard.castCollaborator(request.getURI().substring(7));
                             		response.setResponseStatus("200 Ok");
                             		}
                        		else {

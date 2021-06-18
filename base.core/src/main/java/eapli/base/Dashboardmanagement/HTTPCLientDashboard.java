@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.*;
 
 
-public class DemoConsumer {
+public class HTTPCLientDashboard {
 	static private Socket sock;
 	static private InetAddress serverIP;
 	static private int serverPort;
@@ -29,7 +29,7 @@ public class DemoConsumer {
 			System.out.println("Invalid SERVER-PORT.");
 			System.exit(1);
 			}
- 
+
 		HTTPmessage request = new HTTPmessage();
 		System.out.println("Connecting to http://" + "127.0.0.1" + ":" + serverPort + "/");
 			request.setRequestMethod("PUT");
@@ -53,7 +53,7 @@ public class DemoConsumer {
             			System.exit(1);
             			}
 			request.send(sOut);				// send HTTP request
-			HTTPmessage response = new HTTPmessage(sIn);	// receive HTTP response
+	//		HTTPmessage response = new HTTPmessage(sIn);	// receive HTTP response
 			try { sock.close(); } catch(IOException ex2) { System.out.println("Error closing socket."); }
 			}
 
