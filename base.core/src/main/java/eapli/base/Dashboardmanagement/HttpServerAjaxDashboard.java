@@ -5,12 +5,12 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Arrays;
-
+import eapli.base.DashboardManagement.TcpClient;
 
 public class HttpServerAjaxDashboard {
     static private final String BASE_FOLDER= "base.core\\src\\main\\java\\eapli\\base\\DashboardManagement\\www";
     static private ServerSocket sock;
-    private static TcpClient tcpClient;
+    private static eapli.base.DashboardManagement.TcpClient tcpClient;
     private static  final  String IPAdress="10.9.21.107";
     private static  final  String IPAdressTemp="127.0.0.1";
     public static void main(String args[]) throws Exception {
