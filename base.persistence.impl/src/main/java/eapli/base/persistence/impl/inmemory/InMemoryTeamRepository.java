@@ -8,6 +8,7 @@ import eapli.base.teamManagement.domain.Uniquecode;
 import eapli.base.teamManagement.repositories.TeamRepository;
 import eapli.framework.infrastructure.repositories.impl.inmemory.InMemoryDomainRepository;
 
+import javax.persistence.TypedQuery;
 import java.util.Optional;
 
 public class InMemoryTeamRepository extends InMemoryDomainRepository<Team, Uniquecode> implements TeamRepository {
@@ -37,6 +38,11 @@ public class InMemoryTeamRepository extends InMemoryDomainRepository<Team, Uniqu
 
     @Override
     public Iterable<Team> teamsWithOutThisCollaborator(MecanographicNumber mecanographicNumber) {
+        throw new UnsupportedOperationException("NOT IMPLEMENTED YET");
+    }
+
+    @Override
+    public Iterable<Team> responsibleTeams(final ClientUser clientUser) {
         throw new UnsupportedOperationException("NOT IMPLEMENTED YET");
     }
 }
