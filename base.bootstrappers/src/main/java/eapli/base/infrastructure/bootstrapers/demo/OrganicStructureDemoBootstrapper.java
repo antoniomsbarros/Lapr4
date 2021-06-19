@@ -24,6 +24,7 @@ public class OrganicStructureDemoBootstrapper implements Action {
                                     new TeamBootstrapper(),
                                     new CatalogBootstrapper(),
                                     new AutomaticTaskBootstrapper(),
+                                    new ServicesForDemonstrationBootstrapp(),
 
 
                // new AddFunctionBootstrapper()
