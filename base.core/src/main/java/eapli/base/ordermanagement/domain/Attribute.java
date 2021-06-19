@@ -95,6 +95,8 @@ public class Attribute implements DomainEntity<Long> , Serializable {
         return this.id;
     }
     public String description(){return this.description.toString();}
+    public String name() { return  this.name.toString();}
+    public TypeofData typeofData() { return this.typeofData;}
 
     public String printForm() {
         return "Attribute{" +
