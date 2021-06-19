@@ -22,6 +22,9 @@ public class Deadline implements ValueObject {
     public Deadline(){}
 
     public Deadline(final Calendar deadline) {
+        if(deadline.compareTo(Calendar.getInstance()) < 1){
+            throw new IllegalArgumentException("Date has to be grather then the actual");
+        }
         Preconditions.noneNull(deadline);
         this.deadline = deadline;
     }

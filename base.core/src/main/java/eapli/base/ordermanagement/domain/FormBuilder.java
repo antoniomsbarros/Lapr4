@@ -14,6 +14,8 @@ public class FormBuilder implements DomainFactory<Form> {
 
     private List<Attribute> attribute = new ArrayList<Attribute>();
 
+    private FormType formType;
+
     public FormBuilder() { }
 
     public FormBuilder withName(Description name) {
@@ -31,8 +33,13 @@ public class FormBuilder implements DomainFactory<Form> {
         return this;
     }
 
+    public FormBuilder withFormType(String formType) {
+        this.formType = FormType.valueOf(formType);
+        return this;
+    }
+
     @Override
     public Form build() {
-        return new Form(this.name, this.script, this.attribute);
+        return new Form(this.name, this.script, this.attribute, this.formType);
     }
 }

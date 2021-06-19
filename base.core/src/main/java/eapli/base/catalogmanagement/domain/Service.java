@@ -56,7 +56,7 @@ public class Service implements AggregateRoot<Long> {
 
     public Service(final List<Form> form,/*final Criticalitylevel criticalitylevel,*/ final Description title,final Description fulldescription,
                    final Description smalldescription,final String requirefeedback, final Set<Keyword> keyword,
-                   final Description icon,final Catalog catalog, boolean completedService/*,Workflow workflow*/) {
+                   final Description icon,final Catalog catalog, boolean completedService,Workflow workflow) {
         Preconditions.noneNull(form,title,fulldescription, smalldescription, requirefeedback, icon/*, criticalitylevel*/);
         if (title.length()>50){
             throw new IllegalArgumentException("the title of the service is superior to 50 caracters");
@@ -66,6 +66,9 @@ public class Service implements AggregateRoot<Long> {
         }
         if (fulldescription.length()>500){
             throw new IllegalArgumentException("the full description of the service is superior to 500 caracters");
+        }
+        if (!requirefeedback.equals("y") && !requirefeedback.equals("no") && !requirefeedback.equals("NA")){
+            throw new IllegalArgumentException("Require feedback must be 'y'(yes) or 'n'(no). Or 'NA'(not filled).");
         }
         this.form=form;
         this.title = title;
@@ -77,7 +80,7 @@ public class Service implements AggregateRoot<Long> {
         this.catalog = catalog;
         this.completedService = completedService;
         //this.criticalitylevel=criticalitylevel;
-        //this.workflow=workflow;
+        this.workflow=workflow;
     }
 
 
@@ -152,7 +155,8 @@ public class Service implements AggregateRoot<Long> {
                 ", icon=" + icon.toString() +
                 ", CatalogID =" + catalog.identity() +
                 ", FORM=" + form.toString() +
-                ", Completed?=" + completedService;
+                ", Completed?=" + completedService +
+                ", Workflow?=" + workflow.toString();
     }
 
     public String print(){

@@ -42,7 +42,7 @@ public class ManualTask extends Task {
                       Description commentary, Form form, List<Answer> lstResposta) {
         super(state, deadline, priority);
         try {
-            if (Calendars.now().compareTo(deadline.Date()) != 1) {
+            if (Calendars.now().compareTo(deadline.Date()) > 0) {
                 throw new IllegalArgumentException("Invalid DeadLine!");
             }
         } catch (NullPointerException | IllegalArgumentException e) {

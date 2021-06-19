@@ -37,9 +37,9 @@ public class Attribute implements DomainEntity<Long> , Serializable {
                     "the complete description cant be more then 100 characters"
             );
         }
-        if (name.toString().length()>50){
+        if (name.toString().length()>100){
             throw new IllegalArgumentException(
-                    "the complete description cant be more then 50 characters"
+                    "the complete description cant be more then 100 characters"
             );
         }
         this.id = id;
