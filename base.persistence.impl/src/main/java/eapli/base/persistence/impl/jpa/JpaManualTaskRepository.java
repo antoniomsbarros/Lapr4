@@ -5,6 +5,7 @@ import eapli.base.catalogmanagement.domain.Activity;
 import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.clientusermanagement.domain.MecanographicNumber;
 import eapli.base.taskmanagement.domain.ManualTask;
+import eapli.base.taskmanagement.domain.TaskState;
 import eapli.base.taskmanagement.domain.TaskType;
 import eapli.base.taskmanagement.repositories.ManualTaskRepository;
 import eapli.base.teamManagement.domain.Team;
@@ -60,9 +61,21 @@ public class JpaManualTaskRepository extends JpaAutoTxRepository<ManualTask, Lon
     public Iterable<ManualTask> manualTaskToClaim(final Team team) {
 
         final TypedQuery<ManualTask> q = createQuery("SELECT m FROM ManualTask m " +
-                        " WHERE (m.collaborator.team =:team) AND (m.collaborator.responsable = null)",
+                        " WHERE (m.collaborator.team =:team) AND (m.collaborator.responsable =: team.responsable)",
                 ManualTask.class);
         q.setParameter("team", team);
+        return q.getResultList();
+    }
+
+    @Override
+    public Iterable<ManualTask> manualTaskToPerform(ClientUser clientUser, TaskState state, TaskType type) {
+
+        final TypedQuery<ManualTask> q = createQuery("SELECT m FROM ManualTask m " +
+                        " WHERE (m.collaborator.responsable =: clientUser) AND (m.state=: state) AND (m.type=: type)",
+                ManualTask.class);
+        q.setParameter("clientUser", clientUser);
+        q.setParameter("state", state);
+        q.setParameter("type", type);
         return q.getResultList();
     }
 

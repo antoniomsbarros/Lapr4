@@ -4,12 +4,14 @@ import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.clientusermanagement.domain.MecanographicNumber;
 import eapli.base.taskmanagement.domain.AutomaticTask;
 import eapli.base.taskmanagement.domain.ManualTask;
+import eapli.base.taskmanagement.domain.TaskState;
 import eapli.base.taskmanagement.domain.TaskType;
 import eapli.base.taskmanagement.repositories.AutomaticTaskRepository;
 import eapli.base.taskmanagement.repositories.ManualTaskRepository;
 import eapli.base.teamManagement.domain.Team;
 import eapli.framework.infrastructure.repositories.impl.inmemory.InMemoryDomainRepository;
 
+import javax.persistence.TypedQuery;
 import java.util.Optional;
 
 public class InMemoryManualTaskRepository  extends InMemoryDomainRepository<ManualTask, Long>
@@ -35,6 +37,11 @@ public class InMemoryManualTaskRepository  extends InMemoryDomainRepository<Manu
 
     @Override
     public Iterable<ManualTask> manualTaskToClaim(final Team team){
+        throw new UnsupportedOperationException("NOT IMPLEMENTED YET");
+    }
+
+    @Override
+    public Iterable<ManualTask> manualTaskToPerform(ClientUser clientUser, TaskState state, TaskType type) {
         throw new UnsupportedOperationException("NOT IMPLEMENTED YET");
     }
 

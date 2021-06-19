@@ -19,4 +19,5 @@ public interface TeamRepository extends DomainRepository<Uniquecode, Team> {
     Iterable<ClientUser> collaboratorList(final Uniquecode uniquecode);
     Iterable<Team> collaboratorTeams(final MecanographicNumber mecanographicNumber);
     Iterable<Team> teamsWithOutThisCollaborator(final MecanographicNumber mecanographicNumber);
+    Iterable<Team> responsibleTeams(final ClientUser clientUser);
 }

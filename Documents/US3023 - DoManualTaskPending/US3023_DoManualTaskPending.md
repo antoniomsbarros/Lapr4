@@ -6,9 +6,9 @@
 
 Realizar as tarefas que eu, como colaborador, tenho como pendentes.
 
-**Demo1** Como Utilizador pretendo...
+**Demo1** Como Utilizador pretendo…
 
-- Demo1.1. realizar uma tarefa que tenho como pendente
+- Demo1.1. realizar uma tarefa que tenho como pendente.
 
 A interpretação feita deste requisito foi no sentido de um colaborador poder escolher uma das tarefas 
 que ele tem pendente e realizá-la.
@@ -30,7 +30,7 @@ por expressões regulares.
 
 # 3. Design
 
-O diagrama doptado foi o diagrama de sequência, a fim de descrever o fluxo de realização do caso de uso.
+O diagrama adotado foi o diagrama de sequência, de modo a descrever o fluxo de realização do caso de uso.
 Satisfazendo a funcionalidade desejada.
 
 ## 3.1. Realização da Funcionalidade

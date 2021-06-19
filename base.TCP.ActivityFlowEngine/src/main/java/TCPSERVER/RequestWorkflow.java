@@ -13,6 +13,7 @@ import eapli.base.ordermanagement.domain.State;
 import eapli.base.ordermanagement.domain.Ticket;
 import eapli.base.taskmanagement.application.*;
 import eapli.base.taskmanagement.domain.AutomaticTask;
+import eapli.base.taskmanagement.domain.Deadline;
 import eapli.base.taskmanagement.domain.ManualTask;
 import eapli.base.taskmanagement.domain.TaskState;
 import eapli.framework.general.domain.model.Description;
@@ -100,7 +101,8 @@ public class RequestWorkflow {
 
                 Form form= formList.get(i);
 
-                ManualTask manualTask=addManualTaskController.addManualTask(date, manualTask1.priority(), searchActivity.prepareTask(112345).get(0).Responsible(),Description.valueOf("ola") , Description.valueOf("ola"), form,request.Answers());
+                Deadline deadline = new Deadline(date);
+                ManualTask manualTask=addManualTaskController.addManualTask(deadline, manualTask1.priority(), searchActivity.prepareTask(112345).get(0).Responsible(),Description.valueOf("ola") , Description.valueOf("ola"), form,request.Answers());
                 id=manualTask.identity();
 
                 System.out.println(id);

@@ -15,59 +15,60 @@ import eapli.framework.general.domain.model.Description;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class CatalogBootstrapper implements Action {
     private static final Logger LOGGER = LoggerFactory.getLogger(
             CatalogBootstrapper.class);
     private final CreateCatalogController createCatalogController= new CreateCatalogController();
-    private final CreateServiceController createServiceController = new CreateServiceController();
+    private CreateServiceController createServiceController;
 
     @Override
     public boolean execute() {
-    List<Team> teams=teams();
-    List<ClientUser> clientUsers=allCollaborators();
+        List<Team> teams=teams();
+        List<ClientUser> clientUsers=allCollaborators();
 
 
-    createCatalog(Description.valueOf("Reportar Erro / Falha"), Description.valueOf("Reportar Erro / Falha no sistema"),
+        createCatalog(Description.valueOf("Reportar Erro / Falha"), Description.valueOf("Reportar Erro / Falha no sistema"),
             Description.valueOf("Reportar Erro / Falha no sistema"),Description.valueOf("bug icone"), teams , clientUsers.get(0));
 
-    createCatalog(Description.valueOf("Cotações e Descontos"), Description.valueOf("Cotações e Descontos"),
+        createCatalog(Description.valueOf("Cotações e Descontos"), Description.valueOf("Cotações e Descontos"),
             Description.valueOf("Cotações e Descontos"),Description.valueOf("%"),  teams, clientUsers.get(1));
 
-    createCatalog(Description.valueOf("Alteração Dados Pessoais"), Description.valueOf("Alteração Dados Pessoais"),
+        createCatalog(Description.valueOf("Alteração Dados Pessoais"), Description.valueOf("Alteração Dados Pessoais"),
             Description.valueOf("Alteração Dados Pessoais"),Description.valueOf("###"),  teams, clientUsers.get(2));
 
-    createCatalog(Description.valueOf("Férias e Justificações"), Description.valueOf("Férias e Justificações"),
+        createCatalog(Description.valueOf("Férias e Justificações"), Description.valueOf("Férias e Justificações"),
                 Description.valueOf("Férias e Justificações"),Description.valueOf("=)"),  teams, clientUsers.get(3));
 
 
+        this.createServiceController = new CreateServiceController();
         List<Catalog> catalogs = catalogs();
         createCompletedServices(Description.valueOf("CompletedService1"), Description.valueOf("Srvc1Desc"),
                 Description.valueOf("This is the Service1 description"), Description.valueOf("S_Green"),
                 catalogs.get(0),"Y","KW1","Form1","Script1", Long.valueOf("50"));
 
-            createCompletedServices(Description.valueOf("CompletedService2"), Description.valueOf("Srvc2Desc"),
-                    Description.valueOf("This is the Service2 description"), Description.valueOf("S_Blue"),
-                    catalogs.get(1),"Y","KW2","Form2","Script2", Long.valueOf("31"));
+        this.createServiceController = new CreateServiceController();
+        createCompletedServices(Description.valueOf("CompletedService2"), Description.valueOf("Srvc2Desc"),
+                Description.valueOf("This is the Service2 description"), Description.valueOf("S_Blue"),
+                catalogs.get(1),"Y","KW2","Form2","Script2", Long.valueOf("31"));
 
-            createCompletedServices(Description.valueOf("CompletedService3"), Description.valueOf("Srvc3Desc"),
-                    Description.valueOf("This is the Service3 description"), Description.valueOf("S_Yellow"),
-                    catalogs.get(2), "Y","KW3","Form3","Script3", Long.valueOf("32"));
+        this.createServiceController = new CreateServiceController();
+        createCompletedServices(Description.valueOf("CompletedService3"), Description.valueOf("Srvc3Desc"),
+                Description.valueOf("This is the Service3 description"), Description.valueOf("S_Yellow"),
+                catalogs.get(2), "Y","KW3","Form3","Script3", Long.valueOf("32"));
 
-            createCompletedServices(Description.valueOf("CompletedService4"), Description.valueOf("Srvc4Desc"),
-                    Description.valueOf("This is the Service4 description"), Description.valueOf("S_Blue"),
-                    catalogs.get(3),"Y","KW4","Form4","Script4", Long.valueOf("33"));
-
-    return true;
+        this.createServiceController = new CreateServiceController();
+        createCompletedServices(Description.valueOf("CompletedService4"), Description.valueOf("Srvc4Desc"),
+                Description.valueOf("This is the Service4 description"), Description.valueOf("S_Blue"),
+                catalogs.get(3),"Y","KW4","Form4","Script4", Long.valueOf("33"));
+        
+        return true;
     }
 
 
-
     public void createCompletedServices(Description title,Description smalldescription, Description fulldescription,
-                                        Description icon, Catalog choosenCatalog,String enableFeedback,String keyword ,String formName, String scriptName, Long id){
+                                        Description icon, Catalog choosenCatalog,String enableFeedback,String keyword,String formName, String scriptName, Long id){
 
 
         createServiceController.createService(title,smalldescription,fulldescription,icon,choosenCatalog);

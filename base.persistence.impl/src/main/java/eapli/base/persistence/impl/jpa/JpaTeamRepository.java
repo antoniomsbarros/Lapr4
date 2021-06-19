@@ -16,7 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class JpaTeamRepository  extends BasepaRepositoryBase<Team,Uniquecode, Uniquecode> implements TeamRepository {
+public class
+JpaTeamRepository  extends BasepaRepositoryBase<Team,Uniquecode, Uniquecode> implements TeamRepository {
 
 
     public JpaTeamRepository() {
@@ -59,6 +60,15 @@ public class JpaTeamRepository  extends BasepaRepositoryBase<Team,Uniquecode, Un
         final TypedQuery<Team> q = createQuery("SELECT t FROM Team t JOIN t.collaboratorList clist WHERE NOT(clist.mecanographicNumber = :id)",
                 Team.class);
         q.setParameter("id", mecanographicNumber);
+        return q.getResultList();
+    }
+
+    @Override
+    public Iterable<Team> responsibleTeams(final ClientUser clientUser) {
+
+        final TypedQuery<Team> q = createQuery("SELECT t FROM Team t WHERE t.responsable = :clientUser",
+                Team.class);
+        q.setParameter("clientUser", clientUser);
         return q.getResultList();
     }
 
