@@ -35,21 +35,30 @@ Segundo o caderno de encargos, existem dois tipos de atividades: as manuais e as
 
 # 3. Padrões Aplicados
 	Model-View-Controller (MVC) 
-	Herança
-	JPA 
-	InMemory
-	Repository
+	Herança 
+	JPA (De forma a armazenar persistentemente os dados de uma Manual Task na base de dados).
+	Repository (De forma a permitir incluir,alterar,excluir,pesquisar a ManualTask na base de dados).
 
 ## 3.1. Testes
 
 *Nesta secção deve sistematizar como os testes foram concebidos para permitir uma correta aferição da
 satisfação dos requisitos.*
 
-**Teste 1:** Verificar que não é possível criar uma instância da classe Exemplo com valores nulos.
+**Teste 1:** Verificar que não é possível criar uma instância da classe Manual Task com valores nulos.
 
 	@Test(expected = IllegalArgumentException.class)
 		public void ensureNullIsNotAllowed() {
-		Exemplo instance = new Exemplo(null, null);
+		ManualTask instance = new ManualTask(null, null,null,null,null,null,null,null,null);
+	}
+
+**Teste 2:** Verificar que a data limite da submissão não é inferior à data atual.
+
+	@Teste(expected=IllegalArgumentException.class)
+		public void ensureDeadlineDate(){
+		Calendar now = Calendar.getInstance();
+		Calendar deadDate = new Calendar();
+		deadDate.setDate(2020,12,20);
+		ManualTask instance = new ManualTask (TaskState.PENDING, new Deadline(deadDate), 1,......);
 	}
 
 # 4. Implementação
