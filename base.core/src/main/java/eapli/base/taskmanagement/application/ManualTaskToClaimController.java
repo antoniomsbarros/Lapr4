@@ -28,6 +28,8 @@ public class ManualTaskToClaimController {
     private Optional<ClientUser> collaborator;
     private Iterable<Team> teams;
     private List<ManualTask> manualTaskIterable = new ArrayList<>();
+    private List<ManualTask> manualTaskList = new ArrayList<>();
+
 
 
     public Iterable<ManualTask> manualTaskToClaimList(){
@@ -36,6 +38,7 @@ public class ManualTaskToClaimController {
         collaborator = clientUserRepository.getClientUserByEmail(new CollaboratorEmail(systemUser.email().toString()));
         if (collaborator.isPresent()){
             teams = teamRepository.collaboratorTeams(collaborator.get().mecanographicNumber());
+
             for (Team team: teams) {
                 manualTaskIterable.addAll((Collection<? extends ManualTask>) manualTaskRepository.manualTaskToClaim(team));
             }
@@ -59,7 +62,6 @@ public class ManualTaskToClaimController {
         }else {
             throw new IllegalArgumentException("This Manual Task does not exist in the database");
         }
-
 
     }
 

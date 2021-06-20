@@ -63,19 +63,25 @@ ANTLR.
 
 ## 3.4. Testes 
 
-Dúvida a ser tirada com os professores sobre a realização dos testes.
+Verificar se os dados introduzidos nas respostas aos atributos do formulário.
+
+System.out.println(Nome atributo);
+        String resp = Console.readLine("Answer the attribute");
+        String regExep = at.Regularexpression().toString();
+        Pattern pat = Pattern.compile(regExep);
+        Matcher mat = pat.matcher(resp);
+        result = mat.matches();
+
+Se der True a resposta seguiu a expressão regular.
+Se der False a resposta não seguiu a expressão regular.
 
 # 4. Implementação
 
-Ainda não foi realizada.
-
 # 5. Integração/Demonstração
-
-Ainda não foi realizada.
 
 # 6. Observações
 
-É necessário a finalização desta US para próximas US puderem ser desenvolvidas.
+Nenhuma observação
 
 
 

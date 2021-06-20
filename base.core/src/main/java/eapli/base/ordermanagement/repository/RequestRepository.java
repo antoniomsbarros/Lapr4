@@ -11,5 +11,6 @@ public interface RequestRepository extends DomainRepository<Long, Request> {
     default Optional<Request> findByID(Long lngID) {
         return ofIdentity(lngID);
     }
+    Optional<Request> getRequestByWorkflow(final Workflow workflow);
     Iterable<Request> findAll();
 }

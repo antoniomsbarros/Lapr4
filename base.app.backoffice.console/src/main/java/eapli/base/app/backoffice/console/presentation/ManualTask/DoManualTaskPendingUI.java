@@ -3,7 +3,9 @@ package eapli.base.app.backoffice.console.presentation.ManualTask;
 import eapli.base.app.backoffice.console.presentation.clientuser.collaboratorDTOListPrinter;
 import eapli.base.app.backoffice.console.presentation.clientuser.teamDTOListPrinter;
 import eapli.base.clientusermanagement.dto.ClientUserDTO;
+import eapli.base.ordermanagement.domain.Attribute;
 import eapli.base.ordermanagement.domain.Form;
+import eapli.base.ordermanagement.domain.Request;
 import eapli.base.taskmanagement.application.DoManualTaskPendingController;
 import eapli.base.taskmanagement.domain.ManualTask;
 import eapli.base.taskmanagement.domain.TaskType;
@@ -11,6 +13,9 @@ import eapli.base.teamManagement.dto.TeamDTO;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
 import eapli.framework.presentation.console.SelectWidget;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -24,6 +29,7 @@ public class DoManualTaskPendingUI extends AbstractUI {
     @Override
     protected boolean doShow() {
         Form form;
+        Request request;
         do {
             System.out.println("Search by:");
             System.out.println("1.Approval");
@@ -41,10 +47,21 @@ public class DoManualTaskPendingUI extends AbstractUI {
                         try {
                             ManualTask manualTask = manualTaskSelectWidget.selectedElement();
                             System.out.println("Manual Task: " + manualTask.identity());
+
+                            request = controller.ViewRequestAnswer(manualTask);
+                            List<String> answers = request.Answers();
+                            System.out.println("Request Answers: \n" + answers);
+                            answers = new ArrayList<>();
+
                             form = manualTask.Form();
 
-                            //Complete From
+                            for (Attribute attribute: form.attribute()){
+                                System.out.println(attribute.toString());
+                                String resposta = Console.readLine("Insert the Answer: ");
+                                answers.add(resposta);
+                            }
 
+                            manualTask.insertAnswers(answers);
                             controller.doManualTaskPending(manualTask);
                         }catch (NullPointerException e){
                             System.out.println("Invalid Option: " + e);
@@ -65,9 +82,20 @@ public class DoManualTaskPendingUI extends AbstractUI {
                         try {
                             ManualTask manualTask = manualTaskSelectWidget.selectedElement();
                             System.out.println("Manual Task: " + manualTask.identity());
+
+                            request = controller.ViewRequestAnswer(manualTask);
+                            List<String> answers = request.Answers();
+                            System.out.println("Request Answers: \n" + answers);
+
                             form = manualTask.Form();
 
-                            //Complete From
+                            for (Attribute attribute: form.attribute()){
+                                System.out.println(attribute.toString());
+                                String resposta = Console.readLine("Insert the Answer: ");
+                                answers.add(resposta);
+                            }
+
+                            manualTask.insertAnswers(answers);
 
                             controller.doManualTaskPending(manualTask);
                         }catch (NullPointerException e){

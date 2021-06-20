@@ -23,6 +23,8 @@
  */
 package eapli.base.app.backoffice.console.presentation;
 
+import eapli.base.app.backoffice.console.presentation.AutomaticTaskExecution.AutomaticTaskExecutionAction;
+import eapli.base.app.backoffice.console.presentation.ManualTask.DoManualTaskPendingAction;
 import eapli.base.app.backoffice.console.presentation.ManualTask.SearchManualTaskToClaimAction;
 import eapli.base.app.backoffice.console.presentation.clientuser.*;
 import eapli.base.app.common.console.presentation.authz.MyUserMenu;
@@ -87,6 +89,7 @@ public class MainMenu extends AbstractUI {
     private static final int TEAM_OPTION=8;
     private static final int TEAM_TYPE_OPTION = 9;
     private static final int MANUALTASK_OPTION = 15;
+    private static final int AUTOMATICTASK_OPTION = 16;
 
     //CATALOG
     private static final int CREATE_CATALOG_OPTION = 1;
@@ -107,6 +110,14 @@ public class MainMenu extends AbstractUI {
     //MANUAL TASK
     private static final int CREATE_MANUALTASK_OPTION = 1;
     private static final int SEARCH_MANUALTASK_OPTION = 2;
+    private static final int DO_MANUALTASK_PENDING_OPTION = 3;
+
+    //AUTOMATIC TASK
+    private static final int EXECUTE_AUTOMATICTASK_OPTION = 1;
+
+    //REQUEST SERVICE
+    private static final int REQUEST_A_SERVICE_OPTION= 1;
+    private static final int SHOWPENDENTREQUEST_OPTION = 2;
 
 
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
@@ -170,6 +181,8 @@ public class MainMenu extends AbstractUI {
             mainMenu.addSubMenu(TEAM_TYPE_OPTION,teamTypeMenu);
             final  Menu dashboard=buildderDashboard();
             mainMenu.addSubMenu(DASHBOARD, dashboard);
+            final  Menu automaticTask = builderAutomaticTaskMenu();
+            mainMenu.addSubMenu(AUTOMATICTASK_OPTION, automaticTask);
         }
         if (authz.isAuthenticatedUserAuthorizedTo(BaseRoles.POWER_USER, BaseRoles.RRH_MANAGER)) {
             final Menu teamTypeMenu = builderTeamTypeMenu();
@@ -245,7 +258,8 @@ public class MainMenu extends AbstractUI {
     private Menu builderRequestServiceMenu(){
         final Menu menu = new Menu("Request Service >");
 
-        menu.addItem(REQUESTSERVICE_OPTION,"Request Service", new RequestServiceUI()::show);
+        menu.addItem(REQUEST_A_SERVICE_OPTION,"Request Service", new RequestServiceUI()::show);
+        menu.addItem(SHOWPENDENTREQUEST_OPTION,"Show Pendent Request Service By Date",new SortPendentRequestByHistoryUI()::show);
 
         return menu;
     }
@@ -290,9 +304,22 @@ public class MainMenu extends AbstractUI {
 
         menu.addItem(CREATE_MANUALTASK_OPTION,"Create Manual Task",
                 new CreateManualTaskUI()::show);
-
         menu.addItem(SEARCH_MANUALTASK_OPTION, "Search Manual Task To Claim",
                 new SearchManualTaskToClaimAction());
+        menu.addItem(DO_MANUALTASK_PENDING_OPTION, "Do Manual Task Pending",
+                new DoManualTaskPendingAction());
+
+        menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
+
+        return menu;
+    }
+
+    private Menu builderAutomaticTaskMenu(){
+        final Menu menu = new Menu("Automatic Task >");
+
+        menu.addItem(EXECUTE_AUTOMATICTASK_OPTION,"Execute Automatic Task",
+                new AutomaticTaskExecutionAction());
+
         menu.addItem(EXIT_OPTION, RETURN_LABEL, Actions.SUCCESS);
 
         return menu;

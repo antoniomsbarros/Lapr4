@@ -1,0 +1,13 @@
+preco = take produto codigo C876 preco produto.xml
+quantidade = 3
+total = quantidade * preco
+desconto = 0
+if(total>100)
+    if(total<200)
+    desconto = 3
+    end
+end
+if(total>200)
+    desconto = 5
+end
+totalPagar = total - total * desconto / 100

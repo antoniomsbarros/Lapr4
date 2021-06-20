@@ -1,0 +1,15 @@
+1 is obligatory;
+2 is obligatory;
+3 is obligatory;
+
+if  2 > 0.0 then
+
+    if  1: "20" then
+        2: "%s.%s";
+    ;
+
+
+    if  1: "21" then
+        2: "%s.%s";
+    ;
+;

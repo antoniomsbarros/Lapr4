@@ -88,10 +88,20 @@ public class Request implements AggregateRoot<Long>  {
                 '}';
     }
 
+    public State getStateofPendentResquest() {
+        if (stateofResquest.toString().equals("EMAPROVACAO")){
+            return State.EMAPROVACAO;
+        }
+        return null;
+    }
+
     public void changeState(State state) {
         this.stateofResquest=state;
     }
 
+    public Calendar getDateofRequest() {
+        return dateofRequest;
+    }
 
     public List<String> Answers(){
         return this.lstResposta;
