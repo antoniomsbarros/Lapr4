@@ -9,13 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Answer implements ValueObject, Serializable {
-    private List<String> respostas = new ArrayList<>();
+    private List<String> respostas;
 
     public Answer(List<String> respostas) {
         this.respostas = respostas;
     }
 
     public Answer() {
+        respostas = new ArrayList<>();
     }
 
     public List<String> getResposta() {
