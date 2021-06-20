@@ -76,6 +76,8 @@ public class ManualTask extends Task {
         return collaborator;
     }
 
+    public void setResponsable(Responsable collaborator) { this.collaborator = collaborator; }
+
     public Form Form(){return form;}
 
     public String decison(){
