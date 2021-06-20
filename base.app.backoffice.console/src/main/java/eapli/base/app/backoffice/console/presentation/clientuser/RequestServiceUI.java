@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RequestServiceUI extends AbstractUI {
 
@@ -115,10 +117,20 @@ public class RequestServiceUI extends AbstractUI {
         Answer lstAnswer= new Answer();
         String a;
         for (Attribute at : form.attribute()) {
-            System.out.println(at.name() + "(" + at.typeofData().toString() + "):");
-            String resp = Console.readLine("Answer the attribute");
-           // lstAnswer = new Answer();
-            lstAnswer.addResposta(resp);
+            boolean result = false;
+            do{
+                System.out.println(at.name() + "(" + at.typeofData().toString() + "):");
+                String resp = Console.readLine("Answer the attribute");
+                String regExep = at.Regularexpression().toString();
+                Pattern pat = Pattern.compile(regExep);
+                Matcher mat = pat.matcher(resp);
+                result = mat.matches();
+                if(result){
+                    lstAnswer.addResposta(resp);
+                }else{
+                    System.out.println("Erro");
+                }
+            }while(!result);
         }
         return lstAnswer;
     }
