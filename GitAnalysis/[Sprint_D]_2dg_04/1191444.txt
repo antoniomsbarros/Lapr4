@@ -1,3 +1,119 @@
+commit 557668c34df8fef445a9d8f8a7bf903fc8fdb0bd
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Sun Jun 20 20:59:07 2021 +0100
+
+    L2S20-105 scripts examples
+
+A	base.core/script1.txt
+A	base.core/script2.txt
+
+commit 4466507ccebeea43a8f4012494a57a6ea7676376
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Sun Jun 20 20:58:07 2021 +0100
+
+    L2S20-105 UI grammar
+
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/AutomaticTaskExecution/AutomaticTaskExecutionAction.java
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/AutomaticTaskExecution/AutomaticTaskExecutionUI.java
+
+commit 7cd3a434da5e29e0e11829e83e83ddc28276b6a7
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Sun Jun 20 20:57:08 2021 +0100
+
+    L2S20-105 grammar for automatic task script execution
+
+A	base.core/linguagem.g4
+A	base.core/src/main/java/eapli/base/AutomaticTaskExecution/AutomaticTaskExecution.java
+A	base.core/src/main/java/eapli/base/AutomaticTaskExecution/Visitor.java
+
+commit 48e290cda199f23e524afe8c32e1528423cee6cf
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Sun Jun 20 20:53:45 2021 +0100
+
+    L2S20-113 UI updated
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/ManualTask/DoManualTaskPendingAction.java
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/ManualTask/DoManualTaskPendingUI.java
+
+commit 3139f08a6d6c5018f8ec41b7e0ee8c029a003277
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Sun Jun 20 20:52:47 2021 +0100
+
+    L2S20-113 domain - controller updated
+
+M	base.core/src/main/java/eapli/base/taskmanagement/application/AddAutomaticTaskController.java
+M	base.core/src/main/java/eapli/base/taskmanagement/application/DoManualTaskPendingController.java
+M	base.core/src/main/java/eapli/base/taskmanagement/application/ManualTaskToClaimController.java
+
+commit 4d45b2f1c01222d34d6742ea178bf7f85216afa1
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Sun Jun 20 20:51:10 2021 +0100
+
+    L2S20-113 domain - new methods created
+
+M	base.core/src/main/java/eapli/base/ordermanagement/repository/RequestRepository.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/AutomaticTask.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/ManualTask.java
+
+commit 82e1a4fe76e593cf5ee50b20e7a4b3e6cadaa806
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Sun Jun 20 20:48:44 2021 +0100
+
+    L2S20-113 persistence - new queries
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/repository/WorkflowRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryRequestRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryWorkflowRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaManualTaskRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaRequestRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaWorkflowRepository.java
+
+commit 6e302e34f16975289d0f5b2176d29694fc38d6e0
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Fri Jun 18 17:03:28 2021 +0100
+
+    L2S20-113 class UI implementation
+
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/ManualTask/DoManualTaskPendingUI.java
+
+commit 4131da255ceaf2f51d4053e994685d9698a2323a
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Fri Jun 18 17:01:53 2021 +0100
+
+    L2S20-113 class controller creation
+
+A	base.core/src/main/java/eapli/base/taskmanagement/application/DoManualTaskPendingController.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/ManualTask.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/Task.java
+M	base.core/src/main/java/eapli/base/taskmanagement/repositories/ManualTaskRepository.java
+M	base.core/src/main/java/eapli/base/teamManagement/repositories/TeamRepository.java
+
+commit d60c9aead3f583d941a5d848689151a82fceb45d
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Fri Jun 18 16:58:18 2021 +0100
+
+    L2S20-113 new queries - Persistence
+
+D	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+D	base.TCP.ActivityFlowEngine/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+D	base.TCP.ActivityFlowEngine/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+D	base.TCP.ActivityFlowEngine/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryManualTaskRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/inmemory/InMemoryTeamRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaManualTaskRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaTeamRepository.java
+
+commit 5d7a0f092bbc1ca9c26cb7815cf09b2595ad0c2a
+Author: Marly Pimpita <1191444@isep.ipp.pt>
+Date:   Fri Jun 18 16:52:22 2021 +0100
+
+    L2S20-113 Design
+
+M	Documents/US3022 - SearchManualTaskToClaim/US3022_SearchManualTaskToClaim.svg
+M	Documents/US3023 - DoManualTaskPending/US3023_DoManualTaskPending.md
+A	Documents/US3023 - DoManualTaskPending/US3023_DoManualTaskPending.svg
+
 commit bb4eb1af8668d32ef27453e9af348f25f2123947
 Author: Marly Pimpita <1191444@isep.ipp.pt>
 Date:   Fri Jun 11 17:19:34 2021 +0100

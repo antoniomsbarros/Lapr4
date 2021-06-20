@@ -1,3 +1,260 @@
+commit 029067bfbd1cd5c9519267aba8703df5e7310835
+Author: António Barros (1200606) <1200606@isep,ipp.pt>
+Date:   Sun Jun 20 22:48:29 2021 +0100
+
+    #L2S20-127 #implementaction of the design
+
+A	Documents/US4071/US4071.jpg
+A	Documents/US4071/US4071.vpp
+A	Documents/US4071/US4071.vpp.bak_000f
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.TCP.ActivityFlowEngine/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+M	base.TCP.ActivityFlowEngine/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+M	base.TCP.AutomaticTask/target/maven-archiver/pom.properties
+
+commit 023e32824e5c1fe1ae9c4e18800a0956062de90d
+Author: António Barros (1200606) <1200606@isep,ipp.pt>
+Date:   Sun Jun 20 22:21:26 2021 +0100
+
+    implementaction of method of myVisiter
+
+M	validateForm/MyVisitor.java
+
+commit cf02c34df0a5ad630f370a5ac4f9e921c3663404
+Author: António Barros (1200606) <1200606@isep,ipp.pt>
+Date:   Sun Jun 20 22:13:10 2021 +0100
+
+    fix bug in the connect of Motor flow engine and TcpSrvAutomacticTask
+
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/RequestWorkflow.java
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/TCPSrvMFA.java
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/TcpClientMotorActivityFlowEngine.java
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.TCP.AutomaticTask/src/main/java/TCPSERVER/TcpSrvAutomaticTask.java
+M	base.TCP.AutomaticTask/target/maven-archiver/pom.properties
+
+commit bf9a0d917bb3a4c440aeec240c28410f6213f9da
+Author: António Barros (1200606) <1200606@isep,ipp.pt>
+Date:   Sun Jun 20 22:10:55 2021 +0100
+
+    update documentaction of the us 3011 for documentaction of tests
+
+M	Documents/US3011/ProcessoEngenhariaFuncionalidade.md
+
+commit 16cd163afa6cc82fd18224665330db25884a52ca
+Author: António Barros (1200606) <1200606@isep,ipp.pt>
+Date:   Sun Jun 20 20:08:31 2021 +0100
+
+    removing the Executer class
+
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/RequestWorkflow.java
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/TCPSrvMFA.java
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.TCP.AutomaticTask/src/main/java/TCPSERVER/SegundAlgoritm.java
+M	base.TCP.AutomaticTask/target/maven-archiver/pom.properties
+M	base.TCP.AutomaticTask/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+M	base.TCP.AutomaticTask/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateManualTaskUI.java
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateServiceUI.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/ServicesForDemonstrationBootstrapp.java
+M	base.core/src/main/java/eapli/base/taskmanagement/application/AddManualTaskController.java
+D	base.core/src/main/java/eapli/base/taskmanagement/domain/Executor.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/ManualTask.java
+M	base.persistence.impl/src/main/resources/META-INF/persistence.xml
+M	run-automaticTask.sh
+
+commit cdb82009673e9fe96789580342d80aaec0150e1d
+Author: António Barros (1200606) <1200606@isep,ipp.pt>
+Date:   Sun Jun 20 18:32:23 2021 +0100
+
+    fix bug in the servers
+
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.TCP.AutomaticTask/src/main/java/TCPSERVER/FirstComeFirstServedAlgoritm.java
+M	base.TCP.AutomaticTask/src/main/java/TCPSERVER/SegundAlgoritm.java
+M	base.TCP.AutomaticTask/src/main/java/TCPSERVER/TcpSrvAutomaticTask.java
+M	base.TCP.AutomaticTask/src/main/java/TCPSERVER/executableAutomaticThread.java
+A	base.TCP.AutomaticTask/src/main/java/TCPSERVER/main.java
+M	base.TCP.AutomaticTask/target/maven-archiver/pom.properties
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/HttpServerAjaxDashboard.java
+M	base.core/src/main/java/eapli/base/taskmanagement/application/SearchAutomaticTask.java
+M	base.core/src/main/java/eapli/base/taskmanagement/repositories/AutomaticTaskRepository.java
+
+commit b45f47b6c9aba0969067342c04a9ae5b5890d3b0
+Author: António Barros (1200606) <1200606@isep,ipp.pt>
+Date:   Sun Jun 20 16:16:30 2021 +0100
+
+    #implementaction the interaction o the request it the motor flow engine
+
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.TCP.AutomaticTask/target/maven-archiver/pom.properties
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/RequestServiceUI.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/RequestServiceController.java
+
+commit 39b871baa5c287587cbf8c44c00d334b900e5b55
+Author: António Barros (1200606) <1200606@isep,ipp.pt>
+Date:   Sun Jun 20 15:39:04 2021 +0100
+
+    #implementaction ofL2S20-123
+
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/RequestWorkflow.java
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/TCPSrvMFA.java
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.TCP.AutomaticTask/src/main/java/TCPSERVER/TcpSrvAutomaticTask.java
+M	base.TCP.AutomaticTask/target/maven-archiver/pom.properties
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/ServicesForDemonstrationBootstrapp.java
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/TcpClient.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/RequestServiceController.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Workflow.java
+M	base.core/src/main/java/eapli/base/ordermanagement/application/ChangeStatusRequest.java
+M	base.core/src/main/java/eapli/base/ordermanagement/repository/FormRepository.java
+M	base.core/src/main/java/eapli/base/taskmanagement/application/AddAutomaticTaskController.java
+
+commit 63ca0b607be8f0ddbe69e88161dd820bf1509a29
+Author: António Barros (1200606) <1200606@isep,ipp.pt>
+Date:   Sun Jun 20 08:36:47 2021 +0100
+
+    fixing bug on motor flow engine
+
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/RequestWorkflow.java
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/TCPSrvMFA.java
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.TCP.AutomaticTask/target/maven-archiver/pom.properties
+
+commit 7e04125ed4a1ac234d7ecb5edc4f57cdd92fe7cd
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Sun Jun 20 02:53:02 2021 +0100
+
+    implement methods im attribute and form
+
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/RequestWorkflow.java
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/TCPSrvMFA.java
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.TCP.AutomaticTask/target/maven-archiver/pom.properties
+M	base.TCP.AutomaticTask/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+M	base.TCP.AutomaticTask/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Attribute.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Form.java
+
+commit b763f8d81672a5b815f196c0186a86d4f15c59ca
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Sun Jun 20 01:15:01 2021 +0100
+
+    #L2S20-127 #implementaction
+
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/TCPSrvMFA.java
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+A	base.TCP.ActivityFlowEngine/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
+A	base.TCP.AutomaticTask/src/main/java/TCPSERVER/FirstComeFirstServedAlgoritm.java
+A	base.TCP.AutomaticTask/src/main/java/TCPSERVER/SegundAlgoritm.java
+A	base.TCP.AutomaticTask/src/main/java/TCPSERVER/ShareObject.java
+M	base.TCP.AutomaticTask/src/main/java/TCPSERVER/TcpSrvAutomaticTask.java
+A	base.TCP.AutomaticTask/src/main/java/TCPSERVER/executableAutomaticThread.java
+M	base.TCP.AutomaticTask/target/maven-archiver/pom.properties
+M	base.TCP.AutomaticTask/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+M	base.TCP.AutomaticTask/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+
+commit d9ab578d46b9d6a2374d8157f2c939e6b0343d59
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Sat Jun 19 15:30:07 2021 +0100
+
+    #implementaction of the requirements for the US 4071 #L2S20-125
+
+A	Documents/US4071/ProcessoEngenhariaFuncionalidade.md
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/HTTPmessage.java
+
+commit 11f045447af46c968b291e1f002fc34ad8e76839
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Fri Jun 18 14:09:54 2021 +0100
+
+    fix commit bug in the dashboard
+
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.TCP.AutomaticTask/target/maven-archiver/pom.properties
+D	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/www/http.gif
+D	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/www/http2.gif
+D	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/www/http2.png
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/HTTPCLientDashboard.java	base.core/src/main/java/eapli/base/Dashboardmanagement/HTTPCLientDashboard.java
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/HTTPmessage.java	base.core/src/main/java/eapli/base/Dashboardmanagement/HTTPmessage.java
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/HttpAjaxDashboardRequest.java	base.core/src/main/java/eapli/base/Dashboardmanagement/HttpAjaxDashboardRequest.java
+R097	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/HttpServerAjaxDashboard.java	base.core/src/main/java/eapli/base/Dashboardmanagement/HttpServerAjaxDashboard.java
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/Protocol.java	base.core/src/main/java/eapli/base/Dashboardmanagement/Protocol.java
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/TcpClient.java	base.core/src/main/java/eapli/base/Dashboardmanagement/TcpClient.java
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/www/1606738573626.jpg	base.core/src/main/java/eapli/base/Dashboardmanagement/www/1606738573626.jpg
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/www/Isep-logo.png	base.core/src/main/java/eapli/base/Dashboardmanagement/www/Isep-logo.png
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/www/index.html	base.core/src/main/java/eapli/base/Dashboardmanagement/www/index.html
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/www/rcomp-ajax.js	base.core/src/main/java/eapli/base/Dashboardmanagement/www/rcomp-ajax.js
+
+commit 84d2274edb64b0f8e756d0cb4f3cc2a2fdbeeb92
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Fri Jun 18 12:16:50 2021 +0100
+
+    #Implementaction of a controller to add sequences to a workflow
+
+M	Documents/US4001/ProcessoEngenhariaFuncionalidade.md
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/RequestWorkflow.java
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/TCPSrvMFA.java
+M	base.TCP.ActivityFlowEngine/target/maven-archiver/pom.properties
+M	base.TCP.ActivityFlowEngine/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+M	base.TCP.ActivityFlowEngine/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+M	base.TCP.AutomaticTask/target/maven-archiver/pom.properties
+A	base.core/src/main/java/eapli/base/catalogmanagement/application/SequenceAddToWorkflow.java
+
+commit 7481d01c77bc6caba0f58b9e837b862868e07628
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Fri Jun 18 12:16:05 2021 +0100
+
+    Update to the desing and analysis # L2S20-116
+
+M	Documents/US3011/ProcessoEngenhariaFuncionalidade.md
+D	Documents/US3011/SD/SD US 3011.jpg
+A	Documents/US3011/SD/SDUS3011.jpg
+M	Documents/US3011/SD/US3011.vpp
+A	Documents/US3011/SD/US3011.vpp.bak_004d
+
+commit 1ae2004d6f2b14d39b19730e40e19a845413934d
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Thu Jun 17 15:04:40 2021 +0100
+
+    update of the design of the Us L2S20-116
+
+M	Documents/US3011/SD/US3011.vpp
+A	Documents/US3011/SD/US3011.vpp.bak_003d
+
+commit 245d8ffcf9a5a5d4c78ce5766e24aa8114efef20
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Thu Jun 17 15:03:57 2021 +0100
+
+    Update of the #L2S20-118 in analysis and requeiriments
+
+M	Documents/US3011/ProcessoEngenhariaFuncionalidade.md
+
+commit 18ff6eac7f8f53c1ebf8276abcceb245279d511c
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Thu Jun 17 15:02:39 2021 +0100
+
+    #implementaction of the certificates for the ssl/tls
+
+A	server.cert
+A	server.jks
+
+commit 848a79513853ace6711fe83494a22ce2a6a95e88
+Author: António Barros (1200606) <1200606@isep.ipp.pt>
+Date:   Thu Jun 17 15:00:38 2021 +0100
+
+    L2S20-141 #implementaction of the SSL/TLS im activity flow engine in the server and the client server in the  aplication
+
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/RequestWorkflow.java
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/TCPSrvMFA.java
+A	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/TcpClientMotorActivityFlowEngine.java
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/DashboardUi.java
+R094	base.core/src/main/java/eapli/base/Dashboardmanagement/DemoConsumer.java	base.core/src/main/java/eapli/base/Dashboardmanagement/HTTPCLientDashboard.java
+R089	base.core/src/main/java/eapli/base/Dashboardmanagement/HttpAjaxVotingRequest.java	base.core/src/main/java/eapli/base/Dashboardmanagement/HttpAjaxDashboardRequest.java
+R091	base.core/src/main/java/eapli/base/Dashboardmanagement/HttpServerAjaxVoting.java	base.core/src/main/java/eapli/base/Dashboardmanagement/HttpServerAjaxDashboard.java
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/TcpClient.java
+M	base.core/src/main/java/eapli/base/Dashboardmanagement/protocol.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/ManualTask.java
+
 commit 6eebd23a63c7eb378df7b799823e3eefb1e99791
 Author: António Barros (1200606) <1200606@isep.ipp.pt>
 Date:   Mon Jun 14 22:58:41 2021 +0100

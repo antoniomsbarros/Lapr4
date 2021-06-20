@@ -1,3 +1,103 @@
+029067b,2021-06-20 22:48:29 +0100,António Barros (1200606),1200606@isep,ipp.pt,#L2S20-127 #implementaction of the design
+6b66d25,2021-06-20 22:43:59 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-129 #design Design Updated to be according the implementation
+ae428e2,2021-06-20 22:25:37 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-107 #implementation Methods of class MyVisitor
+023e328,2021-06-20 22:21:26 +0100,António Barros (1200606),1200606@isep,ipp.pt,implementaction of method of myVisiter
+cf02c34,2021-06-20 22:13:10 +0100,António Barros (1200606),1200606@isep,ipp.pt,fix bug in the connect of Motor flow engine and TcpSrvAutomacticTask
+7587a36,2021-06-20 22:11:03 +0100,Antonio,antoniomsbarros@gmail.com,update documentaction of the us 4001 for documentaction of tests
+bf9a0d9,2021-06-20 22:10:55 +0100,António Barros (1200606),1200606@isep,ipp.pt,update documentaction of the us 3011 for documentaction of tests
+d6724c3,2021-06-20 22:07:24 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-117 MyVisitor methods
+163eb3e,2021-06-20 22:02:36 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-130 #fix Fix bug
+ad972af,2021-06-20 21:50:39 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-117 grammar and scripts for validate form
+fbd05eb,2021-06-20 21:49:34 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-130 #implementation Requirement engineering finished
+e0c4ae4,2021-06-20 21:48:25 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-130 #implementation Implementation of the Algorithm FirstCameFirstServed
+0372a07,2021-06-20 21:45:54 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-130 #implementation Add a setResponsable to the class domain Manual Task
+8951ac6,2021-06-20 21:36:03 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-133 Corrections on some Analysis
+62b7e89,2021-06-20 21:34:25 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-108 Modifications on Service Bootstrap
+32be9e0,2021-06-20 21:32:34 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-108 Modifications on the RequestServerUI
+fd802dd,2021-06-20 21:26:08 +0100,Jose Teixeira,1150462@isep.ipp.pt,#backoffice  console/presentation/MainMenu re-reupdated
+baafb52,2021-06-20 21:22:07 +0100,Jose Teixeira,1150462@isep.ipp.pt,#backoffice console/presentation/MainMenu reupdated
+f8a1d58,2021-06-20 21:02:59 +0100,Jose Teixeira,1150462@isep.ipp.pt,#backoffice console/presentation/MainMenu updated
+9fd19dc,2021-06-20 21:02:31 +0100,Jose Teixeira,1150462@isep.ipp.pt,L2S20-145  #backoffice presentation/clientuser/SortPendentRequestByHistoryUI added
+557668c,2021-06-20 20:59:07 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-105 scripts examples
+4466507,2021-06-20 20:58:07 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-105 UI grammar
+7cd3a43,2021-06-20 20:57:08 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-105 grammar for automatic task script execution
+e4c4f63,2021-06-20 20:54:03 +0100,Jose Teixeira,1150462@isep.ipp.pt,#domain ordermanagement/domain/Request update
+48e290c,2021-06-20 20:53:45 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-113 UI updated
+3139f08,2021-06-20 20:52:47 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-113 domain - controller updated
+4d45b2f,2021-06-20 20:51:10 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-113 domain - new methods created
+82e1a4f,2021-06-20 20:48:44 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-113 persistence - new queries
+16cd163,2021-06-20 20:08:31 +0100,António Barros (1200606),1200606@isep,ipp.pt,removing the Executer class
+a4c1355,2021-06-20 19:00:16 +0100,Jose Teixeira,1150462@isep.ipp.pt,#Documents UC5001+5003 Requirements and Analysis added
+cdb8200,2021-06-20 18:32:23 +0100,António Barros (1200606),1200606@isep,ipp.pt,fix bug in the servers
+850ee0c,2021-06-20 18:02:52 +0100,Jose Teixeira,1150462@isep.ipp.pt,#TCPActivityFlowEngine  TCPSERVER/RequestWorkflow refinement
+2d97160,2021-06-20 18:02:13 +0100,Jose Teixeira,1150462@isep.ipp.pt,#domain taskmanagement/domain/ManualTask refinement
+24510e3,2021-06-20 18:01:40 +0100,Jose Teixeira,1150462@isep.ipp.pt,#application taskmanagement/application/AddManualTaskController refinement
+8158d92,2021-06-20 18:00:50 +0100,Jose Teixeira,1150462@isep.ipp.pt,#bootstrapp demo/ServiceForDemonstrationBootstrapp refinement
+dddfda3,2021-06-20 17:59:54 +0100,Jose Teixeira,1150462@isep.ipp.pt,#backoffice presentation/clientuser/CreateManualTaskUI and presentation/clientuser/CreateServiceUI refinement
+b45f47b,2021-06-20 16:16:30 +0100,António Barros (1200606),1200606@isep,ipp.pt,#implementaction the interaction o the request it the motor flow engine
+3324da9,2021-06-20 15:50:12 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-128 #implementation SSL Socket implementated
+39b871b,2021-06-20 15:39:04 +0100,António Barros (1200606),1200606@isep,ipp.pt,#implementaction ofL2S20-123
+63ca0b6,2021-06-20 08:36:47 +0100,António Barros (1200606),1200606@isep,ipp.pt,fixing bug on motor flow engine
+81f9b21,2021-06-20 04:35:54 +0100,Jose Teixeira,1150462@isep.ipp.pt,#boostrapp bootstrappers/demo/ServiceForDemonstrationBootstrapp re-updated
+dd5ad72,2021-06-20 04:34:27 +0100,Jose Teixeira,1150462@isep.ipp.pt,#tcpserver TCP.ActivityFlowEngine/TCPSERVER/RequestWorkflow updated
+4cf81cb,2021-06-20 04:31:58 +0100,Jose Teixeira,1150462@isep.ipp.pt,L2S20-74 #domain taskmanagement/domain/ManualTask updated
+5b99519,2021-06-20 04:31:22 +0100,Jose Teixeira,1150462@isep.ipp.pt,L2S20-74 #application taskmanagement/application/AddManualTaskController updated
+9171bd8,2021-06-20 04:30:19 +0100,Jose Teixeira,1150462@isep.ipp.pt,#boostrapp bootstrappers/demo/ServiceForDemonstrationBootstrapp updated
+dc23eb1,2021-06-20 04:28:50 +0100,Jose Teixeira,1150462@isep.ipp.pt,#presentation clientuser/CreateServiceUI updated
+e1fe8f0,2021-06-20 04:26:06 +0100,Jose Teixeira,1150462@isep.ipp.pt,L2S20-74 #presentation clientuser/CreateManualTaskUI updated
+0df9f44,2021-06-20 03:40:24 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-123 Modifications on the TCPSERVER
+8abe594,2021-06-20 03:37:09 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-108 Modifications on the Request Service UI
+5d3d655,2021-06-20 03:34:28 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-108 Modifications no the Controller of Request a Service
+e88131c,2021-06-20 03:33:28 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-108 Corrections of a bug on the domains
+0cf74b1,2021-06-20 02:55:54 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-108 Correction of a bug
+7e04125,2021-06-20 02:53:02 +0100,António Barros (1200606),1200606@isep.ipp.pt,implement methods im attribute and form
+135c2a2,2021-06-20 02:51:54 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-108 Bootstrp for Request
+9b6f5b7,2021-06-20 02:51:12 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-108 Conclusion of Request Service and some modifications on some UIs
+846ea81,2021-06-20 02:50:27 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-108 Modifications on some JPARepositories
+12eb8d9,2021-06-20 02:49:45 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-108 Modifications on some Controllers
+154e923,2021-06-20 02:49:01 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-108 Changes to some querries to some Repositories
+2f04949,2021-06-20 02:48:10 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-108 Implementation and Modifications on the domains and Builder
+b763f8d,2021-06-20 01:15:01 +0100,António Barros (1200606),1200606@isep.ipp.pt,#L2S20-127 #implementaction
+27f2715,2021-06-20 01:07:11 +0100,Jose Teixeira,1150462@isep.ipp.pt,#bootstrapp ServiceForDemonstrationBootstrapp updated regularExpressions in DB table
+30acdbc,2021-06-20 01:05:56 +0100,Jose Teixeira,1150462@isep.ipp.pt,#persistence META-INF/persistence.xml updated Executor class persistence
+d908298,2021-06-20 01:05:09 +0100,Jose Teixeira,1150462@isep.ipp.pt,L2S20-74 #domain taskmanagement/domain/Executor added
+bad56bc,2021-06-20 01:04:46 +0100,Jose Teixeira,1150462@isep.ipp.pt,L2S20-74 #domain taskmanagement/domain/ManualTask updated
+6eb3770,2021-06-19 22:08:36 +0100,Jose Teixeira,1150462@isep.ipp.pt,L2S20-142 #Design Documents/US1005-ManualTask/SD_UC1005_CreateManualTask.png added
+9785847,2021-06-19 22:07:37 +0100,Jose Teixeira,1150462@isep.ipp.pt,L2S20-76 #Analysis Documents/US1005-Manual_Task/US1005-Manual_Task.md updated
+ec49711,2021-06-19 19:11:54 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-98 #domain Implementation of methods "get" on Attribute needed to UC Request Service
+d3ab2ba,2021-06-19 19:09:43 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-98 #controller Implementation with type of Form included
+9ae1d2f,2021-06-19 17:10:18 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-98 #bootstrapper Bootstrapp updated with one required example of service (given in moodle)
+e1da631,2021-06-19 17:08:24 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-98 #ui Services and Manual Task UIs completed to create all the others entities needed
+9b0df92,2021-06-19 17:07:10 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-74 #bug fix a bug in the return of a method In Manual Task Controller
+cf2707a,2021-06-19 17:06:08 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-98 #bootstrapper  Services Controller completed to create all the others entities needed
+3420f3d,2021-06-19 17:05:16 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-98 #bootstrapper Domain Classes changed to fit the project and create all the objects needed
+d9ab578,2021-06-19 15:30:07 +0100,António Barros (1200606),1200606@isep.ipp.pt,#implementaction of the requirements for the US 4071 #L2S20-125
+96c29ee,2021-06-18 22:00:14 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-120 #fix compliation bug fixed
+7acd98b,2021-06-18 21:59:13 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-74 #ui Create Manual Task UI class finished
+5a849e6,2021-06-18 21:58:56 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-74 #controller Create Manual Task controller class finished
+c342bf9,2021-06-18 21:50:24 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-74 #domain Create Manual Task domain classes fixed
+036eaca,2021-06-18 21:47:54 +0100,Joao Freitas,1170714@isep.ipp.pt,L2S20-98 #bootstrapper  Services Bootstrapp completed
+6e302e3,2021-06-18 17:03:28 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-113 class UI implementation
+4131da2,2021-06-18 17:01:53 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-113 class controller creation
+d60c9ae,2021-06-18 16:58:18 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-113 new queries - Persistence
+5d7a0f0,2021-06-18 16:52:22 +0100,Marly Pimpita,1191444@isep.ipp.pt,L2S20-113 Design
+11f0454,2021-06-18 14:09:54 +0100,António Barros (1200606),1200606@isep.ipp.pt,fix commit bug in the dashboard
+84d2274,2021-06-18 12:16:50 +0100,António Barros (1200606),1200606@isep.ipp.pt,#Implementaction of a controller to add sequences to a workflow
+7481d01,2021-06-18 12:16:05 +0100,António Barros (1200606),1200606@isep.ipp.pt,Update to the desing and analysis # L2S20-116
+0f0c386,2021-06-18 11:54:23 +0100,Joao Freitas,1170714@isep.ipp.pt,Bug fixed
+48fa5dc,2021-06-17 20:53:48 +0100,Joao Freitas,1170714@isep.ipp.pt,#L2S20-98 Upgrade create service UI
+f40f9fb,2021-06-17 20:53:27 +0100,Joao Freitas,1170714@isep.ipp.pt,#L2S20-74 Upgrade UI create manual task
+4ea45b8,2021-06-17 20:52:19 +0100,Joao Freitas,1170714@isep.ipp.pt,#L2S20-98 Upgrade domain classes needed
+8ded933,2021-06-17 20:51:38 +0100,Joao Freitas,1170714@isep.ipp.pt,Controller needed to many UC's updated
+0113107,2021-06-17 20:50:52 +0100,Joao Freitas,1170714@isep.ipp.pt,#L2S20-98 Upgrade create service controller
+09af4a7,2021-06-17 20:47:23 +0100,Joao Freitas,1170714@isep.ipp.pt,#L2S20-98 Upgrade Service Bootstrapp
+55a73db,2021-06-17 16:44:52 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-134 Design Analysis Correction #US3003
+1ae2004,2021-06-17 15:04:40 +0100,António Barros (1200606),1200606@isep.ipp.pt,update of the design of the Us L2S20-116
+245d8ff,2021-06-17 15:03:57 +0100,António Barros (1200606),1200606@isep.ipp.pt,Update of the #L2S20-118 in analysis and requeiriments
+18ff6ea,2021-06-17 15:02:39 +0100,António Barros (1200606),1200606@isep.ipp.pt,#implementaction of the certificates for the ssl/tls
+848a795,2021-06-17 15:00:38 +0100,António Barros (1200606),1200606@isep.ipp.pt,L2S20-141 #implementaction of the SSL/TLS im activity flow engine in the server and the client server in the  aplication
+922994a,2021-06-17 04:10:16 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-134 Design Analysis Completion #US3003
+11cc3c6,2021-06-15 23:27:23 +0100,Paulo Proença,prp@isep.ipp.pt,Repository Analysis
 eef199d,2021-06-15 22:01:49 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-108 / L2S20-133 Analysis Completion #3003
 7fbf2ac,2021-06-15 21:45:11 +0100,Daniel Reis,1200608@isep.ipp.pt,L2S20-108 Completion of Requirements Analysis US3003
 6eebd23,2021-06-14 22:58:41 +0100,António Barros (1200606),1200606@isep.ipp.pt,bug fixing
@@ -57,3 +157,4 @@ b9c2ccf,2021-06-01 17:54:24 +0100,Jose Teixeira,1150462@isep.ipp.pt,#domain  cat
 d170418,2021-06-01 16:59:44 +0100,Jose Teixeira,1150462@isep.ipp.pt,#domain  catalogmanagement/domain/Responsable refinement
 a7298a8,2021-06-01 15:51:29 +0100,Jose Teixeira,1150462@isep.ipp.pt,L2S20-75 #application  taskmanagement/ application/AddManualTaskController refinement
 7a1367e,2021-06-01 15:49:18 +0100,Jose Teixeira,1150462@isep.ipp.pt,L2S20-75 #Domain Manual Task refinement
+330ca0a,2021-05-31 10:17:11 +0100,Paulo Proença,prp@isep.ipp.pt,Repository Analysis

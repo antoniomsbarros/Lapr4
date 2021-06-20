@@ -1,3 +1,196 @@
+commit fd802dd84fc0fbaeb1e305405aa2d78619dc92e0
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 21:26:08 2021 +0100
+
+    #backoffice  console/presentation/MainMenu re-reupdated
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+
+commit baafb5271fc64ba43fdd817dbb7b3cae1c21e65d
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 21:22:07 2021 +0100
+
+    #backoffice console/presentation/MainMenu reupdated
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+
+commit f8a1d58d67cfe47a9bfa012ce92004be1ff94074
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 21:02:59 2021 +0100
+
+    #backoffice console/presentation/MainMenu updated
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/MainMenu.java
+
+commit 9fd19dcb4371b1241a7b2283895ecfdf9801751c
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 21:02:31 2021 +0100
+
+    L2S20-145  #backoffice presentation/clientuser/SortPendentRequestByHistoryUI added
+
+A	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/SortPendentRequestByHistoryUI.java
+
+commit e4c4f630e2173526ccb0ff15c6660c88222ccc1e
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 20:54:03 2021 +0100
+
+    #domain ordermanagement/domain/Request update
+
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Request.java
+
+commit a4c13558b960e96554730a58ed12fe0c2e5153b2
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 19:00:16 2021 +0100
+
+    #Documents UC5001+5003 Requirements and Analysis added
+
+A	Documents/UC5001 + 5003/Analysis.md
+
+commit 850ee0cc6c8836b3666eaf6403781add6bde0f87
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 18:02:52 2021 +0100
+
+    #TCPActivityFlowEngine  TCPSERVER/RequestWorkflow refinement
+
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/RequestWorkflow.java
+
+commit 2d971606aa9728797a2ff55563704d24152fc2c1
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 18:02:13 2021 +0100
+
+    #domain taskmanagement/domain/ManualTask refinement
+
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/ManualTask.java
+
+commit 24510e33d5ce83f179639b0d512abc939be056d5
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 18:01:40 2021 +0100
+
+    #application taskmanagement/application/AddManualTaskController refinement
+
+M	base.core/src/main/java/eapli/base/taskmanagement/application/AddManualTaskController.java
+
+commit 8158d923947770c0132ae86c7d22a4578c496dcd
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 18:00:50 2021 +0100
+
+    #bootstrapp demo/ServiceForDemonstrationBootstrapp refinement
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/ServicesForDemonstrationBootstrapp.java
+
+commit dddfda312c8fecb749085a6cd1890683ce79d823
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 17:59:54 2021 +0100
+
+    #backoffice presentation/clientuser/CreateManualTaskUI and presentation/clientuser/CreateServiceUI refinement
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateManualTaskUI.java
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateServiceUI.java
+
+commit 81f9b216c62375a01278191bef3790f73dd44772
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 04:35:54 2021 +0100
+
+    #boostrapp bootstrappers/demo/ServiceForDemonstrationBootstrapp re-updated
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/ServicesForDemonstrationBootstrapp.java
+
+commit dd5ad728fbde196f3db41d3090869d933be52624
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 04:34:27 2021 +0100
+
+    #tcpserver TCP.ActivityFlowEngine/TCPSERVER/RequestWorkflow updated
+
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/RequestWorkflow.java
+
+commit 4cf81cb59c321308fe4cdc9767a26be1be11d8f2
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 04:31:58 2021 +0100
+
+    L2S20-74 #domain taskmanagement/domain/ManualTask updated
+
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/ManualTask.java
+
+commit 5b99519b099552484ae6e4040dafec4027603278
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 04:31:22 2021 +0100
+
+    L2S20-74 #application taskmanagement/application/AddManualTaskController updated
+
+M	base.core/src/main/java/eapli/base/taskmanagement/application/AddManualTaskController.java
+
+commit 9171bd89a85ad8dce6307ffb08cfdda3924c5dbb
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 04:30:19 2021 +0100
+
+    #boostrapp bootstrappers/demo/ServiceForDemonstrationBootstrapp updated
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/ServicesForDemonstrationBootstrapp.java
+
+commit dc23eb18429906600bbed125127fe5ff10bf50a8
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 04:28:50 2021 +0100
+
+    #presentation clientuser/CreateServiceUI updated
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateServiceUI.java
+
+commit e1fe8f0294dec90e05050480f8b2b8409a806ccf
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 04:26:06 2021 +0100
+
+    L2S20-74 #presentation clientuser/CreateManualTaskUI updated
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateManualTaskUI.java
+
+commit 27f2715c8656a3f104c5e8d8ec814aa86d301b58
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 01:07:11 2021 +0100
+
+    #bootstrapp ServiceForDemonstrationBootstrapp updated regularExpressions in DB table
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/ServicesForDemonstrationBootstrapp.java
+
+commit 30acdbccd7250dd2f3e938fe67e7ecbf432d9bb4
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 01:05:56 2021 +0100
+
+    #persistence META-INF/persistence.xml updated Executor class persistence
+
+M	base.persistence.impl/src/main/resources/META-INF/persistence.xml
+
+commit d908298b1c658f87cf07665de1de61d4597de2a8
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 01:05:09 2021 +0100
+
+    L2S20-74 #domain taskmanagement/domain/Executor added
+
+A	base.core/src/main/java/eapli/base/taskmanagement/domain/Executor.java
+
+commit bad56bcf708f1db88c14b3f7ed20cb687506a6ad
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sun Jun 20 01:04:46 2021 +0100
+
+    L2S20-74 #domain taskmanagement/domain/ManualTask updated
+
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/ManualTask.java
+
+commit 6eb377016204b9852ec5f276ea24ab9fc54e7860
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sat Jun 19 22:08:36 2021 +0100
+
+    L2S20-142 #Design Documents/US1005-ManualTask/SD_UC1005_CreateManualTask.png added
+
+A	Documents/US1005-ManualTask/SD_UC1005_CreateManualTask.png
+
+commit 97858476f1f77a6a55ee61a40ee4316bf828b1d9
+Author: Jose Teixeira <1150462@isep.ipp.pt>
+Date:   Sat Jun 19 22:07:37 2021 +0100
+
+    L2S20-76 #Analysis Documents/US1005-Manual_Task/US1005-Manual_Task.md updated
+
+M	Documents/US1005-ManualTask/US1005_ManualTask.md
+
 commit 120cf9786ab383681f6811d7e1a15479338cdc91
 Author: Jose Teixeira <1150462@isep.ipp.pt>
 Date:   Sat Jun 12 22:59:05 2021 +0100

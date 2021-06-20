@@ -1,3 +1,191 @@
+commit d6724c3cd3e44a6452ddb2bf4e49d150375922b7
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Sun Jun 20 22:07:24 2021 +0100
+
+    L2S20-117 MyVisitor methods
+
+R100	language/linguagemForm.g4	grammar/linguagemForm.g4
+A	validateForm/MyVisitor.java
+A	validateForm/linguagemForm.interp
+A	validateForm/linguagemForm.tokens
+A	validateForm/linguagemFormBaseListener.java
+A	validateForm/linguagemFormBaseVisitor.java
+A	validateForm/linguagemFormLexer.interp
+A	validateForm/linguagemFormLexer.java
+A	validateForm/linguagemFormLexer.tokens
+A	validateForm/linguagemFormListener.java
+A	validateForm/linguagemFormParser.java
+A	validateForm/linguagemFormVisitor.java
+
+commit ad972af63668a9355c5db80f2ae6623ddb9647f2
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Sun Jun 20 21:50:39 2021 +0100
+
+    L2S20-117 grammar and scripts for validate form
+
+A	Scripts/Script_Validate_Form/Service1_Pedido_Ausencia_Futura/script_service1_formulario_aprovacao.txt
+A	Scripts/Script_Validate_Form/Service1_Pedido_Ausencia_Futura/script_service1_formulario_pedido.txt
+A	"Scripts/Script_Validate_Form/Service1_Pedido_Ausencia_Futura/script_service1_formulario_realiza\303\247\303\243o.txt"
+A	Scripts/Script_Validate_Form/Service2_Autorizacao_Aplicacao_Desconto/script_service2_formulario_aprovacao.txt
+A	Scripts/Script_Validate_Form/Service2_Autorizacao_Aplicacao_Desconto/script_service2_formulario_pedido.txt
+A	Scripts/Script_Validate_Form/Service3_Comunicacao_Alteracao_Residencia/script_service3_formulario_pedido.txt
+A	Scripts/Script_Validate_Form/Service3_Comunicacao_Alteracao_Residencia/script_service3_formulario_realizacao.txt
+A	Scripts/Script_Validate_Form/Service4_Requer_Cotacao_Venda_Bruta/script_service4_formulario_pedido.txt
+A	language/linguagemForm.g4
+
+commit 8951ac6ab70e589dbdeeb1a4e125b27bbe0df33b
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Sun Jun 20 21:36:03 2021 +0100
+
+    L2S20-133 Corrections on some Analysis
+
+M	Documents/US1004/ProcessoEngenhariaFuncionalidade.md
+A	Documents/US1007/ProcessoEngenhariaFuncionalidade.md
+M	Documents/US2001/ProcessoEngenhariaFuncionalidade.md
+M	Documents/US3001/ProcessoEngenhariaFuncionalidade.md
+M	Documents/US3002/ProcessoEngenhariaFuncionalidade.md
+M	Documents/US4071/ProcessoEngenhariaFuncionalidade.md
+
+commit 62b7e89d83600bf95249461a64e46ecf7dedee00
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Sun Jun 20 21:34:25 2021 +0100
+
+    L2S20-108 Modifications on Service Bootstrap
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/ServicesForDemonstrationBootstrapp.java
+
+commit 32be9e05306f0a71e0cb37512c0e1abf9e2019cc
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Sun Jun 20 21:32:34 2021 +0100
+
+    L2S20-108 Modifications on the RequestServerUI
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/RequestServiceUI.java
+
+commit 0df9f4451fad6b6a8bb9b75e9b1dfbc7955f3c6f
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Sun Jun 20 03:40:24 2021 +0100
+
+    L2S20-123 Modifications on the TCPSERVER
+
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/RequestWorkflow.java
+
+commit 8abe594ac1dd1bdcb89963677f0dcb385e1f01b3
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Sun Jun 20 03:37:09 2021 +0100
+
+    L2S20-108 Modifications on the Request Service UI
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/RequestServiceUI.java
+
+commit 5d3d655e0cbe7913adc62f5bd1648220f710fb2f
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Sun Jun 20 03:34:28 2021 +0100
+
+    L2S20-108 Modifications no the Controller of Request a Service
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/RequestServiceController.java
+
+commit e88131c5bf4cad0d6264bafcd9915a39db86e487
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Sun Jun 20 03:33:28 2021 +0100
+
+    L2S20-108 Corrections of a bug on the domains
+
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Request.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/RequestBuilder.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/Answer.java
+
+commit 0cf74b1183aa9a2d1063fcc4e2e2c8e684bcb74c
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Sun Jun 20 02:55:54 2021 +0100
+
+    L2S20-108 Correction of a bug
+
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Request.java
+
+commit 135c2a2eb2617bdccd2d7baeea1e2726d16b9b79
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Sun Jun 20 02:51:54 2021 +0100
+
+    L2S20-108 Bootstrp for Request
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/ServicesForDemonstrationBootstrapp.java
+
+commit 9b6f5b74365bdb5c1bd2e507ecf0d8ff49134a8d
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Sun Jun 20 02:51:12 2021 +0100
+
+    L2S20-108 Conclusion of Request Service and some modifications on some UIs
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateManualTaskUI.java
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateServiceUI.java
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/RequestServiceUI.java
+
+commit 846ea8100514d9e8a5ae95793e89296ab9754e9a
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Sun Jun 20 02:50:27 2021 +0100
+
+    L2S20-108 Modifications on some JPARepositories
+
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaCatalogRepository.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaRepositoryFactory.java
+M	base.persistence.impl/src/main/java/eapli/base/persistence/impl/jpa/JpaServiceRepository.java
+
+commit 12eb8d9e6737b5d77624760f03c009bc2ddf8ceb
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Sun Jun 20 02:49:45 2021 +0100
+
+    L2S20-108 Modifications on some Controllers
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/RequestServiceController.java
+M	base.core/src/main/java/eapli/base/taskmanagement/application/AddManualTaskController.java
+
+commit 154e923a680b2392fc321d3f576afa095a442203
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Sun Jun 20 02:49:01 2021 +0100
+
+    L2S20-108 Changes to some querries to some Repositories
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/repository/CatalogRepository.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/repository/ServiceRepository.java
+M	base.core/src/main/java/eapli/base/clientusermanagement/repositories/ClientUserRepository.java
+
+commit 2f04949b2293e22a6ca85e3960c761a7c095b650
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Sun Jun 20 02:48:10 2021 +0100
+
+    L2S20-108 Implementation and Modifications on the domains and Builder
+
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Feedback.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Request.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/RequestBuilder.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/Answer.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/ManualTask.java
+
+commit 55a73db6b25a5e0066487b39b85438b495a870bb
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Thu Jun 17 16:44:52 2021 +0100
+
+    L2S20-134 Design Analysis Correction #US3003
+
+M	Documents/US3003/SD/SD_US3003.jpg
+M	Documents/US3003/SD/SD_US3003.svg
+M	Documents/US3003/SD/sd_us3003.vpp
+A	Documents/US3003/SD/sd_us3003.vpp.bak_001d
+
+commit 922994a46380d6f31ed444b28e78a58a6aee8b86
+Author: Daniel Reis <1200608@isep.ipp.pt>
+Date:   Thu Jun 17 04:10:16 2021 +0100
+
+    L2S20-134 Design Analysis Completion #US3003
+
+M	Documents/US3003/ProcessoEngenhariaFuncionalidade.md
+A	Documents/US3003/SD/SD_US3003.jpg
+A	Documents/US3003/SD/SD_US3003.svg
+A	Documents/US3003/SD/sd_us3003.vpp
+A	Documents/US3003/SD/sd_us3003.vpp.bak_000f
+
 commit eef199d6e98f1b86bf632ac97a3c419157f95319
 Author: Daniel Reis <1200608@isep.ipp.pt>
 Date:   Tue Jun 15 22:01:49 2021 +0100

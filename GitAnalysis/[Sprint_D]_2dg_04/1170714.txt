@@ -1,3 +1,246 @@
+commit 6b66d259767123c8dfc643b60ed3904929c89236
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sun Jun 20 22:43:59 2021 +0100
+
+    L2S20-129 #design Design Updated to be according the implementation
+
+M	Documents/UC5001 + 5003/Analysis.md
+A	Documents/UC5001 + 5003/US5003.jpg
+
+commit ae428e250a385f7fabe32caed95a624d0c8671c8
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sun Jun 20 22:25:37 2021 +0100
+
+    L2S20-107 #implementation Methods of class MyVisitor
+
+M	validateForm/MyVisitor.java
+
+commit 163eb3eb980b04730a3ba7215645c3cde2bb5b4a
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sun Jun 20 22:02:36 2021 +0100
+
+    L2S20-130 #fix Fix bug
+
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/ExecutableTeamThread.java
+
+commit fbd05ebe04eb769c0989952a49ee175d2eccbb3d
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sun Jun 20 21:49:34 2021 +0100
+
+    L2S20-130 #implementation Requirement engineering finished
+
+A	Documents/US4072/ProcessoEngenhariaFuncionalidade.md
+A	Documents/US4072/US4072_AlgorithmFCFS.jpg
+
+commit e0c4ae4f279b5cc7662cd464045cc6a9c7b68b5f
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sun Jun 20 21:48:25 2021 +0100
+
+    L2S20-130 #implementation Implementation of the Algorithm FirstCameFirstServed
+
+A	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/ExecutableTeamThread.java
+A	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/FirstComeFirstServedAlgorithm.java
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/TCPSrvMFA.java
+
+commit 0372a07ca03be6c9424fa01e0734dc7358c2f942
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sun Jun 20 21:45:54 2021 +0100
+
+    L2S20-130 #implementation Add a setResponsable to the class domain Manual Task
+
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/ManualTask.java
+
+commit 3324da9cc14227a19d627ed3020714c13abf73fc
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sun Jun 20 15:50:12 2021 +0100
+
+    L2S20-128 #implementation SSL Socket implementated
+
+M	base.TCP.AutomaticTask/src/main/java/TCPSERVER/TcpSrvAutomaticTask.java
+
+commit ec49711a93d2b658d95d7ae716ef7dbc3db6ccbc
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sat Jun 19 19:11:54 2021 +0100
+
+    L2S20-98 #domain Implementation of methods "get" on Attribute needed to UC Request Service
+
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Attribute.java
+
+commit d3ab2ba388641f4d79e6f60f0b13937199f7509b
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sat Jun 19 19:09:43 2021 +0100
+
+    L2S20-98 #controller Implementation with type of Form included
+
+M	base.core/src/main/java/eapli/base/ordermanagement/application/CreateFormController.java
+
+commit 9ae1d2fa38903b00d05c879df96544bbe06f48e4
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sat Jun 19 17:10:18 2021 +0100
+
+    L2S20-98 #bootstrapper Bootstrapp updated with one required example of service (given in moodle)
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/CatalogBootstrapper.java
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/OrganicStructureDemoBootstrapper.java
+A	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/ServicesForDemonstrationBootstrapp.java
+
+commit e1da631d5a0845dbe3e0b3dde22fce3f52e4edb6
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sat Jun 19 17:08:24 2021 +0100
+
+    L2S20-98 #ui Services and Manual Task UIs completed to create all the others entities needed
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateManualTaskUI.java
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateServiceUI.java
+
+commit 9b0df92cfa11b714fc794f6fa5ac02d1c8a5c49e
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sat Jun 19 17:07:10 2021 +0100
+
+    L2S20-74 #bug fix a bug in the return of a method In Manual Task Controller
+
+M	base.core/src/main/java/eapli/base/taskmanagement/application/AddManualTaskController.java
+
+commit cf2707a20a1fa285de130dcb4bcbfa55e6d6b223
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sat Jun 19 17:06:08 2021 +0100
+
+    L2S20-98 #bootstrapper  Services Controller completed to create all the others entities needed
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/CreateServiceController.java
+
+commit 3420f3d37ea6093a548f7374697b06dbac1b451a
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Sat Jun 19 17:05:16 2021 +0100
+
+    L2S20-98 #bootstrapper Domain Classes changed to fit the project and create all the objects needed
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Service.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/ServiceBuilder.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Attribute.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Form.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/FormBuilder.java
+A	base.core/src/main/java/eapli/base/ordermanagement/domain/FormType.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/Deadline.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/ManualTask.java
+
+commit 96c29ee31edffd83bf880addf4798234424d9f6d
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Fri Jun 18 22:00:14 2021 +0100
+
+    L2S20-120 #fix compliation bug fixed
+
+M	base.TCP.ActivityFlowEngine/src/main/java/TCPSERVER/RequestWorkflow.java
+
+commit 7acd98b3ec1cd970f2d554c2ff24c94d45ecb99e
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Fri Jun 18 21:59:13 2021 +0100
+
+    L2S20-74 #ui Create Manual Task UI class finished
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateManualTaskUI.java
+
+commit 5a849e61687465ac94e1734337ae2bb976e14595
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Fri Jun 18 21:58:56 2021 +0100
+
+    L2S20-74 #controller Create Manual Task controller class finished
+
+M	base.core/src/main/java/eapli/base/taskmanagement/application/AddManualTaskController.java
+
+commit c342bf9793452ee78df3253259df01bbe9e6bb2c
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Fri Jun 18 21:50:24 2021 +0100
+
+    L2S20-74 #domain Create Manual Task domain classes fixed
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Delegaction.java
+M	base.core/src/main/java/eapli/base/catalogmanagement/domain/Responsable.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/AutomaticTask.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/ManualTask.java
+M	base.core/src/main/java/eapli/base/taskmanagement/domain/Task.java
+
+commit 036eacaefba530cb84bda4b58aa91c2efccaa99a
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Fri Jun 18 21:47:54 2021 +0100
+
+    L2S20-98 #bootstrapper  Services Bootstrapp completed
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/CatalogBootstrapper.java
+
+commit 0f0c3860fc59a981c486a3387360cff4b6e9d839
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Fri Jun 18 11:54:23 2021 +0100
+
+    Bug fixed
+
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/HTTPCLientDashboard.java	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/HTTPCLientDashboard.java
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/HTTPmessage.java	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/HTTPmessage.java
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/HttpAjaxDashboardRequest.java	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/HttpAjaxDashboardRequest.java
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/HttpServerAjaxDashboard.java	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/HttpServerAjaxDashboard.java
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/protocol.java	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/Protocol.java
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/TcpClient.java	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/TcpClient.java
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/www/1606738573626.jpg	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/www/1606738573626.jpg
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/www/Isep-logo.png	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/www/Isep-logo.png
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/www/http.gif	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/www/http.gif
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/www/http2.gif	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/www/http2.gif
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/www/http2.png	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/www/http2.png
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/www/index.html	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/www/index.html
+R100	base.core/src/main/java/eapli/base/Dashboardmanagement/www/rcomp-ajax.js	base.core/src/main/java/eapli/base/Dashboardmanagement/DashboardManagement/www/rcomp-ajax.js
+
+commit 48fa5dc80552547788e3887619e3ad5120451291
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Thu Jun 17 20:53:48 2021 +0100
+
+    #L2S20-98 Upgrade create service UI
+
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateServiceUI.java
+
+commit f40f9fba0f31b8a22cf6f94306b858811c8fae0b
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Thu Jun 17 20:53:27 2021 +0100
+
+    #L2S20-74 Upgrade UI create manual task
+
+A	.idea/codeStyles/Project.xml
+M	base.app.backoffice.console/src/main/java/eapli/base/app/backoffice/console/presentation/clientuser/CreateManualTaskUI.java
+
+commit 4ea45b844f3dd52bb9b9818fb65ff3ff84890496
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Thu Jun 17 20:52:19 2021 +0100
+
+    #L2S20-98 Upgrade domain classes needed
+
+D	base.core/src/main/java/eapli/base/ordermanagement/application/CreatFormController.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Attribute.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/AttributeBuilder.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/Form.java
+M	base.core/src/main/java/eapli/base/ordermanagement/domain/FormBuilder.java
+
+commit 8ded933f8ee34b0bc79f4250d84a90ec4438ec0b
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Thu Jun 17 20:51:38 2021 +0100
+
+    Controller needed to many UC's updated
+
+M	base.core/src/main/java/eapli/base/ordermanagement/application/CreateFormController.java
+
+commit 01131072edd111a4e2e1adc212dea468b9bd1589
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Thu Jun 17 20:50:52 2021 +0100
+
+    #L2S20-98 Upgrade create service controller
+
+M	base.core/src/main/java/eapli/base/catalogmanagement/application/CreateServiceController.java
+
+commit 09af4a7e174e78bc26ac2fa6557fe821fcefe8b9
+Author: Joao Freitas <1170714@isep.ipp.pt>
+Date:   Thu Jun 17 20:47:23 2021 +0100
+
+    #L2S20-98 Upgrade Service Bootstrapp
+
+M	base.bootstrappers/src/main/java/eapli/base/infrastructure/bootstrapers/demo/CatalogBootstrapper.java
+
 commit 6f09aaf589933437e65f27017f61546983c5ea44
 Author: Joao Freitas <1170714@isep.ipp.pt>
 Date:   Mon Jun 14 18:02:25 2021 +0100
