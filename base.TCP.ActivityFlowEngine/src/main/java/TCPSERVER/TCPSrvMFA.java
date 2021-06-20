@@ -12,6 +12,9 @@ import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.ordermanagement.domain.Form;
 import eapli.base.taskmanagement.application.AddManualTaskController;
 import eapli.base.taskmanagement.application.SearchManualTask;
+import eapli.base.teamManagement.domain.Team;
+import eapli.base.teamManagement.domain.Uniquecode;
+import eapli.base.teamManagement.repositories.TeamRepository;
 import eapli.base.usermanagement.domain.BasePasswordPolicy;
 import eapli.framework.application.UseCaseController;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
@@ -67,6 +70,7 @@ class TCPSrvMFAThread implements Runnable {
 	private DataInputStream sIn;
 	private Dashboardsearch dashboardsearch;
 	RequestWorkflow requestWorkflow;
+	private final TeamRepository teams= PersistenceContext.repositories().team();
 	TCPSrvMFAThread(Socket cli_s) {
 		s=cli_s;
 		dashboardsearch=new Dashboardsearch();
@@ -98,6 +102,18 @@ class TCPSrvMFAThread implements Runnable {
 					protocol.send(sOut,"Code invalido");
 					break;
 			}
+
+			String data= protocol.getData();
+			String[] ts=data.split(", ");
+			LinkedList<Team> lstTeams=new LinkedList<>();
+			for (String s : ts) {
+				lstTeams.add(teams.findByUniquecode(new Uniquecode(s)).get());
+			}
+
+			FirstComeFirstServedAlgorithm fcfsAlgorithm = new FirstComeFirstServedAlgorithm();
+			fcfsAlgorithm.firstComeFirstServed(lstTeams);
+			protocol.send(sOut, "done");
+
 			System.out.println("Client " + clientIP.getHostAddress() + ", port number: " + s.getPort() + 
 				" disconnected");
 			s.close();
