@@ -1,8 +1,6 @@
 package TCPSERVER;
 
-import eapli.base.catalogmanagement.domain.Catalog;
-import eapli.base.catalogmanagement.domain.Sequence;
-import eapli.base.catalogmanagement.domain.Service;
+import eapli.base.catalogmanagement.domain.*;
 import eapli.base.catalogmanagement.repository.CatalogRepository;
 import eapli.base.catalogmanagement.repository.ServiceRepository;
 import eapli.base.clientusermanagement.domain.ClientUser;
@@ -11,6 +9,8 @@ import eapli.base.taskmanagement.domain.ManualTask;
 import eapli.base.taskmanagement.domain.Task;
 import eapli.base.taskmanagement.repositories.ManualTaskRepository;
 import eapli.base.teamManagement.domain.Team;
+import eapli.framework.general.domain.model.Description;
+import eapli.framework.general.domain.model.Designation;
 
 import java.util.*;
 import java.util.concurrent.Semaphore;
@@ -42,6 +42,7 @@ public class ExecutableTeamThread implements Runnable {
         Set<ClientUser> lstClientsByTeam = this.team.collaboratorList();
         List<ClientUser> lstClients = convertSetClientsInList(lstClientsByTeam);
         int i = 0;
+        int j = 100;
         while (iterator.hasNext()) {
             Catalog c = iterator.next();
             if(!this.finishedCatalogs.contains(c)){
@@ -50,7 +51,7 @@ public class ExecutableTeamThread implements Runnable {
                         Task task = sequence.tasks();
                         if (manualTaskRepository.containsOfIdentity(task.identity())){
                             ManualTask manual = manualTaskRepository.ofIdentity(task.identity()).get();
-                            manual.setResponsable(lstClients.get(i));
+                            manual.setResponsable(new Responsable(Long.valueOf(String.valueOf(j)), lstClients.get(i),new Delegaction(Long.valueOf(String.valueOf(j)), Description.valueOf("Justificacao"), Designation.valueOf("Alternativa")), this.team));
                             manualTaskRepository.save(manual);
                         }
                     }
@@ -58,8 +59,10 @@ public class ExecutableTeamThread implements Runnable {
                 }
                 if (i == lstClientsByTeam.size()) {
                     i = 0;
+                    j++;
                 }else {
                     i++;
+                    j++;
                 }
             }
 
