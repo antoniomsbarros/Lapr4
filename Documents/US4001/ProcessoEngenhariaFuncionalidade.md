@@ -8,7 +8,7 @@
 
 - Pré-Requisitos
 	- Existência de Serviços
-	- Existência de formalarios
+	- Existência de formularies
 	- Existência de pedidos
 - Requisitos
 	- Existe colaborador
@@ -36,27 +36,16 @@ A interpretação feita deste requisito foi no sentido é que esta Us é respons
 
 *Para além das secções sugeridas, podem ser incluídas outras.*
 
-## 3.1. Realização da Funcionalidade
-
-*Nesta secção deve apresentar e descrever o fluxo/sequência que permite realizar a funcionalidade.*
-
-## 3.2. Diagrama de Classes
-
-*Nesta secção deve apresentar e descrever as principais classes envolvidas na realização da funcionalidade.*
 
 ## 3.3. Padrões Aplicados
-
-*Nesta secção deve apresentar e explicar quais e como foram os padrões de design aplicados e as melhores práticas.*
-
+Os padrões que foram aplicados foram os padroes de rcomp para a comunicação entre servidores e aplicações.
 ## 3.4. Testes 
-*Nesta secção deve sistematizar como os testes foram concebidos para permitir uma correta aferição da satisfação dos requisitos.*
 
-**Teste 1:** Verificar que não é possível criar uma instância da classe Exemplo com valores nulos.
+**Teste 1:** Verifica se o id recebido pela parte da aplicação não é null
+**Teste 2:** Caso um serviço conter uma atividade de aprovação e essa atividade tiver decisão reprovada o estado do pedido 
+referente aquele serviço fica com o estado de "REJEITADO".
+**Teste 3:** Caso todas as atividades estiverem no estado done e não ter nenhuma atividade com a decisão reprovada o estado do pedido vira para concluído
 
-	@Test(expected = IllegalArgumentException.class)
-		public void ensureNullIsNotAllowed() {
-		Exemplo instance = new Exemplo(null, null);
-	}
 
 # 4. Implementação
 
