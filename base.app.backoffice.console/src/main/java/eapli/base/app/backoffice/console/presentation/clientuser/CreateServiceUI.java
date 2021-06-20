@@ -261,7 +261,7 @@ public class CreateServiceUI extends AbstractUI {
 
         List<String> lstAnswer = new ArrayList<>();
 
-        return manualTaskController.addManualTask(deadline,priority,responsable,commentary,decision,form,lstAnswer);
+        return manualTaskController.addManualTask(deadline,priority,responsable,new Executor(),commentary,decision,form,lstAnswer);
     }
 
     private Long chooseCatalog(Iterable<Catalog> lstCatalogs){

@@ -10,10 +10,7 @@ import eapli.base.ordermanagement.domain.Attribute;
 import eapli.base.ordermanagement.domain.Form;
 import eapli.base.ordermanagement.domain.TypeofData;
 import eapli.base.taskmanagement.application.AddManualTaskController;
-import eapli.base.taskmanagement.domain.Answer;
-import eapli.base.taskmanagement.domain.Deadline;
-import eapli.base.taskmanagement.domain.TaskState;
-import eapli.base.taskmanagement.domain.TaskType;
+import eapli.base.taskmanagement.domain.*;
 import eapli.base.teamManagement.application.RegisterTeamController;
 import eapli.base.teamManagement.domain.Team;
 import eapli.framework.general.domain.model.Description;
@@ -198,6 +195,7 @@ public class CreateManualTaskUI extends AbstractUI {
 
         //Answer answer = answerForm(form);
         List<String > lstAnswer = new ArrayList<>(); //
+        Executor executor = new Executor();
 
         /*
          for (String resp: lstAnswers.getResposta()){
@@ -205,7 +203,7 @@ public class CreateManualTaskUI extends AbstractUI {
             }
          */
 
-        controller.addManualTask(deadline,priority,responsable,commentary,decision,form,lstAnswer);
+        controller.addManualTask(deadline,priority,responsable,executor,commentary,decision,form,lstAnswer);
 
         return true;
     }
