@@ -256,7 +256,7 @@ public class MainMenu extends AbstractUI {
     private Menu builderRequestServiceMenu(){
         final Menu menu = new Menu("Request Service >");
 
-        menu.addItem(1,"Request Service", new RequestServiceUI()::show);
+        menu.addItem(REQUESTSERVICE_OPTION,"Request Service", new RequestServiceUI()::show);
         menu.addItem(SHOWPENDENTREQUEST_OPTION,"Show Pendent Request Service By Date",new SortPendentRequestByHistoryUI()::show);
 
         return menu;
