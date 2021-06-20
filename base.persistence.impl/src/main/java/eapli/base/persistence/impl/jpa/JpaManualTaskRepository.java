@@ -35,7 +35,7 @@ public class JpaManualTaskRepository extends JpaAutoTxRepository<ManualTask, Lon
 
     @Override
     public Iterable<ManualTask> findAllActive() {
-        return null;
+        return match("e.active = true");
     }
 
     @Override
@@ -59,11 +59,12 @@ public class JpaManualTaskRepository extends JpaAutoTxRepository<ManualTask, Lon
 
     @Override
     public Iterable<ManualTask> manualTaskToClaim(final Team team) {
-
-        final TypedQuery<ManualTask> q = createQuery("SELECT m FROM ManualTask m " +
-                        " WHERE (m.collaborator.team =:team) AND (m.collaborator.responsable =: team.responsable)",
+        ClientUser clientUser = team.clientUser();
+        final TypedQuery<ManualTask> q = createQuery("SELECT m FROM ManualTask m" +
+                        " WHERE ((m.collaborator.team = :t) AND (m.collaborator.responsable = :clientUser))",
                 ManualTask.class);
-        q.setParameter("team", team);
+        q.setParameter("t", team);
+        q.setParameter("clientUser", clientUser);
         return q.getResultList();
     }
 
@@ -71,7 +72,7 @@ public class JpaManualTaskRepository extends JpaAutoTxRepository<ManualTask, Lon
     public Iterable<ManualTask> manualTaskToPerform(ClientUser clientUser, TaskState state, TaskType type) {
 
         final TypedQuery<ManualTask> q = createQuery("SELECT m FROM ManualTask m " +
-                        " WHERE (m.collaborator.responsable =: clientUser) AND (m.state=: state) AND (m.type=: type)",
+                        " WHERE ((m.collaborator.responsable =: clientUser) AND (m.state=: state) AND (m.type=: type))",
                 ManualTask.class);
         q.setParameter("clientUser", clientUser);
         q.setParameter("state", state);
