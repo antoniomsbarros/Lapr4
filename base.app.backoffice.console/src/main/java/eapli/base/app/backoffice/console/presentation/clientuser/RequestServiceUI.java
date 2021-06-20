@@ -1,5 +1,6 @@
 package eapli.base.app.backoffice.console.presentation.clientuser;
 
+import eapli.base.DashboardManagement.TcpClient;
 import eapli.base.catalogmanagement.application.RequestServiceController;
 import eapli.base.catalogmanagement.domain.Catalog;
 import eapli.base.catalogmanagement.domain.Service;
@@ -15,6 +16,7 @@ import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -97,6 +99,11 @@ public class RequestServiceUI extends AbstractUI {
             }
             final Integer ticketPriority = Integer.valueOf(Console.readLine("Ticket priority:"));
             controller.createTicket(servico,ticketPriority,request);
+            try {
+                TcpClient.tcpConnecting(6, String.valueOf(request.identity()),"10.9.21.107" );
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             return true;
         }
 

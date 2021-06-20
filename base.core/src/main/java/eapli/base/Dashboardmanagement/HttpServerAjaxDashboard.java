@@ -16,7 +16,6 @@ public class HttpServerAjaxDashboard {
     public static void main(String args[]) throws Exception {
 	Socket cliSock;
 
-
         accessesCounter=0;
         for(int i=0;i<candidatesNumber; i++) {
                 candidateName[i] = "Candidate " + i;

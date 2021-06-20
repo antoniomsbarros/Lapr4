@@ -18,8 +18,7 @@ public class ManualTask extends Task {
     @Enumerated(EnumType.STRING)
     private TaskType type;
 
-    @OneToOne(cascade=CascadeType.ALL)
-    private Executor executor;
+
 
     @OneToOne(cascade = CascadeType.ALL)
     private Responsable collaborator;
@@ -41,7 +40,6 @@ public class ManualTask extends Task {
     public ManualTask(TaskState state, Deadline deadline, Integer priority,
                       TaskType type,
                       Responsable collaborator,
-                      Executor executor,
                       Description decision,
                       Description commentary, Form form, List<String> lstResposta) {
         super(state, deadline, priority);
@@ -62,7 +60,7 @@ public class ManualTask extends Task {
         } catch (NullPointerException | IllegalArgumentException e) {
             System.out.println("Invalid Collaborator: " + e);
         }
-        this.executor = executor;
+
         this.type = type;
         this.decision = decision;
         this.commentary = commentary;

@@ -17,6 +17,7 @@ import eapli.base.taskmanagement.domain.*;
 import eapli.framework.general.domain.model.Description;
 import eapli.framework.validations.Preconditions;
 
+import java.io.IOException;
 import java.util.*;
 
 public class RequestWorkflow {
@@ -53,7 +54,7 @@ public class RequestWorkflow {
         createFormController=new CreateFormController();
     }
 
-    public void createWorkflowPedido(String idPedido) throws InterruptedException {
+    public void createWorkflowPedido(String idPedido) throws InterruptedException, IOException {
         Preconditions.noneNull(idPedido);
         Request request=searchRequestController.getrequestbyid(Long.valueOf(idPedido));
         Ticket ticket=searchTickController.searchTickbyRequestid(request.identity());
@@ -103,7 +104,7 @@ public class RequestWorkflow {
                 createFormController=new CreateFormController();
                 Deadline deadline = new Deadline(date);
 
-                ManualTask manualTask=addManualTaskController.addManualTask(deadline, manualTask1.priority(), searchActivity.prepareTask(112345).get(0).Responsible(),new Executor() ,Description.valueOf("Aprovado"), Description.valueOf("comment") ,formRequestTask,new ArrayList<>());
+                ManualTask manualTask=addManualTaskController.addManualTask(deadline, manualTask1.priority(), searchActivity.prepareTask(112345).get(0).Responsible() ,Description.valueOf("Aprovado"), Description.valueOf("comment") ,formRequestTask,new ArrayList<>());
 
                 integers.add(manualTask.identity());
 
@@ -142,7 +143,7 @@ public class RequestWorkflow {
                     System.out.println("Aprovado");
                    // TcpClient.tcpConnecting("", automaticTask.identity()+" "+"Aprovado "+request.Answers(),"");
                     System.out.println("tcp executor tarefas");
-                    //TcpClientMotorActivityFlowEngine.tcpConnecting(1, String.valueOf(automaticTask.identity()));
+                    TcpClientMotorActivityFlowEngine.tcpConnecting(1, String.valueOf(automaticTask.identity()));
                 }else {
                     System.out.println("rejeitado");
                     changeStatusRequest.changeStatusofRequest(request, State.REJEITADO);
