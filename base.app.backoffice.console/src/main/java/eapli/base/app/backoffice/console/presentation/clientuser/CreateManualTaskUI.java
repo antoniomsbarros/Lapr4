@@ -195,7 +195,7 @@ public class CreateManualTaskUI extends AbstractUI {
 
         //Answer answer = answerForm(form);
         List<String > lstAnswer = new ArrayList<>(); //
-        Executor executor = new Executor();
+
 
         /*
          for (String resp: lstAnswers.getResposta()){
@@ -203,7 +203,7 @@ public class CreateManualTaskUI extends AbstractUI {
             }
          */
 
-        controller.addManualTask(deadline,priority,responsable,executor,commentary,decision,form,lstAnswer);
+        controller.addManualTask(deadline,priority,responsable,commentary,decision,form,lstAnswer);
 
         return true;
     }

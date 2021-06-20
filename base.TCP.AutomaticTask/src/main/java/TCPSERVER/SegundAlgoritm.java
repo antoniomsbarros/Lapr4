@@ -23,7 +23,7 @@ public class SegundAlgoritm {
         }
 
         for (AutomaticTask a:automaticTaskList) {
-            for (int i = 0; i < i; i++) {
+            for (int i = 0; i < 5; i++) {
 
             }
         }
