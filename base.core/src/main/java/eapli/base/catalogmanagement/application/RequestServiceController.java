@@ -90,13 +90,13 @@ public class RequestServiceController {
         return new Feedback(feedbackScale);
     }
 
-    public Request creatRequest(final Workflow workflow, final State stateofResquest,final Calendar dateofRequest,final Feedback feedback,final Draft draft,final Form form, Answer lstAn){
+    public Request creatRequest(final State stateofResquest,final Calendar dateofRequest,final Feedback feedback,final Draft draft,final Form form, List<String> lstAn){
         RequestBuilder requestBuilder = new RequestBuilder();
         if (feedback.equals(new Feedback())){
-            requestBuilder.withState(stateofResquest).withDate(dateofRequest).withWorkflow(workflow).withDraft(draft).withForm(form).withListAnswers(lstAn);
+            requestBuilder.withState(stateofResquest).withDate(dateofRequest).withDraft(draft).withForm(form).withListAnswers(lstAn);
 
         } else {
-            requestBuilder.withState(stateofResquest).withDate(dateofRequest).withFeedback(feedback).withWorkflow(workflow).withDraft(draft).withForm(form).withListAnswers(lstAn);
+            requestBuilder.withState(stateofResquest).withDate(dateofRequest).withFeedback(feedback).withDraft(draft).withForm(form).withListAnswers(lstAn);
         }
         return rr.save(requestBuilder.build());
     }
