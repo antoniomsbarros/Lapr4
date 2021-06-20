@@ -2,6 +2,7 @@ package eapli.base.taskmanagement.repositories;
 
 import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.clientusermanagement.domain.MecanographicNumber;
+import eapli.base.ordermanagement.domain.Request;
 import eapli.base.taskmanagement.domain.AutomaticTask;
 import eapli.framework.domain.repositories.DomainRepository;
 import eapli.framework.infrastructure.authz.domain.model.Username;
@@ -16,4 +17,5 @@ public interface AutomaticTaskRepository extends DomainRepository<Long, Automati
 
     Iterable<AutomaticTask> findAllActive();
     Optional<AutomaticTask> findByID(Long id);
+    Iterable<AutomaticTask> findAll();
 }

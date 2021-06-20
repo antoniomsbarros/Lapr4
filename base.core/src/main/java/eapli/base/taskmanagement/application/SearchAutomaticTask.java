@@ -8,6 +8,8 @@ import eapli.base.taskmanagement.repositories.ManualTaskRepository;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 
+import java.util.List;
+
 public class SearchAutomaticTask {
     private final AuthorizationService authz;
     private final AutomaticTaskRepository automaticTaskRepository;
@@ -19,5 +21,10 @@ public class SearchAutomaticTask {
 
     public AutomaticTask automaticTaskbyid(Long id){
         return automaticTaskRepository.findByID(id).get();
+    }
+
+    public List<AutomaticTask> findAll(){
+
+        return (List<AutomaticTask>) automaticTaskRepository.findAll();
     }
 }

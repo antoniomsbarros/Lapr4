@@ -68,15 +68,16 @@ class TcpSrvSumThread implements Runnable {
 			String[] automaticTask=data.split(", ");
 
 
-			/*LinkedList<AutomaticTask> automaticTasks=new LinkedList<>();
+			LinkedList<AutomaticTask> automaticTasks=new LinkedList<>();
 			for (String str: automaticTask) {
 				automaticTasks.add(searchAutomaticTask.automaticTaskbyid(Long.valueOf(str)));
 			}
 			FirstComeFirstServedAlgoritm firstComeFirstServedAlgoritm=new FirstComeFirstServedAlgoritm();
 
-				firstComeFirstServedAlgoritm.firstComeFirstServerd(automaticTasks);*/
-			AutomaticTask automaticTask1= searchAutomaticTask.automaticTaskbyid(Long.valueOf(automaticTask[0]));
-			changeStatusofActivity.changeStatsTask(automaticTask1, TaskState.DONE );
+				firstComeFirstServedAlgoritm.firstComeFirstServerd(automaticTasks);
+
+			//AutomaticTask automaticTask1= searchAutomaticTask.automaticTaskbyid(Long.valueOf(automaticTask[0]));
+
 			protocol.send(sOut, "done");
 
 
@@ -84,8 +85,10 @@ class TcpSrvSumThread implements Runnable {
 				" disconnected");
 			s.close();
 			}
-		catch(IOException ex) { System.out.println("IOException"); }
+		catch(IOException ex) { System.out.println("IOException"); } catch (InterruptedException e) {
+			e.printStackTrace();
 		}
+	}
 
 	}
 
