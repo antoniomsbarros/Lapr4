@@ -16,7 +16,7 @@ public class RequestBuilder implements DomainFactory<Request> {
     private Workflow workflow;
     private Draft draft;
     private Form form;
-    private Answer lstAnswers;
+    private List<String> lstAnswers;
 
     public RequestBuilder(){}
 
@@ -35,10 +35,6 @@ public class RequestBuilder implements DomainFactory<Request> {
         return this;
     }
 
-    public RequestBuilder withWorkflow(Workflow workflow){
-        this.workflow = workflow;
-        return this;
-    }
 
     public RequestBuilder withDraft(Draft draft){
         this.draft = draft;
@@ -50,7 +46,7 @@ public class RequestBuilder implements DomainFactory<Request> {
         return this;
     }
 
-    public RequestBuilder withListAnswers(Answer lstAnswers){
+    public RequestBuilder withListAnswers(List<String> lstAnswers){
         this.lstAnswers = lstAnswers;
         return this;
     }

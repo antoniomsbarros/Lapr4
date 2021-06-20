@@ -85,7 +85,12 @@ public class RequestServiceUI extends AbstractUI {
 
             final Form form = controller.getFormToAnswer(servico);
             Answer lstAnswers = answerForm(form);
-            Request request = controller.creatRequest(workflow,state,dateRequest,feedback,draft,form,lstAnswers);
+            List<String> listAnswer = new ArrayList<>();
+
+            for (String resp: lstAnswers.getResposta()){
+                listAnswer.add(resp);
+            }
+            Request request = controller.creatRequest(state,dateRequest,feedback,draft,form,listAnswer);
 
             for(String s: lstAnswers.getResposta()){
                 System.out.println(s);

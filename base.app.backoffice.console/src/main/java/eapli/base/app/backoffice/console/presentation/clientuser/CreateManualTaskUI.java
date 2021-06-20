@@ -196,13 +196,32 @@ public class CreateManualTaskUI extends AbstractUI {
 
         Attribute atb = new Attribute(Long.valueOf(1),Description.valueOf("DescAttrb1"),Description.valueOf("Attrb1"),Description.valueOf("LBL1"),Description.valueOf("regularExp"), TypeofData.Data);
 
-        Answer lstAnswer = new Answer();
+        //Answer answer = answerForm(form);
+        List<String > lstAnswer = new ArrayList<>(); //
 
+        /*
+         for (String resp: lstAnswers.getResposta()){
+                listAnswer.add(resp);
+            }
+         */
 
         controller.addManualTask(deadline,priority,responsable,commentary,decision,form,lstAnswer);
 
         return true;
     }
+
+    private Answer answerForm(Form form) {
+        Answer lstAnswer= new Answer();
+        String a;
+        for (Attribute at : form.attribute()) {
+            System.out.println(at.name() + "(" + at.typeofData().toString() + "):");
+            String resp = Console.readLine("Answer the attribute");
+            // lstAnswer = new Answer();
+            lstAnswer.addResposta(resp);
+        }
+        return lstAnswer;
+    }
+
     @Override
     public String headline() {
        return "Create Manual Task";

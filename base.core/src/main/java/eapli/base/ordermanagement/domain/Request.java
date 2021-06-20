@@ -5,6 +5,7 @@ import eapli.base.taskmanagement.domain.Answer;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.validations.Preconditions;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
@@ -27,14 +28,14 @@ public class Request implements AggregateRoot<Long>  {
     @OneToOne(optional = false)
     private Draft draft;
 
-
-    private Answer lstResposta;
+    @ElementCollection
+    private List<String> lstResposta;
 
     public Request() {
     }
 
-    public Request(final Workflow workflow,final State stateofResquest,final Calendar dateofRequest,final Feedback feedback,final Draft draft, Answer lstResposta) {
-        Preconditions.noneNull(draft,dateofRequest,stateofResquest,workflow);
+    public Request(final Workflow workflow,final State stateofResquest,final Calendar dateofRequest,final Feedback feedback,final Draft draft,final List<String> lstResposta) {
+        Preconditions.noneNull(draft,dateofRequest,stateofResquest);
         this.stateofResquest = stateofResquest;
         this.dateofRequest = dateofRequest;
         this.feedback = feedback;
@@ -91,14 +92,8 @@ public class Request implements AggregateRoot<Long>  {
         this.stateofResquest=state;
     }
 
-    public String mostraResposta(){
-        for (String a: lstResposta.getResposta()) {
-            return a;
-        }
-        return "";
-    }
 
-    public Answer Answers(){
+    public List<String> Answers(){
         return this.lstResposta;
     }
     public Draft draft(){

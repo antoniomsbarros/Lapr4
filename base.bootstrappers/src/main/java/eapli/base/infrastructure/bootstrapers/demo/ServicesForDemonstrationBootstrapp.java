@@ -81,7 +81,7 @@ public class ServicesForDemonstrationBootstrapp implements Action {
         formController.addAttribute(Long.valueOf("6"),  Description.valueOf("d2"),  Description.valueOf("Tento fundamentando a decisao"),  Description.valueOf("l2"),  Description.valueOf("r2"), TypeofData.valueOf("String"));
         Form at1 = formController.saveForm(Description.valueOf("ex2"),Description.valueOf("script2"),aprovacao);
         Responsable responsable1 = new Responsable(Long.valueOf("1"), lstCollabs.get(0), new Delegaction(Long.valueOf("1"), Description.valueOf("Justificacao"), Designation.valueOf("Alternativa")), teams().get(0));
-        Task t1 = addManualTaskController.addManualTask(new Deadline(date), 3,responsable1, Description.valueOf("Comentarioex1"), Description.valueOf("Decisaoex1"), at1, new Answer());
+        Task t1 = addManualTaskController.addManualTask(new Deadline(date), 3,responsable1, Description.valueOf("Comentarioex1"), Description.valueOf("Decisaoex1"), at1, new ArrayList<>());
         //Task 2
         formController = new CreateFormController();
         formController.addAttribute(Long.valueOf("7"),  Description.valueOf("d"),  Description.valueOf("Dias de férias já gozados no ano"),  Description.valueOf("l"),  Description.valueOf("[0-9]{1,2}"), TypeofData.valueOf("String"));
@@ -96,7 +96,7 @@ public class ServicesForDemonstrationBootstrapp implements Action {
         formController.addAttribute(Long.valueOf("16"),  Description.valueOf("d10"),  Description.valueOf("Comentario"),  Description.valueOf("l2"),  Description.valueOf("[A-Za-z]+"), TypeofData.valueOf("String"));
         Form at2 = formController.saveForm(Description.valueOf("ex3"),Description.valueOf("script3"),resolucao);
         Responsable responsable2 = new Responsable(Long.valueOf("2"), lstCollabs.get(1), new Delegaction(Long.valueOf("2"), Description.valueOf("Justificacao2"), Designation.valueOf("Alternativa2")), teams().get(0));
-        Task t2 = addManualTaskController.addManualTask(new Deadline(date), 4,responsable2, Description.valueOf("Comentarioex2"), Description.valueOf("Decisaoex2"), at2, new Answer());
+        Task t2 = addManualTaskController.addManualTask(new Deadline(date), 4,responsable2, Description.valueOf("Comentarioex2"), Description.valueOf("Decisaoex2"), at2, new ArrayList<>());
         Map<Long, Task> map = new HashMap<>();
         List<Sequence> lstSeq = new ArrayList<>();
         map.put(Long.valueOf("1"), t1);
