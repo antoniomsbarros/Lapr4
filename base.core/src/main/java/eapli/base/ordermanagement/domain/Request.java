@@ -5,6 +5,7 @@ import eapli.base.taskmanagement.domain.Answer;
 import eapli.framework.domain.model.AggregateRoot;
 import eapli.framework.validations.Preconditions;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
@@ -20,28 +21,27 @@ public class Request implements AggregateRoot<Long>  {
     @Temporal(TemporalType.DATE)
     private Calendar dateofRequest;
 
-    @OneToOne()
+    @OneToOne(cascade = CascadeType.ALL)
     private Feedback feedback;
     @OneToOne()
     private Workflow workflow;
     @OneToOne(optional = false)
     private Draft draft;
-    @OneToOne()
-    private Form form;
+
     @ElementCollection
-    private List<Answer> lstResposta;
+    private Answer lstResposta = new Answer();
 
     public Request() {
     }
 
-    public Request(final Workflow workflow,final State stateofResquest,final Calendar dateofRequest,final Feedback feedback,final Draft draft,final Form form) {
-        Preconditions.noneNull(draft,dateofRequest,stateofResquest,workflow,form);
+    public Request(final Workflow workflow,final State stateofResquest,final Calendar dateofRequest,final Feedback feedback,final Draft draft, Answer lstResposta) {
+        Preconditions.noneNull(draft,dateofRequest,stateofResquest,workflow);
         this.stateofResquest = stateofResquest;
         this.dateofRequest = dateofRequest;
         this.feedback = feedback;
         this.draft = draft;
         this.workflow=workflow;
-        this.form = form;
+        this.lstResposta = lstResposta;
     }
 
     @Override
@@ -54,7 +54,7 @@ public class Request implements AggregateRoot<Long>  {
             return true;
         }
         return  identity().equals(((Request) other).identity()) && stateofResquest.equals(((Request) other).stateofResquest)
-                && dateofRequest.equals(((Request) other).dateofRequest) && feedback.equals(request.feedback) && workflow.equals(request.workflow) && form.equals(request.form);
+                && dateofRequest.equals(((Request) other).dateofRequest) && feedback.equals(request.feedback) && workflow.equals(request.workflow);
     }
 
     @Override
@@ -67,12 +67,12 @@ public class Request implements AggregateRoot<Long>  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Request request = (Request) o;
-        return idRequest.equals(request.idRequest) && stateofResquest == request.stateofResquest && dateofRequest.equals(request.dateofRequest) && Objects.equals(feedback, request.feedback) && draft.equals(request.draft) && form.equals(request.form);
+        return idRequest.equals(request.idRequest) && stateofResquest == request.stateofResquest && dateofRequest.equals(request.dateofRequest) && Objects.equals(feedback, request.feedback) && draft.equals(request.draft);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idRequest, stateofResquest, dateofRequest, feedback, draft, form);
+        return Objects.hash(idRequest, stateofResquest, dateofRequest, feedback, draft);
     }
 
     @Override
@@ -84,7 +84,7 @@ public class Request implements AggregateRoot<Long>  {
                 ", feedback=" + feedback +
                 ", workflow=" + workflow +
                 ", draft=" + draft +
-                ", form=" + form +
+                ", lstResposta=" + lstResposta.toString() +
                 '}';
     }
 
@@ -92,7 +92,14 @@ public class Request implements AggregateRoot<Long>  {
         this.stateofResquest=state;
     }
 
-    public List<Answer> Answers(){
+    public String mostraResposta(){
+        for (String a: lstResposta.getResposta()) {
+            return a;
+        }
+        return "";
+    }
+
+    public Answer Answers(){
         return this.lstResposta;
     }
     public Draft draft(){
