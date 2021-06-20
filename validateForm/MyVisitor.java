@@ -687,6 +687,201 @@ public class MyVisitor extends linguagemFormBaseVisitor{
         }
     }
 
+    @Override
+    public Boolean visitValState(linguagemFormParser.ValStateContext ctx) {
+        try{
+            String val = requestData.get(Integer.parseInt(ctx.INTEGER().toString())-1);
+            String state = ctx.STR_STATE().toString();
+
+            Attribute attrb = requestAttribute.get(Integer.parseInt(ctx.INTEGER().toString())-1);
+            String err= "Nao preencheu o atributo : (OBRIGATORIO)\n"+ attrb.printForm()+"\n";
+
+            if (state.equalsIgnoreCase("filled")) {
+                if (val.isBlank()) {
+                    errors.add(err);
+                    return false;
+                }
+                return true;
+            }
+
+            if (state.equalsIgnoreCase("empty")) {
+                if (val.isBlank()) {
+                    return true;
+                }
+                errors.add(err);
+                return false;
+            }
+            return false;
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean visitValEqualString(linguagemFormParser.ValEqualStringContext ctx) {
+        try{
+            String val = requestData.get(Integer.parseInt(ctx.INTEGER().toString())-1);
+            StringBuilder aux = new StringBuilder();
+
+            linguagemFormParser.StringValueContext stringValueContext = ctx.stringCondition()  //'ola'-> funciona     ola -> ardeu
+                    .stringWithQuoteMarks().stringValue();
+
+            do{
+                aux.append(stringValueContext.STRING().toString()).append(" ");
+                stringValueContext = stringValueContext.stringValue();
+            }while(stringValueContext!=null);
+
+            String valToEqualize = aux.toString();
+            valToEqualize.replace("\"","");
+
+            String op = ctx.EQUAL_OR_NOT().toString();
+            Attribute attrb = requestAttribute.get(Integer.parseInt(ctx.INTEGER().toString())-1);
+            String err1= "O atributo"+ attrb.printForm()+ "deveria de ser "+ valToEqualize+"\n";
+            String err2 = "O atributo "+attrb.printForm()+"nao pode ser "+ valToEqualize+"\n";
+
+            switch(op){
+                case "==":
+                    if (val.trim().equalsIgnoreCase((valToEqualize.trim()))){
+                        return true;
+                    }
+                    errors.add(err1);
+                    return false;
+
+                case "!=":
+                    if (val.trim().equalsIgnoreCase(valToEqualize.trim())){
+                        return true;
+                    }
+                    errors.add(err2);
+                    return false;
+
+                default:
+                    return false;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean visitValIsBoolean(linguagemFormParser.ValIsBooleanContext ctx) {
+        try{
+            String value = requestData.get(Integer.parseInt(ctx.INTEGER().toString())-1);
+            String op = ctx.EQUAL_OR_NOT().toString();
+            String bol = ctx.BOOLEAN_OP().toString();
+
+            Attribute attrb = requestAttribute.get(Integer.parseInt(ctx.INTEGER().toString())-1);
+            String err= "O atributo "+ attrb.printForm() + "nao corresponde a: "+bol;
+
+            switch(op){
+                case "==":
+                    if (value.equals(bol)){
+                        return true;
+                    }
+                    errors.add(err);
+                    return false;
+
+                case "!=":
+                    if (!value.equals(bol)){
+                        return true;
+                    }
+                    errors.add(err);
+                    return false;
+
+                default:
+                    return false;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean visitBooleanIsVal(linguagemFormParser.BooleanIsValContext ctx) {
+        try{
+            String value = requestData.get(Integer.parseInt(ctx.INTEGER().toString())-1);
+            String op = ctx.EQUAL_OR_NOT().toString();
+            String bol = ctx.BOOLEAN_OP().toString();
+
+            Attribute attrb = requestAttribute.get(Integer.parseInt(ctx.INTEGER().toString())-1);
+            String err= " "+ bol + "nao corresponde ao atributo: "+attrb.printForm();
+
+            switch(op){
+                case "==":
+                    if (value.equals(bol)){
+                        return true;
+                    }
+                    errors.add(err);
+                    return false;
+
+                case "!=":
+                    if (!value.equals(bol)){
+                        return true;
+                    }
+                    errors.add(err);
+                    return false;
+
+                default:
+                    return false;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public Float visitIntExpression(linguagemFormParser.IntExpressionContext ctx) {
+        try{
+            String mathOperator = ctx.MATH_OP().toString();
+            float a = Float.parseFloat(ctx.intValue().INTEGER().toString());
+
+            if (ctx.intExpression().intExpression() == null){ // intExpression = intValue
+                float b = Float.parseFloat(ctx.intExpression().toString());
+                switch(mathOperator){
+                    case "+":
+                        return a + b;
+                    case "-":
+                        return a - b;
+                    case "*":
+                        return a * b;
+                    case "/":
+                        return a / b;
+                    case "%":
+                        return a % b;
+                    default:
+                        return 0.0f;
+                }
+            } else {
+                float b = visitIntExpression(ctx.intExpression());
+                switch(mathOperator){
+                    case "+":
+                        return a + b;
+                    case "-":
+                        return a - b;
+                    case "*":
+                        return a * b;
+                    case "/":
+                        return a / b;
+                    case "%":
+                        return a % b;
+                    default:
+                        return 0.0f;
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            return 0.0f;
+        }
+    }
+
 }
 
 

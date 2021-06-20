@@ -34,26 +34,14 @@ Segundo o caderno de encargos, existem atividades automaticas, execuntando certa
 	* Necessita de um script de validação para envio de dados, numa atividade automatica
 	especificada aquando da inclusão do componente num fluxo de atividades.
 
+## 3.1. Realização da Funcionalidade
+![US5003](US5003.jpg)
+
+## 3.2. Diagrama de Classes
+Por indicação do professor, não é necessário elaborar o Diagrama de Classes.	
+
+# 3.3. Padrões Aplicados
+Protocolo SDP2021.
 	
-
-# 3. Padrões Aplicados
-
-	
-
-## 3.1. Testes
-
-*Nesta secção deve sistematizar como os testes foram concebidos para permitir uma correta aferição da
-satisfação dos requisitos.*
-
-**Teste 1:** Verificar que não é possível criar uma instância da classe Automatic Task com valores nulos.
-
-	@Test(expected = IllegalArgumentException.class)
-		public void ensureNullIsNotAllowed() {
-		AutomaticTask instance = new AutomaticTask(null, null);
-	}
-
 # 4. Implementação
-
-
-
-# 5. Integração/Demonstração
+Todas as representações do design efetuado estão de acordo com a implementação.
