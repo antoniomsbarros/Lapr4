@@ -82,7 +82,15 @@ public class Form implements AggregateRoot<Long> {
         }
         return ret;
     }
-
+public Description Formname(){
+        return  name;
+}
+public Description Script(){
+        return script;
+}
+public FormType formType(){
+        return formType;
+}
 
     public List<Attribute> attribute(){
         return attribute;
