@@ -71,7 +71,7 @@ class TCPSrvMFAThread implements Runnable {
 	private DataOutputStream sOut;
 	private DataInputStream sIn;
 	private Dashboardsearch dashboardsearch;
-	RequestWorkflow requestWorkflow=new RequestWorkflow();
+	RequestWorkflow requestWorkflow;
 	TCPSrvMFAThread(Socket cli_s) {
 		s=cli_s;
 		dashboardsearch=new Dashboardsearch();

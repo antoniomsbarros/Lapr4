@@ -1,2 +1,5 @@
+TCPSERVER\executableAutomaticThread.class
 TCPSERVER\TcpSrvSumThread.class
+TCPSERVER\FirstComeFirstServedAlgoritm.class
 TCPSERVER\TcpSrvAutomaticTask.class
+TCPSERVER\SegundAlgoritm.class
