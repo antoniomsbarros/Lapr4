@@ -514,6 +514,179 @@ public class MyVisitor extends linguagemFormBaseVisitor{
             return 0.0f;
         }
     }
+
+    @Override
+    public Boolean visitValBetween(linguagemFormParser.ValBetweenContext ctx) {
+        try{
+            int aux = Integer.parseInt(ctx.INTEGER().toString())-1;
+            int val = Integer.parseInt(requestData.get(aux));
+            int valBetween1 = Integer.parseInt((ctx.gap().INTEGER().get(0).toString()));
+            int valBetween2 = Integer.parseInt((ctx.gap().INTEGER().get(1).toString()));
+
+            if (val>= valBetween1 && val<=valBetween2){
+                return true;
+            }
+            String err = "O valor "+val+ " nao está entre  "+valBetween1+" e "+valBetween2+"!\n";
+            errors.add(err);
+            return false;
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    @Override
+    public Boolean visitValObligatory(linguagemFormParser.ValObligatoryContext ctx) {
+        try {
+            String value = requestData.get(Integer.parseInt(ctx.INTEGER().toString()) - 1);
+            String mandatory = ctx.OBLIGATION().getText();
+
+            if (mandatory.equalsIgnoreCase("obligatory")) {
+                if (value.isBlank()) {
+                    Attribute attrb = requestAttribute.get(Integer.parseInt(ctx.INTEGER().toString())-1);
+                    String err ="Nao preencheu o atributo : (OBRIGATORIO)\n"+attrb.printForm()+"\n";
+                    errors.add(err);
+                    return false;
+                }
+                return true;
+            } else { //not obligatory field to fill!
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    @Override
+    public Boolean visitConditionsNoOp(linguagemFormParser.ConditionsNoOpContext ctx) {
+        try{
+            return (Boolean) this.visit(ctx.condition());
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    @Override
+    public Boolean visitConditionsOp(linguagemFormParser.ConditionsOpContext ctx) {
+        try{
+            Object conditionsEvaluated= null;
+            Boolean verify = false;
+
+            linguagemFormParser.ConditionsContext conditionsContext = ctx.conditions();
+            do{
+                conditionsEvaluated = this.visit(conditionsContext);
+                if (!((Boolean) this.visit((conditionsContext)))){
+                    return false;
+                }
+            }while(ctx.conditions() != null);
+
+            String op = ctx.CONDITION_OP().toString();
+
+            Object conditionEvaluated = this.visit(ctx.condition());
+
+            switch(op){
+                case "&&":
+                    if ((Boolean)conditionsEvaluated && (Boolean)conditionEvaluated){
+                        return true;
+                    } else {
+                        return false;
+                    }
+                case "||":
+                    if ((Boolean)conditionsEvaluated || (Boolean)conditionEvaluated){
+                        return true;
+                    } else{
+                        return false;
+                    }
+
+                default:
+                    return false;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    @Override
+    public Boolean visitValueVerifyVerifyOrEqualOrNot(linguagemFormParser.ValueVerifyVerifyOrEqualOrNotContext ctx) {
+        try{
+            float value = Float.parseFloat(requestData.get(Integer.parseInt(ctx.INTEGER().toString())-1));
+            float calc = visitIntExpression(ctx.intExpression()); // calculo de valores com valores de verificacao (+,-,/,*,%)
+
+            if (calc == 0.0f){
+                System.out.println("Erro de calculo!");
+                return false;
+            }
+
+            if (ctx.EQUAL_OR_NOT() == null && ctx.VERIFICATION_OP()!= null){
+                String op = ctx.VERIFICATION_OP().toString();
+                Attribute attrb = requestAttribute.get(Integer.parseInt(ctx.INTEGER().toString())-1);
+                String errMenor =  "O atributo "+ attrb.printForm() + "é menor que "+calc;
+                String errMaior =  "O atributo "+ attrb.printForm() + "é maior que "+calc;
+                String errMaiorIgual =  "O atributo "+ attrb.printForm() + "é maior-igual que "+calc;
+                String errMenorIgual =  "O atributo "+ attrb.printForm() + "é menor-igual que "+calc;
+                switch(op){
+                    case ">":
+                        if (value > calc){
+                            return true;
+                        }
+                        errors.add(errMaior);
+                        return false;
+                    case "<":
+                        if (value < calc){
+                            return true;
+                        }
+                        errors.add(errMenor);
+                        return false;
+                    case "<=":
+                        if (value <= calc){
+                            return true;
+                        }
+                        errors.add(errMenorIgual);
+                        return false;
+                    case ">=":
+                        if (value >= calc){
+                            return true;
+                        }
+                        errors.add(errMaiorIgual);
+                        return false;
+                    default:
+                        return false;
+                }
+            } else if(ctx.EQUAL_OR_NOT() != null && ctx.VERIFICATION_OP()==null) {
+                String op = ctx.EQUAL_OR_NOT().toString();
+                Attribute attrb = requestAttribute.get(Integer.parseInt(ctx.INTEGER().toString())-1);
+                String errIgual =  "O atributo "+ attrb.printForm() + "é igualr a "+calc;
+                String errDiferente =  "O atributo "+ attrb.printForm() + "é diferente de "+calc;
+
+                switch(op){
+                    case"==":
+                        if (value == calc){
+                            return true;
+                        }
+                        errors.add(errIgual);
+                        return false;
+                    case"!=":
+                        if (value != calc){
+                            return true;
+                        }
+                        errors.add(errDiferente);
+                        return false;
+                    default:
+                        return false;
+                }
+            } else {
+                return false;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
 }
 
 
