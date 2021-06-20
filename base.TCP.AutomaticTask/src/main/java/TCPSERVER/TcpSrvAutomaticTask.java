@@ -10,6 +10,8 @@ import eapli.base.usermanagement.domain.BasePasswordPolicy;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 import eapli.framework.infrastructure.authz.domain.model.PlainTextEncoder;
 
+import javax.net.ssl.SSLServerSocket;
+import javax.net.ssl.SSLServerSocketFactory;
 import java.io.*;
 import java.net.*;
 import java.util.LinkedList;
@@ -17,20 +19,20 @@ import java.util.Queue;
 import java.util.concurrent.Semaphore;
 
 class TcpSrvAutomaticTask {
-	static ServerSocket sock;
+	//static ServerSocket sock;
 
 	public static void main(String args[]) throws Exception {       
 		Socket cliSock;
+		SSLServerSocket sock=null;
 		AuthzRegistry.configure(PersistenceContext.repositories().users(), new BasePasswordPolicy(), new PlainTextEncoder());
 
-
-		try { sock = new ServerSocket(9999); }
+		SSLServerSocketFactory sslF = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
+		try { sock = (SSLServerSocket) sslF.createServerSocket(70);
+			sock.setNeedClientAuth(true); }
 		catch(IOException ex) {
 			System.out.println("Failed to open server socket");
 			System.exit(1);
-			}
-
-
+		}
 		while(true) {
 			cliSock=sock.accept();
 			new Thread(new TcpSrvSumThread(cliSock)).start();
