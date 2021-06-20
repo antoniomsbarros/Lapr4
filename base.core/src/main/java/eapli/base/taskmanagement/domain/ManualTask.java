@@ -88,6 +88,10 @@ public class ManualTask extends Task {
         return lstResposta;
     }
 
+    public void insertAnswers(List<String> respostas) {
+        lstResposta = respostas;
+    }
+
     public TaskType type(){
         return type;
     }

@@ -76,7 +76,7 @@ public class AutomaticTask extends Task{
 
     @Override
     public String toString() {
-        return "AutomaticTask{" +
+        return super.toString() + "AutomaticTask{" +
                 "scriptPath=" + scriptPath +
                 '}';
     }
