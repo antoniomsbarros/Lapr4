@@ -23,7 +23,7 @@ public class AddManualTaskController {
     private final TeamRepository teamRepository = PersistenceContext.repositories().team();
 
     public ManualTask addManualTask(Deadline deadline, Integer priority,
-                                    Responsable collaborator, Description commentary, Description decision, Form form, Answer lstResposta ) {
+                                    Responsable collaborator, Description commentary, Description decision, Form form, List<String> lstResposta ) {
         ManualTask manualTask = null;
         try {
             manualTask = new ManualTask(TaskState.PENDING, deadline, priority,
