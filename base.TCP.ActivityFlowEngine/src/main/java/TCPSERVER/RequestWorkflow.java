@@ -104,7 +104,7 @@ public class RequestWorkflow {
                 Form formRequestTask= createFormController.saveForm(form.Formname(), form.Script(),form.formType().name());
                 createFormController=new CreateFormController();
                 Deadline deadline = new Deadline(date);
-                ManualTask manualTask=addManualTaskController.addManualTask(deadline, manualTask1.priority(), searchActivity.prepareTask(112345).get(0).Responsible(),Description.valueOf("") , Description.valueOf(""), formRequestTask,new Answer());
+                ManualTask manualTask=addManualTaskController.addManualTask(deadline, manualTask1.priority(), searchActivity.prepareTask(112345).get(0).Responsible(),Description.valueOf("") , Description.valueOf(""), formRequestTask,new ArrayList<>());
                 id=manualTask.identity();
 
                 System.out.println(id);
