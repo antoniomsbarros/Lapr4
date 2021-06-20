@@ -13,8 +13,9 @@ public class TcpClientMotorActivityFlowEngine {
 	static InetAddress serverIP;
 	static SSLSocket sock;
 	static final String KEYSTORE_PASS="forgotten";
-	static final int SERVER_PORT=9999;
+	static final int SERVER_PORT=80;
 	static final String IPAdress="10.9.21.116";//endereço do servidor gestor de tarefas automaticas
+	static final String IP="127.0.0.1";
 	public TcpClientMotorActivityFlowEngine() {
 	}
 	public static  String[] tcpConnecting(int code , String data) throws IOException {
@@ -23,8 +24,11 @@ public class TcpClientMotorActivityFlowEngine {
 			System.out.println("Invalid server specified: " + IPAdress);
 			System.exit(1); }
 
+		// Trust these certificates provided by servers
 		System.setProperty("javax.net.ssl.trustStore", "server.jks");
 		System.setProperty("javax.net.ssl.trustStorePassword",KEYSTORE_PASS);
+
+		// Use this certificate and private key for client certificate when requested by the server
 		System.setProperty("javax.net.ssl.keyStore","server.jks");
 		System.setProperty("javax.net.ssl.keyStorePassword",KEYSTORE_PASS);
 		SSLSocketFactory sf = (SSLSocketFactory) SSLSocketFactory.getDefault();

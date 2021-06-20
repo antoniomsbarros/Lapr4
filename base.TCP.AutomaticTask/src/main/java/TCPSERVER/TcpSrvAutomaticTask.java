@@ -20,14 +20,20 @@ import java.util.concurrent.Semaphore;
 
 class TcpSrvAutomaticTask {
 	//static ServerSocket sock;
-
+	static final String TRUSTED_STORE="server.jks";
+	static final String KEYSTORE_PASS="forgotten";
 	public static void main(String args[]) throws Exception {       
 		Socket cliSock;
 		SSLServerSocket sock=null;
 		AuthzRegistry.configure(PersistenceContext.repositories().users(), new BasePasswordPolicy(), new PlainTextEncoder());
+		System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE);
+		System.setProperty("javax.net.ssl.trustStorePassword",KEYSTORE_PASS);
 
+		// Use this certificate and private key as server certificate
+		System.setProperty("javax.net.ssl.keyStore",TRUSTED_STORE);
+		System.setProperty("javax.net.ssl.keyStorePassword",KEYSTORE_PASS);
 		SSLServerSocketFactory sslF = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
-		try { sock = (SSLServerSocket) sslF.createServerSocket(70);
+		try { sock = (SSLServerSocket) sslF.createServerSocket(80);
 			sock.setNeedClientAuth(true); }
 		catch(IOException ex) {
 			System.out.println("Failed to open server socket");

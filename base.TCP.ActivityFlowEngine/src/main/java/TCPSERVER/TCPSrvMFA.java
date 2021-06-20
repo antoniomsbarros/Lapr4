@@ -50,8 +50,7 @@ public final class TCPSrvMFA {
 			System.out.println("Failed to open server socket");
 			System.exit(1);
 			}
-		RequestWorkflow requestWorkflow=new RequestWorkflow();
-		requestWorkflow.createWorkflowPedido("1");
+
 		while(true) {
 			cliSock=sock.accept();
 			new Thread(new TCPSrvMFAThread(cliSock)).start();

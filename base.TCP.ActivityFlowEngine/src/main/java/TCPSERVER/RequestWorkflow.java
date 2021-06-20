@@ -148,7 +148,7 @@ public class RequestWorkflow {
                     System.out.println("rejeitado");
                     changeStatusRequest.changeStatusofRequest(request, State.REJEITADO);
                 }
-                changeStatusofActivity.changeStatsTask(automaticTask, TaskState.DONE);
+                //changeStatusofActivity.changeStatsTask(automaticTask, TaskState.DONE);
                 System.out.println(workflowRequest.toString());
             }
 
