@@ -1,0 +1,3 @@
+percentagem = take cliente codigo BHH455 desconto client.xml
+precoBase = 100
+total = precoBase - precoBase * percentagem / 100
