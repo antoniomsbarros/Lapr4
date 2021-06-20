@@ -154,17 +154,15 @@ Os testes aplicados a esta funcionalidade são os seguinstes:
 
 # 4. Implementação
 
-*Nesta secção a equipa deve providenciar, se necessário, algumas evidências de que a implementação está em conformidade com o design efetuado. Para além disso, deve mencionar/descrever a existência de outros ficheiros (e.g. de configuração) relevantes e destacar commits relevantes;*
-
-*Recomenda-se que organize este conteúdo por subsecções.*
+Visualizar projeto.
 
 # 5. Integração/Demonstração
 
-Devido a não estarem todas as US's completas a tempo não foi possível haver a interligação com outras funcionalidades.
+Após ter sido criado o Catálogo este irá aparecer na Base de Dados.
 
 # 6. Observações
 
-Após US's em falta estarem concluídas é preciso modificar a seleção do colaborador e das equipas.
+Nenhuma observação
 
 
 

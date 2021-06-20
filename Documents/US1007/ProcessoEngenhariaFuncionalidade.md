@@ -1,22 +1,22 @@
-# US1004 Como Gestor de Projeto, eu pretendo que seja desenvolvida uma linguagem/gramática de suporte geral ao sistema para expressar, entre outras coisas, validações de formulários e atividades automáticas.  
+# US1007 Como Gestor de Projeto, eu pretendo que o sistema seja capaz de executar/interpretar os scripts especificados na linguagem/gramática anteriormente desenvolvida.   
 =======================================
 
 
 # 1. Requisitos
 
-Pré-requisitos - Existência de formulários e de atividades automáticas
+Pré-Requisitos:
+	-Existência da gramática para Validar Formulários;
+	-Existência da gramática para Executar os Scripts;
+	-Existência de Formulários;
 
-Requisitos - Criação da linguagem/gramática
+Requisitos:
+	-Interpretar os Scripts desenvolvidos;
 
-Pós-requisitos - Validação dos formulários e das atividades automáticas
+Pós-Requisitos:
+	-Validações realizadas ao nívle dos Formulários;
+	-Execução dos scripts;
 
-**US1004** Como Gestor de Projeto, eu pretendo que seja desenvolvida uma linguagem/gramática de suporte geral ao sistema para expressar, entre outras coisas, validações de formulários e atividades automáticas.
-
-- Validação dos atributos fo formulário;
-
-- Validação do script da atividade automática;
-
-A interpretação feita deste requisito foi no sentido de desenvolver uma linguagem/gramática que suporte o sistema para validar formulários e atividades automáticas.
+A interpretação feita deste requisito foi no sentido de o sistema ser capaz de executar os scripts especificados na linguagem/gramática.
 
 # 2. Análise
 
@@ -55,25 +55,21 @@ substituída pelo seu resultado (e.g., “350.00”) de modo a que no corpo do e
 
 ## 3.2. Diagrama de Classes
 
-Não é necessário
-
+Não necessário
 ## 3.3. Padrões Aplicados
 
-ANTLR.
+ANTLR
 
 ## 3.4. Testes 
 
-Verificar se os dados introduzidos nas respostas aos atributos do formulário.
+Verificar se os Formulários estão validados e se os scripts foram executados.
 
-System.out.println(Nome atributo);
-        String resp = Console.readLine("Answer the attribute");
-        String regExep = at.Regularexpression().toString();
-        Pattern pat = Pattern.compile(regExep);
-        Matcher mat = pat.matcher(resp);
-        result = mat.matches();
+**Teste 1:** Verificar que não é possível criar uma instância da classe Exemplo com valores nulos.
 
-Se der True a resposta seguiu a expressão regular.
-Se der False a resposta não seguiu a expressão regular.
+	@Test(expected = IllegalArgumentException.class)
+		public void ensureNullIsNotAllowed() {
+		Exemplo instance = new Exemplo(null, null);
+	}
 
 # 4. Implementação
 
@@ -81,7 +77,7 @@ Se der False a resposta não seguiu a expressão regular.
 
 # 6. Observações
 
-Nenhuma observação
+Acabar esta US.
 
 
 
