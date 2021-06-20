@@ -1,0 +1,8 @@
+1 is obligatory
+2 is obligatory
+3 is obligatory
+
+// validar as datas ??
+
+if 3 == "justificada" then
+    4 is obligatory;
