@@ -108,6 +108,9 @@ public class MainMenu extends AbstractUI {
     private static final int CREATE_MANUALTASK_OPTION = 1;
     private static final int SEARCH_MANUALTASK_OPTION = 2;
 
+    //REQUEST SERVICE
+    private static final int SHOWPENDENTREQUEST_OPTION = 1;
+
 
     private final AuthorizationService authz = AuthzRegistry.authorizationService();
 
@@ -245,7 +248,8 @@ public class MainMenu extends AbstractUI {
     private Menu builderRequestServiceMenu(){
         final Menu menu = new Menu("Request Service >");
 
-        menu.addItem(REQUESTSERVICE_OPTION,"Request Service", new RequestServiceUI()::show);
+        menu.addItem(1,"Request Service", new RequestServiceUI()::show);
+        menu.addItem(SHOWPENDENTREQUEST_OPTION,"Show Pendent Request Service By Date",new SortPendentRequestByHistoryUI()::show);
 
         return menu;
     }
