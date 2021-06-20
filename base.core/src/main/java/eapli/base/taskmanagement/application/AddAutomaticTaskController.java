@@ -32,6 +32,7 @@ public class AddAutomaticTaskController {
     try{
         final AutomaticTask automaticTask = new AutomaticTask(TaskState.PENDING, new Deadline(deadline), priority, Description.valueOf(scriptPath));
         task= automaticTaskRepository.save(automaticTask);
+        System.out.println("AUTO TASK: " + task.toString());
     }catch (IllegalArgumentException e){
         System.out.println(e);
     }

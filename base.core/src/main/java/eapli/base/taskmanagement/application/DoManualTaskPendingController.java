@@ -6,6 +6,8 @@ import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.clientusermanagement.domain.CollaboratorEmail;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
+import eapli.base.ordermanagement.domain.Request;
+import eapli.base.ordermanagement.repository.RequestRepository;
 import eapli.base.taskmanagement.domain.ManualTask;
 import eapli.base.taskmanagement.domain.Task;
 import eapli.base.taskmanagement.domain.TaskState;
@@ -33,6 +35,7 @@ public class DoManualTaskPendingController {
     private final ClientUserRepository clientUserRepository = PersistenceContext.repositories().clientUsers();
     private final TeamRepository teamRepository = PersistenceContext.repositories().team();
     private final WorkflowRepository workflowRepository = PersistenceContext.repositories().workflow();
+    private final RequestRepository requestRepository = PersistenceContext.repositories().requests();
     private Iterable<Team> teams;
     private List<ManualTask> manualTaskIterable = new ArrayList<>();
 
@@ -63,32 +66,41 @@ public class DoManualTaskPendingController {
         return manualTaskIterable;
     }
 
-    public void doManualTaskPending(ManualTask manualTask){
+    public Request ViewRequestAnswer(ManualTask manualTask){
         authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.COLLABORATOR);
-        Optional<Workflow>  optionalWorkflow;
+        Iterable<Workflow>  workflow;
+        Optional<Request>  optionalRequest;
 
         Optional<ManualTask> optionalManualTask = manualTaskRepository.findByID(manualTask.identity());
         if (optionalManualTask.isPresent()){
-            if (optionalManualTask.get().type() == TaskType.APPROVAL){
-                optionalManualTask.get().done();
-                manualTaskRepository.save(optionalManualTask.get());
-            }
-            else if(optionalManualTask.get().type() == TaskType.RESOLUTION) {
-                /*
-                optionalWorkflow = workflowRepository.getWorkflowByManualTask(optionalManualTask.get());
-                if (optionalWorkflow.isPresent()) {
-                    if (){
-                        optionalManualTask.get().done();
-                        manualTaskRepository.save(optionalManualTask.get());
-                    }
-
-                } else {
-                    throw new IllegalArgumentException("This Manual Task does not exist in any workflow");
-                }*/
+            workflow = workflowRepository.getWorkflowByTask(manualTask);
+            if (workflow.iterator().hasNext()){
+                optionalRequest = requestRepository.getRequestByWorkflow(workflow.iterator().next());
+                if (optionalRequest.isPresent()){
+                    return optionalRequest.get();
+                }
+                else {
+                    throw new IllegalArgumentException("This Workflow does not exist in any Request");
+                }
             }
             else {
-                throw new IllegalArgumentException("The task is not one of approval or resolution");
+                throw new IllegalArgumentException("This Manual Task does not exist in any Workflow");
             }
+        }else {
+            throw new IllegalArgumentException("This Manual Task does not exist in the database");
+        }
+
+    }
+
+    public void doManualTaskPending(ManualTask manualTask){
+        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.COLLABORATOR);
+        Optional<Workflow>  optionalWorkflow;
+        Optional<ManualTask> optionalManualTask = manualTaskRepository.findByID(manualTask.identity());
+
+        if (optionalManualTask.isPresent()){
+            optionalManualTask.get().insertAnswers(manualTask.listRespostas());
+            optionalManualTask.get().done();
+            manualTaskRepository.save(optionalManualTask.get());
         }else {
             throw new IllegalArgumentException("This Manual Task does not exist in the database");
         }
