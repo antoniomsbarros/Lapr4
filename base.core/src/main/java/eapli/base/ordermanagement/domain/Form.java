@@ -22,12 +22,14 @@ public class Form implements AggregateRoot<Long> {
     //@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "id")
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Attribute> attribute = new ArrayList<Attribute>();
+    @Enumerated(EnumType.STRING)
+    private FormType formType;
 
 
     public Form() {
     }
 
-    public Form(final Description name, final Description script,final List<Attribute> attribute) {
+    public Form(final Description name, final Description script,final List<Attribute> attribute, FormType formType) {
         Preconditions.noneNull(name);
         if (name.length()>50){
             throw new IllegalArgumentException("the name of the form cant have more then 50 characters");
@@ -35,6 +37,7 @@ public class Form implements AggregateRoot<Long> {
         this.name = name;
         this.script = script;
         this.attribute = attribute;
+        this.formType = formType;
     }
 
     public void addListAttributes(final Attribute attribute) {

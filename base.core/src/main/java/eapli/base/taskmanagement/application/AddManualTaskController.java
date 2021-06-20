@@ -28,7 +28,7 @@ public class AddManualTaskController {
         try {
             manualTask = new ManualTask(TaskState.PENDING, deadline, priority,
                                         TaskType.UNKNOWN,collaborator,commentary,decision, form,lstResposta);
-            manualTaskRepository.save(manualTask);
+            return manualTaskRepository.save(manualTask);
         } catch (IllegalArgumentException e) {
             System.out.println(e);
         }

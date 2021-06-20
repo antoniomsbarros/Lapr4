@@ -29,8 +29,8 @@ public class CreateFormController {
         formBuilder.withAttribute(attributeBuilder.build());
     }
 
-    public Form saveForm(Description name, Description script) {
-        formBuilder.withName(name).withScript(script);
+    public Form saveForm(Description name, Description script, String formType) {
+        formBuilder.withName(name).withScript(script).withFormType(formType);
         return formRepository.save(formBuilder.build());
     }
 }

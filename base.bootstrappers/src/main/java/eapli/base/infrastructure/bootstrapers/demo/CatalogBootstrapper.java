@@ -4,6 +4,7 @@ import eapli.base.catalogmanagement.application.CreateCatalogController;
 import eapli.base.catalogmanagement.application.CreateServiceController;
 import eapli.base.catalogmanagement.domain.Catalog;
 import eapli.base.catalogmanagement.domain.Keyword;
+import eapli.base.catalogmanagement.domain.Workflow;
 import eapli.base.clientusermanagement.domain.ClientUser;
 import eapli.base.ordermanagement.domain.Form;
 import eapli.base.ordermanagement.domain.TypeofData;
@@ -41,28 +42,28 @@ public class CatalogBootstrapper implements Action {
         createCatalog(Description.valueOf("Férias e Justificações"), Description.valueOf("Férias e Justificações"),
                 Description.valueOf("Férias e Justificações"),Description.valueOf("=)"),  teams, clientUsers.get(3));
 
-
+/*
         this.createServiceController = new CreateServiceController();
         List<Catalog> catalogs = catalogs();
         createCompletedServices(Description.valueOf("CompletedService1"), Description.valueOf("Srvc1Desc"),
                 Description.valueOf("This is the Service1 description"), Description.valueOf("S_Green"),
-                catalogs.get(0),"Y","KW1","Form1","Script1", Long.valueOf("50"));
+                catalogs.get(0),"y","KW1","Form1","Script1", Long.valueOf("50"));
 
         this.createServiceController = new CreateServiceController();
         createCompletedServices(Description.valueOf("CompletedService2"), Description.valueOf("Srvc2Desc"),
                 Description.valueOf("This is the Service2 description"), Description.valueOf("S_Blue"),
-                catalogs.get(1),"Y","KW2","Form2","Script2", Long.valueOf("31"));
+                catalogs.get(1),"y","KW2","Form2","Script2", Long.valueOf("31"));
 
         this.createServiceController = new CreateServiceController();
         createCompletedServices(Description.valueOf("CompletedService3"), Description.valueOf("Srvc3Desc"),
                 Description.valueOf("This is the Service3 description"), Description.valueOf("S_Yellow"),
-                catalogs.get(2), "Y","KW3","Form3","Script3", Long.valueOf("32"));
+                catalogs.get(2), "y","KW3","Form3","Script3", Long.valueOf("32"));
 
         this.createServiceController = new CreateServiceController();
         createCompletedServices(Description.valueOf("CompletedService4"), Description.valueOf("Srvc4Desc"),
                 Description.valueOf("This is the Service4 description"), Description.valueOf("S_Blue"),
-                catalogs.get(3),"Y","KW4","Form4","Script4", Long.valueOf("33"));
-        
+                catalogs.get(3),"y","KW4","Form4","Script4", Long.valueOf("33"));
+        */
         return true;
     }
 
@@ -82,9 +83,9 @@ public class CatalogBootstrapper implements Action {
         createServiceController.addAttribute(id,  Description.valueOf("desc"),  Description.valueOf("name"),  Description.valueOf("label"),  Description.valueOf("reg"), TypeofData.valueOf("String"));
 
 
-        createServiceController.saveForm(Description.valueOf(formName),Description.valueOf(scriptName));
+        createServiceController.saveForm(Description.valueOf(formName),Description.valueOf(scriptName), new String("RESOLUTION"));
 
-        createServiceController.saveService();
+        createServiceController.saveService(new Workflow());
     }
 
     private Catalog createCatalog(final Description title, Description shortdescription, Description longdescription, Description icone,

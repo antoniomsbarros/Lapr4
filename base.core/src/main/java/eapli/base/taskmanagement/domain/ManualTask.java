@@ -26,6 +26,8 @@ public class ManualTask extends Task {
     private Description decision;
     @OneToOne
     private Form form;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Executor> listExecutors= new ArrayList<>();
 
     @ElementCollection
     private List<Answer> lstResposta;
@@ -42,7 +44,7 @@ public class ManualTask extends Task {
                       Description commentary, Form form, List<Answer> lstResposta) {
         super(state, deadline, priority);
         try {
-            if (Calendars.now().compareTo(deadline.Date()) != 1) {
+            if (Calendars.now().compareTo(deadline.Date()) > 0) {
                 throw new IllegalArgumentException("Invalid DeadLine!");
             }
         } catch (NullPointerException | IllegalArgumentException e) {
@@ -63,6 +65,7 @@ public class ManualTask extends Task {
         this.commentary = commentary;
         this.form = form;
         this.lstResposta = lstResposta;
+        this.listExecutors = new ArrayList<>();
     }
 
     public void setType(TaskType type) {
@@ -71,6 +74,10 @@ public class ManualTask extends Task {
 
     public Responsable Responsible() {
         return collaborator;
+    }
+
+    public List<Executor> executorsList() {
+        return listExecutors;
     }
 
     public Form Form(){return form;}

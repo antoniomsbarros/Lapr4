@@ -176,6 +176,7 @@ public class CreateManualTaskUI extends AbstractUI {
         System.out.println("-----Form Especification-----");
         Description name = Description.valueOf(Console.readLine("Nome da Form da Atividade:"));
         Description script = Description.valueOf(Console.readLine("Nome do Script da Form da Atividade:"));
+        final String formType = Console.readLine("Activity's Form type (REQUEST, APROVATION, RESOLUTION):");
         /*Attribute Info*/
         while (answer.equals("y")) {
             final Long id = Long.valueOf(Console.readLine("ID Attribute: "));
@@ -190,7 +191,7 @@ public class CreateManualTaskUI extends AbstractUI {
             answer = Console.readLine("Do you want to add more Attributes to the Form?(y/n)");
             }
 
-        form = formController.saveForm(name,script);
+        form = formController.saveForm(name,script,formType);
         System.out.println(form);
 
         Attribute atb = new Attribute(Long.valueOf(1),Description.valueOf("DescAttrb1"),Description.valueOf("Attrb1"),Description.valueOf("LBL1"),Description.valueOf("regularExp"), TypeofData.Data);
