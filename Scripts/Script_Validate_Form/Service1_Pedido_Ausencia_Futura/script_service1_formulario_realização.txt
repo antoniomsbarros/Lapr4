@@ -1,0 +1,31 @@
+1 is obligatory;
+2 is obligatory;
+4 is obligatory;
+5 is obligatory;
+7 is obligatory;
+8 is obligatory;
+
+
+if 1: filled then
+	3 = 3+1;
+;
+
+if 2: filled then
+	3 = 3+2;
+;
+
+if 4: filled then
+	6 = 6+4;
+;
+
+if 5: filled then
+	6 = 6+5;
+;
+
+if 7: filled then
+	9 = 9+7;
+;
+
+if 8: filled then
+	9 = 9+8;
+;
