@@ -27,8 +27,8 @@ public class ManualTask extends Task {
     @OneToOne
     private Form form;
 
-   // @ElementCollection
-    private Answer lstResposta;
+    @ElementCollection
+    private List<String> lstResposta;
 
     public ManualTask() {
 
@@ -39,7 +39,7 @@ public class ManualTask extends Task {
                       TaskType type,
                       Responsable collaborator,
                       Description decision,
-                      Description commentary, Form form, Answer lstResposta) {
+                      Description commentary, Form form, List<String> lstResposta) {
         super(state, deadline, priority);
         try {
             if (Calendars.now().compareTo(deadline.Date()) > 0) {
@@ -77,6 +77,10 @@ public class ManualTask extends Task {
 
     public String decison(){
         return  this.decision.toString();
+    }
+
+    public List<String> listRespostas() {
+        return lstResposta;
     }
 
     public TaskType type(){
