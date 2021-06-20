@@ -3,11 +3,13 @@ package TCPSERVER;
 import eapli.base.DashboardManagement.Protocol;
 import eapli.base.catalogmanagement.application.CreateSequenceController;
 import eapli.base.catalogmanagement.application.CreateWorkflow;
+import eapli.base.catalogmanagement.application.SearchService;
 import eapli.base.catalogmanagement.application.SequenceAddToWorkflow;
 import eapli.base.catalogmanagement.domain.Sequence;
 import eapli.base.catalogmanagement.domain.Workflow;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 
+import eapli.base.ordermanagement.domain.Form;
 import eapli.base.taskmanagement.application.AddManualTaskController;
 import eapli.base.taskmanagement.application.SearchManualTask;
 import eapli.base.usermanagement.domain.BasePasswordPolicy;
@@ -47,6 +49,10 @@ public final class TCPSrvMFA {
 		Sequence sequence= createSequenceController.createSequence(searchManualTask.getmanualtask(1L), 1L);
 		SequenceAddToWorkflow sequenceAddToWorkflow=new SequenceAddToWorkflow();
 		workflow= sequenceAddToWorkflow.addSequencesToWorkflow(workflow, sequence);*/
+		SearchService searchService=new SearchService();
+
+		//List<Form> formList=searchService.findServices(ticket.TicketService().identity()).form();
+
 		System.out.println("ola");
 		System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE);
 		System.setProperty("javax.net.ssl.trustStorePassword",KEYSTORE_PASS);
