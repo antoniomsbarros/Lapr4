@@ -102,11 +102,7 @@ public class RequestServiceController {
             requestBuilder.withState(stateofResquest).withDate(dateofRequest).withFeedback(feedback).withDraft(draft).withForm(form).withListAnswers(lstAn);
         }
         Request request= rr.save(requestBuilder.build());
-        try {
-            TcpClient.tcpConnecting(6, "olda","10.9.21.107" );
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
         return request;
     }
 
