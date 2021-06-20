@@ -45,12 +45,14 @@ a comunicação da aplicação do cliente com o servidor do motor de Fluxo de at
 ## 3.4. Testes 
 *Nesta secção deve sistematizar como os testes foram concebidos para permitir uma correta aferição da satisfação dos requisitos.*
 
-**Teste 1:** Verificar 
+**Teste 1:** Se o colaborador não tiver task o dashboard deve mostrar uma mensagem a avisar que o colaborador não tem atividades 
+atribuidas a ele e tambem não teve nenhuma task.
 
-	@Test(expected = IllegalArgumentException.class)
-		public void ensureNullIsNotAllowed() {
-		Exemplo instance = new Exemplo(null, null);
-	}
+**Test 2:** Se o colaborador tiver o dashboard deve mostrar a task deve aparecer o id da task, o deadline, e a prioridade
+
+**Test 3:** Se o servidor do dashboard não estiver ligado mostra uma pagina de erro de impossivel de conseguir se conectar.
+
+	
 
 # 4. Implementação
 
