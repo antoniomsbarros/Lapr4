@@ -5,25 +5,31 @@ import eapli.framework.domain.model.ValueObject;
 import eapli.framework.general.domain.model.Description;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Answer implements ValueObject, Serializable {
-    private String resposta;
+    private List<String> respostas = new ArrayList<>();
 
-    public Answer(String resposta) {
-        this.resposta = resposta;
+    public Answer(List<String> respostas) {
+        this.respostas = respostas;
     }
 
     public Answer() {
     }
 
-    public String getResposta() {
-        return resposta;
+    public List<String> getResposta() {
+        return respostas;
+    }
+
+    public void addResposta(String resposta){
+        this.respostas.add(resposta);
     }
 
     @Override
     public String toString() {
         return "Answer{" +
-                "resposta='" + resposta + '\'' +
+                "resposta='" + respostas.toString() + '\'' +
                 '}';
     }
 }

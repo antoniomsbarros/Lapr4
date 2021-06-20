@@ -40,7 +40,7 @@ public interface ClientUserRepository
 
     public Iterable<ClientUser> findAllActive();
 
-    @Query(value = "SELECT email FROM ClientUser WHERE email = :email",nativeQuery = true)
+    @Query(value = "SELECT Client FROM ClientUser WHERE email = :email",nativeQuery = true)
     Optional<ClientUser> getClientUserByEmail(CollaboratorEmail email);
 
 }

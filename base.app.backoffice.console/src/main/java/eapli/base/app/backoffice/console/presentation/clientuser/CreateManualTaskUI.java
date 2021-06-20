@@ -196,7 +196,7 @@ public class CreateManualTaskUI extends AbstractUI {
 
         Attribute atb = new Attribute(Long.valueOf(1),Description.valueOf("DescAttrb1"),Description.valueOf("Attrb1"),Description.valueOf("LBL1"),Description.valueOf("regularExp"), TypeofData.Data);
 
-        List<Answer> lstAnswer = new ArrayList<>();
+        Answer lstAnswer = new Answer();
 
 
         controller.addManualTask(deadline,priority,responsable,commentary,decision,form,lstAnswer);

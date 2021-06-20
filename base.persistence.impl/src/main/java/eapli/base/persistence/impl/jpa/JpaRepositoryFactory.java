@@ -70,6 +70,10 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 		return new JpaCatalogRepository();
 	}
 
+	public JpaServiceRepository services(){
+		return new JpaServiceRepository();
+	}
+
 	@Override
 	public FormRepository forms() {
 		return new JpaFormRepository(Application.settings().getPersistenceUnitName());
@@ -79,18 +83,10 @@ public class JpaRepositoryFactory implements RepositoryFactory {
 		return new JpaFormRepository(autoTx);
 	}
 
-	@Override
-	public ServiceRepository services() {
-		return new JpaServiceRepository(Application.settings().getPersistenceUnitName());
-	}
 
 	@Override
 	public SequenceRepository sequences() {
 		return new JpaSequenceRepository(Application.settings().getPersistenceUnitName());
-	}
-
-	public ServiceRepository services(final TransactionalContext autoTx) {
-		return new JpaServiceRepository(autoTx);
 	}
 
 

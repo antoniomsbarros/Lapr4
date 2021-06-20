@@ -26,11 +26,9 @@ public class ManualTask extends Task {
     private Description decision;
     @OneToOne
     private Form form;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Executor> listExecutors= new ArrayList<>();
 
-    @ElementCollection
-    private List<Answer> lstResposta;
+   // @ElementCollection
+    private Answer lstResposta;
 
     public ManualTask() {
 
@@ -41,7 +39,7 @@ public class ManualTask extends Task {
                       TaskType type,
                       Responsable collaborator,
                       Description decision,
-                      Description commentary, Form form, List<Answer> lstResposta) {
+                      Description commentary, Form form, Answer lstResposta) {
         super(state, deadline, priority);
         try {
             if (Calendars.now().compareTo(deadline.Date()) > 0) {
@@ -65,7 +63,6 @@ public class ManualTask extends Task {
         this.commentary = commentary;
         this.form = form;
         this.lstResposta = lstResposta;
-        this.listExecutors = new ArrayList<>();
     }
 
     public void setType(TaskType type) {
@@ -74,10 +71,6 @@ public class ManualTask extends Task {
 
     public Responsable Responsible() {
         return collaborator;
-    }
-
-    public List<Executor> executorsList() {
-        return listExecutors;
     }
 
     public Form Form(){return form;}

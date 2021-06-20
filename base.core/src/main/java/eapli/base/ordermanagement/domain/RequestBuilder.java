@@ -1,8 +1,10 @@
 package eapli.base.ordermanagement.domain;
 
 import eapli.base.catalogmanagement.domain.Workflow;
+import eapli.base.taskmanagement.domain.Answer;
 import eapli.framework.domain.model.DomainFactory;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -14,15 +16,9 @@ public class RequestBuilder implements DomainFactory<Request> {
     private Workflow workflow;
     private Draft draft;
     private Form form;
+    private Answer lstAnswers;
 
-    public RequestBuilder(State stateRequest, Calendar dateRequest, Feedback feedback, Workflow workflow, Draft draft, Form form) {
-        this.stateRequest = stateRequest;
-        this.dateRequest = dateRequest;
-        this.feedback = feedback;
-        this.workflow = workflow;
-        this.draft = draft;
-        this.form = form;
-    }
+    public RequestBuilder(){}
 
     public RequestBuilder withState(State stateRequest){
         this.stateRequest = stateRequest;
@@ -54,8 +50,13 @@ public class RequestBuilder implements DomainFactory<Request> {
         return this;
     }
 
+    public RequestBuilder withListAnswers(Answer lstAnswers){
+        this.lstAnswers = lstAnswers;
+        return this;
+    }
+
     @Override
     public Request build() {
-        return new Request(workflow,stateRequest,dateRequest,feedback,draft,form);
+        return new Request(workflow,stateRequest,dateRequest,feedback,draft,lstAnswers);
     }
 }

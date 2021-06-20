@@ -31,7 +31,6 @@ public interface CatalogRepository extends DomainRepository<Long, Catalog> {
     }
 
 
-    @Query(value = "SELECT * FROM Catalog WHERE team = :team",nativeQuery = true)
     Iterable<Catalog> findByTeams(Team team);
 
 }

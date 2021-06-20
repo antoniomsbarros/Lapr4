@@ -13,14 +13,11 @@ public class Feedback  implements DomainEntity<Long> {
 
     private Long feedbackScale;
 
-    @Temporal(TemporalType.DATE)
-    private Calendar date;
-
     public Feedback() {
     }
 
-    public Feedback(final Long feedbackScale,final Calendar date) {
-        Preconditions.noneNull(feedbackScale,date);
+    public Feedback(final Long feedbackScale) {
+        Preconditions.noneNull(feedbackScale);
         if (feedbackScale<0){
             throw new IllegalArgumentException("The Scale of the feedback cant be negative");
         }
@@ -28,18 +25,15 @@ public class Feedback  implements DomainEntity<Long> {
             throw new IllegalArgumentException("The Scale of the feedback cant be superior to 5");
         }
         this.feedbackScale = feedbackScale;
-        this.date = date;
     }
-    public Calendar date(){
-        return date;
-    }
+
     public  Long scale(){
         return feedbackScale;
     }
 
     @Override
     public String toString() {
-        return ", feedbackScale=" + feedbackScale.toString() + ", date=" + Calendars.format(date);
+        return ", feedbackScale=" + feedbackScale.toString();
     }
 
     @Override

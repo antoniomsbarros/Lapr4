@@ -9,11 +9,15 @@ import eapli.base.clientusermanagement.domain.CollaboratorEmail;
 import eapli.base.clientusermanagement.repositories.ClientUserRepository;
 import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.ordermanagement.domain.*;
+import eapli.base.taskmanagement.domain.Answer;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 import eapli.framework.io.util.Console;
 import eapli.framework.presentation.console.AbstractUI;
+
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Set;
 
 public class RequestServiceUI extends AbstractUI {
@@ -40,6 +44,8 @@ public class RequestServiceUI extends AbstractUI {
 
         Service servico = controller.getService(option);
 
+        System.out.println(servico);
+
         String option2 = String.valueOf(Console.readLine("Do you want to do a Draft or a Request?:"));
 
         if(option2.equals("Draft") || option2.equals("draft")){
@@ -57,7 +63,10 @@ public class RequestServiceUI extends AbstractUI {
 
         if(option2.equals("Request") || option2.equals("request")){
             CollaboratorEmail email = new CollaboratorEmail(authz.session().get().authenticatedUser().email().toString());
+            System.out.println(email);
+            Feedback feedback = new Feedback();
             ClientUser user = ct.getClientUserByEmail(email).get();
+            System.out.println(user);
             final String assigned = String.valueOf(Console.readLine("Assigned to:"));
             final String filepath = String.valueOf(Console.readLine("File path:"));
             final Calendar deadline = Calendar.getInstance();
@@ -66,22 +75,46 @@ public class RequestServiceUI extends AbstractUI {
 
             final Draft draft = controller.creatDraft(user,assigned,filepath,deadline,urgency2);
 
-            final Workflow workflow = servico.workflow();
+            final Workflow workflow = new Workflow();
             final State state = State.SUBMETIDO;
             final Calendar dateRequest = Calendar.getInstance();
-            final Long feedbackScale = Console.readLong("Feedback Scale (1-5)");
+            if(needFeedback(servico)) {
+                final Long feedbackScale = Console.readLong("Feedback Scale (1-5)");
+                feedback = controller.creatFeedback(feedbackScale);
+            }
 
-            final Calendar date = Calendar.getInstance();
+            final Form form = controller.getFormToAnswer(servico);
+            Answer lstAnswers = answerForm(form);
+            Request request = controller.creatRequest(workflow,state,dateRequest,feedback,draft,form,lstAnswers);
 
-            final  Feedback feedback = controller.creatFeedback(feedbackScale,date);
-
-            final Form form = new Form();
-
-            controller.creatRequest(workflow,state,dateRequest,feedback,draft,form);
+            for(String s: lstAnswers.getResposta()){
+                System.out.println(s);
+            }
+            final Integer ticketPriority = Integer.valueOf(Console.readLine("Ticket priority:"));
+            controller.createTicket(servico,ticketPriority,request);
             return true;
         }
 
 
+        return false;
+    }
+
+    private Answer answerForm(Form form) {
+        Answer lstAnswer= new Answer();
+        String a;
+        for (Attribute at : form.attribute()) {
+            System.out.println(at.name() + "(" + at.typeofData().toString() + "):");
+            String resp = Console.readLine("Answer the attribute");
+           // lstAnswer = new Answer();
+            lstAnswer.addResposta(resp);
+        }
+        return lstAnswer;
+    }
+
+    private boolean needFeedback(Service s) {
+        if(s.requirefeedback().equals("y")) {
+            return true;
+        }
         return false;
     }
 

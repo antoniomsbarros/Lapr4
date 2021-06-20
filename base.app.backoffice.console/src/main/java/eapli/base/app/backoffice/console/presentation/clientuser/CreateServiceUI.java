@@ -259,7 +259,7 @@ public class CreateServiceUI extends AbstractUI {
         form = formController.saveForm(name,script,formType);
         System.out.println(form);
 
-        List<Answer> lstAnswer = new ArrayList<>();
+        Answer lstAnswer = new Answer();
 
 
         return manualTaskController.addManualTask(deadline,priority,responsable,commentary,decision,form,lstAnswer);
