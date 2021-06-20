@@ -12,7 +12,10 @@ import eapli.base.infrastructure.persistence.PersistenceContext;
 import eapli.base.ordermanagement.domain.*;
 import eapli.base.ordermanagement.repository.DraftRepository;
 import eapli.base.ordermanagement.repository.RequestRepository;
+import eapli.base.ordermanagement.repository.TicketRepository;
+import eapli.base.taskmanagement.domain.Answer;
 import eapli.base.teamManagement.domain.Team;
+import eapli.base.teamManagement.repositories.TeamRepository;
 import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 
@@ -27,6 +30,8 @@ public class RequestServiceController {
     private final ServiceRepository sr;
     private final DraftRepository dr;
     private final RequestRepository rr;
+    private final TicketRepository tr;
+    private final TeamRepository teamr;
 
     public RequestServiceController() {
         this.authz= AuthzRegistry.authorizationService();
@@ -35,29 +40,41 @@ public class RequestServiceController {
         this.sr= PersistenceContext.repositories().services();
         this.dr = PersistenceContext.repositories().drafts();
         this.rr = PersistenceContext.repositories().requests();
+        this.tr = PersistenceContext.repositories().ticket();
+        this.teamr = PersistenceContext.repositories().team();
     }
 
     public Set<Service> SearchService(){
         CollaboratorEmail email = new CollaboratorEmail(authz.session().get().authenticatedUser().email().toString());
         ClientUser user = ct.getClientUserByEmail(email).get();
-        List<Team> teams = user.listOfTeams();
-        Set<Catalog> catalogs = new HashSet<>();
+        Iterable<Team> teams = teamr.collaboratorTeams(user.mecanographicNumber());
+
         Set<Service> services = new HashSet<>();
 
-        for(Team tm : teams){
-            while(cr.findByTeams(tm).iterator().hasNext()){
-                catalogs.add(cr.findByTeams(tm).iterator().next());
+        ArrayList<Catalog> cata1 = new ArrayList<>();
+
+        for(Team t: teams){
+            Iterable<Catalog> iC = cr.findByTeams(t);
+            for(Catalog c : iC) {
+                cata1.add(c);
             }
         }
 
-        for(Catalog catalog : catalogs){
-            while(sr.findByCatalog(catalog).iterator().hasNext()){
-                services.add(sr.findByCatalog(catalog).iterator().next());
+        for(Catalog ct : cata1){
+            Iterable<Service> iS = sr.findByCatalog(ct);
+            for(Service s : iS){
+                services.add(s);
             }
         }
+
+        for(Service s : services){
+            System.out.println(s);
+        }
+
 
         return services;
     }
+
 
     public Service getService(Long code){
         return sr.findByID(code).get();
@@ -69,13 +86,28 @@ public class RequestServiceController {
         return dr.save(draftBuilder.build());
     }
 
-    public Request creatRequest(final Workflow workflow, final State stateofResquest,final Calendar dateofRequest,final Feedback feedback,final Draft draft,final Form form){
-        final RequestBuilder requestBuilder = new RequestBuilder(stateofResquest,dateofRequest,feedback,workflow,draft,form);
-        requestBuilder.withState(stateofResquest).withDate(dateofRequest).withFeedback(feedback).withWorkflow(workflow).withDraft(draft).withForm(form);
+    public Feedback creatFeedback(final Long feedbackScale){
+        return new Feedback(feedbackScale);
+    }
+
+    public Request creatRequest(final Workflow workflow, final State stateofResquest,final Calendar dateofRequest,final Feedback feedback,final Draft draft,final Form form, Answer lstAn){
+        RequestBuilder requestBuilder = new RequestBuilder();
+        if (feedback.equals(new Feedback())){
+            requestBuilder.withState(stateofResquest).withDate(dateofRequest).withWorkflow(workflow).withDraft(draft).withForm(form).withListAnswers(lstAn);
+
+        } else {
+            requestBuilder.withState(stateofResquest).withDate(dateofRequest).withFeedback(feedback).withWorkflow(workflow).withDraft(draft).withForm(form).withListAnswers(lstAn);
+        }
         return rr.save(requestBuilder.build());
     }
 
-    public Feedback creatFeedback(final Long feedbackScale,final Calendar date){
-        return new Feedback(feedbackScale,date);
+    public Ticket createTicket(Service service ,Integer priorityTicket, Request request) {
+        Ticket ticket = new Ticket(service, priorityTicket, request);
+        return tr.save(ticket);
     }
+
+    public Form getFormToAnswer(Service s){
+        return s.form().get(0);
+    }
+
 }
