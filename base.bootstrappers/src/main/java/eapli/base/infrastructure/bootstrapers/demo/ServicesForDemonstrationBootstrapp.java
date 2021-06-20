@@ -68,7 +68,8 @@ public class ServicesForDemonstrationBootstrapp implements Action {
 
         createServiceController.addAttribute(Long.valueOf("1"),  Description.valueOf("desc1"),  Description.valueOf("Período de ausência (data inicio)"),  Description.valueOf("label"),
                 Description.valueOf("YEAR:[2][0][0-9][0-9];\nMONTH:[0][1-9]|[1][0-2];\nDAY:[0][1-9]|[1][0-9]|[2][0-8]|[2][9]|[3][0-1];"), TypeofData.valueOf("String"));
-        createServiceController.addAttribute(Long.valueOf("2"),  Description.valueOf("desc2"),  Description.valueOf("Período de ausência (data fim)"),  Description.valueOf("label2"),  Description.valueOf("reg2"), TypeofData.valueOf("String"));
+        createServiceController.addAttribute(Long.valueOf("2"),  Description.valueOf("desc2"),  Description.valueOf("Período de ausência (data fim)"),  Description.valueOf("label2"),  Description.valueOf("YEAR:[2][0][0-9][0-9];\nMONTH:[0][1-9]|[1][0-2];\nDAY:[0][1-9]|[1][0-9]|[2][0-8]|[2][9]|[3][0-1];")
+                , TypeofData.valueOf("String"));
         createServiceController.addAttribute(Long.valueOf("3"),  Description.valueOf("desc3"),  Description.valueOf("Tipo Ausencia"),  Description.valueOf("label3"),  Description.valueOf("'Justificada'|'Ferias'|'Nao Justificada'"), TypeofData.valueOf("String"));
         createServiceController.addAttribute(Long.valueOf("4"),  Description.valueOf("desc4"),  Description.valueOf("Justificação"),  Description.valueOf("label4"),  Description.valueOf("[a-zA-Z]+' '*"), TypeofData.valueOf("String"));
 
@@ -77,8 +78,8 @@ public class ServicesForDemonstrationBootstrapp implements Action {
         date.set(2022,2,2);
         //Task1
         formController = new CreateFormController();
-        formController.addAttribute(Long.valueOf("5"),  Description.valueOf("d"),  Description.valueOf("Decisao"),  Description.valueOf("l"),  Description.valueOf("r"), TypeofData.valueOf("String"));
-        formController.addAttribute(Long.valueOf("6"),  Description.valueOf("d2"),  Description.valueOf("Tento fundamentando a decisao"),  Description.valueOf("l2"),  Description.valueOf("r2"), TypeofData.valueOf("String"));
+        formController.addAttribute(Long.valueOf("5"),  Description.valueOf("d"),  Description.valueOf("Decisao"),  Description.valueOf("l"),  Description.valueOf("[a-zA-Z]+' '*"), TypeofData.valueOf("String"));
+        formController.addAttribute(Long.valueOf("6"),  Description.valueOf("d2"),  Description.valueOf("Tento fundamentando a decisao"),  Description.valueOf("l2"),  Description.valueOf("[a-zA-Z]+' '*"), TypeofData.valueOf("String"));
         Form at1 = formController.saveForm(Description.valueOf("ex2"),Description.valueOf("script2"),aprovacao);
         Responsable responsable1 = new Responsable(Long.valueOf("1"), lstCollabs.get(0), new Delegaction(Long.valueOf("1"), Description.valueOf("Justificacao"), Designation.valueOf("Alternativa")), teams().get(0));
         Task t1 = addManualTaskController.addManualTask(new Deadline(date), 3,responsable1, Description.valueOf("Comentarioex1"), Description.valueOf("Decisaoex1"), at1, new ArrayList<Answer>());
