@@ -8,36 +8,31 @@ import eapli.base.catalogmanagement.repository.ServiceRepository;
 import eapli.framework.domain.repositories.TransactionalContext;
 import eapli.framework.infrastructure.repositories.impl.jpa.JpaAutoTxRepository;
 
+import javax.persistence.TypedQuery;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class JpaServiceRepository extends JpaAutoTxRepository<Service,Long,Long> implements ServiceRepository {
+public class JpaServiceRepository extends BasepaRepositoryBase<Service,Long,Long> implements ServiceRepository {
 
-    public JpaServiceRepository(final TransactionalContext autoTx){
-            super(autoTx,"uniquecode");
-        }
-        
-    public JpaServiceRepository(String name){
-        super(name, Application.settings().getExtendedPersistenceProperties(),"uniquecode");
-    }
-
-    public JpaServiceRepository(){
-        super("uniquecode", Application.settings().getExtendedPersistenceProperties(),"uniquecode");
+    public JpaServiceRepository() {
+        super("uniquecode");
     }
 
     @Override
     public Optional<Service> findById(Long lngID) {
         final Map<String, Object> params = new HashMap<>();
         params.put("serviceID", lngID);
-        return matchOne("e.id=:serviceID", params);
+        return matchOne("e.uniquecode=:serviceID", params);
     }
 
     @Override
     public Iterable<Service> findByCatalog(Catalog catalog) {
-        final Map<String,Object> params = new HashMap<>();
-        params.put("catalog", catalog);
-        return match("e.catalog=:catalog",params);
+        final TypedQuery<Service> query = entityManager().createQuery(
+                "SELECT s FROM Service s JOIN s.catalog lst " +
+                        "WHERE lst =: catalog", Service.class);
+        query.setParameter("catalog", catalog);
+        return query.getResultList();
     }
 
     @Override
