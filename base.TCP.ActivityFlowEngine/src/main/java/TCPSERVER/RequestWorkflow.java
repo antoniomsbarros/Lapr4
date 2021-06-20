@@ -5,6 +5,7 @@ import eapli.base.catalogmanagement.domain.Responsable;
 import eapli.base.catalogmanagement.domain.Sequence;
 import eapli.base.catalogmanagement.domain.Workflow;
 import eapli.base.ordermanagement.application.ChangeStatusRequest;
+import eapli.base.ordermanagement.application.CreateFormController;
 import eapli.base.ordermanagement.application.SearchRequestController;
 import eapli.base.ordermanagement.application.SearchTickController;
 import eapli.base.ordermanagement.domain.Form;
@@ -36,7 +37,7 @@ public class RequestWorkflow {
     private final SearchService searchService;
     private final SearchActivity searchActivity;
     private final SequenceAddToWorkflow sequenceAddToWorkflow;
-
+    private CreateFormController createFormController;
     public RequestWorkflow() {
 
         this.searchWorkflowService = new SearchWorkflowService();
@@ -52,6 +53,7 @@ public class RequestWorkflow {
         searchService=new SearchService();
         searchActivity=new SearchActivity();
         sequenceAddToWorkflow=new SequenceAddToWorkflow();
+        createFormController=new CreateFormController();
     }
 
     public void createWorkflowPedido(String idPedido){
@@ -97,12 +99,15 @@ public class RequestWorkflow {
 
 
 
-
-
                 Form form= formList.get(i);
-
+                for (int j = 0; j < form.attribute().size(); j++) {
+                    createFormController.addAttribute(j+98765+1L,form.attribute().get(i).description(),
+                            form.attribute().get(i).name(), form.attribute().get(i).label(),form.attribute().get(i).Regularexpression(), form.attribute().get(i).typeofData());
+                }
+                Form formRequestTask= createFormController.saveForm(form.Formname(), form.Script(),form.formType().name());
+                createFormController=new CreateFormController();
                 Deadline deadline = new Deadline(date);
-                ManualTask manualTask=addManualTaskController.addManualTask(deadline, manualTask1.priority(), searchActivity.prepareTask(112345).get(0).Responsible(),Description.valueOf("ola") , Description.valueOf("ola"), form,request.Answers());
+                ManualTask manualTask=addManualTaskController.addManualTask(deadline, manualTask1.priority(), searchActivity.prepareTask(112345).get(0).Responsible(),Description.valueOf("") , Description.valueOf(""), formRequestTask,new LinkedList<>());
                 id=manualTask.identity();
 
                 System.out.println(id);

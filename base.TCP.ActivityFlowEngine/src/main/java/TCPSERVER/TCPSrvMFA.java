@@ -29,11 +29,15 @@ public final class TCPSrvMFA {
 	static final String KEYSTORE_PASS="forgotten";
 
 	public static void main(String args[]) throws Exception {
+
+
 		SSLServerSocket sock=null;
 		Socket cliSock;
 		AuthzRegistry.configure(PersistenceContext.repositories().users(), new BasePasswordPolicy(),
 				new PlainTextEncoder());
-		CreateWorkflow createWorkflow=new CreateWorkflow();
+		RequestWorkflow requestWorkflow=new RequestWorkflow();
+		requestWorkflow.createWorkflowPedido("35");
+		/*CreateWorkflow createWorkflow=new CreateWorkflow();
 		CreateSequenceController createSequenceController=new CreateSequenceController();
 		SearchManualTask searchManualTask=new SearchManualTask();
 		List<Sequence> sequences=new LinkedList<>();
@@ -42,7 +46,7 @@ public final class TCPSrvMFA {
 
 		Sequence sequence= createSequenceController.createSequence(searchManualTask.getmanualtask(1L), 1L);
 		SequenceAddToWorkflow sequenceAddToWorkflow=new SequenceAddToWorkflow();
-		workflow= sequenceAddToWorkflow.addSequencesToWorkflow(workflow, sequence);
+		workflow= sequenceAddToWorkflow.addSequencesToWorkflow(workflow, sequence);*/
 		System.out.println("ola");
 		System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE);
 		System.setProperty("javax.net.ssl.trustStorePassword",KEYSTORE_PASS);
