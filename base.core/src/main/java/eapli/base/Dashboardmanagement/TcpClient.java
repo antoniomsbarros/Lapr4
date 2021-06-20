@@ -48,7 +48,5 @@ public class TcpClient {
 		sock.close();
 		return result.split(", ");
 	}
-
-
-	}
+}
 

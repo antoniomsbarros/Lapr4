@@ -38,22 +38,7 @@ public final class TCPSrvMFA {
 		AuthzRegistry.configure(PersistenceContext.repositories().users(), new BasePasswordPolicy(),
 				new PlainTextEncoder());
 		RequestWorkflow requestWorkflow=new RequestWorkflow();
-		requestWorkflow.createWorkflowPedido("35");
-		/*CreateWorkflow createWorkflow=new CreateWorkflow();
-		CreateSequenceController createSequenceController=new CreateSequenceController();
-		SearchManualTask searchManualTask=new SearchManualTask();
-		List<Sequence> sequences=new LinkedList<>();
-
-		Workflow workflow= createWorkflow.createWorkflow(sequences);
-
-		Sequence sequence= createSequenceController.createSequence(searchManualTask.getmanualtask(1L), 1L);
-		SequenceAddToWorkflow sequenceAddToWorkflow=new SequenceAddToWorkflow();
-		workflow= sequenceAddToWorkflow.addSequencesToWorkflow(workflow, sequence);*/
-		SearchService searchService=new SearchService();
-
-		//List<Form> formList=searchService.findServices(ticket.TicketService().identity()).form();
-
-		System.out.println("ola");
+		requestWorkflow.createWorkflowPedido("1");
 		System.setProperty("javax.net.ssl.trustStore", TRUSTED_STORE);
 		System.setProperty("javax.net.ssl.trustStorePassword",KEYSTORE_PASS);
 
@@ -106,6 +91,7 @@ class TCPSrvMFAThread implements Runnable {
 					break;
 				case 6:
 						String data3=protocol.getData();
+						protocol.send(sOut, "1");
 						requestWorkflow.createWorkflowPedido(data3);
 					break;
 				default:
@@ -116,8 +102,10 @@ class TCPSrvMFAThread implements Runnable {
 				" disconnected");
 			s.close();
 			}
-		catch(IOException ex) { System.out.println("IOException"); }
+		catch(IOException ex) { System.out.println("IOException"); } catch (InterruptedException e) {
+			e.printStackTrace();
 		}
+	}
 
 }
 

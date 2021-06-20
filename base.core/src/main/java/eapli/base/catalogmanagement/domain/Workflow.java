@@ -50,7 +50,7 @@ public class Workflow implements AggregateRoot<Long> {
         String str="";
         for (Sequence s:sequences
              ) {
-            str+=s.identity();
+            str+=s.identity()+" ";
         }
         return "Workflow{" +
                 "id=" + id +

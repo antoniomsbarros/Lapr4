@@ -1,5 +1,7 @@
 package eapli.base.catalogmanagement.application;
 
+import eapli.base.DashboardManagement.Protocol;
+import eapli.base.DashboardManagement.TcpClient;
 import eapli.base.catalogmanagement.domain.Catalog;
 import eapli.base.catalogmanagement.domain.Service;
 import eapli.base.catalogmanagement.domain.Workflow;
@@ -20,6 +22,7 @@ import eapli.framework.infrastructure.authz.application.AuthorizationService;
 import eapli.framework.infrastructure.authz.application.AuthzRegistry;
 
 
+import java.io.IOException;
 import java.util.*;
 
 public class RequestServiceController {
@@ -98,7 +101,13 @@ public class RequestServiceController {
         } else {
             requestBuilder.withState(stateofResquest).withDate(dateofRequest).withFeedback(feedback).withDraft(draft).withForm(form).withListAnswers(lstAn);
         }
-        return rr.save(requestBuilder.build());
+        Request request= rr.save(requestBuilder.build());
+        try {
+            TcpClient.tcpConnecting(6, "olda","10.9.21.107" );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return request;
     }
 
     public Ticket createTicket(Service service ,Integer priorityTicket, Request request) {

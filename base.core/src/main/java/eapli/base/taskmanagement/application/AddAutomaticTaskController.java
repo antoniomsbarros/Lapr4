@@ -27,8 +27,7 @@ public class AddAutomaticTaskController {
 
     public AutomaticTask addAutomaticTask(Calendar deadline, Integer priority, String scriptPath) {
 
-        authz.ensureAuthenticatedUserHasAnyOf(BaseRoles.POWER_USER, BaseRoles.ADMIN,
-                BaseRoles.RRH_MANAGER);
+
         AutomaticTask task = new AutomaticTask();
     try{
         final AutomaticTask automaticTask = new AutomaticTask(TaskState.PENDING, new Deadline(deadline), priority, Description.valueOf(scriptPath));

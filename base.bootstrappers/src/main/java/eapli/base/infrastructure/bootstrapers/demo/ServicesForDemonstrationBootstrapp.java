@@ -9,10 +9,7 @@ import eapli.base.ordermanagement.application.CreateFormController;
 import eapli.base.ordermanagement.domain.Form;
 import eapli.base.ordermanagement.domain.TypeofData;
 import eapli.base.taskmanagement.application.AddManualTaskController;
-import eapli.base.taskmanagement.domain.Answer;
-import eapli.base.taskmanagement.domain.Deadline;
-import eapli.base.taskmanagement.domain.ManualTask;
-import eapli.base.taskmanagement.domain.Task;
+import eapli.base.taskmanagement.domain.*;
 import eapli.base.teamManagement.domain.Team;
 import eapli.framework.actions.Action;
 import eapli.framework.domain.repositories.ConcurrencyException;
@@ -101,12 +98,19 @@ public class ServicesForDemonstrationBootstrapp implements Action {
         List<Sequence> lstSeq = new ArrayList<>();
         map.put(Long.valueOf("1"), t1);
         map.put(Long.valueOf("2"), t2);
-        lstSeq = createServiceController.saveSequence(map);
-        Workflow workflow = createServiceController.saveWorkflow(lstSeq);
+
 
         //Task out
-        //createServiceController.saveAutomaticTask(date, 2, "C:/ola/ola.exe");
+        Task automaticTask= createServiceController.saveAutomaticTask(date, 2, "C:/ola/ola.exe");
+        formController = new CreateFormController();
+        formController.addAttribute(Long.valueOf("17"),  Description.valueOf("d"),  Description.valueOf("Dias de férias já gozados no ano"),  Description.valueOf("l"),  Description.valueOf("[0-9]{1,2}"), TypeofData.valueOf("String"));
+        Form at3 = formController.saveForm(Description.valueOf("ex3"),Description.valueOf("script3"),resolucao);
 
+
+        map.put(Long.valueOf("3"), automaticTask);
+
+        lstSeq = createServiceController.saveSequence(map);
+        Workflow workflow = createServiceController.saveWorkflow(lstSeq);
         createServiceController.saveService(workflow);
 
     }

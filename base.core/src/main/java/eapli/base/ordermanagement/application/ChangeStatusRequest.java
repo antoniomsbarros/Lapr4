@@ -17,6 +17,7 @@ public class ChangeStatusRequest {
             throw new IllegalArgumentException();
         }
         request.changeState(state);
+        requestRepository.save(request);
     }
 
 }
